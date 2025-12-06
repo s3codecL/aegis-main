@@ -86,6 +86,35 @@ const translations = {
     "REPEAT_SEARCH": "Repeat search",
     "OPEN_TOOL": "Open",
 
+    // Query Types
+    "DETECTED_TYPE": "Detected type:",
+    "IP": "IP",
+    "DOMAIN": "Domain",
+    "URL": "URL",
+    "HASH": "Hash",
+    "EMAIL": "Email",
+    "GENERAL": "General",
+
+    // Add Tool Modal
+    "ADD_TOOL": "Add Tool",
+    "ADD_NEW_TOOL": "Add New Tool",
+    "TOOL_NAME": "Tool Name",
+    "TOOL_ID": "Unique ID",
+    "TOOL_ID_HELP": "No spaces, lowercase letters and hyphens only",
+    "TOOL_URL": "Tool URL",
+    "TOOL_URL_HELP": "Search query will be appended to the end",
+    "TOOL_DESCRIPTION": "Description",
+    "TOOL_CATEGORY": "Category",
+    "TOOL_USES_TEMPLATE": "Uses template?",
+    "TOOL_TEMPLATE_HELP": "Use {{query}} in URL",
+    "TOOL_TEMPLATE": "Template URL",
+    "NOTE": "Note",
+    "TOOL_CUSTOM_NOTE": "Custom tools are saved locally and will only be available in this browser.",
+    "SAVE_TOOL": "Save Tool",
+    "TOOL_SAVED_SUCCESS": "Tool added successfully!",
+    "TOOL_ERROR_EXISTS": "A tool with this ID already exists",
+    "TOOL_ERROR_REQUIRED": "Please fill in all required fields",
+
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Dashboard - Personal Investigation Tool (Aegis: the shield of Zeus, symbol of divine protection)",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
@@ -273,6 +302,15 @@ const translations = {
     "DELETE_HISTORY": "Limpiar",
     "REPEAT_SEARCH": "Repetir búsqueda",
     "OPEN_TOOL": "Ir",
+
+    // Query Types
+    "DETECTED_TYPE": "Tipo detectado:",
+    "IP": "IP",
+    "DOMAIN": "Dominio",
+    "URL": "URL",
+    "HASH": "Hash",
+    "EMAIL": "Email",
+    "GENERAL": "General",
 
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Dashboard - (Egida) El escudo de Zeus, símbolo de protección divina",

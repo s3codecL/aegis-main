@@ -196,9 +196,13 @@ const App = {
     );
 
     // Generate result links
+    const detectedTypeLabel = translations[this.config.currentLanguage]?.DETECTED_TYPE || 'Tipo detectado:';
+    const queryTypeUpper = queryType.toUpperCase();
+    const typeTranslation = translations[this.config.currentLanguage]?.[queryTypeUpper] || queryType;
+    
     let resultsHTML = `<div class="search-results">
       <div class="alert alert-info">
-        <strong>Tipo detectado:</strong> ${queryType}
+        <strong>${detectedTypeLabel}</strong> ${typeTranslation}
       </div>
       <div class="results-list">`;
 
@@ -228,26 +232,26 @@ const App = {
 
   // Detect query type (IP, domain, hash, email)
   detectQueryType: function (query) {
-    if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(query)) return "IP Address";
+    if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(query)) return "ip";
     if (/^[a-zA-Z0-9-]{1,63}(\.[a-zA-Z0-9-]{1,63})*\.[a-zA-Z]{2,}$/.test(query))
-      return "Dominio";
+      return "domain";
     if (/^[a-f0-9]{32}$|^[a-f0-9]{40}$|^[a-f0-9]{64}$/.test(query))
-      return "Hash";
-    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(query)) return "Email";
-    return "Búsqueda general";
+      return "hash";
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(query)) return "email";
+    return "general";
   },
 
   // Check if tool is relevant to query type
   isToolRelevant: function (tool, queryType) {
     const relevantCategories = {
-      "IP Address": ["IP_INFO", "THREAT_INTELLIGENCE", "SEARCH_TOOLS"],
-      Dominio: ["SEARCH_TOOLS", "WEBSITE_OSINT_TOOLS", "THREAT_INTELLIGENCE"],
-      Hash: ["FILE_MALWARE_ANALYSIS", "THREAT_INTELLIGENCE", "HASH_LOOKUP"],
-      Email: ["EMAIL", "EMAIL_HEADER_ANALYSIS", "USERNAME_PEOPLE_OSINT"],
-      "Búsqueda general": [],
+      "ip": ["IP_INFO", "THREAT_INTELLIGENCE", "SEARCH_TOOLS"],
+      "domain": ["SEARCH_TOOLS", "WEBSITE_OSINT_TOOLS", "THREAT_INTELLIGENCE"],
+      "hash": ["FILE_MALWARE_ANALYSIS", "THREAT_INTELLIGENCE", "HASH_LOOKUP"],
+      "email": ["EMAIL", "EMAIL_HEADER_ANALYSIS", "USERNAME_PEOPLE_OSINT"],
+      "general": [],
     };
 
-    if (queryType === "Búsqueda general") return true;
+    if (queryType === "general") return true;
     return relevantCategories[queryType]?.includes(tool.category);
   },
 
