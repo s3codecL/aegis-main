@@ -107,9 +107,7 @@ osint-main/
 ├── tools-config.js      # Configuración de herramientas OSINT
 ├── translations.js      # Traducciones (ES/EN)
 ├── README.md            # Este archivo
-└── PLUGINS/             # Extensiones de navegador
-    ├── chrome/
-    ├── edge/
+└── plugins/             # Favoritos navegador
     └── OSINT Favorites - Chrome/
 ```
 
