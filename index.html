@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aegis Dashboard - Herramienta de Investigación</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tabler UI CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- SortableJS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+
+<body data-bs-theme="dark">
+  <!-- Loader -->
+  <div id="loader" class="loader-overlay" style="display: none;">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navbar Mejorada -->
+  <header class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-xxl px-3">
+      <!-- Logo y Branding -->
+      <div class="navbar-brand d-flex align-items-center">
+        <svg class="icon-brand me-2" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" role="img" aria-label="Aegis shield icon">
+          <title>Aegis shield</title>
+          <path d="M12 2l7 4v5c0 5-3.5 9.5-7 11-3.5-1.5-7-6-7-11V6l7-4z" fill="none" stroke="currentColor"
+            stroke-linejoin="round" stroke-linecap="round"></path>
+          <path d="M9.5 10.5c.8.6 1.5.9 2.5.9s1.7-.3 2.5-.9" fill="none" stroke="currentColor" stroke-linecap="round">
+          </path>
+        </svg>
+        <div class="d-flex flex-column">
+          <h1 class="mb-0" data-i18n="AEGIS_DASHBOARD">Aegis Dashboard</h1>
+          <small class="text-muted" data-i18n="INVESTIGATION_TOOL">Herramienta de Investigación</small>
+        </div>
+      </div>
+
+      <!-- Toggle para menú móvil -->
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+        title="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú Principal -->
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <!-- Controles -->
+        <div class="navbar-controls d-flex gap-2 flex-wrap justify-content-lg-end ms-auto">
+          <!-- Search Bar -->
+          <form class="search-form d-flex">
+            <div class="input-icon">
+              <input type="text" id="search-input" class="form-control search-input"
+                placeholder="IP, dominio, hash, email..." autocomplete="off">
+              <span class="input-icon-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
+                  stroke-width="2" stroke="currentColor" fill="none">
+                  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                  <path d="M21 21l-6 -6"></path>
+                </svg>
+              </span>
+            </div>
+            <button type="submit" class="btn btn-primary ms-2" data-i18n="SEARCH_BUTTON">
+              Buscar
+            </button>
+          </form>
+
+          <!-- Filter -->
+          <div class="input-icon">
+            <input type="text" id="filter-input" class="form-control filter-input" placeholder="Filtrar..."
+              style="max-width: 200px;">
+            <span class="input-icon-addon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none">
+                <path
+                  d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-9l-4.414 -4.414a2 2 0 0 1 -.586 -1.414v-2.172z">
+                </path>
+              </svg>
+            </span>
+          </div>
+
+          <!-- Categorías Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              data-i18n="CATEGORIES">
+              Categorías
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" id="categories-dropdown">
+              <!-- Llenado dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Tema -->
+          <button class="btn btn-outline-secondary" id="theme-toggle" title="Cambiar tema">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" style="display: none;">
+              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"></path>
+            </svg>
+          </button>
+
+          <!-- Idioma -->
+          <button class="btn btn-outline-secondary" id="language-toggle" title="Cambiar idioma">
+            <span id="current-lang">ES</span>
+          </button>
+
+          <!-- Historial -->
+          <button class="btn btn-outline-secondary" onclick="toggleHistoryPanel()" title="Historial de búsquedas">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" fill="none">
+              <path d="M12 3c-4.97 0 -9 4.03 -9 9s4.03 9 9 9s9 -4.03 9 -9s-4.03 -9 -9 -9m0 2v6l5.25 3.15"></path>
+            </svg>
+          </button>
+
+          <!-- Favoritos -->
+          <button class="btn btn-warning" onclick="toggleFavoritesPanel()" title="Favoritos">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z">
+              </path>
+            </svg>
+            <span class="badge bg-warning text-dark" id="favorites-count">0</span>
+          </button>
+
+          <!-- File scan UI removed -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Estadísticas bajo navbar -->
+  <div class="navbar-stats">
+    <div class="container-xxl px-3">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label" data-i18n="TOOLS_COUNT">Herramientas</span>
+          <span class="stat-value" id="total-tools">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label" data-i18n="SEARCHES_COUNT">Búsquedas</span>
+          <span class="stat-value" id="total-searches">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h5 data-i18n="TOOLS">Herramientas</h5>
+        <button class="btn btn-sm btn-ghost" onclick="toggleSidebar()" title="Colapsar barra lateral">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M6 18l12 -12m-12 0l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="categories-list" id="categories-sidebar">
+          <!-- Llenado dinámicamente -->
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <!-- Estadísticas movidas al navbar-stats -->
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <!-- Tabs de vistas -->
+      <div class="view-tabs mb-3">
+        <button class="tab-btn active" data-view="tools" data-i18n="TOOLS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M12 3v6m0 6v6"></path>
+            <path d="M3 12h6m6 0h6"></path>
+          </svg>
+          Herramientas
+        </button>
+        <button class="tab-btn" data-view="favorites" data-i18n="FAVORITES">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+            fill="currentColor">
+            <path
+              d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z">
+            </path>
+          </svg>
+          Favoritos
+        </button>
+        <button class="tab-btn" data-view="results" data-i18n="RESULTS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+            <path d="M21 21l-6 -6"></path>
+          </svg>
+          Resultados
+        </button>
+        <button class="tab-btn" data-view="history" data-i18n="HISTORY">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M12 3c-4.97 0 -9 4.03 -9 9s4.03 9 9 9s9 -4.03 9 -9s-4.03 -9 -9 -9m0 2v6l5.25 3.15"></path>
+          </svg>
+          Historial
+        </button>
+      </div>
+
+      <!-- Vista de Herramientas -->
+      <div class="view-content active" id="tools-view">
+        <div id="content" class="tools-grid">
+          <!-- Llenado dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Vista de Favoritos -->
+      <div class="view-content" id="favorites-view">
+        <div id="favorites-container" class="tools-grid">
+          <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="64" height="64" viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z">
+              </path>
+            </svg>
+            <h5>Sin favoritos</h5>
+            <p class="text-muted">Haz clic en la estrella para agregar herramientas a favoritos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista de Resultados -->
+      <div class="view-content" id="results-view">
+        <div id="results-container" class="results-container">
+          <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="64" height="64" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" fill="none">
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+              <path d="M21 21l-6 -6"></path>
+            </svg>
+            <h5>Sin resultados</h5>
+            <p class="text-muted">Realiza una búsqueda para ver resultados aquí</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista de Historial -->
+      <div class="view-content" id="history-view">
+        <div id="history-container" class="history-container">
+          <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="64" height="64" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" fill="none">
+              <path d="M12 3c-4.97 0 -9 4.03 -9 9s4.03 9 9 9s9 -4.03 9 -9s-4.03 -9 -9 -9m0 2v6l5.25 3.15"></path>
+            </svg>
+            <h5>Sin historial</h5>
+            <p class="text-muted">Tus búsquedas aparecerán aquí</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Panel Lateral Derecho (Historial y Favoritos) -->
+    <aside class="right-panel" id="right-panel">
+      <div class="panel-header">
+        <h5 id="panel-title">Historial</h5>
+        <button class="btn btn-sm btn-ghost" onclick="closeRightPanel()" title="Cerrar panel">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M6 18l12 -12m-12 0l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="panel-content">
+        <div id="panel-list"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modales -->
+  <!-- Modal de Búsqueda en Herramientas -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-i18n="ENTER_SEARCH_TERM">Ingresa el término de búsqueda</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="searchModalInput" class="form-control" placeholder="IP, dominio, email, hash..."
+            autofocus onkeypress="if(event.key==='Enter') App.executeToolSearch()" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="CANCEL">Cancelar</button>
+          <button type="button" class="btn btn-primary" onclick="App.executeToolSearch()"
+            data-i18n="SEARCH_BUTTON">Buscar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Error -->
+  <div class="modal fade" id="errorModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-status bg-danger"></div>
+        <div class="modal-body text-center py-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger" width="48" height="48"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+            <path d="M12 9v2m0 4v.01"></path>
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75"></path>
+          </svg>
+          <h3 data-i18n="ERROR">Error</h3>
+          <div class="text-muted" id="errorModalText" data-i18n="PLEASE_VERIFY_INPUT">Por favor, verifica tu entrada
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" data-i18n="CLOSE">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Éxito -->
+  <div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-status bg-success"></div>
+        <div class="modal-body text-center py-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-success" width="48" height="48"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M9 12l2 2l4 -4"></path>
+          </svg>
+          <h3 data-i18n="SUCCESS">¡Éxito!</h3>
+          <div class="text-muted" id="successModalText" data-i18n="OPERATION_COMPLETED">Operación completada</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success w-100" data-bs-dismiss="modal"
+            data-i18n="CONTINUE">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-xxl px-3">
+      <div class="row align-items-center">
+        <div class="col-12 text-center">
+          <small class="text-muted">
+            🛡️ Aegis Dashboard - Herramienta de Investigación - by s3codecL
+          </small>
+          <div class="social-links mt-2">
+            <a href="https://github.com/s3codecL" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@s3codecL" target="_blank" rel="noopener noreferrer" title="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/gandradev/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/s3codecl/" target="_blank" rel="noopener noreferrer" title="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Back to top button -->
+  <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/tools-config.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
