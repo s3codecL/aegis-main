@@ -2,6 +2,15 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
+## 🎯 Inicio Rápido
+
+| Para Empezar | Para Aprender | Para Desarrollar |
+|--------------|---------------|------------------|
+| [Abrir Dashboard](#-inicio-rápido) (`index.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Documentación Técnica](#-notas-de-desarrollo) |
+
+> **¿Primera vez?** 👉 Abre primero `quickstart.html` para un tutorial completo  
+> **¿Listo para trabajar?** 👉 Usa `index.html` para tus investigaciones OSINT
+
 ## ✨ Características Principales
 
 ### 🎯 Interfaz Moderna
@@ -46,7 +55,7 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 - Animaciones suaves
 - Soporte multiidioma (ES/EN)
 
-## 🚀 Instalación y Uso
+## 🚀 Inicio Rápido
 
 ### Requisitos
 - Navegador web moderno (Chrome, Firefox, Safari, Edge)
@@ -57,12 +66,12 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 1. **Clonar o descargar el repositorio**
 ```bash
 git clone <url-del-repositorio>
-cd osint-main
+cd aegis-main
 ```
 
 2. **Abrir en navegador**
-   - Simplemente abre `index.html` en tu navegador web
-   - O sirve los archivos usando un servidor local:
+   - **Opción 1 (Recomendada)**: Abre `index.html` directamente en tu navegador
+   - **Opción 2**: Sirve los archivos usando un servidor local:
 ```bash
 # Python 3
 python -m http.server 8000
@@ -72,7 +81,32 @@ npx http-server
 ```
 
 3. **Acceder**
-   - Abre `http://localhost:8000` en tu navegador
+   - Si usaste servidor local: `http://localhost:8000`
+   - De lo contrario, simplemente haz doble clic en `index.html`
+
+### 📄 Archivos Principales
+
+El proyecto incluye dos interfaces principales:
+
+#### 🏠 `index.html` - Dashboard Principal
+**Cuándo usar**: Para trabajo diario de investigación OSINT
+- Interfaz completa con todas las herramientas
+- Panel de búsqueda inteligente con detección automática
+- Gestión de favoritos y historial
+- Filtrado avanzado de herramientas
+- Estadísticas en tiempo real
+- **Acceso**: Abre este archivo para comenzar a trabajar
+
+#### 🚀 `quickstart.html` - Guía Interactiva
+**Cuándo usar**: Primera vez usando la herramienta o necesitas referencia rápida
+- Tutorial paso a paso con ejemplos prácticos
+- Casos de uso comunes
+- Explicación de todas las funcionalidades
+- Demostraciones visuales
+- Tips y mejores prácticas
+- **Acceso**: Consulta este archivo para aprender a usar la herramienta
+
+> **💡 Tip**: Comienza con `quickstart.html` para familiarizarte con la herramienta, luego usa `index.html` para tu trabajo diario.
 
 ## 📖 Guía de Uso
 
@@ -97,19 +131,80 @@ npx http-server
 - **Cambiar idioma**: Haz clic en el botón de idioma (ES/EN)
 - **Colapsar sidebar**: Haz clic en el botón X del sidebar
 
+## 🎓 Flujo de Trabajo Recomendado
+
+### Para Nuevos Usuarios
+
+1. **📖 Empieza con la Guía Rápida**
+   - Abre `quickstart.html` en tu navegador
+   - Revisa la sección "Primeros Pasos"
+   - Prueba los ejemplos interactivos
+   - Familiarízate con las categorías de herramientas
+
+2. **🔍 Prueba el Dashboard Principal**
+   - Abre `index.html` 
+   - Realiza tu primera búsqueda de prueba
+   - Explora las diferentes categorías
+   - Marca algunas herramientas como favoritas
+
+3. **⚡ Optimiza tu Espacio de Trabajo**
+   - Configura tu tema preferido (oscuro/claro)
+   - Selecciona tu idioma (ES/EN)
+   - Organiza tus herramientas favoritas
+   - Revisa el historial para entender el seguimiento
+
+### Para Usuarios Experimentados
+
+1. **🚀 Acceso Directo al Dashboard**
+   - Abre directamente `index.html`
+   - Usa atajos de teclado para búsquedas rápidas
+   - Filtra herramientas por categoría
+   - Consulta el historial para investigaciones recurrentes
+
+2. **📚 Consulta Rápida**
+   - Usa `quickstart.html` como referencia
+   - Busca casos de uso específicos
+   - Revisa las mejores prácticas
+   - Descubre nuevas herramientas
+
+3. **🔧 Personalización Avanzada**
+   - Consulta `technical_docs.md` para detalles técnicos
+   - Modifica `js/tools-config.js` para agregar herramientas personalizadas
+   - Revisa `changelog.md` para nuevas características
+
 ## 📁 Estructura de Archivos
 
 ```
-osint-main/
-├── index.html           # Archivo HTML principal
+aegis-main/
+├── index.html           # 🏠 Dashboard principal - Tu herramienta de trabajo diaria
+├── quickstart.html      # 🚀 Guía interactiva - Tutorial completo y casos de uso
 ├── style.css            # Estilos CSS (moderno y responsive)
-├── app.js               # Lógica principal de la aplicación
-├── tools-config.js      # Configuración de herramientas OSINT
-├── translations.js      # Traducciones (ES/EN)
-├── README.md            # Este archivo
-└── plugins/             # Favoritos navegador
-    └── OSINT Favorites - Chrome/
+├── README.md            # Este archivo - Documentación del proyecto
+├── changelog.md         # Historial de cambios y versiones
+├── technical_docs.md    # Documentación técnica detallada
+├── js/                  # Scripts JavaScript
+│   ├── app.js              # Lógica principal de la aplicación
+│   ├── tools-config.js     # Configuración de herramientas OSINT
+│   ├── translations.js     # Traducciones multiidioma (ES/EN)
+│   ├── script.js           # Funciones auxiliares
+│   └── usage_examples.js   # Ejemplos de uso
+└── plugins/             # Extensiones del navegador
+    └── favorites - Chrome/ # Plugin de favoritos para Chrome
+        ├── manifest.json
+        ├── background.js
+        └── content.js
 ```
+
+### 📝 Descripción de Archivos Clave
+
+| Archivo | Propósito | Cuándo Usar |
+|---------|-----------|-------------|
+| `index.html` | Dashboard principal con todas las funcionalidades | Uso diario, investigaciones OSINT |
+| `quickstart.html` | Guía interactiva y tutorial | Primera vez, aprendizaje, referencia |
+| `style.css` | Estilos y temas (oscuro/claro) | Personalización visual |
+| `js/app.js` | Lógica de búsqueda y gestión de datos | Desarrollo y mantenimiento |
+| `js/tools-config.js` | Base de datos de herramientas OSINT | Agregar/modificar herramientas |
+| `js/translations.js` | Textos en español e inglés | Agregar nuevos idiomas |
 
 ## 🛠️ Tecnologías Utilizadas
 
