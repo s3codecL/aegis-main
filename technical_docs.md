@@ -331,7 +331,90 @@ App.toggleLanguage() actualiza config
 localStorage se actualiza
     ↓
 applyLanguage() actualiza UI
+    ↓
+Tooltips se actualizan automáticamente
 ```
+
+## Sistema de Tooltips (v1.2.0)
+
+### Implementación de Tooltips Bilingües
+
+Los tooltips proporcionan información detallada sobre cada herramienta al pasar el cursor.
+
+#### Estructura:
+
+```javascript
+// En renderTools(), renderFavoritesView(), etc.
+const description = t('DESC_' + tool.id, this.config.currentLanguage);
+
+html += `
+  <tr title="${description}">
+    <td>${tool.name}</td>
+    <td>${description}</td>
+  </tr>
+`;
+```
+
+#### Traducciones de Tooltips:
+
+```javascript
+// js/translations.js
+const translations = {
+  "es": {
+    "DESC_vt": "Analiza archivos sospechosos, dominios, IPs y URLs",
+    "DESC_shodan": "Motor de búsqueda para el Internet de las cosas",
+    "DESC_urlscan": "Busca dominios, IPs, nombres de archivo, hashes, ASNs"
+  },
+  "en": {
+    "DESC_vt": "Analyze suspicious files, domains, IPs & URLs",
+    "DESC_shodan": "Search Engine for the Internet of Everything",
+    "DESC_urlscan": "Search for domains, IPs, filenames, hashes, ASNs"
+  }
+}
+```
+
+#### Ubicaciones de Tooltips:
+
+1. **Pestaña Herramientas**: Todas las herramientas listadas por categoría
+2. **Resultados de Búsqueda**: Herramientas relevantes para la consulta
+3. **Panel de Favoritos**: Herramientas marcadas como favoritas
+4. **Vista de Favoritos**: Vista detallada de favoritos
+
+#### CSS para Tooltips:
+
+```css
+/* Mejora visual de tooltips */
+[title] {
+  cursor: help;
+  position: relative;
+}
+
+.result-item[title]:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+tr[title]:hover {
+  background: rgba(59, 130, 246, 0.05) !important;
+}
+```
+
+#### Cambio Automático de Idioma:
+
+Cuando el usuario cambia de idioma (ES ↔ EN):
+1. `toggleLanguage()` actualiza `this.config.currentLanguage`
+2. `applyLanguage()` ejecuta `renderTools()`, `renderFavoritesView()`, etc.
+3. Cada función usa `t('DESC_' + tool.id, this.config.currentLanguage)`
+4. Los tooltips se regeneran con el idioma correcto
+
+### Ventajas del Sistema:
+
+- ✅ **Bilingüe**: Soporte completo ES/EN
+- ✅ **Automático**: Cambio instantáneo al cambiar idioma
+- ✅ **Consistente**: Mismo sistema en todas las vistas
+- ✅ **Extensible**: Fácil agregar más idiomas
+- ✅ **Accesible**: Mejora la comprensión de herramientas
 
 ## Mantenimiento y Extensión
 
@@ -385,7 +468,9 @@ applyLanguage() actualiza UI
 6. **Export/Import**: Exportar e importar configuración
 7. **Keyboard Shortcuts**: Accesos rápidos de teclado
 8. **Progressive Web App (PWA)**: Instalable como app
+9. **Tooltips Avanzados**: Tooltips con información adicional (última actualización, popularidad)
+10. **Más Idiomas**: FR, DE, PT, IT para tooltips y UI
 
 ---
 
-**Última actualización**: Diciembre 2024
+**Última actualización**: Diciembre 2025

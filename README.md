@@ -72,6 +72,8 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - Interfaz intuitiva y accesible
 - Animaciones suaves
 - Soporte multiidioma (ES/EN)
+- **Tooltips informativos**: Descripciones completas al pasar el cursor sobre cada herramienta
+- **Tooltips bilingües**: Cambian automáticamente entre español e inglés
 
 ## 🚀 Inicio Rápido
 
@@ -396,10 +398,11 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🗺️ Roadmap
 
-### ✅ Completado (v1.1.0)
+### ✅ Completado (v1.2.0)
 - [x] **Herramientas personalizadas** - Agrega tus propias herramientas OSINT
 - [x] **Soporte completo dark/light mode** - Temas optimizados
 - [x] **Traducción completa ES/EN** - Interfaz multiidioma
+- [x] **Tooltips informativos bilingües** - Descripciones completas en español e inglés
 
 ### 🚧 En Desarrollo
 - [ ] Integración con APIs de herramientas OSINT

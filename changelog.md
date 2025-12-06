@@ -1,5 +1,47 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.2.0] - 2025-12-06
+
+### ✨ Nuevas Características
+
+#### 💬 Tooltips Informativos Bilingües
+- **Tooltips completos** en todas las herramientas OSINT
+- Descripciones detalladas al pasar el cursor sobre cada herramienta
+- **Soporte bilingüe** (Español/Inglés) con cambio automático
+- Tooltips en todas las vistas:
+  - Pestaña "Herramientas" (listado completo)
+  - Resultados de búsqueda
+  - Panel de favoritos
+  - Vista de favoritos detallada
+- Actualización dinámica al cambiar idioma
+- Ejemplos de tooltips:
+  - **ES**: "Analiza archivos sospechosos, dominios, IPs y URLs"
+  - **EN**: "Analyze suspicious files, domains, IPs & URLs"
+
+### 🎨 Mejoras de UI/UX
+
+#### Efectos Visuales para Tooltips
+- Hover effect sutil con cambio de color de fondo
+- Transición suave al pasar el cursor
+- Elevación visual (transform) en elementos con tooltip
+- Sombra mejorada al hacer hover
+- Consistencia visual en dark/light mode
+- Cursor "help" para indicar tooltips disponibles
+
+### 🔧 Cambios Técnicos
+- Tooltips usan sistema de traducciones (`translations.js`)
+- Función `t('DESC_' + tool.id, language)` para descripciones
+- Atributo HTML `title` con descripción completa
+- CSS personalizado para mejorar experiencia de tooltips
+- Compatibilidad con todas las traducciones existentes
+
+### 📚 Documentación
+- Actualización de README con información de tooltips
+- Roadmap actualizado a v1.2.0
+- Ejemplos de uso en documentación
+
+---
+
 ## [1.1.0] - 2025-12-06
 
 ### ✨ Nuevas Características
