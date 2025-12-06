@@ -209,12 +209,13 @@ const App = {
 
     relevantTools.forEach((tool) => {
       const url = this.buildToolUrl(tool, query);
+      const description = t('DESC_' + tool.id, this.config.currentLanguage);
       resultsHTML += `
-        <div class="result-item">
+        <div class="result-item" title="${description}">
           <div class="result-header">
             <h6>${tool.name}</h6>
           </div>
-          <p class="text-muted small">${t('DESC_' + tool.id)}</p>
+          <p class="text-muted small">${description}</p>
           <a href="${url}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
             Ir
           </a>
@@ -362,11 +363,12 @@ const App = {
 
       items.forEach((tool) => {
         const isFavorite = this.state.favorites.includes(tool.id);
+        const description = t('DESC_' + tool.id, this.config.currentLanguage);
         html += `
-                  <tr>
+                  <tr title="${description}">
                     <td width="80%">
                       <div class="text-heading font-weight-bold">${tool.name}</div>
-                      <div class="text-muted">${t('DESC_' + tool.id)}</div>
+                      <div class="text-muted">${description}</div>
                     </td>
                     <td class="text-end">
                       <a href="${tool.url || "#"}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
@@ -603,11 +605,12 @@ const App = {
 
       items.forEach((tool) => {
         const isFavorite = this.state.favorites.includes(tool.id);
+        const description = t('DESC_' + tool.id, this.config.currentLanguage);
         html += `
-                  <tr>
+                  <tr title="${description}">
                     <td width="80%">
                       <div class="text-heading font-weight-bold">${tool.name}</div>
-                      <div class="text-muted">${t('DESC_' + tool.id)}</div>
+                      <div class="text-muted">${description}</div>
                     </td>
                     <td class="text-end">
                       <button class="btn btn-sm btn-ghost-warning btn-icon" onclick="App.toggleFavorite('${tool.id}')">
@@ -896,12 +899,13 @@ const App = {
       <div class="list-group">`;
     
     favTools.forEach((tool) => {
+      const description = t('DESC_' + tool.id, this.config.currentLanguage);
       html += `
-        <button class="list-group-item list-group-item-action text-start" onclick="App.openFavoriteWithSearch('${tool.id}')">
+        <button class="list-group-item list-group-item-action text-start" onclick="App.openFavoriteWithSearch('${tool.id}')" title="${description}">
           <div class="text-truncate">
             <strong>${tool.name}</strong>
           </div>
-          <small class="text-muted">${t('DESC_' + tool.id)}</small>
+          <small class="text-muted">${description}</small>
         </button>`;
     });
     html += "</div>";

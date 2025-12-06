@@ -1514,3 +1514,58 @@ a:hover {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+/* ========================================
+   TOOLTIPS PERSONALIZADOS
+   ======================================== */
+
+/* Mejora de tooltips nativos */
+[title] {
+  cursor: help;
+  position: relative;
+}
+
+/* Estilos para tooltips en result-item */
+.result-item[title] {
+  cursor: pointer;
+}
+
+.result-item[title]:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+[data-bs-theme="dark"] .result-item[title]:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Tooltips en tabla de herramientas */
+tr[title] {
+  cursor: help;
+  transition: var(--transition);
+}
+
+tr[title]:hover {
+  background: rgba(59, 130, 246, 0.05) !important;
+}
+
+[data-bs-theme="dark"] tr[title]:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* Tooltips en botones de favoritos */
+.list-group-item[title] {
+  cursor: pointer;
+}
+
+.list-group-item[title]:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Mejora visual de elementos con tooltip */
+[title]:not(button):not(a):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
