@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "open-in-site-favorites",
-    title: "AEGIS Favorites Trigger",
+    title: "Aegis Favorites Trigger",
     contexts: ["selection"]
   });
 });
@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "open-in-site-favorites" && info.selectionText) {
     const query = encodeURIComponent(info.selectionText.trim());
-    const site = `https://s3codecL.github.io/osint/?q=${query}`;
+    const site = `https://github.com/s3codecL/aegis-main/?q=${query}`;
 
     chrome.tabs.create({ url: site }, (newTab) => {
       setTimeout(() => {
