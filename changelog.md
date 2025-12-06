@@ -1,6 +1,73 @@
-# 🎉 RESUMEN DE REESTRUCTURACIÓN - Aegis Dashboard
+# 🎉 CHANGELOG - Aegis Dashboard
 
-## ✅ Cambios Realizados
+## [1.1.0] - 2025-12-06
+
+### ✨ Nuevas Características
+
+#### 🔧 Herramientas Personalizadas
+- **Agregar herramientas OSINT personalizadas** mediante interfaz modal
+- Botón "Agregar Herramienta" en el sidebar
+- Formulario completo con validación:
+  - Nombre de la herramienta
+  - ID único (con validación de duplicados)
+  - URL o template con soporte para `{{query}}`
+  - Descripción
+  - Selector de categoría
+  - Toggle para habilitar templates
+- Persistencia en localStorage
+- Carga automática al iniciar la aplicación
+- Integración perfecta con herramientas existentes
+
+#### 🌐 Mejoras de Traducción
+- Corrección de traducción "Tipo detectado" en resultados
+- Traducción dinámica de tipos de consulta (IP, Dominio, Hash, Email, General)
+- Traducciones completas (ES/EN) para formulario de herramientas personalizadas
+- Nuevas claves de traducción:
+  - `ADD_TOOL`, `ADD_NEW_TOOL`
+  - `TOOL_NAME`, `TOOL_ID`, `TOOL_URL`, `TOOL_DESCRIPTION`
+  - `TOOL_CATEGORY`, `TOOL_TEMPLATE`
+  - `TOOL_SAVED_SUCCESS`, `TOOL_ERROR_EXISTS`, `TOOL_ERROR_REQUIRED`
+
+### 🎨 Mejoras de UI/UX
+
+#### Modal Mejorado
+- Posicionamiento correcto con margen superior e inferior
+- Fondo oscuro consistente en dark mode (header, body, footer)
+- Colores uniformes en todo el modal para ambos temas
+- Botón de cerrar (X) mejorado en dark mode
+- Inputs y selects con estilos apropiados en ambos temas
+- Alert info con colores adaptados al tema
+- Mejor contraste y legibilidad
+
+#### Formularios
+- Form controls con fondo apropiado en dark mode
+- Campos de texto con bordes azules semi-transparentes
+- Estados de focus mejorados
+- Checkboxes/switches estilizados para dark mode
+- Labels y texto secundario con colores apropiados
+
+### 🐛 Correcciones
+- Fix: Modal header visible completamente
+- Fix: Traducción de "Results/Resultados" en pestañas
+- Fix: Detección de tipos de consulta ahora usa claves traducibles
+- Fix: `this.config.currentLanguage` usado correctamente en lugar de `this.currentLanguage`
+
+### 🔧 Cambios Técnicos
+- Nuevas funciones en `app.js`:
+  - `openAddToolModal()`
+  - `toggleTemplateField()`
+  - `saveCustomTool()`
+  - `loadCustomTools()`
+- Custom tools marcadas con propiedad `custom: true`
+- Validación de campos requeridos
+- Validación de IDs duplicados
+- Soporte para URLs simples y templates avanzados
+
+---
+
+## [1.0.0] - Versión Inicial
+
+### ✅ Cambios Realizados
 
 ### 1. 🎨 **Mejora Significativa de UX/UI**
 

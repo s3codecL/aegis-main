@@ -56,6 +56,7 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Favoritos personalizados**: Marca tus herramientas favoritas
 - **Sincronización con localStorage**: Tus datos se guardan automáticamente
 - **Estadísticas en tiempo real**: Seguimiento de búsquedas realizadas
+- **Herramientas personalizadas**: Agrega tus propias herramientas OSINT al dashboard
 
 ### 🌐 Herramientas Organizadas por Categoría
 - Herramientas de Búsqueda
@@ -147,6 +148,20 @@ El proyecto incluye dos interfaces principales:
 - **Cambiar tema**: Haz clic en el botón luna/sol
 - **Cambiar idioma**: Haz clic en el botón de idioma (ES/EN)
 - **Colapsar sidebar**: Haz clic en el botón X del sidebar
+
+### Agregar Herramientas Personalizadas
+1. Haz clic en el botón "Agregar Herramienta" en el sidebar
+2. Completa el formulario con la información de tu herramienta:
+   - **Nombre**: Nombre descriptivo de la herramienta
+   - **ID único**: Identificador sin espacios (ej: mi-herramienta)
+   - **URL**: Dirección web de la herramienta
+   - **Descripción**: Breve explicación de qué hace
+   - **Categoría**: Selecciona la categoría apropiada
+   - **Template** (opcional): Usa `{{query}}` para búsquedas dinámicas
+3. Haz clic en "Guardar Herramienta"
+4. Tu herramienta aparecerá en la categoría seleccionada
+
+> **💡 Nota**: Las herramientas personalizadas se guardan en localStorage y solo estarán disponibles en este navegador.
 
 ## 🎓 Flujo de Trabajo Recomendado
 
@@ -381,12 +396,20 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🗺️ Roadmap
 
+### ✅ Completado (v1.1.0)
+- [x] **Herramientas personalizadas** - Agrega tus propias herramientas OSINT
+- [x] **Soporte completo dark/light mode** - Temas optimizados
+- [x] **Traducción completa ES/EN** - Interfaz multiidioma
+
+### 🚧 En Desarrollo
 - [ ] Integración con APIs de herramientas OSINT
 - [ ] Exportación de resultados (PDF, JSON, CSV)
-- [ ] Modo de trabajo colaborativo
 - [ ] Plantillas de investigación personalizables
-- [ ] Integración con navegadores (extensión)
-- [ ] Modo offline con cache
+
+### 📋 Planificado
+- [ ] Modo de trabajo colaborativo
+- [ ] Integración con navegadores (extensión mejorada)
+- [ ] Modo offline con cache (PWA)
 - [ ] Análisis de grafos de relaciones
 - [ ] Más idiomas (FR, DE, PT, IT)
 
