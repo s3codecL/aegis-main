@@ -312,6 +312,26 @@ const translations = {
     "EMAIL": "Email",
     "GENERAL": "General",
 
+    // Add Tool Modal
+    "ADD_TOOL": "Agregar Herramienta",
+    "ADD_NEW_TOOL": "Agregar Nueva Herramienta",
+    "TOOL_NAME": "Nombre de la Herramienta",
+    "TOOL_ID": "ID único",
+    "TOOL_ID_HELP": "Sin espacios, solo letras minúsculas y guiones",
+    "TOOL_URL": "URL de la herramienta",
+    "TOOL_URL_HELP": "La búsqueda se agregará al final de la URL",
+    "TOOL_DESCRIPTION": "Descripción",
+    "TOOL_CATEGORY": "Categoría",
+    "TOOL_USES_TEMPLATE": "¿Usa template?",
+    "TOOL_TEMPLATE_HELP": "Usar {{query}} en la URL",
+    "TOOL_TEMPLATE": "Template URL",
+    "NOTE": "Nota",
+    "TOOL_CUSTOM_NOTE": "Las herramientas personalizadas se guardan localmente y solo estarán disponibles en este navegador.",
+    "SAVE_TOOL": "Guardar Herramienta",
+    "TOOL_SAVED_SUCCESS": "¡Herramienta agregada exitosamente!",
+    "TOOL_ERROR_EXISTS": "Ya existe una herramienta con este ID",
+    "TOOL_ERROR_REQUIRED": "Por favor completa todos los campos requeridos",
+
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Dashboard - (Egida) El escudo de Zeus, símbolo de protección divina",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",

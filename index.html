@@ -172,6 +172,16 @@
       </div>
 
       <div class="sidebar-content">
+        <!-- Botón para agregar nueva herramienta -->
+        <button class="btn btn-primary w-100 mb-3" onclick="App.openAddToolModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="18" height="18" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M12 5l0 14"></path>
+            <path d="M5 12l14 0"></path>
+          </svg>
+          <span data-i18n="ADD_TOOL">Agregar Herramienta</span>
+        </button>
+        
         <div class="categories-list" id="categories-sidebar">
           <!-- Llenado dinámicamente -->
         </div>
@@ -203,13 +213,13 @@
           </svg>
           Favoritos
         </button>
-        <button class="tab-btn" data-view="results" data-i18n="RESULTS">
+        <button class="tab-btn" data-view="results">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none">
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
             <path d="M21 21l-6 -6"></path>
           </svg>
-          Resultados
+          <span data-i18n="RESULTS">Resultados</span>
         </button>
         <button class="tab-btn" data-view="history" data-i18n="HISTORY">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
@@ -351,6 +361,136 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-success w-100" data-bs-dismiss="modal"
             data-i18n="CONTINUE">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Agregar Herramienta -->
+  <div class="modal fade" id="addToolModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" fill="none">
+              <path d="M12 5l0 14"></path>
+              <path d="M5 12l14 0"></path>
+            </svg>
+            <span data-i18n="ADD_NEW_TOOL">Agregar Nueva Herramienta</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addToolForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="toolName" class="form-label">
+                  <span data-i18n="TOOL_NAME">Nombre de la Herramienta</span>
+                  <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" id="toolName" placeholder="VirusTotal" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="toolId" class="form-label">
+                  <span data-i18n="TOOL_ID">ID único</span>
+                  <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" id="toolId" placeholder="virustotal" required>
+                <small class="text-muted" data-i18n="TOOL_ID_HELP">Sin espacios, solo letras minúsculas y guiones</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="toolUrl" class="form-label">
+                <span data-i18n="TOOL_URL">URL de la herramienta</span>
+                <span class="text-danger">*</span>
+              </label>
+              <input type="url" class="form-control" id="toolUrl" 
+                placeholder="https://www.virustotal.com/gui/search/" required>
+              <small class="text-muted" data-i18n="TOOL_URL_HELP">La búsqueda se agregará al final de la URL</small>
+            </div>
+
+            <div class="mb-3">
+              <label for="toolDescription" class="form-label">
+                <span data-i18n="TOOL_DESCRIPTION">Descripción</span>
+              </label>
+              <textarea class="form-control" id="toolDescription" rows="2" 
+                placeholder="Analiza archivos sospechosos, dominios, IPs y URLs"></textarea>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="toolCategory" class="form-label">
+                  <span data-i18n="TOOL_CATEGORY">Categoría</span>
+                  <span class="text-danger">*</span>
+                </label>
+                <select class="form-select" id="toolCategory" required>
+                  <option value="">Selecciona una categoría...</option>
+                  <option value="SEARCH_TOOLS">Herramientas de Búsqueda</option>
+                  <option value="IP_INFO">Información de IP</option>
+                  <option value="DNS_TOOLS">Herramientas DNS</option>
+                  <option value="THREAT_INTELLIGENCE">Inteligencia de Amenazas</option>
+                  <option value="HASH_LOOKUP">Búsqueda de Hash</option>
+                  <option value="EMAIL">Email</option>
+                  <option value="FILE_MALWARE_ANALYSIS">Análisis de Archivos y Malware</option>
+                  <option value="MALWARE_FEEDS">Fuentes de Malware</option>
+                  <option value="WEBSITE_OSINT_TOOLS">Herramientas OSINT de Sitios Web</option>
+                  <option value="USERNAME_PEOPLE_OSINT">OSINT de Usuarios y Personas</option>
+                  <option value="CODE_SEARCH">Búsqueda de Código</option>
+                  <option value="OTHERS">Otros</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">
+                  <span data-i18n="TOOL_USES_TEMPLATE">¿Usa template?</span>
+                </label>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="toolUsesTemplate" 
+                    onchange="App.toggleTemplateField()">
+                  <label class="form-check-label" for="toolUsesTemplate">
+                    <small class="text-muted" data-i18n="TOOL_TEMPLATE_HELP">Usar {{query}} en la URL</small>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3" id="templateField" style="display: none;">
+              <label for="toolTemplate" class="form-label">
+                <span data-i18n="TOOL_TEMPLATE">Template URL</span>
+              </label>
+              <input type="text" class="form-control" id="toolTemplate" 
+                placeholder="https://ejemplo.com/search/{{query}}/results">
+              <small class="text-muted">Usa {{query}} donde irá el término de búsqueda</small>
+            </div>
+
+            <div class="alert alert-info mb-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="20" height="20" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 8l.01 0"></path>
+                <path d="M11 12l1 0l0 4l1 0"></path>
+              </svg>
+              <div>
+                <h4 class="alert-title" data-i18n="NOTE">Nota</h4>
+                <div class="text-muted" data-i18n="TOOL_CUSTOM_NOTE">
+                  Las herramientas personalizadas se guardan localmente y solo estarán disponibles en este navegador.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="CANCEL">Cancelar</button>
+          <button type="button" class="btn btn-primary" onclick="App.saveCustomTool()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="18" height="18" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" fill="none">
+              <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+              <circle cx="12" cy="14" r="2"></circle>
+              <polyline points="14 4 14 8 8 8 8 4"></polyline>
+            </svg>
+            <span data-i18n="SAVE_TOOL">Guardar Herramienta</span>
+          </button>
         </div>
       </div>
     </div>

@@ -200,6 +200,34 @@ body {
   color: var(--text-light);
 }
 
+[data-bs-theme="light"] .modal-content .form-control,
+[data-bs-theme="light"] .modal-content .form-select {
+  background: rgba(248, 250, 252, 0.9);
+  color: var(--text-light);
+  border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-bs-theme="light"] .modal-content .form-control:focus,
+[data-bs-theme="light"] .modal-content .form-select:focus {
+  background: #ffffff;
+  border-color: var(--color-primary);
+  color: var(--text-light);
+}
+
+[data-bs-theme="light"] .modal-content .form-label {
+  color: var(--text-light);
+}
+
+[data-bs-theme="light"] .modal-content .text-muted {
+  color: var(--text-light-muted) !important;
+}
+
+[data-bs-theme="light"] .modal-content .alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--text-light);
+}
+
 /* Inputs de búsqueda en modo claro */
 [data-bs-theme="light"] .search-form .form-control,
 [data-bs-theme="light"] .filter-input,
@@ -1023,13 +1051,101 @@ header.navbar {
   cursor: not-allowed;
 }
 
+.modal-dialog {
+  margin: 3rem auto;
+  max-width: 500px;
+}
+
+.modal-dialog.modal-lg {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.modal-dialog.modal-sm {
+  max-width: 300px;
+  margin: 3rem auto;
+}
+
+.modal {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .modal-content {
   background: rgba(26, 31, 58, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: var(--radius-2xl);
-  color: var(--text);
+  color: var(--text-dark);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+[data-bs-theme="dark"] .modal-content {
+  background: rgba(26, 31, 58, 0.98);
+  color: var(--text-dark);
+}
+
+[data-bs-theme="dark"] .modal-header {
+  background: rgba(26, 31, 58, 0.98);
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-bs-theme="dark"] .modal-body {
+  background: rgba(26, 31, 58, 0.98);
+}
+
+[data-bs-theme="dark"] .modal-footer {
+  background: rgba(26, 31, 58, 0.98);
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-bs-theme="dark"] .modal-title {
+  color: var(--text-dark);
+}
+
+[data-bs-theme="dark"] .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+[data-bs-theme="dark"] .btn-close:hover {
+  opacity: 1;
+}
+
+[data-bs-theme="dark"] .modal-content .form-control,
+[data-bs-theme="dark"] .modal-content .form-select {
+  background: rgba(15, 20, 51, 0.8);
+  color: var(--text-dark);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+[data-bs-theme="dark"] .modal-content .form-control:focus,
+[data-bs-theme="dark"] .modal-content .form-select:focus {
+  background: rgba(15, 20, 51, 0.9);
+  border-color: var(--color-primary);
+  color: var(--text-dark);
+}
+
+[data-bs-theme="dark"] .modal-content .form-label,
+[data-bs-theme="dark"] .modal-content .text-muted {
+  color: var(--text-dark-muted) !important;
+}
+
+[data-bs-theme="dark"] .modal-content .alert-info {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--text-dark);
+}
+
+[data-bs-theme="dark"] .modal-content .form-check-input {
+  background-color: rgba(15, 20, 51, 0.8);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-bs-theme="dark"] .modal-content .form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .modal-header {

@@ -21,6 +21,7 @@ const App = {
   // Initialize the application
   init: function () {
     this.loadTools();
+    this.loadCustomTools(); // Load custom tools
     this.validateFavorites(); // Sincronizar favoritos
     this.setupEventListeners();
     this.setupTheme();
@@ -932,6 +933,96 @@ const App = {
 
     // Add to history
     this.addToHistory(query);
+  },
+
+  // Open Add Tool Modal
+  openAddToolModal: function() {
+    const modal = new bootstrap.Modal(document.getElementById("addToolModal"));
+    modal.show();
+    // Reset form
+    document.getElementById("addToolForm").reset();
+    document.getElementById("templateField").style.display = "none";
+  },
+
+  // Toggle template field
+  toggleTemplateField: function() {
+    const usesTemplate = document.getElementById("toolUsesTemplate").checked;
+    const templateField = document.getElementById("templateField");
+    templateField.style.display = usesTemplate ? "block" : "none";
+  },
+
+  // Save custom tool
+  saveCustomTool: function() {
+    const name = document.getElementById("toolName").value.trim();
+    const id = document.getElementById("toolId").value.trim().toLowerCase();
+    const url = document.getElementById("toolUrl").value.trim();
+    const description = document.getElementById("toolDescription").value.trim();
+    const category = document.getElementById("toolCategory").value;
+    const usesTemplate = document.getElementById("toolUsesTemplate").checked;
+    const template = document.getElementById("toolTemplate").value.trim();
+
+    // Validation
+    if (!name || !id || !url || !category) {
+      this.showError(t("TOOL_ERROR_REQUIRED", this.config.currentLanguage));
+      return;
+    }
+
+    // Check if tool ID already exists
+    if (this.state.tools.find(t => t.id === id)) {
+      this.showError(t("TOOL_ERROR_EXISTS", this.config.currentLanguage));
+      return;
+    }
+
+    // Create new tool object
+    const newTool = {
+      id: id,
+      name: name,
+      category: category,
+      description: description,
+      custom: true // Mark as custom tool
+    };
+
+    if (usesTemplate && template) {
+      newTool.template = template;
+    } else {
+      newTool.url = url;
+    }
+
+    // Add to tools array
+    this.state.tools.push(newTool);
+
+    // Save custom tools to localStorage
+    const customTools = this.state.tools.filter(t => t.custom);
+    localStorage.setItem("osintCustomTools", JSON.stringify(customTools));
+
+    // Update UI
+    this.renderTools();
+    this.setupCategories();
+    this.updateStats();
+
+    // Close modal and show success
+    const modal = bootstrap.Modal.getInstance(document.getElementById("addToolModal"));
+    modal.hide();
+    
+    this.showSuccess(t("TOOL_SAVED_SUCCESS", this.config.currentLanguage));
+  },
+
+  // Load custom tools from localStorage
+  loadCustomTools: function() {
+    const customTools = localStorage.getItem("osintCustomTools");
+    if (customTools) {
+      try {
+        const tools = JSON.parse(customTools);
+        // Add custom tools to the tools array
+        tools.forEach(tool => {
+          if (!this.state.tools.find(t => t.id === tool.id)) {
+            this.state.tools.push(tool);
+          }
+        });
+      } catch (e) {
+        console.error("Error loading custom tools:", e);
+      }
+    }
   },
 };
 
