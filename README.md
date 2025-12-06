@@ -1,5 +1,12 @@
 # 🛡️ Aegis Dashboard - Herramienta de Investigación
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
+[![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
+[![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegis-main/graphs/commit-activity)
+
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
 ## 🎯 Inicio Rápido
@@ -10,6 +17,16 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 
 > **¿Primera vez?** 👉 Abre primero `quickstart.html` para un tutorial completo  
 > **¿Listo para trabajar?** 👉 Usa `index.html` para tus investigaciones OSINT
+
+## 📸 Screenshots
+
+<div align="center">
+
+> **📌 Nota**: Las capturas de pantalla se agregarán próximamente. Por ahora, puedes ver la herramienta en acción abriendo `index.html` o `quickstart.html` en tu navegador.
+
+Para contribuir con screenshots, consulta [.github/images/README.md](.github/images/README.md)
+
+</div>
 
 ## ✨ Características Principales
 
@@ -239,13 +256,28 @@ La herramienta se adapta perfectamente a:
 
 ## 🤝 Contribuciones
 
-Las contribuciones son bienvenidas. Para cambios importantes:
+Las contribuciones son bienvenidas y apreciadas. Para contribuir al proyecto:
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+1. Lee nuestra [Guía de Contribución](CONTRIBUTING.md)
+2. Revisa el [Código de Conducta](CODE_OF_CONDUCT.md)
+3. Consulta los [Issues abiertos](../../issues)
+4. Fork el proyecto
+5. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+6. Commit tus cambios (`git commit -m 'feat: add some AmazingFeature'`)
+7. Push a la rama (`git push origin feature/AmazingFeature`)
+8. Abre un Pull Request
+
+### 🌟 Tipos de Contribuciones Bienvenidas
+
+- 🐛 Reportar bugs
+- 💡 Sugerir nuevas funcionalidades
+- 🔧 Agregar nuevas herramientas OSINT
+- 📝 Mejorar la documentación
+- 🌐 Agregar traducciones
+- 🎨 Mejorar el diseño UI/UX
+- ⚡ Optimización de rendimiento
+
+Ver [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles.
 
 ## 📝 Notas de Desarrollo
 
@@ -311,9 +343,21 @@ Edita las variables CSS en `style.css`:
 
 ## 📞 Soporte y Contacto
 
-Para reportar bugs o sugerencias:
-- Abre un issue en el repositorio
-- Contacta al desarrollador principal
+### 💬 Obtener Ayuda
+
+- 📖 [Documentación](README.md)
+- 🚀 [Guía Rápida](quickstart.html)
+- 📋 [Issues](../../issues) - Para reportar bugs o solicitar features
+- 💡 [Discussions](../../discussions) - Para preguntas y discusiones generales
+
+### 🔒 Reportar Vulnerabilidades
+
+Si encuentras una vulnerabilidad de seguridad, consulta nuestra [Política de Seguridad](SECURITY.md).
+
+### 📧 Contacto
+
+- GitHub: [@s3codecL](https://github.com/s3codecL)
+- Issues: [Reportar un problema](../../issues/new)
 
 ## 📄 Licencia
 
@@ -323,10 +367,40 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🙏 Agradecimientos
 
-- Desarrolladores de Tabler UI
-- Comunidad OSINT
-- Todos los contribuidores
+- Desarrolladores de [Tabler UI](https://tabler.io/)
+- Comunidad OSINT global
+- Todos los [contribuidores](../../graphs/contributors) que hacen posible este proyecto
+- Proveedores de herramientas OSINT integradas
+
+## 📊 Estadísticas del Proyecto
+
+![GitHub repo size](https://img.shields.io/github/repo-size/s3codecL/aegis-main)
+![GitHub contributors](https://img.shields.io/github/contributors/s3codecL/aegis-main)
+![GitHub last commit](https://img.shields.io/github/last-commit/s3codecL/aegis-main)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/s3codecL/aegis-main)
+
+## 🗺️ Roadmap
+
+- [ ] Integración con APIs de herramientas OSINT
+- [ ] Exportación de resultados (PDF, JSON, CSV)
+- [ ] Modo de trabajo colaborativo
+- [ ] Plantillas de investigación personalizables
+- [ ] Integración con navegadores (extensión)
+- [ ] Modo offline con cache
+- [ ] Análisis de grafos de relaciones
+- [ ] Más idiomas (FR, DE, PT, IT)
+
+Ver [issues](../../issues) para el roadmap completo.
 
 ---
 
-**Hecho con ❤️ para la comunidad de seguridad** by [@s3codecL](https://github.com/s3codecL)
+**Hecho con ❤️ para la comunidad de seguridad**
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-s3codecL-181717?style=for-the-badge&logo=github)](https://github.com/s3codecL)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+
+**⭐ Si te resulta útil, dale una estrella al proyecto ⭐**
+
+</div>
