@@ -1,4 +1,4 @@
-# 🛡️ Aegis Dashboard - Herramienta de Investigación Personal
+# 🛡️ Aegis Dashboard - Herramienta de Investigación
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
