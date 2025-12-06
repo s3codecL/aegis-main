@@ -317,7 +317,9 @@ Para reportar bugs o sugerencias:
 
 ## 📄 Licencia
 
-Este proyecto está bajo licencia MIT. Ver LICENSE.md para más detalles.
+Este proyecto está bajo licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+
+Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos de la licencia MIT.
 
 ## 🙏 Agradecimientos
 
