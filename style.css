@@ -1516,6 +1516,36 @@ a:hover {
 }
 
 /* ========================================
+   DOWNDETECTOR BUTTON
+   ======================================== */
+
+#downdetector-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#downdetector-btn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+[data-bs-theme="dark"] #downdetector-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+[data-bs-theme="dark"] #downdetector-btn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+/* ========================================
    TOOLTIPS PERSONALIZADOS
    ======================================== */
 

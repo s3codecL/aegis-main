@@ -44,6 +44,7 @@ const translations = {
     "STATISTICS": "Statistics",
     "TOOLS_COUNT": "Tools",
     "SEARCHES_COUNT": "Searches",
+    "DOWNDETECTOR_TOOLTIP": "Check if websites are down or having issues",
 
     // Placeholders
     "ENTER_PLACEHOLDER": "IP, domain, hash, email...",
@@ -189,7 +190,6 @@ const translations = {
     "DESC_mozilla-observatory": "Analyze website security headers and TLS configuration",
     "DESC_bgp-tools": "BGP routing information and IP address intelligence",
     "DESC_sitechecker": "Website SEO and performance checker",
-    "DESC_downdetector": "Real-time website status and outage monitoring",
     "DESC_nordvpn-ip-lookup": "IP geolocation and VPN detection tool",
     "DESC_downforeveryoneorjustme": "Check if a website is down for everyone or just you",
     "DESC_redirectdetective": "Trace HTTP redirects and analyze redirect chains",
@@ -200,7 +200,6 @@ const translations = {
     "DESC_vt-upload": "Upload files for multi-engine malware analysis",
     "DESC_bgp-tools": "ASN, BGP, and IP routing information",
     "DESC_sitechecker": "Website health check and monitoring",
-    "DESC_downdetector": "Check if websites are down or having issues",
     "DESC_nordvpn-ip-lookup": "IP address geolocation and details",
     "DESC_downforeveryoneorjustme": "Check if a website is down for everyone",
     "DESC_redirectdetective": "Trace HTTP redirects",
@@ -261,6 +260,7 @@ const translations = {
     "STATISTICS": "Estadísticas",
     "TOOLS_COUNT": "Herramientas",
     "SEARCHES_COUNT": "Búsquedas",
+    "DOWNDETECTOR_TOOLTIP": "Verifica si los sitios web están caídos o tienen problemas",
 
     // Placeholders
     "ENTER_PLACEHOLDER": "IP, dominio, hash, email...",
@@ -418,7 +418,6 @@ const translations = {
     "DESC_vt-upload": "Subir archivos para análisis de malware multi-motor",
     "DESC_bgp-tools": "Información de enrutamiento ASN, BGP e IP",
     "DESC_sitechecker": "Verificación de salud y monitoreo del sitio web",
-    "DESC_downdetector": "Verifica si los sitios web están caídos u tienen problemas",
     "DESC_nordvpn-ip-lookup": "Geolocalización de dirección IP y detalles",
     "DESC_downforeveryoneorjustme": "Verifica si un sitio web está caído para todos",
     "DESC_redirectdetective": "Rastrear redirecciones HTTP",

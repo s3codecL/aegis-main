@@ -757,6 +757,10 @@ const App = {
       statsSmall[1].textContent = t("SEARCHES_COUNT", lang);
     }
 
+    // Update Downdetector button tooltip
+    const downdetectorBtn = document.getElementById("downdetector-btn");
+    if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
+
     // Update tab buttons
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabLabels = ["TOOLS", "FAVORITES", "RESULTS", "HISTORY"];

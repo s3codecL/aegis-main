@@ -429,13 +429,6 @@ const toolsData = [
     description: "Website health check and monitoring",
   },
   {
-    id: "downdetector",
-    name: "Downdetector",
-    template: "https://downdetector.cl/?q={{query}}",
-    category: "WEBSITE_OSINT_TOOLS",
-    description: "Check if websites are down or having issues",
-  },
-  {
     id: "nordvpn-ip-lookup",
     name: "NordVPN IP Lookup",
     template: "https://nordvpn.com/es/ip-lookup/?query={{query}}",
