@@ -51,6 +51,11 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
   - Hybrid Analysis
   - Y muchas más...
 
+### 🚨 Accesos Rápidos
+- **Botón Downdetector**: Acceso directo en navbar para verificar caídas de sitios web
+- **Tooltips informativos**: Descripciones completas en español e inglés
+- **Accesos directos**: Funciones frecuentes disponibles con un clic
+
 ### 💾 Gestión de Datos
 - **Historial de búsquedas**: Almacenado localmente
 - **Favoritos personalizados**: Marca tus herramientas favoritas
@@ -398,16 +403,18 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🗺️ Roadmap
 
-### ✅ Completado (v1.2.0)
+### ✅ Completado (v1.3.0)
 - [x] **Herramientas personalizadas** - Agrega tus propias herramientas OSINT
 - [x] **Soporte completo dark/light mode** - Temas optimizados
 - [x] **Traducción completa ES/EN** - Interfaz multiidioma
 - [x] **Tooltips informativos bilingües** - Descripciones completas en español e inglés
+- [x] **Botón Downdetector** - Acceso rápido a verificación de caídas de sitios
 
 ### 🚧 En Desarrollo
 - [ ] Integración con APIs de herramientas OSINT
 - [ ] Exportación de resultados (PDF, JSON, CSV)
 - [ ] Plantillas de investigación personalizables
+- [ ] Más botones de acceso rápido para funciones frecuentes
 
 ### 📋 Planificado
 - [ ] Modo de trabajo colaborativo

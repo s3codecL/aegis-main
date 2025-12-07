@@ -416,6 +416,78 @@ Cuando el usuario cambia de idioma (ES ↔ EN):
 - ✅ **Extensible**: Fácil agregar más idiomas
 - ✅ **Accesible**: Mejora la comprensión de herramientas
 
+## Botones de Acceso Rápido (v1.3.0)
+
+### Implementación de Downdetector
+
+El botón de Downdetector proporciona acceso directo a la verificación de caídas de sitios web sin necesidad de buscarlo en el listado.
+
+#### Estructura HTML:
+
+```html
+<!-- Downdetector Button -->
+<a href="https://downdetector.cl/" target="_blank" rel="noopener noreferrer" 
+   class="btn btn-outline-danger" 
+   id="downdetector-btn"
+   aria-label="Downdetector">
+  <svg><!-- Icono de advertencia --></svg>
+</a>
+```
+
+#### Ubicación:
+- **Posición**: Entre botón de idioma (EN) e historial
+- **Navbar**: Barra superior junto a controles principales
+- **Orden**: Categorías → Tema → Idioma → **Downdetector** → Historial → Favoritos
+
+#### CSS Personalizado:
+
+```css
+#downdetector-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+#downdetector-btn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+```
+
+#### Traducción del Tooltip:
+
+```javascript
+// js/translations.js
+const translations = {
+  "es": {
+    "DOWNDETECTOR_TOOLTIP": "Verifica si los sitios web están caídos o tienen problemas"
+  },
+  "en": {
+    "DOWNDETECTOR_TOOLTIP": "Check if websites are down or having issues"
+  }
+}
+
+// js/app.js - applyLanguage()
+const downdetectorBtn = document.getElementById("downdetector-btn");
+if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
+```
+
+#### Características:
+- ✅ **Solo icono**: Diseño compacto
+- ✅ **Color rojo**: Esquema danger (#ef4444)
+- ✅ **Tooltip bilingüe**: Actualización automática
+- ✅ **Nueva pestaña**: Opens in new tab
+- ✅ **Accesible**: aria-label incluido
+- ✅ **Responsive**: Compatible con todos los tamaños
+
+#### Ventajas:
+- Acceso más rápido a función frecuente
+- Reducción de búsquedas en el listado
+- Mejor organización: herramientas vs accesos directos
+- Mejora la experiencia del usuario
+
 ## Mantenimiento y Extensión
 
 ### Agregar Nueva Herramienta:
@@ -470,6 +542,8 @@ Cuando el usuario cambia de idioma (ES ↔ EN):
 8. **Progressive Web App (PWA)**: Instalable como app
 9. **Tooltips Avanzados**: Tooltips con información adicional (última actualización, popularidad)
 10. **Más Idiomas**: FR, DE, PT, IT para tooltips y UI
+11. **Más Botones de Acceso Rápido**: Identificar y agregar más funciones frecuentes
+12. **Configuración de Accesos**: Permitir al usuario personalizar botones de acceso rápido
 
 ---
 

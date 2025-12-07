@@ -1,5 +1,50 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.3.0] - 2025-12-06
+
+### ✨ Nuevas Características
+
+#### 🚨 Botón de Acceso Rápido Downdetector
+- **Botón dedicado en navbar** para acceso inmediato a Downdetector
+- Ubicación estratégica entre botón de idioma e historial
+- **Solo icono** para diseño compacto y limpio
+- Color rojo (danger) para destacar como alerta
+- Icono de advertencia (triángulo) apropiado para verificar caídas
+- Abre directamente https://downdetector.cl/ en nueva pestaña
+
+### 🌐 Traducciones
+
+#### Tooltip Bilingüe Downdetector
+- **EN**: "Check if websites are down or having issues"
+- **ES**: "Verifica si los sitios web están caídos o tienen problemas"
+- Actualización automática al cambiar idioma
+- Integrado en sistema de traducciones existente
+
+### 🎨 Mejoras de UI/UX
+
+#### Estilo del Botón Downdetector
+- Esquema de color rojo/danger (#ef4444)
+- Efecto hover con gradiente rojo
+- Animación sutil (translateY) al pasar cursor
+- Sombra roja en hover para profundidad
+- Soporte completo dark/light mode
+- Diseño responsive mantenido
+
+### 🔧 Cambios Técnicos
+- Eliminada herramienta Downdetector del listado principal
+- Removidas traducciones DESC_downdetector
+- Nueva clave de traducción: DOWNDETECTOR_TOOLTIP
+- CSS personalizado para botón en style.css
+- Atributo aria-label para accesibilidad
+- Actualización dinámica de tooltip en applyLanguage()
+
+### 📦 Optimización
+- Reducción de herramientas en listado (76 herramientas)
+- Acceso más rápido a función frecuente
+- Mejor organización de herramientas vs accesos directos
+
+---
+
 ## [1.2.0] - 2025-12-06
 
 ### ✨ Nuevas Características
