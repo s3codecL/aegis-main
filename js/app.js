@@ -16,6 +16,7 @@ const App = {
     favorites: JSON.parse(localStorage.getItem("osintFavorites")) || [],
     searchHistory: JSON.parse(localStorage.getItem("osintHistory")) || [],
     searches: JSON.parse(localStorage.getItem("osintSearches")) || 0,
+    lastSearchQuery: "", // Track last search query for auto-fill
   },
 
   // Initialize the application
@@ -174,6 +175,9 @@ const App = {
       return;
     }
 
+    // Store last search query for auto-fill in tools
+    this.state.lastSearchQuery = query;
+
     // Add to history
     this.addToHistory(query);
 
@@ -273,6 +277,13 @@ const App = {
     // Store tool ID for later use
     this.pendingToolId = toolId;
     
+    // Check if there's a recent search query
+    if (this.state.lastSearchQuery) {
+      // Auto-execute with last search query
+      this.executeToolSearch(this.state.lastSearchQuery);
+      return;
+    }
+    
     // Show modal for search term
     const modal = new bootstrap.Modal(document.getElementById("searchModal"));
     modal.show();
@@ -284,8 +295,8 @@ const App = {
   },
 
   // Execute search from modal
-  executeToolSearch: function () {
-    const query = document.getElementById("searchModalInput").value.trim();
+  executeToolSearch: function (autoQuery = null) {
+    const query = autoQuery || document.getElementById("searchModalInput").value.trim();
     
     if (!query) {
       this.showError(t("NO_SEARCH_TERM", this.config.currentLanguage));
@@ -302,9 +313,11 @@ const App = {
     // Add to history
     this.addToHistory(query);
     
-    // Clear input and close modal
-    document.getElementById("searchModalInput").value = "";
-    bootstrap.Modal.getInstance(document.getElementById("searchModal")).hide();
+    // Clear input and close modal (only if not auto-executed)
+    if (!autoQuery) {
+      document.getElementById("searchModalInput").value = "";
+      bootstrap.Modal.getInstance(document.getElementById("searchModal")).hide();
+    }
   },
 
   // Add search to history
@@ -371,9 +384,9 @@ const App = {
                       <div class="text-muted">${description}</div>
                     </td>
                     <td class="text-end">
-                      <a href="${tool.url || "#"}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                      <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
                         Ir
-                      </a>
+                      </button>
                       <button class="btn btn-sm btn-${
                         isFavorite ? "warning" : "outline-warning"
                       }" onclick="App.toggleFavorite('${tool.id}')">
