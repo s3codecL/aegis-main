@@ -1,5 +1,38 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.4.0] - 2025-12-06
+
+### 🐛 Correcciones de Bugs
+
+#### Persistencia de Término de Búsqueda
+- **Problema resuelto**: Después de buscar, al cambiar entre pestañas (Herramientas, Favoritos) y seleccionar una herramienta, solicitaba nuevamente el término de búsqueda
+- **Solución implementada**: Auto-uso del último término de búsqueda
+- Agregado `state.lastSearchQuery` para almacenar última búsqueda
+- Modificado `handleSearch()` para guardar término automáticamente
+- Actualizado `openToolSearch()` para ejecutar automáticamente con última búsqueda
+- Mejorado `executeToolSearch()` con parámetro opcional `autoQuery`
+
+### 🎨 Mejoras de UI/UX
+
+#### Consistencia Entre Pestañas
+- **Pestaña Herramientas**: Cambiado de enlaces directos a botones con `openToolSearch()`
+- **Flujo mejorado**: Buscar → Cambiar pestaña → Clic en herramienta → Abre automáticamente
+- **Sin interrupciones**: No solicita término de búsqueda si ya existe uno reciente
+- Todas las pestañas ahora usan el mismo comportamiento consistente
+
+### 🔧 Cambios Técnicos
+- Modificado `renderTools()` para usar botones en lugar de enlaces `<a>`
+- Nueva propiedad `App.state.lastSearchQuery` para persistencia
+- Lógica condicional en `openToolSearch()` para auto-ejecución
+- Modal solo aparece cuando no hay búsqueda previa
+
+### 📦 Optimización
+- Reducción de clics necesarios para usar múltiples herramientas
+- Mejor experiencia de usuario en investigaciones que requieren múltiples consultas
+- Workflow más fluido entre pestañas
+
+---
+
 ## [1.3.0] - 2025-12-06
 
 ### ✨ Nuevas Características

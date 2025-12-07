@@ -92,17 +92,20 @@ App.state = {
   tools: [],           // Array de herramientas
   favorites: [],       // IDs de favoritos
   searchHistory: [],   // Historial de búsquedas
-  searches: 0          // Contador de búsquedas
+  searches: 0,         // Contador de búsquedas
+  lastSearchQuery: "" // Último término de búsqueda (v1.4.0)
 }
 ```
 
 #### Métodos Principales:
 - `init()` - Inicializa la aplicación
 - `loadTools()` - Carga herramientas desde config
-- `handleSearch(e)` - Procesa búsquedas
+- `handleSearch(e)` - Procesa búsquedas y guarda en `lastSearchQuery` (v1.4.0)
+- `openToolSearch(toolId)` - Abre herramienta, auto-ejecuta con última búsqueda si existe (v1.4.0)
+- `executeToolSearch(autoQuery)` - Ejecuta búsqueda desde modal o automáticamente (v1.4.0)
 - `detectQueryType(query)` - Detecta tipo de búsqueda (IP, domain, hash, email)
 - `filterTools(query)` - Filtra herramientas por nombre/descripción
-- `renderTools()` - Renderiza la cuadrícula de herramientas
+- `renderTools()` - Renderiza la cuadrícula de herramientas con botones (v1.4.0)
 - `toggleFavorite()` - Alterna estado de favorito
 - `toggleTheme()` - Cambia tema oscuro/claro
 - `toggleLanguage()` - Cambia idioma
@@ -135,6 +138,63 @@ La aplicación usa localStorage para guardar:
   "toolConfigVersion": "v1"
 }
 ```
+
+### 4. **Persistencia de Búsqueda (v1.4.0)**
+
+#### Flujo de Trabajo:
+
+```
+1. Usuario realiza búsqueda
+   ↓
+2. handleSearch() guarda query en state.lastSearchQuery
+   ↓
+3. Usuario cambia a otra pestaña (Herramientas/Favoritos)
+   ↓
+4. Usuario hace clic en una herramienta
+   ↓
+5. openToolSearch() detecta lastSearchQuery existe
+   ↓
+6. Auto-ejecuta executeToolSearch(lastSearchQuery)
+   ↓
+7. Herramienta se abre con término de búsqueda anterior
+```
+
+#### Implementación:
+
+```javascript
+// Guardar búsqueda
+handleSearch: function(e) {
+  const query = document.getElementById("search-input").value.trim();
+  this.state.lastSearchQuery = query; // Persistir
+  // ... resto del código
+}
+
+// Auto-usar búsqueda guardada
+openToolSearch: function(toolId) {
+  this.pendingToolId = toolId;
+  
+  if (this.state.lastSearchQuery) {
+    // Auto-ejecutar sin mostrar modal
+    this.executeToolSearch(this.state.lastSearchQuery);
+    return;
+  }
+  
+  // Mostrar modal solo si no hay búsqueda previa
+  // ...
+}
+
+// Ejecutar con query automática o manual
+executeToolSearch: function(autoQuery = null) {
+  const query = autoQuery || document.getElementById("searchModalInput").value.trim();
+  // ... ejecutar búsqueda
+}
+```
+
+#### Beneficios:
+- Reduce clics repetitivos
+- Workflow optimizado para investigaciones multi-herramienta
+- Experiencia fluida entre pestañas
+- No interrumpe el flujo de trabajo del investigador
 
 ## Estructura HTML
 

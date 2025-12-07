@@ -44,7 +44,12 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
   - Direcciones de email
   - Búsquedas generales
 
-- **50+ herramientas OSINT integradas**:
+- **Persistencia de búsqueda inteligente**:
+  - Auto-uso del último término buscado al cambiar entre pestañas
+  - Sin necesidad de reingresar la búsqueda en cada herramienta
+  - Workflow optimizado para investigaciones multi-herramienta
+
+- **76 herramientas OSINT integradas**:
   - VirusTotal
   - Shodan
   - URLScan
@@ -73,12 +78,14 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 
 ### 🎨 Experiencia de Usuario Mejorada
 - Búsqueda rápida con sugerencias por tipo
+- **Persistencia de búsqueda**: No reingresar términos al cambiar entre pestañas
 - Filtrado en tiempo real de herramientas
 - Interfaz intuitiva y accesible
 - Animaciones suaves
 - Soporte multiidioma (ES/EN)
 - **Tooltips informativos**: Descripciones completas al pasar el cursor sobre cada herramienta
 - **Tooltips bilingües**: Cambian automáticamente entre español e inglés
+- **Workflow optimizado**: Buscar una vez, usar en múltiples herramientas
 
 ## 🚀 Inicio Rápido
 
@@ -139,7 +146,9 @@ El proyecto incluye dos interfaces principales:
 1. Ingresa tu término de búsqueda en la barra de búsqueda
 2. La herramienta detectará automáticamente el tipo (IP, dominio, hash, email)
 3. Se mostrarán las herramientas relevantes en la pestaña "Resultados"
-4. Haz clic en "Abrir" para acceder a cada herramienta con tu búsqueda
+4. Haz clic en "Ir" para acceder a cada herramienta con tu búsqueda
+5. **Nuevo**: Cambia entre pestañas (Herramientas, Favoritos) - el término se mantiene
+6. Selecciona cualquier herramienta y se abrirá automáticamente con tu búsqueda anterior
 
 ### Gestionar Favoritos
 - Haz clic en el botón de estrella para agregar/quitar favoritos
