@@ -49,11 +49,13 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
   - Sin necesidad de reingresar la búsqueda en cada herramienta
   - Workflow optimizado para investigaciones multi-herramienta
 
-- **76 herramientas OSINT integradas**:
+- **78 herramientas OSINT integradas**:
   - VirusTotal
   - Shodan
   - URLScan
   - Hybrid Analysis
+  - DNS Checker
+  - Live IP Map
   - Y muchas más...
 
 ### 🚨 Accesos Rápidos

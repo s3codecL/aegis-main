@@ -555,6 +555,20 @@ const toolsData = [
     description: "Check IP address against multiple DNS blacklists (RBL/DNSBL)",
   },
   {
+    id: "dnschecker",
+    name: "DNS Checker",
+    template: "https://dnschecker.org/all-dns-records-of-domain.php?query={{query}}",
+    category: "DNS_TOOLS",
+    description: "Check DNS records propagation from multiple locations worldwide",
+  },
+  {
+    id: "liveipmap",
+    name: "Live IP Map",
+    template: "https://www.liveipmap.com/?ip={{query}}",
+    category: "IP_INFO",
+    description: "Real-time IP geolocation and network information visualization",
+  },
+  {
     id: "sitereport-netcraft",
     name: "Netcraft Site Report",
     template: "https://sitereport.netcraft.com/?url={{query}}",

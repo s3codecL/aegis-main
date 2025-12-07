@@ -1,5 +1,38 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.5.0] - 2025-12-06
+
+### ✨ Nuevas Herramientas
+
+#### DNS Checker
+- **Nueva herramienta DNS**: DNS Checker (dnschecker.org)
+- Verificación de propagación de registros DNS desde múltiples ubicaciones mundiales
+- Categoría: HERRAMIENTAS DNS
+- Útil para validar cambios DNS y troubleshooting
+- Template: `https://dnschecker.org/all-dns-records-of-domain.php?query={{query}}`
+
+#### Live IP Map
+- **Nueva herramienta de geolocalización**: Live IP Map (liveipmap.com)
+- Visualización en tiempo real de geolocalización IP
+- Información de red con interfaz visual interactiva
+- Categoría: INFORMACIÓN DE IP
+- Template: `https://www.liveipmap.com/?ip={{query}}`
+
+### 🌐 Traducciones
+
+#### Tooltips Bilingües para Nuevas Herramientas
+- **EN - DNS Checker**: "Check DNS records propagation from multiple locations worldwide"
+- **ES - DNS Checker**: "Verifica la propagación de registros DNS desde múltiples ubicaciones mundiales"
+- **EN - Live IP Map**: "Real-time IP geolocation and network information visualization"
+- **ES - Live IP Map**: "Visualización de geolocalización IP y información de red en tiempo real"
+
+### 📦 Estadísticas
+- **Total de herramientas**: 78 (incremento de 2)
+- Ambas herramientas integradas con sistema de tooltips bilingües
+- Compatibles con sistema de persistencia de búsqueda (v1.4.0)
+
+---
+
 ## [1.4.0] - 2025-12-06
 
 ### 🐛 Correcciones de Bugs
