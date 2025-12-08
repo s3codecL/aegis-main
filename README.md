@@ -70,13 +70,20 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Estadísticas en tiempo real**: Seguimiento de búsquedas realizadas
 - **Herramientas personalizadas**: Agrega tus propias herramientas OSINT al dashboard
 
-### 🌐 Herramientas Organizadas por Categoría
-- Herramientas de Búsqueda
-- Información de IP
-- Inteligencia de Amenazas
-- Análisis de Malware
-- Análisis de Correo Electrónico
-- Y más...
+### 🌐 Herramientas Organizadas por Categoría (13 Categorías)
+- **Seguridad Web** (15 herramientas) - Análisis y monitoreo de sitios
+- **Herramientas de Búsqueda** (12 herramientas) - Motores OSINT generales
+- **Información de IP** (9 herramientas) - Geolocalización y análisis de IPs
+- **Análisis de Malware** (8 herramientas) - Sandboxes y análisis de amenazas
+- **Inteligencia de Amenazas** (8 herramientas) - IOCs y threat intelligence
+- **Herramientas DNS** (7 herramientas) - Análisis y propagación DNS
+- **Certificados SSL** (3 herramientas) - Transparencia y análisis SSL/TLS
+- **Búsqueda de Código** (3 herramientas) - Repositorios y exploits
+- **Correo Electrónico** (3 herramientas) - Verificación y análisis de emails
+- **Búsqueda de Hash** (3 herramientas) - Reversión de hashes
+- **Búsqueda de Personas** (3 herramientas) - OSINT de usuarios y redes sociales
+- **Fuentes de Malware** (2 herramientas) - Feeds y bases de datos
+- **Mapas de Amenazas** (2 herramientas) - Visualización en tiempo real
 
 ### 🎨 Experiencia de Usuario Mejorada
 - Búsqueda rápida con sugerencias por tipo

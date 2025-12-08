@@ -1,5 +1,128 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.6.0] - 2025-12-07
+
+### 🎨 Reorganización Completa de Categorías
+
+#### Categorías Renombradas (Mayor Claridad)
+- **FILE_MALWARE_ANALYSIS** → **MALWARE_ANALYSIS**
+  - Nombre más conciso: "Análisis de Malware"
+  - Elimina redundancia "FILE &"
+  - Mantiene 8 herramientas especializadas
+
+- **USERNAME_PEOPLE_OSINT** → **PEOPLE_SEARCH**
+  - Nombre más claro: "Búsqueda de Personas"
+  - Elimina redundancia OSINT (todo el dashboard es OSINT)
+  - 3 herramientas: Holehe, Sherlock, Namechk
+
+- **WEBSITE_OSINT_TOOLS** → **WEBSITE_SECURITY**
+  - Nombre más específico: "Seguridad Web"
+  - Refleja mejor el propósito de las herramientas
+  - Ahora con 15 herramientas (expandida)
+
+#### Nueva Categoría Creada
+- **CERTIFICATE_SSL** - Certificados SSL/TLS
+  - crt.sh (búsqueda de certificados de transparencia)
+  - Security Trails (inteligencia de dominios y DNS)
+  - SSL Labs (análisis de seguridad SSL/TLS)
+  - Especialización en certificados y encriptación
+
+#### Redistribución de Herramientas (20 reclasificadas)
+
+**De SEARCH_TOOLS → THREAT_INTELLIGENCE** (5 herramientas)
+- Abuse IPDB - Verificación de historial de IPs reportadas
+- Pulsedive - Búsqueda de dominios, IPs y URLs con enriquecimiento
+- SOC Radar IOC - Motor de búsqueda avanzado de indicadores de compromiso
+- Fortiguard - Búsqueda en inteligencia de FortiGuard
+- Threat Yeti - Verificación de enlaces y dominios maliciosos
+
+**De SEARCH_TOOLS → MALWARE_ANALYSIS** (3 herramientas)
+- Hybrid Analysis - Análisis e inteligencia de malware
+- URLhaus - Rastreador de URLs maliciosas
+- MetaDefender - Análisis multi-motor de archivos, URLs, IPs
+
+**De SEARCH_TOOLS → WEBSITE_SECURITY** (5 herramientas)
+- Google Safe Browsing - Identificación de sitios peligrosos
+- MyWOT - Algoritmos ML y listas negras para reputación web
+- Sucuri - Verificación de malware y virus en sitios web
+- BuiltWith - Identificación de tecnologías web
+- URL Void - Verificación de reputación y seguridad de sitios
+
+**De SEARCH_TOOLS → DNS_TOOLS** (3 herramientas)
+- DNS Dumpster - Mapeo pasivo DNS y dominios
+- DNS Propagation - Verificación de propagación DNS
+- CentralOps - Herramientas DNS/WHOIS para dominios e IPs
+
+**De SEARCH_TOOLS → IP_INFO** (2 herramientas)
+- WhoisXML - Información de registros WHOIS
+- Whoxy - Motor de búsqueda de dominios WHOIS
+
+**De SEARCH_TOOLS → CERTIFICATE_SSL** (2 herramientas)
+- crt.sh - Registros de transparencia de certificados
+- Security Trails - Inteligencia de dominios, DNS y certificados
+
+**De WEBSITE_OSINT_TOOLS → CERTIFICATE_SSL** (1 herramienta)
+- SSL Labs - Análisis de seguridad de certificados SSL/TLS
+
+### 📊 Distribución Mejorada
+
+#### Antes de la Reorganización
+- SEARCH_TOOLS: 35 herramientas (45%) 🔴 SOBRECARGADA
+- THREAT_INTELLIGENCE: 3 herramientas (4%) 🟡 SUBCARGADA
+- FILE_MALWARE_ANALYSIS: 5 herramientas (6%) 🟡 SUBCARGADA
+
+#### Después de la Reorganización
+- WEBSITE_SECURITY: 15 herramientas (19%) ✅
+- SEARCH_TOOLS: 12 herramientas (15%) ✅ Reducida 66%
+- IP_INFO: 9 herramientas (12%) ✅
+- MALWARE_ANALYSIS: 8 herramientas (10%) ✅ Aumentada 60%
+- THREAT_INTELLIGENCE: 8 herramientas (10%) ✅ Aumentada 167%
+- DNS_TOOLS: 7 herramientas (9%) ✅
+- CERTIFICATE_SSL: 3 herramientas (4%) ✅ NUEVA
+- Otras 6 categorías: 16 herramientas (21%) ✅
+
+### 🎯 Beneficios de la Reorganización
+
+#### Mejora en Navegación
+- ✅ Ninguna categoría excede el 20% del total (antes SEARCH_TOOLS 45%)
+- ✅ Distribución equilibrada facilita la búsqueda
+- ✅ Categorías más específicas y descriptivas
+- ✅ Agrupación lógica por función y propósito
+
+#### Optimización de UX
+- ✅ Nombres más claros y concisos
+- ✅ Sin redundancias (eliminado "OSINT" repetitivo)
+- ✅ Categorización intuitiva
+- ✅ Mejor descubrimiento de herramientas
+
+### 🌐 Traducciones Actualizadas
+
+#### Nuevas Categorías - Español
+- MALWARE_ANALYSIS: "Análisis de Malware"
+- PEOPLE_SEARCH: "Búsqueda de Personas"
+- WEBSITE_SECURITY: "Seguridad Web"
+- CERTIFICATE_SSL: "Certificados SSL"
+
+#### Nuevas Categorías - Inglés
+- MALWARE_ANALYSIS: "Malware Analysis"
+- PEOPLE_SEARCH: "People Search"
+- WEBSITE_SECURITY: "Website Security"
+- CERTIFICATE_SSL: "Certificate & SSL"
+
+### 🔧 Cambios Técnicos
+- Actualizado tools-config.js (38 cambios de categoría)
+- Actualizado translations.js (4 categorías nuevas/renombradas)
+- Actualizado index.html (dropdown de categorías)
+- Eliminadas duplicaciones en traducciones
+- Documentación completa actualizada
+
+### 📦 Total de Categorías
+- **Antes**: 12 categorías
+- **Después**: 13 categorías (agregada CERTIFICATE_SSL)
+- **Total herramientas**: 78 (sin cambios)
+
+---
+
 ## [1.5.0] - 2025-12-06
 
 ### ✨ Nuevas Herramientas

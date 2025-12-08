@@ -89,12 +89,38 @@ App.config = {
 }
 
 App.state = {
-  tools: [],           // Array de herramientas
+  tools: [],           // Array de 78 herramientas
   favorites: [],       // IDs de favoritos
   searchHistory: [],   // Historial de búsquedas
   searches: 0,         // Contador de búsquedas
   lastSearchQuery: "" // Último término de búsqueda (v1.4.0)
 }
+```
+
+#### Categorías de Herramientas (v1.6.0):
+```javascript
+// 13 Categorías organizadas temáticamente
+Categorías = {
+  WEBSITE_SECURITY: 15,      // Seguridad Web
+  SEARCH_TOOLS: 12,          // Herramientas de Búsqueda
+  IP_INFO: 9,                // Información de IP
+  MALWARE_ANALYSIS: 8,       // Análisis de Malware
+  THREAT_INTELLIGENCE: 8,    // Inteligencia de Amenazas
+  DNS_TOOLS: 7,              // Herramientas DNS
+  CERTIFICATE_SSL: 3,        // Certificados SSL (Nueva v1.6.0)
+  CODE_SEARCH: 3,            // Búsqueda de Código
+  EMAIL: 3,                  // Correo Electrónico
+  HASH_LOOKUP: 3,            // Búsqueda de Hash
+  PEOPLE_SEARCH: 3,          // Búsqueda de Personas
+  MALWARE_FEEDS: 2,          // Fuentes de Malware
+  REAL_TIME_THREAT_MAPS: 2   // Mapas de Amenazas
+}
+```
+
+#### Categorías Renombradas (v1.6.0):
+- `FILE_MALWARE_ANALYSIS` → `MALWARE_ANALYSIS`
+- `USERNAME_PEOPLE_OSINT` → `PEOPLE_SEARCH`
+- `WEBSITE_OSINT_TOOLS` → `WEBSITE_SECURITY
 ```
 
 #### Métodos Principales:
