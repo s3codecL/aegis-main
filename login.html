@@ -9,6 +9,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Google reCAPTCHA - Se cargará dinámicamente con el idioma correcto -->
+    <script>
+        // Cargar reCAPTCHA con idioma dinámico
+        (function() {
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const script = document.createElement('script');
+            script.src = `https://www.google.com/recaptcha/api.js?hl=${lang}`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    </script>
     <style>
         :root {
             --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
@@ -387,6 +399,24 @@
             text-decoration: underline;
         }
 
+        /* reCAPTCHA styling */
+        .g-recaptcha {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .g-recaptcha > div {
+            transform: scale(0.95);
+            transform-origin: center;
+        }
+        
+        @media (max-width: 480px) {
+            .g-recaptcha > div {
+                transform: scale(0.85);
+            }
+        }
+
         .back-link {
             text-align: center;
             margin-top: 1.5rem;
@@ -592,6 +622,9 @@
                             contraseña?</a>
                     </div>
 
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5" style="margin-bottom: 1rem;"></div>
+
                     <button type="submit" class="btn-primary" data-i18n="SIGN_IN">Iniciar Sesión</button>
                 </form>
 
@@ -659,6 +692,9 @@
                         <input type="checkbox" id="accept-terms" required>
                         <label for="accept-terms" data-i18n="ACCEPT_TERMS">Acepto los términos y condiciones</label>
                     </div>
+
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5" style="margin-bottom: 1rem;"></div>
 
                     <button type="submit" class="btn-primary" data-i18n="CREATE_ACCOUNT">Crear Cuenta</button>
                 </form>
@@ -729,6 +765,23 @@
         function showForgotPassword(e) {
             e.preventDefault();
             showAlert('Se ha enviado un enlace de recuperación a tu correo electrónico.', 'success');
+        }
+
+        // Función para recargar reCAPTCHA con nuevo idioma
+        function reloadRecaptchaWithLanguage(lang) {
+            // Remover script anterior de reCAPTCHA
+            const oldScripts = document.querySelectorAll('script[src*="recaptcha"]');
+            oldScripts.forEach(script => script.remove());
+            
+            // Remover iframes de reCAPTCHA
+            const recaptchaElements = document.querySelectorAll('.g-recaptcha > div');
+            recaptchaElements.forEach(el => el.innerHTML = '');
+            
+            // Recargar página para aplicar el nuevo idioma de reCAPTCHA
+            // (reCAPTCHA no permite cambio dinámico sin recarga)
+            setTimeout(() => {
+                window.location.reload();
+            }, 100);
         }
 
         // Initialize on page load
@@ -847,6 +900,9 @@
                                 }
                             });
                         }
+                        
+                        // Recargar reCAPTCHA con nuevo idioma
+                        reloadRecaptchaWithLanguage(newLang);
                         
                         return false;
                     };

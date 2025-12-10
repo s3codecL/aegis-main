@@ -84,6 +84,15 @@ const Auth = {
         const password = document.getElementById('login-password').value;
         const rememberMe = document.getElementById('remember-me').checked;
 
+        // Validar reCAPTCHA
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const message = typeof t !== 'undefined' ? t('RECAPTCHA_ERROR', lang) : 'Por favor, completa el reCAPTCHA.';
+            this.showAlert(message, 'danger');
+            return;
+        }
+
         if (!email || !password) {
             this.showAlert('Por favor, completa todos los campos.', 'danger');
             return;
@@ -95,12 +104,14 @@ const Auth = {
 
         if (!user) {
             this.showAlert('Correo electrónico no registrado.', 'danger');
+            grecaptcha.reset(); // Reset reCAPTCHA en login
             return;
         }
 
         // Verificar contraseña
         if (!this.verifyPassword(password, user.password)) {
             this.showAlert('Contraseña incorrecta.', 'danger');
+            grecaptcha.reset(); // Reset reCAPTCHA en login
             return;
         }
 
@@ -132,6 +143,15 @@ const Auth = {
         const passwordConfirm = document.getElementById('register-password-confirm').value;
         const acceptTerms = document.getElementById('accept-terms').checked;
 
+        // Validar reCAPTCHA
+        const recaptchaResponse = grecaptcha.getResponse(1); // Index 1 para el segundo widget
+        if (!recaptchaResponse) {
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const message = typeof t !== 'undefined' ? t('RECAPTCHA_ERROR', lang) : 'Por favor, completa el reCAPTCHA.';
+            this.showAlert(message, 'danger');
+            return;
+        }
+
         // Validaciones
         if (!name || !email || !password || !passwordConfirm) {
             this.showAlert('Por favor, completa todos los campos.', 'danger');
@@ -156,6 +176,7 @@ const Auth = {
         // Validar formato de email
         if (!this.validateEmail(email)) {
             this.showAlert('Formato de correo electrónico inválido.', 'danger');
+            grecaptcha.reset(1); // Reset reCAPTCHA en register (widget #1)
             return;
         }
 
@@ -163,6 +184,7 @@ const Auth = {
         const users = this.getUsers();
         if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
             this.showAlert('Este correo electrónico ya está registrado.', 'danger');
+            grecaptcha.reset(1); // Reset reCAPTCHA en register (widget #1)
             return;
         }
 

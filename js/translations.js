@@ -140,6 +140,7 @@ const translations = {
     "BACK_TO_HOME": "← Back to home",
     "LOGOUT": "Logout",
     "ADMIN_PANEL": "Admin Panel",
+    "RECAPTCHA_ERROR": "Please complete the reCAPTCHA verification.",
     
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "you@example.com",
@@ -500,6 +501,7 @@ const translations = {
     "SIGN_IN": "Iniciar Sesión",
     "CREATE_ACCOUNT": "Crear Cuenta",
     "ACCEPT_TERMS": "Acepto los términos y condiciones",
+    "RECAPTCHA_ERROR": "Por favor, completa la verificación reCAPTCHA.",
     "OR_CONTINUE_WITH": "O continuar con",
     "OR_REGISTER_WITH": "O registrarse con",
     "CONTINUE_GOOGLE": "Continuar con Google",
