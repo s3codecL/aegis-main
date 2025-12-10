@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-[![Version](https://img.shields.io/badge/version-1.7.1-blue.svg)](changelog.md)
+[![Version](https://img.shields.io/badge/version-1.7.2-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -10,14 +10,21 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
-## 🚀 Novedades v1.7.1
+## 🚀 Novedades v1.7.2
 
-🎨 **Mejoras de UI/UX en Sistema de Autenticación**
+🔒 **Protección reCAPTCHA v2 (v1.7.2)**
+- reCAPTCHA v2 integrado en login y registro
+- Protección contra bots y ataques automatizados
+- Traducción dinámica ES/EN del widget reCAPTCHA
+- Reset automático en caso de error
+- Validación frontend con mensajes traducibles
+- Diseño responsive adaptado a móviles
+
+🎨 **Mejoras de UI/UX en Sistema de Autenticación (v1.7.1)**
 - Modo claro/oscuro completamente funcional en todas las páginas
 - Toggle de tema e idioma consistente en login.html y admin.html
 - Estilos de tarjetas con hover y glow azul (igual que dashboard)
 - Placeholders de inputs traducibles (ES/EN)
-- Corrección de selectores CSS para temas
 
 🔐 **Sistema de Autenticación (v1.7.0)**
 - Login con email/password
@@ -59,6 +66,8 @@ quickstart.html → login.html → index.html (Dashboard)
 - ✅ Roles de usuario (user/admin)
 - ✅ Protección de rutas
 - ✅ Panel de administración completo
+- ✅ **reCAPTCHA v2**: Protección contra bots en login/registro
+- ✅ **Traducción dinámica**: reCAPTCHA cambia idioma ES/EN automáticamente
 
 📖 **Documentación completa**: [AUTH_GUIDE.md](AUTH_GUIDE.md)
 
@@ -76,6 +85,7 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 
 ### 🔐 Gestión de Usuarios
 - **Sistema de autenticación completo**: Login, registro, logout
+- **Protección reCAPTCHA v2**: Anti-bots en formularios de acceso
 - **Panel de administración**: CRUD de usuarios, estadísticas
 - **Roles y permisos**: Usuario regular vs Administrador
 - **Sesiones persistentes**: "Recordarme" con tokens
@@ -536,25 +546,41 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🗺️ Roadmap
 
-### ✅ Completado (v1.3.0)
+### ✅ Completado
+
+#### v1.7.2 (Actual) - Diciembre 2025
+- [x] **reCAPTCHA v2** - Protección contra bots en login/registro
+- [x] **Traducción dinámica de reCAPTCHA** - Widget cambia idioma ES/EN automáticamente
+
+#### v1.7.1 - Diciembre 2025
+- [x] **Sistema de traducción completo** - 100+ claves en todas las páginas
+- [x] **Traducción de contenido dinámico** - Tablas, badges, bloques de código
+
+#### v1.7.0 - Noviembre 2025
+- [x] **Sistema de autenticación** - Login, registro, gestión de sesiones
+- [x] **Panel de administración** - CRUD de usuarios, roles, estadísticas
+- [x] **OAuth preparado** - Integración lista para Google y GitHub
+
+#### v1.3.0 - Versiones Anteriores
 - [x] **Herramientas personalizadas** - Agrega tus propias herramientas OSINT
 - [x] **Soporte completo dark/light mode** - Temas optimizados
-- [x] **Traducción completa ES/EN** - Interfaz multiidioma
-- [x] **Tooltips informativos bilingües** - Descripciones completas en español e inglés
-- [x] **Botón Downdetector** - Acceso rápido a verificación de caídas de sitios
+- [x] **Traducción inicial ES/EN** - Interfaz base multiidioma
+- [x] **Tooltips informativos bilingües** - Descripciones completas
+- [x] **Botón Downdetector** - Verificación de caídas de sitios
 
 ### 🚧 En Desarrollo
-- [ ] Integración con APIs de herramientas OSINT
-- [ ] Exportación de resultados (PDF, JSON, CSV)
-- [ ] Plantillas de investigación personalizables
-- [ ] Más botones de acceso rápido para funciones frecuentes
+- [ ] **Validación backend de reCAPTCHA** - Verificación server-side con Google API
+- [ ] **Integración con APIs de herramientas OSINT** - Consultas automatizadas
+- [ ] **Exportación de resultados** - PDF, JSON, CSV con plantillas
+- [ ] **Plantillas de investigación** - Workflows predefinidos personalizables
 
-### 📋 Planificado
-- [ ] Modo de trabajo colaborativo
-- [ ] Integración con navegadores (extensión mejorada)
-- [ ] Modo offline con cache (PWA)
-- [ ] Análisis de grafos de relaciones
-- [ ] Más idiomas (FR, DE, PT, IT)
+### 📋 Planificado (v1.8.0+)
+- [ ] **OAuth funcional** - Login real con Google y GitHub
+- [ ] **Modo de trabajo colaborativo** - Compartir investigaciones en equipo
+- [ ] **Integración con navegadores** - Extensión mejorada para Chrome/Firefox
+- [ ] **Modo offline con cache (PWA)** - Funcionalidad sin conexión
+- [ ] **Análisis de grafos de relaciones** - Visualización de conexiones
+- [ ] **Más idiomas** - FR, DE, PT, IT, RU
 
 Ver [issues](../../issues) para el roadmap completo.
 

@@ -1,9 +1,10 @@
 /**
  * Aegis Dashboard - Authentication System
- * Version: 1.7.0
+ * Version: 1.7.2
  * 
  * Sistema de autenticación con soporte para:
  * - Login con email/password
+ * - reCAPTCHA v2 (protección anti-bots)
  * - OAuth (Google, GitHub)
  * - Gestión de sesiones
  * - Roles de usuario (user, admin)

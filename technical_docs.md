@@ -634,12 +634,169 @@ if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
          ↓
     login.html ─────────────────────┐
     (Login/Registro)                │
+    + reCAPTCHA v2 (v1.7.2)         │
          ↓                          │
     ┌────────────────────┐    ┌─────────────────┐
     │   index.html       │    │   admin.html    │
     │   (Dashboard)      │    │   (Solo Admin)  │
     │   Requiere Auth    │    │   Requiere Admin│
     └────────────────────┘    └─────────────────┘
+```
+
+### Protección reCAPTCHA v2 (v1.7.2)
+
+#### Configuración
+
+**Claves de Google reCAPTCHA:**
+```javascript
+// Site Key (pública)
+6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5
+
+// Secret Key (privada - NO compartir)
+6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha
+
+// Dominios autorizados
+localhost
+127.0.0.1
+```
+
+#### Implementación en login.html
+
+**Carga Dinámica con Idioma:**
+```html
+<!-- Script dinámico según idioma guardado -->
+<script>
+    (function() {
+        const lang = localStorage.getItem('osintLanguage') || 'es';
+        const script = document.createElement('script');
+        script.src = `https://www.google.com/recaptcha/api.js?hl=${lang}`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    })();
+</script>
+```
+
+**Widget en Formulario:**
+```html
+<!-- Login form -->
+<div class="g-recaptcha" 
+     data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5">
+</div>
+
+<!-- Register form -->
+<div class="g-recaptcha" 
+     data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5">
+</div>
+```
+
+#### Validación en js/auth.js
+
+**Login:**
+```javascript
+handleLogin: async function (e) {
+    e.preventDefault();
+    
+    // Validar reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        const lang = localStorage.getItem('osintLanguage') || 'es';
+        const message = t('RECAPTCHA_ERROR', lang);
+        this.showAlert(message, 'danger');
+        return;
+    }
+    
+    // ... resto de validación
+}
+```
+
+**Registro:**
+```javascript
+handleRegister: async function (e) {
+    // Validar reCAPTCHA (widget #1)
+    const recaptchaResponse = grecaptcha.getResponse(1);
+    if (!recaptchaResponse) {
+        this.showAlert(t('RECAPTCHA_ERROR', lang), 'danger');
+        return;
+    }
+    // ... resto
+}
+```
+
+**Reset en Error:**
+```javascript
+// Login - widget 0 (por defecto)
+grecaptcha.reset();
+
+// Registro - widget 1
+grecaptcha.reset(1);
+```
+
+#### Traducción Dinámica
+
+**Función de Recarga:**
+```javascript
+function reloadRecaptchaWithLanguage(lang) {
+    // Remover scripts anteriores
+    const oldScripts = document.querySelectorAll('script[src*="recaptcha"]');
+    oldScripts.forEach(script => script.remove());
+    
+    // Limpiar widgets
+    const recaptchaElements = document.querySelectorAll('.g-recaptcha > div');
+    recaptchaElements.forEach(el => el.innerHTML = '');
+    
+    // Recargar página con nuevo idioma
+    setTimeout(() => window.location.reload(), 100);
+}
+```
+
+**Textos del Widget:**
+- **Español (ES)**: "No soy un robot"
+- **Inglés (EN)**: "I'm not a robot"
+
+#### CSS Responsive
+
+```css
+.g-recaptcha {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.g-recaptcha > div {
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+@media (max-width: 480px) {
+    .g-recaptcha > div {
+        transform: scale(0.85);
+    }
+}
+```
+
+#### Validación Backend (Recomendado)
+
+**Nota**: La implementación actual solo valida en frontend. Para producción, se recomienda:
+
+```javascript
+// Backend (Node.js ejemplo)
+const axios = require('axios');
+
+async function verifyRecaptcha(token) {
+    const secretKey = '6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha';
+    const response = await axios.post(
+        'https://www.google.com/recaptcha/api/siteverify',
+        null,
+        {
+            params: {
+                secret: secretKey,
+                response: token
+            }
+        }
+    );
+    return response.data.success;
+}
 ```
 
 ### Archivos del Sistema

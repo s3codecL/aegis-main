@@ -1,5 +1,54 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.7.2] - 2025-12-10
+
+### 🔒 Protección reCAPTCHA v2
+
+#### Implementación de Seguridad
+- **Protección contra bots y ataques automatizados**
+  - ✅ reCAPTCHA v2 integrado en formulario de login
+  - ✅ reCAPTCHA v2 integrado en formulario de registro
+  - ✅ Validación obligatoria antes de enviar credenciales
+  - ✅ Reset automático del widget en caso de error de autenticación
+  - ✅ Mensajes de error traducibles (ES/EN)
+
+- **Traducción Dinámica del Widget**
+  - ✅ Carga dinámica del script con parámetro de idioma (`?hl=es` o `?hl=en`)
+  - ✅ Widget muestra "No soy un robot" en español
+  - ✅ Widget muestra "I'm not a robot" en inglés
+  - ✅ Recarga automática de página al cambiar idioma
+  - ✅ Sincronización con preferencia de idioma en localStorage
+
+- **Diseño y UX**
+  - ✅ Estilo responsive centrado con transform scale
+  - ✅ Adaptación a pantallas móviles (scale 0.85)
+  - ✅ CSS personalizado para integración con diseño del formulario
+  - ✅ Posicionamiento optimizado antes del botón de submit
+
+#### Configuración Técnica
+- **Claves de Google reCAPTCHA**
+  - Site Key: `6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5`
+  - Secret Key: `6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha`
+  - Dominios configurados: `localhost`, `127.0.0.1`
+
+- **Validación en Frontend (js/auth.js)**
+  - ✅ Función `grecaptcha.getResponse()` para validar token
+  - ✅ Reset con `grecaptcha.reset()` en errores de login
+  - ✅ Reset con `grecaptcha.reset(1)` en errores de registro (segundo widget)
+  - ✅ Mensajes de error usando sistema de traducciones (`RECAPTCHA_ERROR`)
+
+- **Traducciones (js/translations.js)**
+  - ✅ Clave `RECAPTCHA_ERROR` en inglés: "Please complete the reCAPTCHA verification."
+  - ✅ Clave `RECAPTCHA_ERROR` en español: "Por favor, completa la verificación reCAPTCHA."
+
+#### Archivos Modificados
+- `login.html`: Script dinámico de reCAPTCHA + 2 widgets + CSS responsive
+- `js/auth.js`: Validación y reset en `handleLogin()` y `handleRegister()`
+- `js/translations.js`: Nueva clave `RECAPTCHA_ERROR` (ES/EN)
+- `.gitignore`: Agregado `SECURITY_AUDIT.md`
+
+---
+
 ## [1.7.1] - 2025-12-10
 
 ### 🌎 Sistema de Traducciones Completo
