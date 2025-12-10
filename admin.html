@@ -10,6 +10,184 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+        /* Estilos para botones de tema e idioma - consistentes con index y login */
+        .navbar .btn-outline-secondary {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            border-radius: 0.375rem;
+            border-width: 1px;
+            font-weight: 500;
+            min-width: 2.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        /* Dark mode - botones visibles */
+        [data-bs-theme="dark"] .navbar .btn-outline-secondary {
+            color: rgba(255, 255, 255, 0.8) !important;
+            border-color: rgba(255, 255, 255, 0.16) !important;
+            background-color: transparent !important;
+        }
+        
+        [data-bs-theme="dark"] .navbar .btn-outline-secondary:hover {
+            color: #fff !important;
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+        }
+        
+        /* Light mode - botones visibles con borde gris */
+        [data-bs-theme="light"] .navbar .btn-outline-secondary,
+        [data-bs-theme="light"] .navbar-dark .btn-outline-secondary {
+            color: #626976 !important;
+            border-color: #d1d8dd !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+        }
+        
+        [data-bs-theme="light"] .navbar .btn-outline-secondary:hover,
+        [data-bs-theme="light"] .navbar-dark .btn-outline-secondary:hover {
+            color: #fff !important;
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+        }
+        
+        /* Asegurar que los iconos sean visibles */
+        [data-bs-theme="light"] .navbar .btn-outline-secondary svg {
+            color: #626976 !important;
+        }
+        
+        [data-bs-theme="light"] .navbar .btn-outline-secondary:hover svg {
+            color: #fff !important;
+        }
+        
+        /* Dropdown button */
+        .navbar .dropdown .btn-outline-secondary {
+            padding: 0.375rem 0.75rem;
+        }
+        
+        /* Light mode - navbar */
+        [data-bs-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Fondo oscuro puro para tema dark */
+        [data-bs-theme="dark"] body {
+            background: #000000 !important;
+        }
+
+        /* Fondo blanco puro para tema light */
+        [data-bs-theme="light"] body {
+            background: #ffffff !important;
+        }
+        
+        /* Dark mode - Cards con fondo oscuro */
+        [data-bs-theme="dark"] .card {
+            background: rgba(15, 20, 51, 0.6) !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        [data-bs-theme="dark"] .card:hover {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 
+                        0 10px 20px rgba(59, 130, 246, 0.15),
+                        0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            transform: translateY(-8px) scale(1.01) !important;
+        }
+        
+        /* Cards en light mode - fondo blanco limpio */
+        [data-bs-theme="light"] .card {
+            background: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            border-radius: 1rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        [data-bs-theme="light"] .card:hover {
+            background: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 
+                        0 10px 20px rgba(59, 130, 246, 0.15),
+                        0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            transform: translateY(-8px) scale(1.01) !important;
+        }
+        
+        /* Light mode - textos oscuros */
+        [data-bs-theme="light"] .card h1,
+        [data-bs-theme="light"] .card h2,
+        [data-bs-theme="light"] .card h3,
+        [data-bs-theme="light"] .card .h1 {
+            color: #1e293b !important;
+        }
+        
+        [data-bs-theme="light"] .card .text-muted,
+        [data-bs-theme="light"] .subheader {
+            color: #64748b !important;
+        }
+        
+        /* Light mode - tabla con fondo blanco */
+        [data-bs-theme="light"] .table {
+            color: #1e293b !important;
+            background-color: transparent !important;
+        }
+        
+        [data-bs-theme="light"] .table thead th {
+            background-color: #f8fafc !important;
+            color: #475569 !important;
+            border-color: #e5e7eb !important;
+        }
+        
+        [data-bs-theme="light"] .table tbody tr {
+            border-color: #e5e7eb !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        [data-bs-theme="light"] .table-hover tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.08) !important;
+        }
+        
+        /* Light mode - textos generales */
+        [data-bs-theme="light"] h1, 
+        [data-bs-theme="light"] h2, 
+        [data-bs-theme="light"] h3 {
+            color: #1e293b;
+        }
+        
+        [data-bs-theme="light"] .text-muted {
+            color: #64748b;
+        }
+        
+        /* Dark mode - Tabla */
+        [data-bs-theme="dark"] .table {
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .table thead th {
+            background-color: rgba(15, 20, 51, 0.8) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        [data-bs-theme="dark"] .table tbody tr {
+            border-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        [data-bs-theme="dark"] .table-hover tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Números de estadísticas en azul */
+        [data-bs-theme="light"] .text-primary,
+        [data-bs-theme="light"] .h1.text-primary {
+            color: #3b82f6 !important;
+        }
+    </style>
 </head>
 
 <body data-bs-theme="dark">
@@ -247,6 +425,7 @@
             // Inicializar tema
             const currentTheme = localStorage.getItem('osintTheme') || 'dark';
             document.documentElement.setAttribute('data-bs-theme', currentTheme);
+            document.body.setAttribute('data-bs-theme', currentTheme);
             updateThemeIcon(currentTheme);
 
             // Inicializar idioma y traducciones
@@ -271,6 +450,7 @@
                     console.log('Changing theme from', theme, 'to', newTheme);
                     
                     document.documentElement.setAttribute('data-bs-theme', newTheme);
+                    document.body.setAttribute('data-bs-theme', newTheme);
                     localStorage.setItem('osintTheme', newTheme);
                     updateThemeIcon(newTheme);
                 });

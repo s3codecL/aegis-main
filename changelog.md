@@ -14,8 +14,13 @@
   - ✅ Aumentado ancho del formulario: 440px → 520px
   - ✅ Agregado toggle de tema (Dark/Light mode) completamente funcional
   - ✅ Agregado toggle de idioma (ES/EN) completamente funcional
+  - ✅ Modo claro con fondo blanco (#ffffff) y textos oscuros
+  - ✅ Modo oscuro con fondo negro (#000000) y estilos consistentes
+  - ✅ Botones de pestaña Login/Register con estilos mejorados
+  - ✅ Botón Sign In con color primario y hover mejorado
+  - ✅ Placeholders de inputs traducibles (ES/EN)
+  - ✅ Botones de tema/idioma con estilo `btn-outline-secondary` y hover azul
   - Controles con posicionamiento absoluto (top-right de la tarjeta)
-  - Botones estilo `btn-icon` con iconos SVG
   - Iconos correctamente sincronizados: sol para dark mode, luna para light mode
   - Funcionalidad completa con persistencia en localStorage
 
@@ -23,16 +28,20 @@
   - ✅ Escudo y navbar actualizados para coincidir con index.html
   - ✅ Iconos de 18x18px (igual que index.html)
   - ✅ Botones de tema e idioma con estilo consistente
-  - ✅ Agregado script de traducciones (js/translations.js)
-  - ✅ Toggle de tema funcional con debugging
-  - ✅ Toggle de idioma funcional con debugging  
-  - ✅ Título "Gestión de Usuarios" en color primario para visibilidad
-  - ✅ Mejorada visibilidad de datos en dark mode:
-    - Números de estadísticas: color primario, tamaño 2.5rem
-    - Nombres de usuario: clase `text-body` para mejor contraste
-    - Emails: clase `text-body` 
-    - Fechas: clase `text-body`
+  - ✅ Modo claro completamente funcional:
+    - Fondo blanco (#ffffff) para body
+    - Navbar blanco con sombra sutil
+    - Tarjetas blancas con borde azul transparente
+    - Números estadísticos en azul (#3b82f6)
+    - Tabla con hover azul suave
+    - Hover en tarjetas con elevación y glow azul (igual que dashboard)
+  - ✅ Modo oscuro completamente funcional:
+    - Fondo negro (#000000) para body
+    - Tarjetas con fondo rgba(15, 20, 51, 0.6)
+    - Hover en tarjetas con elevación y glow azul
   - ✅ Dropdown de usuario con mismo estilo que index.html
+  - ✅ Toggle de tema aplica a html Y body simultáneamente
+  - ✅ Selectores CSS cambiados de `body[data-bs-theme]` a `[data-bs-theme]`
 
 #### Correcciones Técnicas
 - Corregida lógica de iconos de tema en login.html
@@ -41,12 +50,24 @@
 - Agregados event listeners con validaciones
 - Agregados `e.preventDefault()` y `e.stopPropagation()` en botones
 - Logs de consola para debugging de botones de tema/idioma
+- **Fix crítico**: Tema ahora se aplica a `document.documentElement` Y `document.body`
+- **Fix crítico**: Selectores CSS usan `[data-bs-theme]` sin prefijo `body`
+- Eliminado código CSS duplicado que aparecía como texto en admin.html
 
 #### Consistencia entre Páginas
 - Todos los controles de tema/idioma usan localStorage para persistencia
 - Diseño coherente en todas las páginas de autenticación
 - Iconos y estilos estandarizados (18x18px)
 - Comportamiento uniforme de toggles
+- Hover de tarjetas idéntico en admin.html e index.html:
+  - `translateY(-8px) scale(1.01)`
+  - Sombra azul con glow
+  - Transición suave de 0.3s
+
+#### Traducciones Agregadas
+- `PLACEHOLDER_EMAIL`: "Enter your email" / "Ingresa tu correo"
+- `PLACEHOLDER_PASSWORD`: "Enter your password" / "Ingresa tu contraseña"  
+- `PLACEHOLDER_NAME`: "Enter your full name" / "Ingresa tu nombre completo"
 
 #### Notas Técnicas
 - Tema: `localStorage.osintTheme` (dark/light)
@@ -55,6 +76,8 @@
 - Función `updateThemeIcon()` para sincronización de iconos
 - Función `loadTranslations()` para cambio de idioma
 - Scripts de traducción cargados antes de auth.js
+- admin.html usa estilos inline en `<style>` para override de Bootstrap
+- auth.js actualizado para manejar atributo `data-placeholder` en inputs
 
 ---
 

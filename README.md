@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-[![Version](https://img.shields.io/badge/version-1.7.0-blue.svg)](changelog.md)
+[![Version](https://img.shields.io/badge/version-1.7.1-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -10,9 +10,16 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
-## 🚀 Novedades v1.7.0
+## 🚀 Novedades v1.7.1
 
-🔐 **Sistema de Autenticación Completo**
+🎨 **Mejoras de UI/UX en Sistema de Autenticación**
+- Modo claro/oscuro completamente funcional en todas las páginas
+- Toggle de tema e idioma consistente en login.html y admin.html
+- Estilos de tarjetas con hover y glow azul (igual que dashboard)
+- Placeholders de inputs traducibles (ES/EN)
+- Corrección de selectores CSS para temas
+
+🔐 **Sistema de Autenticación (v1.7.0)**
 - Login con email/password
 - Panel de administración de usuarios
 - Roles de usuario (User/Admin)

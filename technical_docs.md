@@ -3,8 +3,10 @@
 ## Estructura de Carpetas
 
 ```
-osint-main/
-├── index.html                 # Página principal
+aegis-main/
+├── index.html                 # Página principal (Dashboard)
+├── login.html                 # Página de autenticación
+├── admin.html                 # Panel de administración
 ├── quickstart.html            # Guía rápida
 ├── style.css                  # Estilos globales
 ├── README.md                  # Documentación principal
@@ -13,17 +15,12 @@ osint-main/
 ├── technical_docs.md          # Este archivo
 ├── js/                        # 📁 Carpeta centralizada de JavaScript
 │   ├── app.js                # Lógica principal de la aplicación
+│   ├── auth.js               # Sistema de autenticación (v1.7.0)
 │   ├── script.js             # Scripts adicionales
 │   ├── tools-config.js       # Configuración de herramientas
 │   └── translations.js       # Archivos de traducción (ES/EN)
-├── PLUGINS/                  # Extensiones para navegadores
-│   ├── chrome/
-│   │   ├── background.js
-│   │   └── manifest.json
-│   ├── edge/
-│   │   ├── background.js
-│   │   └── manifest.json
-│   └── OSINT Favorites - Chrome/
+├── plugins/                  # Extensiones para navegadores
+│   └── favorites - Chrome/
 │       ├── background.js
 │       ├── content.js
 │       └── manifest.json
@@ -288,6 +285,56 @@ executeToolSearch: function(autoQuery = null) {
   --border: #e2e8f0;              /* Bordes */
 }
 ```
+
+### Sistema de Temas v1.7.1
+
+#### Aplicación de Tema
+El tema debe aplicarse tanto a `document.documentElement` como a `document.body`:
+
+```javascript
+// Correcto - aplicar a ambos elementos
+document.documentElement.setAttribute('data-bs-theme', theme);
+document.body.setAttribute('data-bs-theme', theme);
+```
+
+#### Selectores CSS
+Usar selectores sin prefijo `body` para mayor compatibilidad:
+
+```css
+/* ✅ Correcto */
+[data-bs-theme="light"] .card { ... }
+[data-bs-theme="dark"] .navbar { ... }
+
+/* ❌ Incorrecto - puede no funcionar */
+body[data-bs-theme="light"] .card { ... }
+```
+
+#### Estilos de Tarjetas con Hover
+```css
+/* Light mode */
+[data-bs-theme="light"] .card {
+    background: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="light"] .card:hover {
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 
+                0 10px 20px rgba(59, 130, 246, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.4);
+    transform: translateY(-8px) scale(1.01);
+}
+
+/* Dark mode */
+[data-bs-theme="dark"] .card {
+    background: rgba(15, 20, 51, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+```
+
+#### LocalStorage Keys
+- `osintTheme`: "dark" | "light"
+- `osintLanguage`: "es" | "en"
 
 ### Responsive Breakpoints:
 
@@ -574,6 +621,119 @@ if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
 - Mejor organización: herramientas vs accesos directos
 - Mejora la experiencia del usuario
 
+## Sistema de Autenticación (v1.7.0+)
+
+### Arquitectura
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   Flujo de Autenticación                     │
+└─────────────────────────────────────────────────────────────┘
+
+    quickstart.html
+         ↓
+    login.html ─────────────────────┐
+    (Login/Registro)                │
+         ↓                          │
+    ┌────────────────────┐    ┌─────────────────┐
+    │   index.html       │    │   admin.html    │
+    │   (Dashboard)      │    │   (Solo Admin)  │
+    │   Requiere Auth    │    │   Requiere Admin│
+    └────────────────────┘    └─────────────────┘
+```
+
+### Archivos del Sistema
+
+| Archivo | Descripción |
+|---------|-------------|
+| `login.html` | Página de login/registro con toggles tema/idioma |
+| `admin.html` | Panel de administración de usuarios |
+| `js/auth.js` | Lógica de autenticación, sesiones, guards |
+| `js/translations.js` | Traducciones incluyendo placeholders |
+
+### LocalStorage Keys
+
+```javascript
+// Autenticación
+"aegisSession"   // Sesión actual del usuario
+"aegisUsers"     // Base de datos de usuarios
+
+// Preferencias
+"osintTheme"     // "dark" | "light"
+"osintLanguage"  // "es" | "en"
+```
+
+### Credenciales por Defecto
+
+- **Email**: `admin@aegis.local`
+- **Password**: `admin123`
+- **Rol**: `admin`
+
+### Funciones Principales (auth.js)
+
+```javascript
+// Autenticación
+Auth.login(email, password)      // Inicia sesión
+Auth.register(name, email, pass) // Registra usuario
+Auth.logout()                    // Cierra sesión
+Auth.isAuthenticated()           // Verifica sesión
+Auth.isAdmin()                   // Verifica rol admin
+
+// Gestión de usuarios
+Auth.getUsers()                  // Lista usuarios
+Auth.updateUser(id, data)        // Actualiza usuario
+Auth.deleteUser(id)              // Elimina usuario
+
+// Traducciones
+initTranslations()               // Aplica traducciones a data-i18n
+loadTranslations()               // Recarga traducciones
+```
+
+### Toggle de Tema (v1.7.1)
+
+```javascript
+// Aplicar tema correctamente
+function applyTheme(theme) {
+    // Aplicar a AMBOS elementos
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.body.setAttribute('data-bs-theme', theme);
+    localStorage.setItem('osintTheme', theme);
+    updateThemeIcon();
+}
+
+// Actualizar icono
+function updateThemeIcon() {
+    const theme = localStorage.getItem('osintTheme') || 'dark';
+    const moonIcon = document.querySelector('.icon-moon');
+    const sunIcon = document.querySelector('.icon-sun');
+    
+    if (theme === 'dark') {
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+    } else {
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+    }
+}
+```
+
+### Placeholders Traducibles (v1.7.1)
+
+```html
+<!-- HTML -->
+<input type="email" data-placeholder="PLACEHOLDER_EMAIL">
+```
+
+```javascript
+// En initTranslations()
+document.querySelectorAll('[data-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-placeholder');
+    if (translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+    }
+});
+```
+
 ## Mantenimiento y Extensión
 
 ### Agregar Nueva Herramienta:
@@ -633,4 +793,4 @@ if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
 
 ---
 
-**Última actualización**: Diciembre 2025
+**Última actualización**: Diciembre 2025 (v1.7.1)
