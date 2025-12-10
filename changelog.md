@@ -1,5 +1,63 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.7.1] - 2025-12-10
+
+### 🎨 Mejoras de UI/UX en Sistema de Autenticación
+
+#### Mejoras Visuales y de Usabilidad
+- **quickstart.html**
+  - ✅ Agregado botón de cambio de idioma (ES/EN) con icono de globo
+  - Botones cambiados a `btn-outline-light` para mejor visibilidad
+  - Alineación consistente con otros controles de navegación
+
+- **login.html**
+  - ✅ Aumentado ancho del formulario: 440px → 520px
+  - ✅ Agregado toggle de tema (Dark/Light mode) completamente funcional
+  - ✅ Agregado toggle de idioma (ES/EN) completamente funcional
+  - Controles con posicionamiento absoluto (top-right de la tarjeta)
+  - Botones estilo `btn-icon` con iconos SVG
+  - Iconos correctamente sincronizados: sol para dark mode, luna para light mode
+  - Funcionalidad completa con persistencia en localStorage
+
+- **admin.html**
+  - ✅ Escudo y navbar actualizados para coincidir con index.html
+  - ✅ Iconos de 18x18px (igual que index.html)
+  - ✅ Botones de tema e idioma con estilo consistente
+  - ✅ Agregado script de traducciones (js/translations.js)
+  - ✅ Toggle de tema funcional con debugging
+  - ✅ Toggle de idioma funcional con debugging  
+  - ✅ Título "Gestión de Usuarios" en color primario para visibilidad
+  - ✅ Mejorada visibilidad de datos en dark mode:
+    - Números de estadísticas: color primario, tamaño 2.5rem
+    - Nombres de usuario: clase `text-body` para mejor contraste
+    - Emails: clase `text-body` 
+    - Fechas: clase `text-body`
+  - ✅ Dropdown de usuario con mismo estilo que index.html
+
+#### Correcciones Técnicas
+- Corregida lógica de iconos de tema en login.html
+- Agregada función `loadTranslations()` en admin.html
+- Corregida referencia de objeto `translations` (minúsculas)
+- Agregados event listeners con validaciones
+- Agregados `e.preventDefault()` y `e.stopPropagation()` en botones
+- Logs de consola para debugging de botones de tema/idioma
+
+#### Consistencia entre Páginas
+- Todos los controles de tema/idioma usan localStorage para persistencia
+- Diseño coherente en todas las páginas de autenticación
+- Iconos y estilos estandarizados (18x18px)
+- Comportamiento uniforme de toggles
+
+#### Notas Técnicas
+- Tema: `localStorage.osintTheme` (dark/light)
+- Idioma: `localStorage.osintLanguage` (es/en)
+- Toggles con event listeners en DOMContentLoaded
+- Función `updateThemeIcon()` para sincronización de iconos
+- Función `loadTranslations()` para cambio de idioma
+- Scripts de traducción cargados antes de auth.js
+
+---
+
 ## [1.7.0] - 2025-12-10
 
 ### 🔐 Sistema de Autenticación Completo
