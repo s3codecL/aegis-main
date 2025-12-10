@@ -149,8 +149,8 @@ const translations = {
     // Quickstart Page
     "QS_HERO_TITLE": "🛡️ Aegis Dashboard",
     "QS_HERO_SUBTITLE": "Centralize 78 OSINT resources in one place, automatically detect search types and save valuable time in your investigations.",
-    "QS_HERO_READ_GUIDE": "📖 Read the quick start guide for features",
-    "QS_ACCESS_DASHBOARD": "Access Dashboard →",
+    "QS_HERO_READ_GUIDE": "📚 Read the quick start guide for features",
+    "QS_ACCESS_DASHBOARD": "Go to Tool →",
     "QS_QUICK_START": "Quick Start",
     "QS_STEP1_TITLE": "Enter your search",
     "QS_STEP1_DESC": "Enter an IP, domain, hash, email, or text. The system will automatically detect the type.",
@@ -177,6 +177,78 @@ const translations = {
     "QS_TIP2": "Press Ctrl+K to quick search",
     "QS_TIP3": "Your history is saved locally",
     "QS_FOOTER_RIGHTS": "All rights reserved",
+    
+    // Por Los Números
+    "QS_BY_NUMBERS": "By The Numbers",
+    "QS_STAT_TOOLS": "OSINT Tools",
+    "QS_STAT_CATEGORIES": "Categories",
+    "QS_STAT_QUICK_ACCESS": "Quick Access",
+    "QS_STAT_SIZE": "Total Size",
+    "QS_STAT_BREAKPOINTS": "Responsive Breakpoints",
+    
+    // Tipos de Búsqueda Soportados
+    "QS_SUPPORTED_SEARCHES": "Supported Search Types",
+    "QS_SEARCH_IP_TITLE": "IP Address",
+    "QS_SEARCH_IP_EXAMPLE": "Example:",
+    "QS_SEARCH_IP_DESC": "Access geolocation, IP reputation, and threat database tools.",
+    "QS_SEARCH_DOMAIN_TITLE": "Domain/URL",
+    "QS_SEARCH_DOMAIN_EXAMPLE": "Example:",
+    "QS_SEARCH_DOMAIN_DESC": "DNS, WHOIS, SSL certificates, and website reputation tools.",
+    "QS_SEARCH_HASH_TITLE": "Hash",
+    "QS_SEARCH_HASH_EXAMPLE": "Example:",
+    "QS_SEARCH_HASH_DESC": "MD5, SHA1, SHA256 - Malware analysis and hash databases.",
+    "QS_SEARCH_EMAIL_TITLE": "Email",
+    "QS_SEARCH_EMAIL_EXAMPLE": "Example:",
+    "QS_SEARCH_EMAIL_DESC": "Breach verification, email reputation, and public databases.",
+    
+    // Casos de Uso
+    "QS_USE_CASES": "Use Cases",
+    "QS_UC_SECURITY": "Security Researchers",
+    "QS_UC_SECURITY_DESC": "Analyze threats, investigate breaches, and perform network reconnaissance quickly and centrally.",
+    "QS_UC_ANALYSTS": "Threat Analysts",
+    "QS_UC_ANALYSTS_DESC": "Access multiple threat intelligence platforms from a single interface.",
+    "QS_UC_STUDENTS": "Cybersecurity Students",
+    "QS_UC_STUDENTS_DESC": "Learn about OSINT with organized and accessible professional tools.",
+    "QS_UC_IT": "IT Professionals",
+    "QS_UC_IT_DESC": "Diagnose security issues, verify reputations, and perform quick analysis.",
+    
+    // Instalación
+    "QS_INSTALLATION": "Installation",
+    "QS_INSTALL_DESC": "Aegis Dashboard is a completely standalone web application. You only need a modern browser.",
+    "QS_INSTALL_OPTION1": "# Option 1: Open directly",
+    "QS_INSTALL_OPEN": "Open index.html in your browser",
+    "QS_INSTALL_OPTION2": "# Option 2: Use local server",
+    "QS_INSTALL_ACCESS": "# Then access:",
+    "QS_INSTALL_CODE": "# Option 1: Open directly\nOpen index.html in your browser\n\n# Option 2: Use local server\npython -m http.server 8000\n\n# Then access:\nhttp://localhost:8000",
+    
+    // Documentación
+    "QS_DOCUMENTATION": "Documentation",
+    "QS_DOC_README": "README.md",
+    "QS_DOC_README_DESC": "Complete usage guide, features, and FAQs.",
+    "QS_DOC_TECHNICAL": "technical_docs.md",
+    "QS_DOC_TECHNICAL_DESC": "Technical documentation, architecture, and development guide.",
+    "QS_DOC_EXAMPLES": "usage_examples.js",
+    "QS_DOC_EXAMPLES_DESC": "100+ code examples for advanced customization.",
+    "QS_DOC_CHANGELOG": "changelog.md",
+    "QS_DOC_CHANGELOG_DESC": "Complete change history and improvements made.",
+    
+    // Preguntas Frecuentes
+    "QS_FAQ": "Frequently Asked Questions",
+    "QS_FAQ_Q1": "Is the AEGIS Dashboard safe to use?",
+    "QS_FAQ_A1": "Completely safe. There is no backend server. All data is stored locally in your browser.",
+    "QS_FAQ_Q2": "Do I need an internet connection?",
+    "QS_FAQ_A2": "The interface works without internet, but you need a connection to access external OSINT tools.",
+    "QS_FAQ_Q3": "Can I add my own tools?",
+    "QS_FAQ_A3": "Yes. Edit js/tools-config.js and add new tools with the specified format.",
+    "QS_FAQ_Q4": "Which browsers are supported?",
+    "QS_FAQ_A4": "All modern browsers: Chrome, Firefox, Safari, Edge. Requires ES6+ and localStorage.",
+    
+    // CTA
+    "QS_CTA_SUBTITLE": "Access Aegis Dashboard and perform professional investigations",
+    "QS_CTA_BUTTON": "Access Dashboard",
+    
+    // Footer
+    "QS_FOOTER_MADE_WITH": "Made with ❤️ for the security community -",
 
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Administration Panel",
@@ -192,6 +264,10 @@ const translations = {
     "CREATED": "Created",
     "LAST_ACCESS": "Last Access",
     "ACTIONS": "Actions",
+    "ADMINISTRATOR": "Administrator",
+    "ADMINISTRATOR_YOU": "(You)",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_USER": "User",
 
     // Tool Descriptions
     "DESC_vt": "Analyze suspicious files, domains, IPs & URLs",
@@ -440,8 +516,8 @@ const translations = {
     // Quickstart Page
     "QS_HERO_TITLE": "🛡️ Aegis Dashboard",
     "QS_HERO_SUBTITLE": "Centraliza 78 recursos OSINT en un solo lugar, detecta automáticamente el tipo de búsqueda y ahorra tiempo valioso en tus investigaciones.",
-    "QS_HERO_READ_GUIDE": "📖 Lee la guía de inicio rápido para las funcionalidades",
-    "QS_ACCESS_DASHBOARD": "Acceder al Dashboard →",
+    "QS_HERO_READ_GUIDE": "📚 Lee la guía de inicio rápido para las funcionalidades",
+    "QS_ACCESS_DASHBOARD": "Ir a la Herramienta →",
     "QS_QUICK_START": "Inicio Rápido",
     "QS_STEP1_TITLE": "Ingresa tu búsqueda",
     "QS_STEP1_DESC": "Escribe una IP, dominio, hash, correo o texto. El sistema detectará automáticamente el tipo.",
@@ -468,21 +544,97 @@ const translations = {
     "QS_TIP2": "Presiona Ctrl+K para búsqueda rápida",
     "QS_TIP3": "Tu historial se guarda localmente",
     "QS_FOOTER_RIGHTS": "Todos los derechos reservados",
+    
+    // Por Los Números
+    "QS_BY_NUMBERS": "Por Los Números",
+    "QS_STAT_TOOLS": "Herramientas OSINT",
+    "QS_STAT_CATEGORIES": "Categorías",
+    "QS_STAT_QUICK_ACCESS": "Acceso Rápido",
+    "QS_STAT_SIZE": "Tamaño Total",
+    "QS_STAT_BREAKPOINTS": "Breakpoints Responsive",
+    
+    // Tipos de Búsqueda Soportados
+    "QS_SUPPORTED_SEARCHES": "Tipos de Búsqueda Soportados",
+    "QS_SEARCH_IP_TITLE": "Dirección IP",
+    "QS_SEARCH_IP_EXAMPLE": "Ejemplo:",
+    "QS_SEARCH_IP_DESC": "Accede a herramientas de geolocalización, reputación de IP y bases de datos de amenazas.",
+    "QS_SEARCH_DOMAIN_TITLE": "Dominio/URL",
+    "QS_SEARCH_DOMAIN_EXAMPLE": "Ejemplo:",
+    "QS_SEARCH_DOMAIN_DESC": "Herramientas de DNS, WHOIS, certificados SSL y reputación de sitios web.",
+    "QS_SEARCH_HASH_TITLE": "Hash",
+    "QS_SEARCH_HASH_EXAMPLE": "Ejemplo:",
+    "QS_SEARCH_HASH_DESC": "MD5, SHA1, SHA256 - Análisis de malware y bases de datos de hashes.",
+    "QS_SEARCH_EMAIL_TITLE": "Correo Electrónico",
+    "QS_SEARCH_EMAIL_EXAMPLE": "Ejemplo:",
+    "QS_SEARCH_EMAIL_DESC": "Verificación de compromisos, reputación de email y bases de datos públicas.",
+    
+    // Casos de Uso
+    "QS_USE_CASES": "Casos de Uso",
+    "QS_UC_SECURITY": "Investigadores de Seguridad",
+    "QS_UC_SECURITY_DESC": "Analiza amenazas, investiga compromisos y realiza reconocimiento de redes de forma rápida y centralizada.",
+    "QS_UC_ANALYSTS": "Analistas de Amenazas",
+    "QS_UC_ANALYSTS_DESC": "Accede a múltiples plataformas de inteligencia de amenazas desde una única interfaz.",
+    "QS_UC_STUDENTS": "Estudiantes de Ciberseguridad",
+    "QS_UC_STUDENTS_DESC": "Aprende sobre OSINT con herramientas profesionales organizadas y accesibles.",
+    "QS_UC_IT": "Profesionales TI",
+    "QS_UC_IT_DESC": "Diagnóstica problemas de seguridad, verifica reputaciones y realiza análisis rápidos.",
+    
+    // Instalación
+    "QS_INSTALLATION": "Instalación",
+    "QS_INSTALL_DESC": "El Aegis Dashboard es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
+    "QS_INSTALL_OPTION1": "# Opción 1: Abrir directamente",
+    "QS_INSTALL_OPEN": "Abre index.html en tu navegador",
+    "QS_INSTALL_OPTION2": "# Opción 2: Usar servidor local",
+    "QS_INSTALL_ACCESS": "# Luego accede a:",
+    "QS_INSTALL_CODE": "# Opción 1: Abrir directamente\nAbre index.html en tu navegador\n\n# Opción 2: Usar servidor local\npython -m http.server 8000\n\n# Luego accede a:\nhttp://localhost:8000",
+    
+    // Documentación
+    "QS_DOCUMENTATION": "Documentación",
+    "QS_DOC_README": "README.md",
+    "QS_DOC_README_DESC": "Guía completa de uso, características y preguntas frecuentes.",
+    "QS_DOC_TECHNICAL": "technical_docs.md",
+    "QS_DOC_TECHNICAL_DESC": "Documentación técnica, arquitectura y guía de desarrollo.",
+    "QS_DOC_EXAMPLES": "usage_examples.js",
+    "QS_DOC_EXAMPLES_DESC": "100+ ejemplos de código para personalización avanzada.",
+    "QS_DOC_CHANGELOG": "changelog.md",
+    "QS_DOC_CHANGELOG_DESC": "Historial completo de cambios y mejoras realizadas.",
+    
+    // Preguntas Frecuentes
+    "QS_FAQ": "Preguntas Frecuentes",
+    "QS_FAQ_Q1": "¿Es seguro usar el AEGIS Dashboard?",
+    "QS_FAQ_A1": "Completamente seguro. No hay servidor backend. Todos los datos se almacenan localmente en tu navegador.",
+    "QS_FAQ_Q2": "¿Necesito conexión a internet?",
+    "QS_FAQ_A2": "La interfaz funciona sin internet, pero necesitas conexión para acceder a las herramientas OSINT externas.",
+    "QS_FAQ_Q3": "¿Puedo agregar mis propias herramientas?",
+    "QS_FAQ_A3": "Sí. Edita js/tools-config.js y agrega nuevas herramientas con el formato especificado.",
+    "QS_FAQ_Q4": "¿Qué navegadores soporta?",
+    "QS_FAQ_A4": "Todos los navegadores modernos: Chrome, Firefox, Safari, Edge. Requiere ES6+ y localStorage.",
+    
+    // CTA
+    "QS_CTA_SUBTITLE": "Accede al Aegis Dashboard y realiza investigaciones profesionales",
+    "QS_CTA_BUTTON": "Acceder al Dashboard",
+    
+    // Footer
+    "QS_FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad -",
 
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Panel de Administración",
     "USER_MANAGEMENT": "Gestión de Usuarios",
     "USER_MANAGEMENT_TABLE": "Gestión de Usuarios",
-    "TOTAL_USERS": "Total Usuarios",
+    "TOTAL_USERS": "Usuarios Totales",
     "ADMINISTRATORS": "Administradores",
     "ACTIVE_USERS": "Usuarios Activos",
     "NEW_USERS_7DAYS": "Nuevos (7 días)",
-    "ADD_USER": "Añadir Usuario",
+    "ADD_USER": "Agregar Usuario",
     "USER": "Usuario",
     "ROLE": "Rol",
     "CREATED": "Creado",
     "LAST_ACCESS": "Último Acceso",
     "ACTIONS": "Acciones",
+    "ADMINISTRATOR": "Administrador",
+    "ADMINISTRATOR_YOU": "(Tú)",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_USER": "Usuario",
     "OR_REGISTER_WITH": "O registrarse con",
     "CONTINUE_GOOGLE": "Continuar con Google",
     "CONTINUE_GITHUB": "Continuar con GitHub",

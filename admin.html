@@ -252,7 +252,7 @@
                                 <polyline points="16 17 21 12 16 7"></polyline>
                                 <line x1="21" y1="12" x2="9" y2="12"></line>
                             </svg>
-                            Cerrar Sesión
+                            <span data-i18n="LOGOUT">Cerrar Sesión</span>
                         </a>
                     </div>
                 </div>
@@ -370,10 +370,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="user-role" class="form-label">Rol</label>
+                            <label for="user-role" class="form-label" data-i18n="ROLE">Rol</label>
                             <select class="form-select" id="user-role" required>
-                                <option value="user">Usuario</option>
-                                <option value="admin">Administrador</option>
+                                <option value="user" data-i18n="ROLE_USER">Usuario</option>
+                                <option value="admin" data-i18n="ADMINISTRATOR">Administrador</option>
                             </select>
                         </div>
                     </div>
@@ -591,8 +591,10 @@
                 
                 const isSelf = user.id === currentUser.id;
                 const roleBadge = user.role === 'admin' 
-                    ? '<span class="badge bg-primary">Admin</span>'
-                    : '<span class="badge bg-secondary">Usuario</span>';
+                    ? `<span class="badge bg-primary" data-i18n="ROLE_ADMIN">Admin</span>`
+                    : `<span class="badge bg-secondary" data-i18n="ROLE_USER">Usuario</span>`;
+                
+                const youText = isSelf ? `<small class="text-muted ms-1" data-i18n="ADMINISTRATOR_YOU">(Tú)</small>` : '';
 
                 return `
                     <tr>
@@ -603,7 +605,7 @@
                                 </div>
                                 <div>
                                     <strong class="text-body">${user.name}</strong>
-                                    ${isSelf ? '<small class="text-muted ms-1">(Tú)</small>' : ''}
+                                    ${youText}
                                 </div>
                             </div>
                         </td>
@@ -630,6 +632,10 @@
                     </tr>
                 `;
             }).join('');
+            
+            // Aplicar traducciones a elementos dinámicos
+            const currentLang = localStorage.getItem('osintLanguage') || 'es';
+            loadTranslations(currentLang);
         }
 
         // Mostrar modal de añadir usuario
