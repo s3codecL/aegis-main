@@ -119,6 +119,28 @@ const translations = {
     "FOOTER_TEXT": "🛡️ Aegis Dashboard - Personal Investigation Tool (Aegis: the shield of Zeus, symbol of divine protection)",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
+    // Authentication
+    "WELCOME_AEGIS": "Welcome to Aegis",
+    "LOGIN_SUBTITLE": "Access your OSINT tools",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "FULL_NAME": "Full Name",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SIGN_IN": "Sign In",
+    "CREATE_ACCOUNT": "Create Account",
+    "ACCEPT_TERMS": "I accept the terms and conditions",
+    "OR_CONTINUE_WITH": "Or continue with",
+    "OR_REGISTER_WITH": "Or register with",
+    "CONTINUE_GOOGLE": "Continue with Google",
+    "CONTINUE_GITHUB": "Continue with GitHub",
+    "BACK_TO_HOME": "← Back to home",
+    "LOGOUT": "Logout",
+    "ADMIN_PANEL": "Admin Panel",
+
     // Tool Descriptions
     "DESC_vt": "Analyze suspicious files, domains, IPs & URLs",
     "DESC_urlscan": "Search for domains, IPs, filenames, hashes, ASNs",
@@ -335,6 +357,28 @@ const translations = {
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Dashboard - (Egida) El escudo de Zeus, símbolo de protección divina",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
+
+    // Authentication
+    "WELCOME_AEGIS": "Bienvenido a Aegis",
+    "LOGIN_SUBTITLE": "Accede a tus herramientas OSINT",
+    "LOGIN": "Iniciar Sesión",
+    "REGISTER": "Registrarse",
+    "EMAIL": "Correo Electrónico",
+    "PASSWORD": "Contraseña",
+    "FULL_NAME": "Nombre Completo",
+    "CONFIRM_PASSWORD": "Confirmar Contraseña",
+    "REMEMBER_ME": "Recordarme",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "SIGN_IN": "Iniciar Sesión",
+    "CREATE_ACCOUNT": "Crear Cuenta",
+    "ACCEPT_TERMS": "Acepto los términos y condiciones",
+    "OR_CONTINUE_WITH": "O continuar con",
+    "OR_REGISTER_WITH": "O registrarse con",
+    "CONTINUE_GOOGLE": "Continuar con Google",
+    "CONTINUE_GITHUB": "Continuar con GitHub",
+    "BACK_TO_HOME": "← Volver al inicio",
+    "LOGOUT": "Cerrar Sesión",
+    "ADMIN_PANEL": "Panel Admin",
 
     // Tool Descriptions
     "DESC_vt": "Analiza archivos sospechosos, dominios, IPs y URLs",

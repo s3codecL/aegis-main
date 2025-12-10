@@ -51,7 +51,7 @@
 
         .login-container {
             width: 100%;
-            max-width: 440px;
+            max-width: 520px;
             padding: 2rem;
             position: relative;
             z-index: 1;
@@ -64,6 +64,36 @@
             border-radius: 1rem;
             padding: 3rem 2.5rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .login-controls {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-primary);
         }
 
         .logo-section {
@@ -333,6 +363,27 @@
 <body>
     <div class="login-container">
         <div class="login-card">
+            <!-- Controles de Tema e Idioma -->
+            <div class="login-controls">
+                <!-- Tema -->
+                <button class="btn-icon" id="theme-toggle" title="Cambiar tema">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"></path>
+                    </svg>
+                </button>
+                
+                <!-- Idioma -->
+                <button class="btn-icon" id="language-toggle" title="Cambiar idioma">
+                    <span id="current-lang" style="font-size: 0.75rem; font-weight: 600;">ES</span>
+                </button>
+            </div>
+
             <!-- Logo Section -->
             <div class="logo-section">
                 <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
