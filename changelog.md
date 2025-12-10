@@ -7,6 +7,9 @@
 #### Mejoras Visuales y de Usabilidad
 - **quickstart.html**
   - ✅ Agregado botón de cambio de idioma (ES/EN) con icono de globo
+  - ✅ Sistema de traducciones completo para toda la página
+  - ✅ Hero section, pasos, características, tips traducibles
+  - ✅ Script de traducciones integrado (js/translations.js)
   - Botones cambiados a `btn-outline-light` para mejor visibilidad
   - Alineación consistente con otros controles de navegación
 
