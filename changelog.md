@@ -1,5 +1,93 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.7.0] - 2025-12-10
+
+### 🔐 Sistema de Autenticación Completo
+
+#### Nuevas Características
+- **Página de Login** (`login.html`)
+  - Login con email/password
+  - Botones para OAuth (Google, GitHub) - preparado para integración futura
+  - Tabs para Login/Registro
+  - Validación de formularios
+  - "Recordarme" con persistencia de sesión
+  - Diseño moderno con animaciones y glassmorphism
+
+- **Sistema de Autenticación** (`js/auth.js`)
+  - Gestión completa de sesiones
+  - Registro de nuevos usuarios
+  - Validación de credenciales
+  - Hash de contraseñas (simulado - bcrypt en producción)
+  - Tokens de sesión con expiración (24 horas)
+  - Storage dual: localStorage (recordarme) + sessionStorage
+  - Auth guards para proteger rutas
+  - Usuario admin por defecto: `admin@aegis.local` / `admin123`
+
+- **Panel de Administración** (`admin.html`)
+  - Dashboard con estadísticas de usuarios
+  - CRUD completo de usuarios
+  - Gestión de roles (user/admin)
+  - Filtros y búsqueda
+  - Tarjetas de métricas: Total usuarios, Admins, Activos, Nuevos (7 días)
+  - Modal de confirmación para eliminación
+  - Restricción de acceso solo para administradores
+
+#### Mejoras de Seguridad
+- **Protección de rutas**: `index.html` requiere autenticación
+- **Menú de usuario** en navbar con:
+  - Nombre del usuario autenticado
+  - Email en tooltip
+  - Link a Panel Admin (solo para admins)
+  - Botón de cerrar sesión
+- **Validaciones**:
+  - Formato de email
+  - Longitud de contraseña (mínimo 8 caracteres)
+  - Confirmación de contraseña en registro
+  - Verificación de emails duplicados
+  - Aceptación de términos y condiciones
+
+#### Actualizaciones de UI/UX
+- **quickstart.html**: Botones actualizados
+  - "Ir a la Herramienta" → "Acceder al Dashboard" (redirige a login.html)
+  - "Abrir Dashboard" → "Acceder al Dashboard"
+- **Traducciones actualizadas** (`js/translations.js`):
+  - 22 nuevas claves de autenticación en ES/EN
+  - WELCOME_AEGIS, LOGIN_SUBTITLE, LOGIN, REGISTER
+  - EMAIL, PASSWORD, FULL_NAME, CONFIRM_PASSWORD
+  - REMEMBER_ME, FORGOT_PASSWORD, SIGN_IN, CREATE_ACCOUNT
+  - ACCEPT_TERMS, OR_CONTINUE_WITH, OR_REGISTER_WITH
+  - CONTINUE_GOOGLE, CONTINUE_GITHUB, BACK_TO_HOME
+  - LOGOUT, ADMIN_PANEL
+
+#### Funcionalidades de Administración
+- Crear usuarios manualmente desde panel admin
+- Editar información de usuarios existentes
+- Eliminar usuarios (excepto cuenta propia)
+- Cambiar roles (user ↔ admin)
+- Visualizar fecha de creación y último acceso
+- Estadísticas en tiempo real
+
+#### Notas Técnicas
+- OAuth (Google/GitHub) preparado con mensajes informativos
+  - Requiere configuración de Client IDs en producción
+  - URLs de redirección comentadas en código
+- Hash de contraseñas usa base64 (simulación)
+  - **IMPORTANTE**: En producción usar bcrypt o similar
+- Datos almacenados en localStorage:
+  - `aegisSession`: Sesión actual
+  - `aegisUsers`: Base de datos de usuarios
+- Sistema compatible con v1.6.0 sin pérdida de datos
+
+#### Flujo de Usuario
+1. Usuario visita `quickstart.html` → Click "Acceder al Dashboard"
+2. Redirige a `login.html` → Login o Registro
+3. Autenticación exitosa → Redirige a `index.html` (Dashboard)
+4. Si intenta acceder a `index.html` sin login → Redirige a `login.html`
+5. Admin puede acceder a `admin.html` desde menú de usuario
+6. Cerrar sesión → Vuelve a `login.html`
+
+---
+
 ## [1.6.0] - 2025-12-07
 
 ### 🎨 Reorganización Completa de Categorías

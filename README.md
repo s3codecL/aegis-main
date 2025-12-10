@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
+[![Version](https://img.shields.io/badge/version-1.7.0-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -9,14 +10,50 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
+## 🚀 Novedades v1.7.0
+
+🔐 **Sistema de Autenticación Completo**
+- Login con email/password
+- Panel de administración de usuarios
+- Roles de usuario (User/Admin)
+- Gestión de sesiones con tokens
+- OAuth preparado (Google, GitHub)
+
+[Ver todas las novedades en CHANGELOG.md](changelog.md)
+
 ## 🎯 Inicio Rápido
 
-| Para Empezar | Para Aprender | Para Desarrollar |
+| Para Empezar | Para Aprender | Para Administrar |
 |--------------|---------------|------------------|
-| [Abrir Dashboard](#-inicio-rápido) (`index.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Documentación Técnica](#-notas-de-desarrollo) |
+| [Acceder al Dashboard](#-autenticación-v170) (`login.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Panel Admin](#-panel-de-administración) (`admin.html`) |
 
-> **¿Primera vez?** 👉 Abre primero `quickstart.html` para un tutorial completo  
-> **¿Listo para trabajar?** 👉 Usa `index.html` para tus investigaciones OSINT
+> **¿Primera vez?** 👉 Abre `quickstart.html` para tutorial completo, luego `login.html` para acceder  
+> **Usuario por defecto** 👉 `admin@aegis.local` / `admin123`  
+> **¿Listo para trabajar?** 👉 Login → Dashboard para tus investigaciones OSINT
+
+## 🔐 Autenticación (v1.7.0)
+
+### Credenciales por Defecto
+- **Email**: `admin@aegis.local`
+- **Password**: `admin123`
+- **Rol**: Administrador
+
+### Flujo de Autenticación
+```
+quickstart.html → login.html → index.html (Dashboard)
+                       ↓
+                  admin.html (Solo Admin)
+```
+
+### Características de Seguridad
+- ✅ Validación de email y contraseña
+- ✅ Hash de contraseñas
+- ✅ Tokens de sesión con expiración (24h)
+- ✅ Roles de usuario (user/admin)
+- ✅ Protección de rutas
+- ✅ Panel de administración completo
+
+📖 **Documentación completa**: [AUTH_GUIDE.md](AUTH_GUIDE.md)
 
 ## 📸 Screenshots
 
@@ -29,6 +66,13 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 </div>
 
 ## ✨ Características Principales
+
+### 🔐 Gestión de Usuarios
+- **Sistema de autenticación completo**: Login, registro, logout
+- **Panel de administración**: CRUD de usuarios, estadísticas
+- **Roles y permisos**: Usuario regular vs Administrador
+- **Sesiones persistentes**: "Recordarme" con tokens
+- **OAuth preparado**: Google y GitHub (integración futura)
 
 ### 🎯 Interfaz Moderna
 - **Diseño limpio y responsivo**: Optimizado para desktop, tablet y móvil
@@ -127,16 +171,35 @@ npx http-server
 
 ### 📄 Archivos Principales
 
-El proyecto incluye dos interfaces principales:
+El proyecto incluye tres interfaces principales:
+
+#### 🔐 `login.html` - Página de Autenticación (NUEVO en v1.7.0)
+**Cuándo usar**: Primera página para acceder al dashboard
+- Login con email/password
+- Registro de nuevos usuarios
+- OAuth con Google/GitHub (preparado)
+- Recuperación de contraseña
+- "Recordarme" para sesión persistente
+- **Acceso**: Punto de entrada obligatorio al dashboard
+- **Credenciales por defecto**: `admin@aegis.local` / `admin123`
 
 #### 🏠 `index.html` - Dashboard Principal
-**Cuándo usar**: Para trabajo diario de investigación OSINT
-- Interfaz completa con todas las herramientas
+**Cuándo usar**: Para trabajo diario de investigación OSINT (requiere autenticación)
+- Interfaz completa con todas las 78 herramientas OSINT
 - Panel de búsqueda inteligente con detección automática
 - Gestión de favoritos y historial
-- Filtrado avanzado de herramientas
+- Filtrado avanzado por categorías
 - Estadísticas en tiempo real
-- **Acceso**: Abre este archivo para comenzar a trabajar
+- Menú de usuario con logout
+- **Acceso**: Requiere login previo
+
+#### 👥 `admin.html` - Panel de Administración (NUEVO en v1.7.0)
+**Cuándo usar**: Gestión de usuarios (solo administradores)
+- CRUD completo de usuarios
+- Estadísticas de usuarios (total, admins, activos, nuevos)
+- Cambio de roles (user ↔ admin)
+- Visualización de último acceso
+- **Acceso**: Solo usuarios con rol "admin"
 
 #### 🚀 `quickstart.html` - Guía Interactiva
 **Cuándo usar**: Primera vez usando la herramienta o necesitas referencia rápida
@@ -145,11 +208,39 @@ El proyecto incluye dos interfaces principales:
 - Explicación de todas las funcionalidades
 - Demostraciones visuales
 - Tips y mejores prácticas
-- **Acceso**: Consulta este archivo para aprender a usar la herramienta
+- **Acceso**: Pública, no requiere autenticación
 
-> **💡 Tip**: Comienza con `quickstart.html` para familiarizarte con la herramienta, luego usa `index.html` para tu trabajo diario.
+> **💡 Tip**: Comienza con `quickstart.html` para familiarizarte → `login.html` para acceder → `index.html` para trabajar → `admin.html` (si eres admin) para gestionar usuarios.
+
+### 👥 Panel de Administración
+
+#### Acceso al Panel Admin
+1. Inicia sesión con cuenta de administrador
+2. Click en tu nombre en el navbar
+3. Selecciona "Panel Admin"
+
+#### Funcionalidades Administrativas
+- **Crear usuarios**: Añadir manualmente nuevos usuarios
+- **Editar usuarios**: Modificar nombre, email, rol
+- **Eliminar usuarios**: Remover cuentas (excepto la propia)
+- **Cambiar roles**: Promover usuarios a admin o degradar a user
+- **Ver estadísticas**:
+  - Total de usuarios registrados
+  - Cantidad de administradores
+  - Usuarios que han iniciado sesión
+  - Nuevos usuarios (últimos 7 días)
+
+📖 **Guía completa de administración**: [AUTH_GUIDE.md](AUTH_GUIDE.md)
 
 ## 📖 Guía de Uso
+
+### Primera Vez - Autenticación
+1. Abre `login.html` en tu navegador
+2. Usa credenciales por defecto:
+   - Email: `admin@aegis.local`
+   - Password: `admin123`
+3. O crea una cuenta nueva en la pestaña "Registrarse"
+4. Serás redirigido automáticamente al dashboard
 
 ### Búsqueda Básica
 1. Ingresa tu término de búsqueda en la barra de búsqueda
