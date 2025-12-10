@@ -141,6 +141,11 @@ const translations = {
     "LOGOUT": "Logout",
     "ADMIN_PANEL": "Admin Panel",
     
+    // Login Placeholders
+    "PLACEHOLDER_EMAIL": "you@example.com",
+    "PLACEHOLDER_PASSWORD": "••••••••",
+    "PLACEHOLDER_NAME": "John Doe",
+    
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Administration Panel",
     "USER_MANAGEMENT": "User Management",
@@ -394,6 +399,11 @@ const translations = {
     "BACK_TO_HOME": "← Volver al inicio",
     "LOGOUT": "Cerrar Sesión",
     "ADMIN_PANEL": "Panel Admin",
+    
+    // Login Placeholders
+    "PLACEHOLDER_EMAIL": "tu@ejemplo.com",
+    "PLACEHOLDER_PASSWORD": "••••••••",
+    "PLACEHOLDER_NAME": "Juan Pérez",
     
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Panel de Administración",

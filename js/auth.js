@@ -471,6 +471,7 @@ const Auth = {
     initTranslations: function (lang) {
         if (typeof t === 'undefined') return;
 
+        // Traducir elementos con data-i18n
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = t(key, lang);
@@ -479,6 +480,15 @@ const Auth = {
                 element.placeholder = translation;
             } else {
                 element.textContent = translation;
+            }
+        });
+        
+        // Traducir placeholders con data-placeholder
+        document.querySelectorAll('[data-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-placeholder');
+            const translation = t(key, lang);
+            if (translation) {
+                element.placeholder = translation;
             }
         });
     }
