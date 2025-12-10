@@ -81,6 +81,9 @@ build/
 # Documentation builds
 docs/_build/
 
+# Security audits
+SECURITY_AUDIT.md
+
 # Optional: Keep these if you want to track them
 # !.vscode/settings.json
 # !.vscode/tasks.json

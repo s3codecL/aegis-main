@@ -136,6 +136,19 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Fuentes de Malware** (2 herramientas) - Feeds y bases de datos
 - **Mapas de Amenazas** (2 herramientas) - Visualización en tiempo real
 
+### 🌎 Sistema de Traducción Completo (v1.7.1)
+- **Soporte multiidioma**: Español (ES) e Inglés (EN)
+- **100+ claves de traducción**: Todas las interfaces completamente traducidas
+- **Traducción dinámica**: Contenido generado dinámicamente (tablas, badges)
+- **Bloques de código traducibles**: Incluso snippets de instalación
+- **Toggle de idioma**: Cambio instantáneo en todas las páginas
+- **Persistencia**: Preferencia guardada en localStorage
+- **Archivos traducidos**:
+  - ✅ `index.html` - Dashboard (navbar, footer, tooltips)
+  - ✅ `quickstart.html` - Guía completa (hero, pasos, FAQ, casos de uso)
+  - ✅ `admin.html` - Panel admin (tabla, roles, estadísticas)
+  - ✅ `login.html` - Autenticación (formularios, placeholders)
+
 ### 🎨 Experiencia de Usuario Mejorada
 - Búsqueda rápida con sugerencias por tipo
 - **Persistencia de búsqueda**: No reingresar términos al cambiar entre pestañas
@@ -187,6 +200,7 @@ El proyecto incluye tres interfaces principales:
 - OAuth con Google/GitHub (preparado)
 - Recuperación de contraseña
 - "Recordarme" para sesión persistente
+- **Traducción**: Soporte completo ES/EN con toggle de idioma
 - **Acceso**: Punto de entrada obligatorio al dashboard
 - **Credenciales por defecto**: `admin@aegis.local` / `admin123`
 
@@ -198,6 +212,7 @@ El proyecto incluye tres interfaces principales:
 - Filtrado avanzado por categorías
 - Estadísticas en tiempo real
 - Menú de usuario con logout
+- **Traducción**: Soporte completo ES/EN (navbar, tooltips, footer)
 - **Acceso**: Requiere login previo
 
 #### 👥 `admin.html` - Panel de Administración (NUEVO en v1.7.0)
@@ -206,15 +221,17 @@ El proyecto incluye tres interfaces principales:
 - Estadísticas de usuarios (total, admins, activos, nuevos)
 - Cambio de roles (user ↔ admin)
 - Visualización de último acceso
+- **Traducción**: Soporte completo ES/EN (tabla dinámica, badges de roles)
 - **Acceso**: Solo usuarios con rol "admin"
 
-#### 🚀 `quickstart.html` - Guía Interactiva
+#### 🚀 `quickstart.html` - Guía Interactiva (v1.7.1)
 **Cuándo usar**: Primera vez usando la herramienta o necesitas referencia rápida
 - Tutorial paso a paso con ejemplos prácticos
 - Casos de uso comunes
 - Explicación de todas las funcionalidades
 - Demostraciones visuales
 - Tips y mejores prácticas
+- **Traducción**: Soporte completo ES/EN (100+ claves, incluyendo bloques de código)
 - **Acceso**: Pública, no requiere autenticación
 
 > **💡 Tip**: Comienza con `quickstart.html` para familiarizarte → `login.html` para acceder → `index.html` para trabajar → `admin.html` (si eres admin) para gestionar usuarios.
@@ -340,7 +357,7 @@ aegis-main/
 ├── js/                  # Scripts JavaScript
 │   ├── app.js              # Lógica principal de la aplicación
 │   ├── tools-config.js     # Configuración de herramientas OSINT
-│   ├── translations.js     # Traducciones multiidioma (ES/EN)
+│   ├── translations.js     # Sistema completo de traducciones ES/EN (100+ claves)
 │   ├── script.js           # Funciones auxiliares
 │   └── usage_examples.js   # Ejemplos de uso
 └── plugins/             # Extensiones del navegador

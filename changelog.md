@@ -2,6 +2,51 @@
 
 ## [1.7.1] - 2025-12-10
 
+### 🌎 Sistema de Traducciones Completo
+
+#### Traducciones Implementadas
+- **index.html (Dashboard Principal)**
+  - ✅ Botón "Panel Admin" con traducción
+  - ✅ Botón "Cerrar Sesión" traducible (ES: "Cerrar Sesión" / EN: "Logout")
+  - ✅ Footer con "Herramienta de Investigación" traducible
+  - ✅ Integración completa con js/translations.js
+
+- **quickstart.html (Guía de Inicio)**
+  - ✅ Sistema de traducciones completo para toda la página
+  - ✅ Botón de cambio de idioma (ES/EN) en navbar
+  - ✅ Hero section: título, subtítulo, botón "Ir a la Herramienta"
+  - ✅ Sección "Inicio Rápido": pasos 1, 2, 3 con descripciones
+  - ✅ Características Principales: 4 características con descripciones
+  - ✅ Tipos de Detección: IP, Dominio, Hash, Email
+  - ✅ Tips Pro: 3 consejos traducibles
+  - ✅ Por Los Números: estadísticas (78 herramientas, 10+ categorías, etc.)
+  - ✅ Tipos de Búsqueda Soportados: IP, Dominio, Hash, Email con ejemplos
+  - ✅ Casos de Uso: 4 perfiles (Investigadores, Analistas, Estudiantes, Profesionales TI)
+  - ✅ Instalación: título, descripción y bloque de código traducible
+  - ✅ Documentación: 4 archivos con descripciones
+  - ✅ Preguntas Frecuentes: 4 preguntas con respuestas
+  - ✅ CTA Final: subtítulo y botón
+  - ✅ Footer: texto "Hecho con ❤️ para la comunidad de seguridad"
+  - ✅ Navbar: "Herramienta de Investigación" traducible
+  - ✅ Versión actualizada a v1.7.1 en footer
+
+- **admin.html (Panel de Administración)**
+  - ✅ Botón "Cerrar Sesión" traducible
+  - ✅ Badges de rol en tabla: "Admin" / "Usuario" traducibles
+  - ✅ Texto "(Tú)" traducible a "(You)"
+  - ✅ Select de roles: opciones "Usuario" y "Administrador" traducibles
+  - ✅ Aplicación automática de traducciones al cargar usuarios dinámicamente
+  - ✅ Recarga de traducciones al cambiar idioma
+
+#### Archivo de Traducciones (js/translations.js)
+- ✅ Más de 100 claves de traducción agregadas
+- ✅ Soporte completo para español (ES) e inglés (EN)
+- ✅ Traducciones para quickstart: 50+ claves (QS_*)
+- ✅ Traducciones para admin: ROLE_ADMIN, ROLE_USER, ADMINISTRATOR_YOU
+- ✅ Traducciones para navegación: ADMIN_PANEL, LOGOUT, INVESTIGATION_TOOL
+- ✅ Traducción de bloque de código de instalación (QS_INSTALL_CODE)
+- ✅ Persistencia de idioma en localStorage (clave: osintLanguage)
+
 ### 🎨 Mejoras de UI/UX en Sistema de Autenticación
 
 #### Mejoras Visuales y de Usabilidad
