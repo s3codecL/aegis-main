@@ -1,4 +1,4 @@
-# 🛡️ Aegis Dashboard - Herramienta de Investigación
+# 🛡️ Aegis HUB - Herramienta de Investigación
 
 > ⚠️ **Seguridad:** Nunca publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, capturas de pantalla, ejemplos de código o foros públicos. Usa variables de entorno o archivos de configuración ignorados por git para gestionar credenciales.
 
