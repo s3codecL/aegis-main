@@ -150,8 +150,8 @@
 
 #### Configuración Técnica
 - **Claves de Google reCAPTCHA**
-  - Site Key: `6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5`
-  - Secret Key: `6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha`
+  - Site Key: `6Le4gicsAAAAAE1h_...`
+  - Secret Key: `6Le4gicsAAAAAEh...`
   - Dominios configurados: `localhost`, `127.0.0.1`
 
 - **Validación en Frontend (js/auth.js)**

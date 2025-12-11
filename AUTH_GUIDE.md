@@ -334,4 +334,4 @@ localStorage.setItem('aegisUsers', JSON.stringify(users));
 
 **Versión**: 1.7.0  
 **Fecha**: Diciembre 10, 2025  
-**Autor**: Aegis Development Team
+**Autor**: s3codecL

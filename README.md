@@ -592,41 +592,54 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 🗺️ Roadmap
 
-### ✅ Completado
 
-#### v1.7.2 (Actual) - Diciembre 2025
-- [x] **reCAPTCHA v2** - Protección contra bots en login/registro
-- [x] **Traducción dinámica de reCAPTCHA** - Widget cambia idioma ES/EN automáticamente
+🗺️ Roadmap
+✅ Completado
+v1.8.0 (2025-12-10)
+🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
+ - [x] Registro y clasificación automática de incidentes
+ - [x] Panel de estadísticas en tiempo real
+ - [x] Filtros avanzados y gestión de IoCs
+ - [x] Interfaz responsive y traducción ES/EN
 
-#### v1.7.1 - Diciembre 2025
-- [x] **Sistema de traducción completo** - 100+ claves en todas las páginas
-- [x] **Traducción de contenido dinámico** - Tablas, badges, bloques de código
+v1.7.2 (2025-12-10)
+🔒 Protección reCAPTCHA v2
+ - [x] Integración en login y registro
+ - [x] Validación y mensajes traducibles
+ - [x] Traducción dinámica del widget
+ - [x] Diseño responsive y seguro
 
-#### v1.7.0 - Noviembre 2025
-- [x] **Sistema de autenticación** - Login, registro, gestión de sesiones
-- [x] **Panel de administración** - CRUD de usuarios, roles, estadísticas
-- [x] **OAuth preparado** - Integración lista para Google y GitHub
+v1.7.1 (2025-12-10)
+🌎 Sistema de Traducciones Completo
+ - [x] Traducción total en quickstart, admin, index
+ - [x] 100+ claves nuevas ES/EN
+ - [x] Mejoras visuales y de usabilidad
 
-#### v1.3.0 - Versiones Anteriores
-- [x] **Herramientas personalizadas** - Agrega tus propias herramientas OSINT
-- [x] **Soporte completo dark/light mode** - Temas optimizados
-- [x] **Traducción inicial ES/EN** - Interfaz base multiidioma
-- [x] **Tooltips informativos bilingües** - Descripciones completas
-- [x] **Botón Downdetector** - Verificación de caídas de sitios
+v1.7.0 (2025-12-10)
+🔐 Sistema de Autenticación Completo
+ - [x] Login y registro de usuarios
+ - [x] Panel de administración y roles
+ - [x] Seguridad y validaciones
 
-### 🚧 En Desarrollo
-- [ ] **Validación backend de reCAPTCHA** - Verificación server-side con Google API
-- [ ] **Integración con APIs de herramientas OSINT** - Consultas automatizadas
-- [ ] **Exportación de resultados** - PDF, JSON, CSV con plantillas
-- [ ] **Plantillas de investigación** - Workflows predefinidos personalizables
+Versiones anteriores
+ - [x] Herramientas OSINT personalizadas
+ - [x] Soporte dark/light mode
+ - [x] Interfaz multiidioma inicial
+ - [x] Tooltips bilingües y verificación de sitios
 
-### 📋 Planificado (v1.8.0+)
-- [ ] **OAuth funcional** - Login real con Google y GitHub
-- [ ] **Modo de trabajo colaborativo** - Compartir investigaciones en equipo
-- [ ] **Integración con navegadores** - Extensión mejorada para Chrome/Firefox
-- [ ] **Modo offline con cache (PWA)** - Funcionalidad sin conexión
-- [ ] **Análisis de grafos de relaciones** - Visualización de conexiones
-- [ ] **Más idiomas** - FR, DE, PT, IT, RU
+🚧 En Desarrollo
+ - [ ] Validación backend de reCAPTCHA - Verificación server-side con Google API
+ - [ ] Integración con APIs de herramientas OSINT - Consultas automatizadas
+ - [ ] Exportación de resultados - PDF, JSON, CSV con plantillas
+ - [ ] Plantillas de investigación - Workflows predefinidos personalizables
+
+📋 Planificado (v1.8.0+)
+ - [ ] OAuth funcional - Login funcional con Google y GitHub
+ - [ ] Modo de trabajo colaborativo - Compartir investigaciones en equipo
+ - [ ] Integración con navegadores - Extensión mejorada para Chrome/Firefox
+ - [ ] Modo offline con cache (PWA) - Funcionalidad sin conexión
+ - [ ] Análisis de grafos de relaciones - Visualización de conexiones
+ - [ ] Más idiomas - FR, DE, PT, IT, RU
 
 Ver [issues](../../issues) para el roadmap completo.
 

@@ -115,4 +115,4 @@ Para otras consultas:
 
 ---
 
-**Gracias por ayudar a mantener seguro a Aegis Dashboard** 🛡️
+**Gracias por ayudar a mantener seguro a Aegis HUB** 🛡️

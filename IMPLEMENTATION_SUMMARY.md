@@ -352,4 +352,4 @@ Para preguntas o problemas:
 
 ---
 
-**¡Gracias por usar Aegis Dashboard!** 🛡️
+**¡Gracias por usar Aegis HUB!** 🛡️
