@@ -168,6 +168,14 @@
                 </svg>
                 <span data-i18n="ADMIN_PANEL">Panel Admin</span>
               </a>
+              <a class="dropdown-item" href="incidents.html" id="incidents-link" style="display: none;">
+                <svg class="me-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L4 6v6c0 5.25 3.5 10.2 8 12 4.5-1.8 8-6.75 8-12V6l-8-4z"></path>
+                  <path d="M12 8v4m0 4h.01"></path>
+                </svg>
+                <span data-i18n="INCIDENT_MANAGEMENT">Gestión de Incidencias</span>
+              </a>
+              <div class="dropdown-divider" id="admin-divider" style="display: none;"></div>
               <a class="dropdown-item text-danger" href="#" onclick="handleLogout(event)">
                 <svg class="me-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
@@ -600,9 +608,11 @@
           document.getElementById('user-display-name').textContent = currentUser.name.split(' ')[0];
           document.getElementById('user-email').textContent = currentUser.email;
           
-          // Mostrar link de admin si es admin
+          // Mostrar links de admin e incidencias si es admin
           if (currentUser.role === 'admin') {
             document.getElementById('admin-link').style.display = 'block';
+            document.getElementById('incidents-link').style.display = 'block';
+            document.getElementById('admin-divider').style.display = 'block';
           }
         }
       });
