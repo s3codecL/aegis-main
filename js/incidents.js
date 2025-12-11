@@ -315,7 +315,7 @@ const IncidentManager = {
                             </span>
                         </td>
                         <td style="vertical-align: middle; text-align: center; width: 32px;">
-                            <span class="status-icon" title="${critLabel}">${statusBadge.icon}</span>
+                            <span class="status-icon">${statusBadge.icon}</span>
                         </td>
                         <td>
                             <span class="badge" style="background-color: ${critColor};">
