@@ -231,6 +231,126 @@
         #newIncidentBtn:hover .icon {
             transform: rotate(90deg);
         }
+        
+        /* Light mode - Badges de estado más visibles */
+        [data-bs-theme="light"] .badge {
+            font-weight: 600 !important;
+            color: white !important;
+        }
+        
+        /* Light mode - Botones de acción en tabla */
+        [data-bs-theme="light"] .table .btn-outline-primary {
+            color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            background-color: white !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-primary:hover {
+            color: white !important;
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-danger {
+            color: #dc3545 !important;
+            border-color: #dc3545 !important;
+            background-color: white !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-danger:hover {
+            color: white !important;
+            background-color: #dc3545 !important;
+            border-color: #dc3545 !important;
+        }
+        
+        /* Light mode - SVG icons en botones */
+        [data-bs-theme="light"] .table .btn-outline-primary svg {
+            fill: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-primary:hover svg {
+            fill: white !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-danger svg {
+            fill: #dc3545 !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-danger:hover svg {
+            fill: white !important;
+        }
+        
+        /* Light mode - Colores de números en estadísticas */
+        [data-bs-theme="light"] .card .text-primary,
+        [data-bs-theme="light"] .text-primary {
+            color: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .card .text-warning,
+        [data-bs-theme="light"] .text-warning {
+            color: #f59e0b !important;
+        }
+        
+        [data-bs-theme="light"] .card .text-danger,
+        [data-bs-theme="light"] .text-danger {
+            color: #dc3545 !important;
+        }
+        
+        /* Light mode - H1 con colores específicos */
+        [data-bs-theme="light"] .card .h1.text-primary {
+            color: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .card .h1.text-warning {
+            color: #f59e0b !important;
+        }
+        
+        [data-bs-theme="light"] .card .h1.text-danger {
+            color: #dc3545 !important;
+        }
+        
+        /* Dark mode - Form controls (selects, inputs) */
+        [data-bs-theme="dark"] .form-select,
+        [data-bs-theme="dark"] .form-control {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .form-select:focus,
+        [data-bs-theme="dark"] .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(59, 130, 246, 0.6) !important;
+            color: #fff !important;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+        }
+        
+        [data-bs-theme="dark"] .form-select option {
+            background-color: #1e293b !important;
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .form-label {
+            color: #e8eaf6 !important;
+        }
+        
+        /* Light mode - Form controls */
+        [data-bs-theme="light"] .form-select,
+        [data-bs-theme="light"] .form-control {
+            background-color: #ffffff !important;
+            border-color: #d1d5db !important;
+            color: #1e293b !important;
+        }
+        
+        [data-bs-theme="light"] .form-select:focus,
+        [data-bs-theme="light"] .form-control:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15) !important;
+        }
+        
+        [data-bs-theme="light"] .form-label {
+            color: #1e293b !important;
+        }
     </style>
 </head>
 
@@ -387,24 +507,26 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <label class="form-label" data-i18n="FILTER_BY_STATUS">Filtrar por Estado</label>
                                         <select class="form-select" id="filterStatus">
-                                            <option value="">-- <span data-i18n="ALL">Todos</span> --</option>
+                                            <option value="">-- Todos --</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <label class="form-label" data-i18n="FILTER_BY_CRITICALITY">Filtrar por Criticidad</label>
                                         <select class="form-select" id="filterCriticality">
-                                            <option value="">-- <span data-i18n="ALL">Todos</span> --</option>
+                                            <option value="">-- Todos --</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <label class="form-label" data-i18n="FILTER_BY_TYPE">Filtrar por Tipo</label>
                                         <select class="form-select" id="filterType">
-                                            <option value="">-- <span data-i18n="ALL">Todos</span> --</option>
+                                            <option value="">-- Todos --</option>
                                         </select>
                                     </div>
                                     <div class="col-xl-3 col-lg-12 col-md-6">
                                         <label class="form-label" data-i18n="SEARCH_INCIDENTS">Buscar</label>
-                                        <input type="text" class="form-control" id="searchIncidents" placeholder="Código, descripción, IP...">
+                                        <input type="text" class="form-control" id="searchIncidents" 
+                                               data-i18n-placeholder="SEARCH_INCIDENTS_PLACEHOLDER"
+                                               placeholder="Código, descripción, IP...">
                                     </div>
                                 </div>
                             </div>
@@ -484,6 +606,7 @@
                                                     <span data-i18n="DESCRIPTION">Descripción</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentDescription" rows="3" required
+                                                          data-i18n-placeholder="DESCRIPTION_PLACEHOLDER"
                                                           placeholder="Descripción breve del incidente"></textarea>
                                             </div>
                                             <div class="col-md-6">
@@ -491,6 +614,7 @@
                                                     <span data-i18n="REPORTER">Reportado por</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <input type="text" class="form-control" id="incidentReporter" required
+                                                       data-i18n-placeholder="REPORTER_PLACEHOLDER"
                                                        placeholder="Nombre del usuario que reporta">
                                             </div>
                                             <div class="col-md-6">
@@ -498,6 +622,7 @@
                                                     <span data-i18n="AFFECTED_IP">IP Afectada</span>
                                                 </label>
                                                 <input type="text" class="form-control" id="incidentAffectedIP"
+                                                       data-i18n-placeholder="AFFECTED_IP_PLACEHOLDER"
                                                        placeholder="192.168.1.100">
                                             </div>
                                             <div class="col-md-6">
@@ -505,6 +630,7 @@
                                                     <span data-i18n="AFFECTED_HOSTNAME">Hostname Afectado</span>
                                                 </label>
                                                 <input type="text" class="form-control" id="incidentAffectedHost"
+                                                       data-i18n-placeholder="AFFECTED_HOSTNAME_PLACEHOLDER"
                                                        placeholder="PC-USER-01">
                                             </div>
                                         </div>
@@ -529,7 +655,7 @@
                                                     <span data-i18n="DETECTION_CHANNEL">Canal de Detección</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentDetectionChannel" required>
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -537,9 +663,9 @@
                                                     <span data-i18n="CONFIDENCE_LEVEL">Nivel de Confianza</span>
                                                 </label>
                                                 <select class="form-select" id="incidentConfidence">
-                                                    <option value="HIGH">Alto</option>
-                                                    <option value="MEDIUM" selected>Medio</option>
-                                                    <option value="LOW">Bajo</option>
+                                                    <option value="HIGH" data-i18n="CONFIDENCE_HIGH">Alto</option>
+                                                    <option value="MEDIUM" selected data-i18n="CONFIDENCE_MEDIUM">Medio</option>
+                                                    <option value="LOW" data-i18n="CONFIDENCE_LOW">Bajo</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -564,7 +690,7 @@
                                                     <span data-i18n="TYPE">Tipo de Incidente</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentType" required>
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
@@ -572,7 +698,7 @@
                                                     <span data-i18n="AREA">Área Organizacional</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentArea" required>
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
@@ -580,7 +706,7 @@
                                                     <span data-i18n="NIST_PHASE">Fase NIST 800-61</span>
                                                 </label>
                                                 <select class="form-select" id="incidentNistPhase">
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
@@ -588,7 +714,7 @@
                                                     <span data-i18n="MITRE_TACTIC">Táctica MITRE ATT&CK</span>
                                                 </label>
                                                 <select class="form-select" id="incidentMitreTactic">
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -613,11 +739,11 @@
                                                     <span data-i18n="IMPACT">Impacto</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentImpact" required>
-                                                    <option value="">-- Seleccionar --</option>
-                                                    <option value="LOW">Bajo</option>
-                                                    <option value="MEDIUM">Medio</option>
-                                                    <option value="HIGH">Alto</option>
-                                                    <option value="CRITICAL">Crítico</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
+                                                    <option value="LOW" data-i18n="IMPACT_LOW">Bajo</option>
+                                                    <option value="MEDIUM" data-i18n="IMPACT_MEDIUM">Medio</option>
+                                                    <option value="HIGH" data-i18n="IMPACT_HIGH">Alto</option>
+                                                    <option value="CRITICAL" data-i18n="IMPACT_CRITICAL">Crítico</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -625,11 +751,11 @@
                                                     <span data-i18n="URGENCY">Urgencia</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentUrgency" required>
-                                                    <option value="">-- Seleccionar --</option>
-                                                    <option value="LOW">Baja</option>
-                                                    <option value="MEDIUM">Media</option>
-                                                    <option value="HIGH">Alta</option>
-                                                    <option value="CRITICAL">Crítica</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
+                                                    <option value="LOW" data-i18n="URGENCY_LOW_F">Baja</option>
+                                                    <option value="MEDIUM" data-i18n="URGENCY_MEDIUM_F">Media</option>
+                                                    <option value="HIGH" data-i18n="URGENCY_HIGH_F">Alta</option>
+                                                    <option value="CRITICAL" data-i18n="URGENCY_CRITICAL_F">Crítica</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
@@ -637,13 +763,13 @@
                                                     <span data-i18n="SGSI_CATEGORY">Categoría SGSI</span>
                                                 </label>
                                                 <select class="form-select" id="incidentSgsiCategory">
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="alert alert-info mb-0">
                                                     <strong data-i18n="PRIORITY">Prioridad</strong>: 
-                                                    <span id="calculatedPriority" class="badge bg-secondary">Sin calcular</span>
+                                                    <span id="calculatedPriority" class="badge bg-secondary" data-i18n="NOT_CALCULATED">Sin calcular</span>
                                                     <br><small class="text-muted" data-i18n="PRIORITY_AUTO">Se calcula automáticamente según Impacto x Urgencia</small>
                                                 </div>
                                             </div>
@@ -669,7 +795,7 @@
                                                     <span data-i18n="STATUS">Estado</span> <span class="text-danger">*</span>
                                                 </label>
                                                 <select class="form-select" id="incidentStatus" required>
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -677,6 +803,7 @@
                                                     <span data-i18n="ASSIGN_TO">Asignado a</span>
                                                 </label>
                                                 <input type="text" class="form-control" id="incidentAssignedTo"
+                                                       data-i18n-placeholder="ASSIGNED_TO_PLACEHOLDER"
                                                        placeholder="Analista SOC, Administrador, etc.">
                                             </div>
                                             <div class="col-md-6">
@@ -714,6 +841,7 @@
                                                     <span data-i18n="MALICIOUS_IPS">IPs Maliciosas</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentMaliciousIPs" rows="2"
+                                                          data-i18n-placeholder="MALICIOUS_IPS_PLACEHOLDER"
                                                           placeholder="192.168.1.50, 10.0.0.100 (separadas por comas)"></textarea>
                                             </div>
                                             <div class="col-md-12">
@@ -721,6 +849,7 @@
                                                     <span data-i18n="FILE_HASHES">Hashes de Archivos</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentFileHashes" rows="2"
+                                                          data-i18n-placeholder="FILE_HASHES_PLACEHOLDER"
                                                           placeholder="SHA256: abc123... (separados por comas o saltos de línea)"></textarea>
                                             </div>
                                             <div class="col-md-12">
@@ -728,6 +857,7 @@
                                                     <span data-i18n="SUSPICIOUS_DOMAINS">Dominios Sospechosos</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentSuspiciousDomains" rows="2"
+                                                          data-i18n-placeholder="SUSPICIOUS_DOMAINS_PLACEHOLDER"
                                                           placeholder="malicious-site.com, phishing-page.net (separados por comas)"></textarea>
                                             </div>
                                             <div class="col-md-12">
@@ -735,6 +865,7 @@
                                                     <span data-i18n="ARTIFACTS">Artefactos Adicionales</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentArtifacts" rows="3"
+                                                          data-i18n-placeholder="ARTIFACTS_PLACEHOLDER"
                                                           placeholder="URLs, nombres de procesos, rutas de archivos, etc."></textarea>
                                             </div>
                                         </div>
@@ -759,6 +890,7 @@
                                                     <span data-i18n="CONTAINMENT">Contención</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentContainment" rows="3"
+                                                          data-i18n-placeholder="CONTAINMENT_PLACEHOLDER"
                                                           placeholder="Acciones tomadas para contener el incidente"></textarea>
                                             </div>
                                             <div class="col-md-4">
@@ -766,6 +898,7 @@
                                                     <span data-i18n="ANALYSIS">Análisis</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentAnalysis" rows="3"
+                                                          data-i18n-placeholder="ANALYSIS_PLACEHOLDER"
                                                           placeholder="Análisis técnico realizado"></textarea>
                                             </div>
                                             <div class="col-md-4">
@@ -773,6 +906,7 @@
                                                     <span data-i18n="REMEDIATION">Remediación</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentRemediation" rows="3"
+                                                          data-i18n-placeholder="REMEDIATION_PLACEHOLDER"
                                                           placeholder="Acciones de remediación aplicadas"></textarea>
                                             </div>
                                             <div class="col-md-12">
@@ -780,6 +914,7 @@
                                                     <span data-i18n="LESSONS_LEARNED">Lecciones Aprendidas</span>
                                                 </label>
                                                 <textarea class="form-control" id="incidentLessons" rows="3"
+                                                          data-i18n-placeholder="LESSONS_PLACEHOLDER"
                                                           placeholder="Lecciones aprendidas y mejoras a implementar"></textarea>
                                             </div>
                                         </div>
@@ -810,7 +945,11 @@
 
         // Inicializar gestor de incidencias
         document.addEventListener('DOMContentLoaded', function() {
-            IncidentManager.init();
+            // IncidentManager.init() se llama automáticamente desde incidents.js
+            
+            // Aplicar traducciones al cargar la página
+            const savedLang = localStorage.getItem("osintLanguage") || "es";
+            Translations.setLanguage(savedLang);
             
             // Mostrar nombre de usuario en navbar
             const currentUser = Auth.getCurrentUser();
@@ -853,11 +992,11 @@
         function updateThemeIcon() {
             const currentTheme = body.getAttribute("data-bs-theme");
             if (currentTheme === "dark") {
-                iconLight.style.display = "none";
-                iconDark.style.display = "block";
-            } else {
-                iconLight.style.display = "block";
+                iconLight.style.display = "block"; // Mostrar sol en modo oscuro
                 iconDark.style.display = "none";
+            } else {
+                iconLight.style.display = "none";
+                iconDark.style.display = "block"; // Mostrar luna en modo claro
             }
         }
 
@@ -865,15 +1004,18 @@
         const langToggle = document.getElementById("langToggle");
         const langText = document.getElementById("langText");
 
-        const savedLang = localStorage.getItem("osintLanguage") || "es";
-        Translations.setLanguage(savedLang);
-        langText.textContent = savedLang === "es" ? "EN" : "ES";
+        // Inicializar texto del botón según idioma guardado
+        const initialLang = localStorage.getItem("osintLanguage") || "es";
+        langText.textContent = initialLang === "es" ? "EN" : "ES";
 
         langToggle.addEventListener("click", () => {
             const currentLang = Translations.currentLanguage;
             const newLang = currentLang === "es" ? "en" : "es";
             Translations.setLanguage(newLang);
             langText.textContent = newLang === "es" ? "EN" : "ES";
+            
+            // Re-poblar filtros con nuevo idioma
+            IncidentManager.populateFilters();
             
             // Re-renderizar incidencias para actualizar traducciones
             IncidentManager.renderIncidents();

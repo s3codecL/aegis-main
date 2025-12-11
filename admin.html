@@ -10,6 +10,204 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+        /* Los estilos de botones se heredan de style.css */
+        
+        /* Fondos */
+        [data-bs-theme="dark"] body {
+            background: #000000 !important;
+        }
+
+        [data-bs-theme="light"] body {
+            background: #ffffff !important;
+        }
+        
+        /* Dark mode - Cards */
+        [data-bs-theme="dark"] .card {
+            background: rgba(15, 20, 51, 0.6) !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        [data-bs-theme="dark"] .card:hover {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 
+                        0 10px 20px rgba(59, 130, 246, 0.15),
+                        0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            transform: translateY(-8px) scale(1.01) !important;
+        }
+        
+        /* Light mode - Cards */
+        [data-bs-theme="light"] .card {
+            background: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            border-radius: 1rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        [data-bs-theme="light"] .card:hover {
+            background: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25), 
+                        0 10px 20px rgba(59, 130, 246, 0.15),
+                        0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            transform: translateY(-8px) scale(1.01) !important;
+        }
+        
+        /* Light mode - textos */
+        [data-bs-theme="light"] .card h1,
+        [data-bs-theme="light"] .card h2,
+        [data-bs-theme="light"] .card h3,
+        [data-bs-theme="light"] .card .h1 {
+            color: #1e293b !important;
+        }
+        
+        [data-bs-theme="light"] .card .text-muted,
+        [data-bs-theme="light"] .subheader {
+            color: #64748b !important;
+        }
+        
+        /* Light mode - tabla */
+        [data-bs-theme="light"] .table {
+            color: #1e293b !important;
+            background-color: transparent !important;
+        }
+        
+        [data-bs-theme="light"] .table thead th {
+            background-color: #f8fafc !important;
+            color: #475569 !important;
+            border-color: #e5e7eb !important;
+        }
+        
+        [data-bs-theme="light"] .table tbody tr {
+            border-color: #e5e7eb !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        [data-bs-theme="light"] .table-hover tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.08) !important;
+        }
+        
+        /* Dark mode - Tabla */
+        [data-bs-theme="dark"] .table {
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .table thead th {
+            background-color: rgba(15, 20, 51, 0.8) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+        }
+        
+        [data-bs-theme="dark"] .table tbody tr {
+            border-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        [data-bs-theme="dark"] .table-hover tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Dark mode - Form controls (selects, inputs) */
+        [data-bs-theme="dark"] .form-select,
+        [data-bs-theme="dark"] .form-control {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .form-select:focus,
+        [data-bs-theme="dark"] .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(59, 130, 246, 0.6) !important;
+            color: #fff !important;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+        }
+        
+        [data-bs-theme="dark"] .form-select option {
+            background-color: #1e293b !important;
+            color: #e8eaf6 !important;
+        }
+        
+        [data-bs-theme="dark"] .form-label {
+            color: #e8eaf6 !important;
+        }
+        
+        /* Light mode - Form controls */
+        [data-bs-theme="light"] .form-select,
+        [data-bs-theme="light"] .form-control {
+            background-color: #ffffff !important;
+            border-color: #d1d5db !important;
+            color: #1e293b !important;
+        }
+        
+        [data-bs-theme="light"] .form-select:focus,
+        [data-bs-theme="light"] .form-control:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15) !important;
+        }
+        
+        [data-bs-theme="light"] .form-label {
+            color: #1e293b !important;
+        }
+        
+        /* Light mode - Colores de números en estadísticas */
+        [data-bs-theme="light"] .card .text-primary,
+        [data-bs-theme="light"] .text-primary {
+            color: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .card .h1.text-primary {
+            color: #3b82f6 !important;
+        }
+        
+        /* Botones de acción */
+        .btn-primary {
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: white !important;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2563eb !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+        }
+        
+        /* Light mode - Botones outline en tabla */
+        [data-bs-theme="light"] .table .btn-outline-primary {
+            color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            background-color: white !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-primary:hover {
+            color: white !important;
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-primary svg {
+            fill: #3b82f6 !important;
+        }
+        
+        [data-bs-theme="light"] .table .btn-outline-primary:hover svg {
+            fill: white !important;
+        }
+        
+        /* Badges */
+        .badge {
+            font-weight: 600;
+            padding: 0.35rem 0.65rem;
+        }
+        
+        [data-bs-theme="light"] .badge {
+            color: white !important;
+        }
+    </style>
 </head>
 
 <body data-bs-theme="dark">

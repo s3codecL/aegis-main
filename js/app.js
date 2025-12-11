@@ -721,6 +721,12 @@ const App = {
       el.textContent = t(key, lang);
     });
 
+    // Update placeholders with data-i18n-placeholder
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      el.placeholder = t(key, lang);
+    });
+
     // Update placeholders
     const searchInput = document.getElementById("search-input");
     if (searchInput) searchInput.placeholder = t("ENTER_PLACEHOLDER", lang);

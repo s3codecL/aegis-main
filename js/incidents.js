@@ -294,9 +294,12 @@ const IncidentManager = {
         }
 
         tbody.innerHTML = incidents.map(incident => {
-            const statusBadge = CSTaxonomy.getStatusBadge(incident.classification.status);
+            const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+            const statusBadge = CSTaxonomy.getStatusBadge(incident.classification.status, lang);
             const critColor = CSTaxonomy.getCriticalityColor(incident.classification.criticality);
-            const date = new Date(incident.detection.timestamp).toLocaleString('es-ES');
+            const critLabel = CSTaxonomy.getCriticalityLabel(incident.classification.criticality, lang);
+            const typeLabel = CSTaxonomy.getIncidentTypeLabel(incident.classification.type, lang);
+            const date = new Date(incident.detection.timestamp).toLocaleString(lang === 'en' ? 'en-US' : 'es-ES');
             
             return `
                 <tr onclick="IncidentManager.viewIncident('${incident.id}')" style="cursor: pointer;">
@@ -311,12 +314,12 @@ const IncidentManager = {
                     </td>
                     <td>
                         <span class="badge" style="background-color: ${critColor};">
-                            ${incident.classification.criticality}
+                            ${critLabel}
                         </span>
                     </td>
                     <td>
-                        <div class="text-truncate" style="max-width: 200px;" title="${incident.classification.typeLabel}">
-                            ${incident.classification.typeLabel}
+                        <div class="text-truncate" style="max-width: 200px;" title="${typeLabel}">
+                            ${typeLabel}
                         </div>
                     </td>
                     <td>
@@ -407,7 +410,9 @@ const IncidentManager = {
         
         const modalTitle = document.getElementById('incidentModalLabel');
         if (modalTitle) {
-            modalTitle.textContent = `Editar Incidente: ${incident.code}`;
+            const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+            const editText = translations[lang]["EDIT_INCIDENT_CODE"] || "Editar Incidente:";
+            modalTitle.textContent = `${editText} ${incident.code}`;
         }
         
         const modalElement = document.getElementById('incidentModal');
@@ -420,13 +425,15 @@ const IncidentManager = {
      */
     populateFormSelects: function() {
         console.log('Poblando selects del formulario...');
+        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+        const selectPlaceholder = translations[lang]["SELECT_PLACEHOLDER"] || "-- Seleccionar --";
         
         // 1. Tipos de incidentes
         const typeSelect = document.getElementById('incidentType');
         if (typeSelect) {
-            typeSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            typeSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.incidentTypes.map(type => 
-                    `<option value="${type.code}">${type.label}</option>`
+                    `<option value="${type.code}">${lang === 'en' ? type.labelEN : type.label}</option>`
                 ).join('');
             console.log('✓ Tipos de incidente poblados:', CSTaxonomy.incidentTypes.length);
         }
@@ -434,7 +441,7 @@ const IncidentManager = {
         // 2. Áreas organizacionales
         const areaSelect = document.getElementById('incidentArea');
         if (areaSelect) {
-            areaSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            areaSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.areas.map(area => 
                     `<option value="${area.code}">${area.label}</option>`
                 ).join('');
@@ -444,9 +451,9 @@ const IncidentManager = {
         // 3. Canales de detección
         const channelSelect = document.getElementById('incidentDetectionChannel');
         if (channelSelect) {
-            channelSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            channelSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.detectionChannels.map(channel => 
-                    `<option value="${channel}">${channel}</option>`
+                    `<option value="${channel.value}">${lang === 'en' ? channel.labelEN : channel.label}</option>`
                 ).join('');
             console.log('✓ Canales de detección poblados:', CSTaxonomy.detectionChannels.length);
         }
@@ -454,9 +461,9 @@ const IncidentManager = {
         // 4. Estados
         const statusSelect = document.getElementById('incidentStatus');
         if (statusSelect) {
-            statusSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            statusSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.statuses.map(status => 
-                    `<option value="${status.value}">${status.label}</option>`
+                    `<option value="${status.value}">${lang === 'en' ? status.labelEN : status.label}</option>`
             ).join('');
             console.log('✓ Estados poblados:', CSTaxonomy.statuses.length);
         }
@@ -464,9 +471,9 @@ const IncidentManager = {
         // 5. Fase NIST
         const nistSelect = document.getElementById('incidentNistPhase');
         if (nistSelect && CSTaxonomy.nistPhases) {
-            nistSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            nistSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.nistPhases.map(phase => 
-                    `<option value="${phase.id}">${phase.label}</option>`
+                    `<option value="${phase.id}">${lang === 'en' ? phase.labelEN : phase.label}</option>`
                 ).join('');
             console.log('✓ Fases NIST pobladas:', CSTaxonomy.nistPhases.length);
         }
@@ -474,9 +481,9 @@ const IncidentManager = {
         // 6. Táctica MITRE
         const mitreSelect = document.getElementById('incidentMitreTactic');
         if (mitreSelect && CSTaxonomy.mitreAttack) {
-            mitreSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            mitreSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.mitreAttack.map(tactic => 
-                    `<option value="${tactic.id}">${tactic.label}</option>`
+                    `<option value="${tactic.id}">${lang === 'en' ? tactic.labelEN : tactic.label}</option>`
                 ).join('');
             console.log('✓ Tácticas MITRE pobladas:', CSTaxonomy.mitreAttack.length);
         }
@@ -484,9 +491,9 @@ const IncidentManager = {
         // 7. Categoría SGSI
         const sgsiCatSelect = document.getElementById('incidentSgsiCategory');
         if (sgsiCatSelect && CSTaxonomy.sgsiCategories) {
-            sgsiCatSelect.innerHTML = '<option value="">-- Seleccionar --</option>' + 
+            sgsiCatSelect.innerHTML = `<option value="">${selectPlaceholder}</option>` + 
                 CSTaxonomy.sgsiCategories.map(cat => 
-                    `<option value="${cat.category}">${cat.category}</option>`
+                    `<option value="${cat.category}">${lang === 'en' ? cat.categoryEN : cat.category}</option>`
                 ).join('');
             console.log('✓ Categorías SGSI pobladas:', CSTaxonomy.sgsiCategories.length);
         }
@@ -681,10 +688,14 @@ const IncidentManager = {
             const form = document.getElementById('incidentForm');
             if (form) form.reset();
             const modalTitle = document.getElementById('incidentModalLabel');
-            if (modalTitle) modalTitle.textContent = 'Nueva Incidencia de Ciberseguridad';
+            if (modalTitle) {
+                const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+                modalTitle.textContent = translations[lang]["NEW_CYBERSECURITY_INCIDENT"] || "Nueva Incidencia de Ciberseguridad";
+            }
             const priorityBadge = document.getElementById('calculatedPriority');
             if (priorityBadge) {
-                priorityBadge.textContent = 'Sin calcular';
+                const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+                priorityBadge.textContent = translations[lang]["NOT_CALCULATED"] || "Sin calcular";
                 priorityBadge.className = 'badge bg-secondary';
             }
             this.populateFormSelects();
@@ -748,30 +759,33 @@ const IncidentManager = {
     },
 
     populateFilters: function() {
+        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+        const allText = translations[lang]["ALL"] || "Todos";
+        
         // Filtro de estado
         const statusFilter = document.getElementById('filterStatus');
         if (statusFilter) {
-            statusFilter.innerHTML = '<option value="">-- Todos --</option>' + 
+            statusFilter.innerHTML = `<option value="">-- ${allText} --</option>` + 
                 CSTaxonomy.statuses.map(status => 
-                    `<option value="${status.value}">${status.label}</option>`
+                    `<option value="${status.value}">${lang === 'en' ? status.labelEN : status.label}</option>`
                 ).join('');
         }
 
         // Filtro de criticidad
         const critFilter = document.getElementById('filterCriticality');
         if (critFilter) {
-            critFilter.innerHTML = '<option value="">-- Todos --</option>' + 
+            critFilter.innerHTML = `<option value="">-- ${allText} --</option>` + 
                 CSTaxonomy.criticality.map(crit => 
-                    `<option value="${crit.value}">${crit.label}</option>`
+                    `<option value="${crit.value}">${lang === 'en' ? crit.labelEN : crit.label}</option>`
                 ).join('');
         }
 
         // Filtro de tipo
         const typeFilter = document.getElementById('filterType');
         if (typeFilter) {
-            typeFilter.innerHTML = '<option value="">-- Todos --</option>' + 
+            typeFilter.innerHTML = `<option value="">-- ${allText} --</option>` + 
                 CSTaxonomy.incidentTypes.map(type => 
-                    `<option value="${type.code}">${type.label}</option>`
+                    `<option value="${type.code}">${lang === 'en' ? type.labelEN : type.label}</option>`
                 ).join('');
         }
     },
@@ -782,11 +796,12 @@ const IncidentManager = {
         const priorityBadge = document.getElementById('calculatedPriority');
         
         if (impact && urgency && priorityBadge) {
+            const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
             const priority = CSTaxonomy.getPriority(impact, urgency);
             const critObj = CSTaxonomy.criticality.find(c => c.value === priority);
             
             if (critObj) {
-                priorityBadge.textContent = critObj.label;
+                priorityBadge.textContent = lang === 'en' ? critObj.labelEN : critObj.label;
                 priorityBadge.className = 'badge badge-' + priority.toLowerCase();
             }
         }
