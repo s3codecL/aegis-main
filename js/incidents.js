@@ -70,9 +70,8 @@ const IncidentManager = {
         // Generar código automático
         const code = CSTaxonomy.generateIncidentCode(data.type, data.area);
         
-        // Calcular prioridad automáticamente
+        // Calcular prioridad y criticidad automáticamente
         const priority = CSTaxonomy.getPriority(data.sgsi.impact, data.sgsi.urgency);
-        
         const incident = {
             id: this.generateId(),
             code: code,
@@ -89,7 +88,7 @@ const IncidentManager = {
             classification: {
                 type: data.type,
                 typeLabel: CSTaxonomy.getIncidentTypeLabel(data.type),
-                criticality: data.criticality,
+                criticality: priority, // <-- criticidad calculada
                 status: data.status || 'Open',
                 confidence: data.confidence || 0
             },
@@ -166,13 +165,16 @@ const IncidentManager = {
             updates.timeline.closed = new Date().toISOString();
         }
 
-        // Recalcular prioridad si cambian impacto/urgencia
+        // Recalcular prioridad y criticidad si cambian impacto/urgencia
         if (updates.sgsi?.impact || updates.sgsi?.urgency) {
             const currentSgsi = this.state.incidents[index].sgsi;
             const newImpact = updates.sgsi.impact || currentSgsi.impact;
             const newUrgency = updates.sgsi.urgency || currentSgsi.urgency;
             updates.sgsi = updates.sgsi || {};
-            updates.sgsi.priority = CSTaxonomy.getPriority(newImpact, newUrgency);
+            const newPriority = CSTaxonomy.getPriority(newImpact, newUrgency);
+            updates.sgsi.priority = newPriority;
+            if (!updates.classification) updates.classification = {};
+            updates.classification.criticality = newPriority;
         }
 
         // Merge updates
@@ -307,16 +309,19 @@ const IncidentManager = {
                         <strong>${incident.code}</strong>
                         <br><small class="text-muted">${date}</small>
                     </td>
-                    <td>
-                        <span class="badge" style="background-color: ${statusBadge.color};">
-                            ${statusBadge.icon} ${statusBadge.label}
-                        </span>
-                    </td>
-                    <td>
-                        <span class="badge" style="background-color: ${critColor};">
-                            ${critLabel}
-                        </span>
-                    </td>
+                        <td style="vertical-align: middle;">
+                            <span class="badge status-badge" style="background-color: ${statusBadge.color};">
+                                ${statusBadge.label}
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle; text-align: center; width: 32px;">
+                            <span class="status-icon" title="${critLabel}">${statusBadge.icon}</span>
+                        </td>
+                        <td>
+                            <span class="badge" style="background-color: ${critColor};">
+                                ${critLabel}
+                            </span>
+                        </td>
                     <td>
                         <div class="text-truncate" style="max-width: 200px;" title="${typeLabel}">
                             ${typeLabel}
@@ -625,14 +630,15 @@ const IncidentManager = {
                 affected: { ip: formData.ip, hostname: formData.hostname },
                 classification: {
                     ...this.state.currentIncident.classification,
-                    criticality: formData.criticality,
-                    status: formData.status,
-                    confidence: formData.confidence
+                    type: formData.type || this.state.currentIncident.classification.type,
+                    criticality: formData.criticality || this.state.currentIncident.classification.criticality,
+                    status: formData.status || this.state.currentIncident.classification.status,
+                    confidence: formData.confidence || this.state.currentIncident.classification.confidence
                 },
-                sgsi: formData.sgsi,
-                assignment: formData.assignment,
-                nistPhase: formData.nistPhase,
-                iocs: formData.iocs
+                sgsi: { ...this.state.currentIncident.sgsi, ...formData.sgsi },
+                assignment: formData.assignment || this.state.currentIncident.assignment,
+                nistPhase: formData.nistPhase || this.state.currentIncident.nistPhase,
+                iocs: formData.iocs || this.state.currentIncident.iocs
             });
             this.showAlert('Incidente actualizado correctamente', 'success');
         } else {
@@ -798,11 +804,15 @@ const IncidentManager = {
         if (impact && urgency && priorityBadge) {
             const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
             const priority = CSTaxonomy.getPriority(impact, urgency);
+            console.log(`🔍 Priority calculation: Impact=${impact}, Urgency=${urgency}, Result=${priority}`);
             const critObj = CSTaxonomy.criticality.find(c => c.value === priority);
             
             if (critObj) {
                 priorityBadge.textContent = lang === 'en' ? critObj.labelEN : critObj.label;
                 priorityBadge.className = 'badge badge-' + priority.toLowerCase();
+                console.log(`✅ Priority set: ${priorityBadge.textContent}, class: ${priorityBadge.className}`);
+            } else {
+                console.error(`❌ No criticality object found for priority: ${priority}`);
             }
         }
     },

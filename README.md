@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-[![Version](https://img.shields.io/badge/version-1.7.2-blue.svg)](changelog.md)
+[![Version](https://img.shields.io/badge/version-1.8.0-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -10,7 +10,20 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
-## 🚀 Novedades v1.7.2
+## 🚀 Novedades v1.8.0
+
+🛡️ **Gestión de Incidencias de Ciberseguridad (v1.8.0)**
+- Sistema completo de gestión de incidentes de seguridad
+- Clasificación automática según NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
+- Generación automática de códigos únicos por incidente
+- Cálculo de prioridad mediante matriz SGSI (Impacto x Urgencia)
+- 14 tipos de incidentes con taxonomía técnica completa
+- Panel de estadísticas en tiempo real (Total, Abiertas, Críticas)
+- Sistema de filtrado avanzado (Estado, Criticidad, Tipo, Búsqueda)
+- Gestión de IoCs (IPs, hashes, dominios, artefactos)
+- Línea de tiempo de acciones (Contención, Análisis, Remediación)
+- 100+ claves de traducción ES/EN para módulo de incidencias
+- Acceso desde panel admin (solo administradores)
 
 🔒 **Protección reCAPTCHA v2 (v1.7.2)**
 - reCAPTCHA v2 integrado en login y registro
@@ -90,6 +103,37 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Roles y permisos**: Usuario regular vs Administrador
 - **Sesiones persistentes**: "Recordarme" con tokens
 - **OAuth preparado**: Google y GitHub (integración futura)
+
+### 🛡️ Gestión de Incidencias de Ciberseguridad (v1.8.0)
+- **Sistema completo de incident response**:
+  - Registro estructurado en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
+  - Generación automática de código: `INC-[TIPO]-[ÁREA]-[AÑO]-[MMDD]-[SECUENCIA]`
+  - Cálculo automático de prioridad con matriz SGSI 4x4 (Impacto x Urgencia)
+
+- **Taxonomía técnica completa**:
+  - 14 tipos de incidentes: Phishing, Malware, Ransomware, Data Leakage, Acceso No Autorizado, etc.
+  - 8 áreas organizacionales: CyberSecurity, SOC, IT, Redes, Cloud, Apps, Data, Ops
+  - 11 canales de detección: SIEM, EDR/XDR, Firewall, IDS/IPS, Antivirus, User Report, etc.
+  - 4 niveles de criticidad con colores (Verde/Amarillo/Naranja/Rojo)
+  - 5 estados de ciclo de vida (Abierta, Investigando, Contenida, Resuelta, Cerrada)
+
+- **Frameworks internacionales**:
+  - **NIST 800-61**: 6 fases (Preparation, Detection, Containment, Eradication, Recovery, Post-mortem)
+  - **ISO/IEC 27035**: Clasificación SGSI con 7 categorías y subcategorías
+  - **MITRE ATT&CK**: 11 tácticas con técnicas específicas
+
+- **Gestión de evidencias e IoCs**:
+  - IPs maliciosas, hashes de archivos (MD5/SHA1/SHA256)
+  - Dominios sospechosos, artefactos técnicos (URLs, procesos, rutas)
+  - Línea de tiempo de acciones: Contención, Análisis, Remediación, Lecciones Aprendidas
+
+- **Panel de control**:
+  - 4 tarjetas de estadísticas (Total, Abiertas, En Investigación, Críticas)
+  - Tabla responsive con 8 columnas
+  - Filtros avanzados: Estado, Criticidad, Tipo, Búsqueda global
+  - Modal de formulario con acordeón para fácil navegación
+
+- **Persistencia**: localStorage con clave `aegisIncidents` (preparado para backend)
 
 ### 🎯 Interfaz Moderna
 - **Diseño limpio y responsivo**: Optimizado para desktop, tablet y móvil

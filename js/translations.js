@@ -55,6 +55,7 @@ const translations = {
     "GO": "Go",
     "CLEAR": "Clear",
     "CANCEL": "Cancel",
+    "SAVE": "Save",
     "CLOSE": "Close",
     "CONTINUE": "Continue",
     "ACCEPT": "Accept",
@@ -270,6 +271,164 @@ const translations = {
     "ROLE_ADMIN": "Admin",
     "ROLE_USER": "User",
 
+    // Incident Management
+    "INCIDENTS": "Incidents",
+    "INCIDENTS_PAGE_TITLE": "Incident Management - Aegis Dashboard",
+    "INCIDENT_MANAGEMENT": "Incident Management",
+    "CYBERSECURITY_INCIDENTS": "Cybersecurity Incidents",
+    "NEW_INCIDENT": "New Incident",
+    "NEW_CYBERSECURITY_INCIDENT": "New Cybersecurity Incident",
+    "EDIT_INCIDENT": "Edit Incident",
+    "EDIT_INCIDENT_CODE": "Edit Incident:",
+    "VIEW_INCIDENT": "View Incident",
+    "DELETE_INCIDENT": "Delete Incident",
+    "SAVE_INCIDENT": "Save Incident",
+    "NO_INCIDENTS": "No incidents registered",
+    "CODE": "Code",
+    "STATUS": "Status",
+    "CRITICALITY": "Criticality",
+    "TYPE": "Type",
+    "DESCRIPTION": "Description",
+    "REPORTER": "Reporter",
+    "AREA": "Area",
+    "INCIDENT_CODE": "Incident Code",
+    "INCIDENT_TYPE": "Incident Type",
+    "INCIDENT_STATUS": "Status",
+    "INCIDENT_CRITICALITY": "Criticality",
+    "INCIDENT_DESCRIPTION": "Description",
+    "INCIDENT_PRIORITY": "Priority",
+    "PRIORITY": "Priority",
+    "AFFECTED_ASSETS": "Affected Assets",
+    "DETECTION_DATE": "Detection Date",
+    "REPORTED_BY": "Reported By",
+    
+    // Incident Form Sections
+    "BASIC_INFO": "Basic Information",
+    "DETECTION_INFO": "Detection Information",
+    "TECHNICAL_CLASSIFICATION": "Technical Classification",
+    "SGSI_CLASSIFICATION": "SGSI Classification",
+    "ASSIGNMENT_TRACKING": "Assignment & Tracking",
+    "EVIDENCE_IOCS": "Evidence & IoCs",
+    "ACTIONS_TIMELINE": "Actions Timeline",
+    
+    // Incident Fields
+    "DETECTION_CHANNEL": "Detection Channel",
+    "AFFECTED_IP": "Affected IP",
+    "AFFECTED_HOSTNAME": "Affected Hostname",
+    "CONFIDENCE_LEVEL": "Confidence Level",
+    "IMPACT": "Impact",
+    "URGENCY": "Urgency",
+    "SGSI_CATEGORY": "SGSI Category",
+    "SGSI_SUBCATEGORY": "Subcategory",
+    "AFFECTED_ASSET": "Affected Asset",
+    "NIST_PHASE": "NIST Phase",
+    "MITRE_ATTACK": "MITRE ATT&CK",
+    
+    // Assignment Roles
+    "CONTAINMENT": "Containment",
+    "ANALYSIS": "Analysis",
+    "REMEDIATION": "Remediation",
+    "ASSIGN_TO": "Assign To",
+    "SLA": "SLA",
+    "ASSIGNED_DATE": "Assigned Date",
+    
+    // IoCs
+    "INDICATORS_COMPROMISE": "Indicators of Compromise (IoCs)",
+    "MALICIOUS_IPS": "Malicious IPs",
+    "FILE_HASHES": "File Hashes",
+    "SUSPICIOUS_DOMAINS": "Suspicious Domains",
+    "SYSTEM_ARTIFACTS": "System Artifacts",
+    "ADD_EVIDENCE": "Add Evidence",
+    "UPLOAD_FILE": "Upload File",
+    
+    // Actions
+    "ADD_ACTION": "Add Action",
+    "ACTION_TASK": "Task",
+    "ACTION_RESPONSIBLE": "Responsible",
+    "ACTION_RESULT": "Result",
+    "ACTION_DATE": "Date/Time",
+    
+    // Filters
+    "FILTER_BY_STATUS": "Filter by Status",
+    "FILTER_BY_CRITICALITY": "Filter by Criticality",
+    "FILTER_BY_TYPE": "Filter by Type",
+    "SEARCH_INCIDENTS": "Search incidents...",
+    "ALL_STATUSES": "All Statuses",
+    "ALL_CRITICALITIES": "All Criticalities",
+    "ALL_TYPES": "All Types",
+    
+    // Statistics
+    "TOTAL_INCIDENTS": "Total Incidents",
+    "OPEN_INCIDENTS": "Open",
+    "INVESTIGATING": "Investigating",
+    "CRITICAL_INCIDENTS": "Critical",
+    "CLOSED_INCIDENTS": "Closed",
+    
+    // Criticality Levels
+    "CRIT_LOW": "Low",
+    "CRIT_MEDIUM": "Medium",
+    "CRIT_HIGH": "High",
+    "CRIT_CRITICAL": "Critical",
+    
+    // Status
+    "STATUS_OPEN": "Open",
+    "STATUS_INVESTIGATING": "Investigating",
+    "STATUS_CONTAINED": "Contained",
+    "STATUS_RESOLVED": "Resolved",
+    "STATUS_CLOSED": "Closed",
+    
+    // SGSI Impact/Urgency
+    "IMPACT_MINOR": "Minor",
+    "IMPACT_MODERATE": "Moderate",
+    "IMPACT_MAJOR": "Major",
+    "IMPACT_CRITICAL": "Critical",
+    "URGENCY_LOW": "Low",
+    "URGENCY_MEDIUM": "Medium",
+    "URGENCY_HIGH": "High",
+    "URGENCY_CRITICAL": "Critical",
+    "SELECT_PLACEHOLDER": "-- Select --",
+    "CONFIDENCE_HIGH": "High",
+    "CONFIDENCE_MEDIUM": "Medium",
+    "CONFIDENCE_LOW": "Low",
+    "IMPACT_LOW": "Low",
+    "IMPACT_MEDIUM": "Medium",
+    "IMPACT_HIGH": "High",
+    "IMPACT_CRITICAL": "Critical",
+    "IMPACT_LOCALIZED": "Minor / Localized",
+    "IMPACT_LIMITED": "Moderate / Limited",
+    "IMPACT_WIDE": "Significant / Wide",
+    "IMPACT_EXTENSIVE": "Extensive / Generalized",
+    "URGENCY_LOW_F": "Low",
+    "URGENCY_MEDIUM_F": "Medium",
+    "URGENCY_HIGH_F": "High",
+    "URGENCY_CRITICAL_F": "Critical",
+    "NOT_CALCULATED": "Not calculated",
+    "PRIORITY_AUTO": "Automatically calculated based on Impact x Urgency",
+    "ESTIMATED_RESOLUTION": "Estimated Resolution",
+    "INCIDENTS_LIST": "Incidents List",
+    "CONTAINMENT_PLACEHOLDER": "Actions taken to contain the incident",
+    "ANALYSIS_PLACEHOLDER": "Technical analysis performed",
+    "REMEDIATION_PLACEHOLDER": "Remediation actions applied",
+    "LESSONS_PLACEHOLDER": "Lessons learned and recommendations",
+    "SEARCH_INCIDENTS_PLACEHOLDER": "Code, description, IP...",
+    "DESCRIPTION_PLACEHOLDER": "Brief description of the incident",
+    "REPORTER_PLACEHOLDER": "Name of the reporting user",
+    "AFFECTED_IP_PLACEHOLDER": "192.168.1.100",
+    "AFFECTED_HOSTNAME_PLACEHOLDER": "PC-USER-01",
+    "ASSIGNED_TO_PLACEHOLDER": "SOC Analyst, Administrator, etc.",
+    "SLA_PLACEHOLDER": "24",
+    "MALICIOUS_IPS_PLACEHOLDER": "192.168.1.50, 10.0.0.100 (comma separated)",
+    "FILE_HASHES_PLACEHOLDER": "SHA256: abc123... (comma or line separated)",
+    "SUSPICIOUS_DOMAINS_PLACEHOLDER": "malicious-site.com, phishing-page.net (comma separated)",
+    "ARTIFACTS_PLACEHOLDER": "URLs, process names, file paths, etc.",
+    
+    // Messages
+    "INCIDENT_CREATED": "Incident created successfully",
+    "INCIDENT_UPDATED": "Incident updated successfully",
+    "INCIDENT_DELETED": "Incident deleted successfully",
+    "CONFIRM_DELETE_INCIDENT": "Are you sure you want to delete this incident? This action cannot be undone.",
+    "REQUIRED_FIELDS": "Please fill in all required fields",
+
     // Tool Descriptions
     "DESC_vt": "Analyze suspicious files, domains, IPs & URLs",
     "DESC_urlscan": "Search for domains, IPs, filenames, hashes, ASNs",
@@ -423,6 +582,7 @@ const translations = {
     "GO": "Ir",
     "CLEAR": "Limpiar",
     "CANCEL": "Cancelar",
+    "SAVE": "Guardar",
     "CLOSE": "Cerrar",
     "CONTINUE": "Continuar",
     "ACCEPT": "Aceptar",
@@ -637,6 +797,164 @@ const translations = {
     "ADMINISTRATOR_YOU": "(Tú)",
     "ROLE_ADMIN": "Admin",
     "ROLE_USER": "Usuario",
+
+    // Gestión de Incidencias
+    "INCIDENTS": "Incidencias",
+    "INCIDENTS_PAGE_TITLE": "Gestión de Incidencias - Aegis Dashboard",
+    "INCIDENT_MANAGEMENT": "Gestión de Incidencias",
+    "CYBERSECURITY_INCIDENTS": "Incidencias de Ciberseguridad",
+    "NEW_INCIDENT": "Nuevo Incidente",
+    "NEW_CYBERSECURITY_INCIDENT": "Nueva Incidencia de Ciberseguridad",
+    "EDIT_INCIDENT": "Editar Incidente",
+    "EDIT_INCIDENT_CODE": "Editar Incidente:",
+    "VIEW_INCIDENT": "Ver Incidente",
+    "DELETE_INCIDENT": "Eliminar Incidente",
+    "SAVE_INCIDENT": "Guardar Incidente",
+    "NO_INCIDENTS": "No hay incidentes registrados",
+    "CODE": "Código",
+    "STATUS": "Estado",
+    "CRITICALITY": "Criticidad",
+    "TYPE": "Tipo",
+    "DESCRIPTION": "Descripción",
+    "REPORTER": "Reportado por",
+    "AREA": "Área",
+    "INCIDENT_CODE": "Código de Incidente",
+    "INCIDENT_TYPE": "Tipo de Incidente",
+    "INCIDENT_STATUS": "Estado",
+    "INCIDENT_CRITICALITY": "Criticidad",
+    "INCIDENT_DESCRIPTION": "Descripción",
+    "INCIDENT_PRIORITY": "Prioridad",
+    "PRIORITY": "Prioridad",
+    "AFFECTED_ASSETS": "Activos Afectados",
+    "DETECTION_DATE": "Fecha de Detección",
+    "REPORTED_BY": "Reportado Por",
+    
+    // Secciones del Formulario
+    "BASIC_INFO": "Información Básica",
+    "DETECTION_INFO": "Información de Detección",
+    "TECHNICAL_CLASSIFICATION": "Clasificación Técnica",
+    "SGSI_CLASSIFICATION": "Clasificación SGSI",
+    "ASSIGNMENT_TRACKING": "Asignación y Seguimiento",
+    "EVIDENCE_IOCS": "Evidencias e IoCs",
+    "ACTIONS_TIMELINE": "Línea de Tiempo de Acciones",
+    
+    // Campos del Incidente
+    "DETECTION_CHANNEL": "Canal de Detección",
+    "AFFECTED_IP": "IP Afectada",
+    "AFFECTED_HOSTNAME": "Hostname Afectado",
+    "CONFIDENCE_LEVEL": "Nivel de Confianza",
+    "IMPACT": "Impacto",
+    "URGENCY": "Urgencia",
+    "SGSI_CATEGORY": "Categoría SGSI",
+    "SGSI_SUBCATEGORY": "Subcategoría",
+    "AFFECTED_ASSET": "Activo Afectado",
+    "NIST_PHASE": "Fase NIST",
+    "MITRE_ATTACK": "MITRE ATT&CK",
+    
+    // Roles de Asignación
+    "CONTAINMENT": "Contención",
+    "ANALYSIS": "Análisis",
+    "REMEDIATION": "Remediación",
+    "ASSIGN_TO": "Asignar A",
+    "SLA": "SLA",
+    "ASSIGNED_DATE": "Fecha de Asignación",
+    
+    // IoCs
+    "INDICATORS_COMPROMISE": "Indicadores de Compromiso (IoCs)",
+    "MALICIOUS_IPS": "IPs Maliciosas",
+    "FILE_HASHES": "Hashes de Archivos",
+    "SUSPICIOUS_DOMAINS": "Dominios Sospechosos",
+    "SYSTEM_ARTIFACTS": "Artefactos del Sistema",
+    "ADD_EVIDENCE": "Agregar Evidencia",
+    "UPLOAD_FILE": "Subir Archivo",
+    
+    // Acciones
+    "ADD_ACTION": "Agregar Acción",
+    "ACTION_TASK": "Tarea",
+    "ACTION_RESPONSIBLE": "Responsable",
+    "ACTION_RESULT": "Resultado",
+    "ACTION_DATE": "Fecha/Hora",
+    
+    // Filtros
+    "FILTER_BY_STATUS": "Filtrar por Estado",
+    "FILTER_BY_CRITICALITY": "Filtrar por Criticidad",
+    "FILTER_BY_TYPE": "Filtrar por Tipo",
+    "SEARCH_INCIDENTS": "Buscar incidentes...",
+    "ALL_STATUSES": "Todos los Estados",
+    "ALL_CRITICALITIES": "Todas las Criticidades",
+    "ALL_TYPES": "Todos los Tipos",
+    
+    // Estadísticas
+    "TOTAL_INCIDENTS": "Total de Incidentes",
+    "OPEN_INCIDENTS": "Abiertos",
+    "INVESTIGATING": "En Investigación",
+    "CRITICAL_INCIDENTS": "Críticos",
+    "CLOSED_INCIDENTS": "Cerrados",
+    
+    // Niveles de Criticidad
+    "CRIT_LOW": "Baja",
+    "CRIT_MEDIUM": "Media",
+    "CRIT_HIGH": "Alta",
+    "CRIT_CRITICAL": "Crítica",
+    
+    // Estados
+    "STATUS_OPEN": "Abierto",
+    "STATUS_INVESTIGATING": "En Investigación",
+    "STATUS_CONTAINED": "Contenido",
+    "STATUS_RESOLVED": "Resuelto",
+    "STATUS_CLOSED": "Cerrado",
+    
+    // Impacto/Urgencia SGSI
+    "IMPACT_MINOR": "Menor",
+    "IMPACT_MODERATE": "Moderado",
+    "IMPACT_MAJOR": "Mayor",
+    "IMPACT_CRITICAL": "Crítico",
+    "URGENCY_LOW": "Baja",
+    "URGENCY_MEDIUM": "Media",
+    "URGENCY_HIGH": "Alta",
+    "URGENCY_CRITICAL": "Crítica",
+    "SELECT_PLACEHOLDER": "-- Seleccionar --",
+    "CONFIDENCE_HIGH": "Alto",
+    "CONFIDENCE_MEDIUM": "Medio",
+    "CONFIDENCE_LOW": "Bajo",
+    "IMPACT_LOW": "Bajo",
+    "IMPACT_MEDIUM": "Medio",
+    "IMPACT_HIGH": "Alto",
+    "IMPACT_CRITICAL": "Crítico",
+    "IMPACT_LOCALIZED": "Menor / Localizado",
+    "IMPACT_LIMITED": "Moderado / Limitado",
+    "IMPACT_WIDE": "Significativo / Amplio",
+    "IMPACT_EXTENSIVE": "Extenso / Generalizado",
+    "URGENCY_LOW_F": "Baja",
+    "URGENCY_MEDIUM_F": "Media",
+    "URGENCY_HIGH_F": "Alta",
+    "URGENCY_CRITICAL_F": "Crítica",
+    "NOT_CALCULATED": "Sin calcular",
+    "PRIORITY_AUTO": "Se calcula automáticamente según Impacto x Urgencia",
+    "ESTIMATED_RESOLUTION": "Resolución Estimada",
+    "INCIDENTS_LIST": "Lista de Incidencias",
+    "CONTAINMENT_PLACEHOLDER": "Acciones tomadas para contener el incidente",
+    "ANALYSIS_PLACEHOLDER": "Análisis técnico realizado",
+    "REMEDIATION_PLACEHOLDER": "Acciones de remediación aplicadas",
+    "LESSONS_PLACEHOLDER": "Lecciones aprendidas y recomendaciones",
+    "SEARCH_INCIDENTS_PLACEHOLDER": "Código, descripción, IP...",
+    "DESCRIPTION_PLACEHOLDER": "Descripción breve del incidente",
+    "REPORTER_PLACEHOLDER": "Nombre del usuario que reporta",
+    "AFFECTED_IP_PLACEHOLDER": "192.168.1.100",
+    "AFFECTED_HOSTNAME_PLACEHOLDER": "PC-USER-01",
+    "ASSIGNED_TO_PLACEHOLDER": "Analista SOC, Administrador, etc.",
+    "SLA_PLACEHOLDER": "24",
+    "MALICIOUS_IPS_PLACEHOLDER": "192.168.1.50, 10.0.0.100 (separadas por comas)",
+    "FILE_HASHES_PLACEHOLDER": "SHA256: abc123... (separados por comas o saltos de línea)",
+    "SUSPICIOUS_DOMAINS_PLACEHOLDER": "malicious-site.com, phishing-page.net (separados por comas)",
+    "ARTIFACTS_PLACEHOLDER": "URLs, nombres de procesos, rutas de archivos, etc.",
+    
+    // Mensajes
+    "INCIDENT_CREATED": "Incidente creado correctamente",
+    "INCIDENT_UPDATED": "Incidente actualizado correctamente",
+    "INCIDENT_DELETED": "Incidente eliminado correctamente",
+    "CONFIRM_DELETE_INCIDENT": "¿Estás seguro de eliminar este incidente? Esta acción no se puede deshacer.",
+    "REQUIRED_FIELDS": "Por favor completa todos los campos requeridos",
     "OR_REGISTER_WITH": "O registrarse con",
     "CONTINUE_GOOGLE": "Continuar con Google",
     "CONTINUE_GITHUB": "Continuar con GitHub",
@@ -749,3 +1067,39 @@ function t(key, lang = null) {
   const currentLang = lang || (App && App.config.currentLanguage) || localStorage.getItem("aegisLanguage") || "es";
   return translations[currentLang] && translations[currentLang][key] ? translations[currentLang][key] : key;
 }
+
+// Translations object for incident management pages
+const Translations = {
+  currentLanguage: localStorage.getItem("osintLanguage") || "es",
+  
+  setLanguage: function(lang) {
+    this.currentLanguage = lang;
+    localStorage.setItem("osintLanguage", lang);
+    this.applyTranslations();
+  },
+  
+  applyTranslations: function() {
+    const lang = this.currentLanguage;
+    
+    // Update page title
+    document.title = translations[lang]["INCIDENTS_PAGE_TITLE"] || "Gestión de Incidencias - Aegis Dashboard";
+    
+    // Update all elements with data-i18n
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const translation = translations[lang][key];
+      if (translation) {
+        el.textContent = translation;
+      }
+    });
+    
+    // Update all placeholders with data-i18n-placeholder
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      const translation = translations[lang][key];
+      if (translation) {
+        el.placeholder = translation;
+      }
+    });
+  }
+};

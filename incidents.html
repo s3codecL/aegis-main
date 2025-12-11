@@ -157,6 +157,12 @@
             align-items: center;
             gap: 0.25rem;
         }
+            .status-icon {
+                vertical-align: middle;
+                margin-left: 0.25rem;
+                display: inline-flex;
+                align-items: center;
+            }
         
         /* Estilos para los badges de prioridad */
         .badge-low {
@@ -548,6 +554,7 @@
                                             <tr>
                                                 <th data-i18n="CODE">Código</th>
                                                 <th data-i18n="STATUS">Estado</th>
+                                                <th style="width:32px"></th>
                                                 <th data-i18n="CRITICALITY">Criticidad</th>
                                                 <th data-i18n="TYPE">Tipo</th>
                                                 <th data-i18n="DESCRIPTION">Descripción</th>
@@ -740,10 +747,10 @@
                                                 </label>
                                                 <select class="form-select" id="incidentImpact" required>
                                                     <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
-                                                    <option value="LOW" data-i18n="IMPACT_LOW">Bajo</option>
-                                                    <option value="MEDIUM" data-i18n="IMPACT_MEDIUM">Medio</option>
-                                                    <option value="HIGH" data-i18n="IMPACT_HIGH">Alto</option>
-                                                    <option value="CRITICAL" data-i18n="IMPACT_CRITICAL">Crítico</option>
+                                                    <option value="Localized" data-i18n="IMPACT_LOCALIZED">Menor / Localizado</option>
+                                                    <option value="Limited" data-i18n="IMPACT_LIMITED">Moderado / Limitado</option>
+                                                    <option value="Wide" data-i18n="IMPACT_WIDE">Significativo / Amplio</option>
+                                                    <option value="Extensive" data-i18n="IMPACT_EXTENSIVE">Extenso / Generalizado</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
@@ -752,10 +759,10 @@
                                                 </label>
                                                 <select class="form-select" id="incidentUrgency" required>
                                                     <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --</option>
-                                                    <option value="LOW" data-i18n="URGENCY_LOW_F">Baja</option>
-                                                    <option value="MEDIUM" data-i18n="URGENCY_MEDIUM_F">Media</option>
-                                                    <option value="HIGH" data-i18n="URGENCY_HIGH_F">Alta</option>
-                                                    <option value="CRITICAL" data-i18n="URGENCY_CRITICAL_F">Crítica</option>
+                                                    <option value="Low" data-i18n="URGENCY_LOW_F">Baja</option>
+                                                    <option value="Medium" data-i18n="URGENCY_MEDIUM_F">Media</option>
+                                                    <option value="High" data-i18n="URGENCY_HIGH_F">Alta</option>
+                                                    <option value="Critical" data-i18n="URGENCY_CRITICAL_F">Crítica</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">

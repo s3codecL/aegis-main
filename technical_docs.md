@@ -7,6 +7,7 @@ aegis-main/
 ├── index.html                 # Página principal (Dashboard)
 ├── login.html                 # Página de autenticación
 ├── admin.html                 # Panel de administración
+├── incidents.html             # Gestión de incidencias (v1.8.0)
 ├── quickstart.html            # Guía rápida
 ├── style.css                  # Estilos globales
 ├── README.md                  # Documentación principal
@@ -16,6 +17,8 @@ aegis-main/
 ├── js/                        # 📁 Carpeta centralizada de JavaScript
 │   ├── app.js                # Lógica principal de la aplicación
 │   ├── auth.js               # Sistema de autenticación (v1.7.0)
+│   ├── taxonomy-cs.js        # Taxonomía de incidencias (v1.8.0)
+│   ├── incidents.js          # Lógica de incidencias (v1.8.0)
 │   ├── script.js             # Scripts adicionales
 │   ├── tools-config.js       # Configuración de herramientas
 │   └── translations.js       # Archivos de traducción (ES/EN)
@@ -948,6 +951,612 @@ document.querySelectorAll('[data-placeholder]').forEach(el => {
 11. **Más Botones de Acceso Rápido**: Identificar y agregar más funciones frecuentes
 12. **Configuración de Accesos**: Permitir al usuario personalizar botones de acceso rápido
 
+## Sistema de Gestión de Incidencias de Ciberseguridad (v1.8.0)
+
+### Arquitectura del Módulo
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│          Flujo de Gestión de Incidencias                     │
+└─────────────────────────────────────────────────────────────┘
+
+    admin.html
+         ↓ (Menú dropdown)
+    incidents.html ───────────────────────┐
+    (Solo Administradores)                │
+         ↓                                │
+    ┌────────────────────┐    ┌──────────────────────┐
+    │  Panel Principal   │    │  Modal de Formulario │
+    │  - Estadísticas    │───→│  - 7 Secciones       │
+    │  - Filtros         │    │  - Accordion UI      │
+    │  - Tabla Incidentes│←───│  - Crear/Editar      │
+    └────────────────────┘    └──────────────────────┘
+         ↓                                ↓
+    ┌────────────────────────────────────────────┐
+    │           localStorage                     │
+    │  Clave: aegisIncidents                     │
+    │  Array de objetos JSON                     │
+    └────────────────────────────────────────────┘
+```
+
+### js/taxonomy-cs.js (317 líneas)
+
+Módulo centralizado con toda la taxonomía técnica para clasificación de incidentes.
+
+#### Estructura del Objeto CSTaxonomy:
+
+```javascript
+const CSTaxonomy = {
+    // 14 Tipos de Incidentes
+    incidentTypes: {
+        PHISH: { code: 'PHISH', nameES: 'Phishing', nameEN: 'Phishing' },
+        MALW: { code: 'MALW', nameES: 'Malware', nameEN: 'Malware' },
+        RANS: { code: 'RANS', nameES: 'Ransomware', nameEN: 'Ransomware' },
+        DLEAK: { code: 'DLEAK', nameES: 'Fuga de Datos', nameEN: 'Data Leakage' },
+        UNAUTH: { code: 'UNAUTH', nameES: 'Acceso No Autorizado', nameEN: 'Unauthorized Access' },
+        ATO: { code: 'ATO', nameES: 'Compromiso de Cuenta', nameEN: 'Account Takeover' },
+        DDOS: { code: 'DDOS', nameES: 'Ataque DDoS', nameEN: 'DDoS Attack' },
+        VULN: { code: 'VULN', nameES: 'Explotación de Vulnerabilidad', nameEN: 'Vulnerability Exploitation' },
+        SOCENG: { code: 'SOCENG', nameES: 'Ingeniería Social', nameEN: 'Social Engineering' },
+        MISCONF: { code: 'MISCONF', nameES: 'Configuración Errónea', nameEN: 'Misconfiguration' },
+        PHYSEC: { code: 'PHYSEC', nameES: 'Seguridad Física', nameEN: 'Physical Security' },
+        INTRUD: { code: 'INTRUD', nameES: 'Intrusión', nameEN: 'Intrusion' },
+        ZERO: { code: 'ZERO', nameES: 'Zero-Day', nameEN: 'Zero-Day' },
+        NETANOM: { code: 'NETANOM', nameES: 'Anomalía de Red', nameEN: 'Network Anomaly' }
+    },
+    
+    // 8 Áreas Organizacionales
+    areas: {
+        CS: { code: 'CS', nameES: 'CyberSecurity', nameEN: 'CyberSecurity' },
+        SOC: { code: 'SOC', nameES: 'SOC', nameEN: 'SOC' },
+        IT: { code: 'IT', nameES: 'Tecnología', nameEN: 'Technology' },
+        NET: { code: 'NET', nameES: 'Redes', nameEN: 'Networks' },
+        CLOUD: { code: 'CLOUD', nameES: 'Cloud', nameEN: 'Cloud' },
+        APP: { code: 'APP', nameES: 'Aplicaciones', nameEN: 'Applications' },
+        DATA: { code: 'DATA', nameES: 'Base de Datos', nameEN: 'Database' },
+        OPS: { code: 'OPS', nameES: 'Operaciones', nameEN: 'Operations' }
+    },
+    
+    // 11 Canales de Detección
+    detectionChannels: {
+        SIEM: { code: 'SIEM', nameES: 'SIEM', nameEN: 'SIEM' },
+        EDR_XDR: { code: 'EDR_XDR', nameES: 'EDR/XDR', nameEN: 'EDR/XDR' },
+        FIREWALL: { code: 'FIREWALL', nameES: 'Firewall', nameEN: 'Firewall' },
+        IDS_IPS: { code: 'IDS_IPS', nameES: 'IDS/IPS', nameEN: 'IDS/IPS' },
+        ANTIVIRUS: { code: 'ANTIVIRUS', nameES: 'Antivirus', nameEN: 'Antivirus' },
+        USER_REPORT: { code: 'USER_REPORT', nameES: 'Reporte Usuario', nameEN: 'User Report' },
+        THREAT_INTEL: { code: 'THREAT_INTEL', nameES: 'Threat Intelligence', nameEN: 'Threat Intelligence' },
+        EMAIL_GATEWAY: { code: 'EMAIL_GATEWAY', nameES: 'Email Gateway', nameEN: 'Email Gateway' },
+        DLP: { code: 'DLP', nameES: 'DLP', nameEN: 'DLP' },
+        CLOUD_MONITOR: { code: 'CLOUD_MONITOR', nameES: 'Monitoreo Cloud', nameEN: 'Cloud Monitor' },
+        AUDIT: { code: 'AUDIT', nameES: 'Auditoría', nameEN: 'Audit' }
+    },
+    
+    // 4 Niveles de Criticidad
+    criticality: {
+        LOW: { code: 'LOW', nameES: 'Baja', nameEN: 'Low', color: '#28a745' },
+        MEDIUM: { code: 'MEDIUM', nameES: 'Media', nameEN: 'Medium', color: '#ffc107' },
+        HIGH: { code: 'HIGH', nameES: 'Alta', nameEN: 'High', color: '#fd7e14' },
+        CRITICAL: { code: 'CRITICAL', nameES: 'Crítica', nameEN: 'Critical', color: '#dc3545' }
+    },
+    
+    // 5 Estados del Ciclo de Vida
+    statuses: {
+        OPEN: { code: 'OPEN', nameES: 'Abierta', nameEN: 'Open', icon: '🔵' },
+        INVESTIGATING: { code: 'INVESTIGATING', nameES: 'Investigando', nameEN: 'Investigating', icon: '🔍' },
+        CONTAINED: { code: 'CONTAINED', nameES: 'Contenida', nameEN: 'Contained', icon: '🛡️' },
+        RESOLVED: { code: 'RESOLVED', nameES: 'Resuelta', nameEN: 'Resolved', icon: '✅' },
+        CLOSED: { code: 'CLOSED', nameES: 'Cerrada', nameEN: 'Closed', icon: '⚫' }
+    },
+    
+    // 7 Categorías SGSI (ISO/IEC 27035)
+    sgsiCategories: {
+        AVAILABILITY: { 
+            code: 'AVAILABILITY', 
+            nameES: 'Disponibilidad', 
+            nameEN: 'Availability',
+            subcategories: ['Service Down', 'Data Unavailable', 'System Outage']
+        },
+        INTEGRITY: { 
+            code: 'INTEGRITY', 
+            nameES: 'Integridad', 
+            nameEN: 'Integrity',
+            subcategories: ['Data Modification', 'Unauthorized Changes', 'Data Corruption']
+        },
+        CONFIDENTIALITY: { 
+            code: 'CONFIDENTIALITY', 
+            nameES: 'Confidencialidad', 
+            nameEN: 'Confidentiality',
+            subcategories: ['Data Exposure', 'Unauthorized Access', 'Information Leak']
+        },
+        COMPLIANCE: { 
+            code: 'COMPLIANCE', 
+            nameES: 'Cumplimiento', 
+            nameEN: 'Compliance',
+            subcategories: ['Regulation Violation', 'Policy Breach', 'Audit Failure']
+        },
+        REPUTATION: { 
+            code: 'REPUTATION', 
+            nameES: 'Reputación', 
+            nameEN: 'Reputation',
+            subcategories: ['Brand Damage', 'Public Exposure', 'Media Attention']
+        },
+        FINANCIAL: { 
+            code: 'FINANCIAL', 
+            nameES: 'Financiero', 
+            nameEN: 'Financial',
+            subcategories: ['Monetary Loss', 'Fraud', 'Ransom Payment']
+        },
+        OPERATIONS: { 
+            code: 'OPERATIONS', 
+            nameES: 'Operaciones', 
+            nameEN: 'Operations',
+            subcategories: ['Process Disruption', 'Productivity Loss', 'Resource Impact']
+        }
+    },
+    
+    // 6 Fases NIST 800-61 rev2
+    nistPhases: {
+        PREPARATION: { code: 'PREPARATION', nameES: 'Preparación', nameEN: 'Preparation' },
+        DETECTION: { code: 'DETECTION', nameES: 'Detección y Análisis', nameEN: 'Detection & Analysis' },
+        CONTAINMENT: { code: 'CONTAINMENT', nameES: 'Contención', nameEN: 'Containment' },
+        ERADICATION: { code: 'ERADICATION', nameES: 'Erradicación', nameEN: 'Eradication' },
+        RECOVERY: { code: 'RECOVERY', nameES: 'Recuperación', nameEN: 'Recovery' },
+        POST_MORTEM: { code: 'POST_MORTEM', nameES: 'Post-Mortem', nameEN: 'Post-Mortem' }
+    },
+    
+    // 11 Tácticas MITRE ATT&CK
+    mitreAttack: {
+        INITIAL_ACCESS: { code: 'TA0001', nameES: 'Acceso Inicial', nameEN: 'Initial Access', techniques: ['T1189', 'T1190', 'T1566'] },
+        EXECUTION: { code: 'TA0002', nameES: 'Ejecución', nameEN: 'Execution', techniques: ['T1059', 'T1203', 'T1204'] },
+        PERSISTENCE: { code: 'TA0003', nameES: 'Persistencia', nameEN: 'Persistence', techniques: ['T1053', 'T1543', 'T1547'] },
+        PRIVILEGE_ESCALATION: { code: 'TA0004', nameES: 'Escalada de Privilegios', nameEN: 'Privilege Escalation', techniques: ['T1068', 'T1134', 'T1548'] },
+        DEFENSE_EVASION: { code: 'TA0005', nameES: 'Evasión de Defensas', nameEN: 'Defense Evasion', techniques: ['T1027', 'T1055', 'T1070'] },
+        CREDENTIAL_ACCESS: { code: 'TA0006', nameES: 'Acceso a Credenciales', nameEN: 'Credential Access', techniques: ['T1003', 'T1110', 'T1552'] },
+        DISCOVERY: { code: 'TA0007', nameES: 'Descubrimiento', nameEN: 'Discovery', techniques: ['T1046', 'T1082', 'T1087'] },
+        LATERAL_MOVEMENT: { code: 'TA0008', nameES: 'Movimiento Lateral', nameEN: 'Lateral Movement', techniques: ['T1021', 'T1091', 'T1550'] },
+        COLLECTION: { code: 'TA0009', nameES: 'Recopilación', nameEN: 'Collection', techniques: ['T1005', 'T1039', 'T1113'] },
+        EXFILTRATION: { code: 'TA0010', nameES: 'Exfiltración', nameEN: 'Exfiltration', techniques: ['T1020', 'T1048', 'T1567'] },
+        IMPACT: { code: 'TA0040', nameES: 'Impacto', nameEN: 'Impact', techniques: ['T1485', 'T1486', 'T1490'] }
+    },
+    
+    // Función: Generar Código Único de Incidente
+    generateIncidentCode: function(type, area) {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const mmdd = month + day;
+        
+        // Obtener incidentes existentes del mismo tipo y área
+        const existingIncidents = JSON.parse(localStorage.getItem('aegisIncidents') || '[]');
+        const sameTypeArea = existingIncidents.filter(inc => 
+            inc.code && inc.code.startsWith(`INC-${type}-${area}-${year}-${mmdd}`)
+        );
+        const sequence = String(sameTypeArea.length + 1).padStart(4, '0');
+        
+        return `INC-${type}-${area}-${year}-${mmdd}-${sequence}`;
+    },
+    
+    // Función: Calcular Prioridad SGSI (Matriz 4x4)
+    getPriority: function(impact, urgency) {
+        // Matriz Impact x Urgency → Priority
+        const matrix = {
+            'CRITICAL-CRITICAL': 'CRITICAL',
+            'CRITICAL-HIGH': 'CRITICAL',
+            'CRITICAL-MEDIUM': 'HIGH',
+            'CRITICAL-LOW': 'HIGH',
+            'HIGH-CRITICAL': 'CRITICAL',
+            'HIGH-HIGH': 'HIGH',
+            'HIGH-MEDIUM': 'HIGH',
+            'HIGH-LOW': 'MEDIUM',
+            'MEDIUM-CRITICAL': 'HIGH',
+            'MEDIUM-HIGH': 'HIGH',
+            'MEDIUM-MEDIUM': 'MEDIUM',
+            'MEDIUM-LOW': 'MEDIUM',
+            'LOW-CRITICAL': 'HIGH',
+            'LOW-HIGH': 'MEDIUM',
+            'LOW-MEDIUM': 'MEDIUM',
+            'LOW-LOW': 'LOW'
+        };
+        
+        const key = `${impact}-${urgency}`;
+        return matrix[key] || 'MEDIUM';
+    }
+};
+```
+
+### js/incidents.js (500+ líneas)
+
+Módulo de lógica de negocio para CRUD completo de incidencias.
+
+#### Estructura del Objeto IncidentManager:
+
+```javascript
+const IncidentManager = {
+    incidents: [],
+    storageKey: 'aegisIncidents',
+    currentIncident: null,
+    filters: {
+        status: '',
+        criticality: '',
+        type: '',
+        search: ''
+    },
+    
+    // Inicializar sistema
+    init: function() {
+        this.loadIncidents();
+        this.bindEvents();
+        this.populateFormSelects();
+        this.renderIncidents();
+        this.updateStats();
+    },
+    
+    // Cargar desde localStorage
+    loadIncidents: function() {
+        const stored = localStorage.getItem(this.storageKey);
+        this.incidents = stored ? JSON.parse(stored) : [];
+    },
+    
+    // Guardar en localStorage
+    saveToStorage: function() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.incidents));
+    },
+    
+    // Crear nueva incidencia
+    createIncident: function(data) {
+        const newIncident = {
+            id: Date.now().toString(),
+            code: CSTaxonomy.generateIncidentCode(data.type, data.area),
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            createdBy: Auth.getCurrentUser().username,
+            priority: CSTaxonomy.getPriority(data.impact, data.urgency),
+            ...data,
+            actions: [],
+            iocs: {
+                maliciousIPs: data.maliciousIPs || [],
+                fileHashes: data.fileHashes || [],
+                suspiciousDomains: data.suspiciousDomains || [],
+                artifacts: data.artifacts || []
+            }
+        };
+        
+        this.incidents.unshift(newIncident);
+        this.saveToStorage();
+        this.renderIncidents();
+        this.updateStats();
+        
+        return newIncident;
+    },
+    
+    // Actualizar incidencia existente
+    updateIncident: function(id, updates) {
+        const index = this.incidents.findIndex(inc => inc.id === id);
+        if (index !== -1) {
+            // Recalcular prioridad si cambió impacto/urgencia
+            if (updates.impact || updates.urgency) {
+                const impact = updates.impact || this.incidents[index].impact;
+                const urgency = updates.urgency || this.incidents[index].urgency;
+                updates.priority = CSTaxonomy.getPriority(impact, urgency);
+            }
+            
+            this.incidents[index] = {
+                ...this.incidents[index],
+                ...updates,
+                updatedAt: new Date().toISOString()
+            };
+            
+            this.saveToStorage();
+            this.renderIncidents();
+            this.updateStats();
+            return true;
+        }
+        return false;
+    },
+    
+    // Eliminar incidencia
+    deleteIncident: function(id) {
+        const lang = localStorage.getItem('osintLanguage') || 'es';
+        const confirmMsg = Translations.translations[lang].CONFIRM_DELETE_INCIDENT;
+        
+        if (confirm(confirmMsg)) {
+            this.incidents = this.incidents.filter(inc => inc.id !== id);
+            this.saveToStorage();
+            this.renderIncidents();
+            this.updateStats();
+            return true;
+        }
+        return false;
+    },
+    
+    // Obtener incidencias filtradas
+    getFilteredIncidents: function() {
+        let filtered = this.incidents;
+        
+        // Filtro por estado
+        if (this.filters.status) {
+            filtered = filtered.filter(inc => inc.status === this.filters.status);
+        }
+        
+        // Filtro por criticidad
+        if (this.filters.criticality) {
+            filtered = filtered.filter(inc => inc.priority === this.filters.criticality);
+        }
+        
+        // Filtro por tipo
+        if (this.filters.type) {
+            filtered = filtered.filter(inc => inc.type === this.filters.type);
+        }
+        
+        // Búsqueda global
+        if (this.filters.search) {
+            const search = this.filters.search.toLowerCase();
+            filtered = filtered.filter(inc => 
+                inc.code.toLowerCase().includes(search) ||
+                inc.description.toLowerCase().includes(search) ||
+                (inc.affectedIP && inc.affectedIP.toLowerCase().includes(search)) ||
+                (inc.affectedHostname && inc.affectedHostname.toLowerCase().includes(search)) ||
+                inc.reporter.toLowerCase().includes(search)
+            );
+        }
+        
+        return filtered;
+    },
+    
+    // Renderizar tabla de incidencias
+    renderIncidents: function() {
+        const tbody = document.getElementById('incidentsTableBody');
+        const filtered = this.getFilteredIncidents();
+        const lang = localStorage.getItem('osintLanguage') || 'es';
+        
+        if (filtered.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center text-muted py-4">
+                        ${Translations.t('NO_INCIDENTS', lang)}
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tbody.innerHTML = filtered.map(inc => {
+            const statusObj = CSTaxonomy.statuses[inc.status];
+            const criticalityObj = CSTaxonomy.criticality[inc.priority];
+            const typeObj = CSTaxonomy.incidentTypes[inc.type];
+            
+            return `
+                <tr>
+                    <td><strong>${inc.code}</strong></td>
+                    <td>
+                        <span class="status-badge">
+                            ${statusObj.icon} ${statusObj['name' + (lang === 'es' ? 'ES' : 'EN')]}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge badge-${inc.priority.toLowerCase()}">${criticalityObj['name' + (lang === 'es' ? 'ES' : 'EN')]}</span>
+                    </td>
+                    <td>${typeObj['name' + (lang === 'es' ? 'ES' : 'EN')]}</td>
+                    <td>${inc.description.substring(0, 50)}${inc.description.length > 50 ? '...' : ''}</td>
+                    <td>${inc.affectedIP || '-'}</td>
+                    <td>${inc.reporter}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="IncidentManager.editIncident('${inc.id}')">
+                            ${Translations.t('EDIT', lang)}
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="IncidentManager.deleteIncident('${inc.id}')">
+                            ${Translations.t('DELETE', lang)}
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    },
+    
+    // Actualizar estadísticas
+    updateStats: function() {
+        const total = this.incidents.length;
+        const open = this.incidents.filter(inc => inc.status === 'OPEN').length;
+        const investigating = this.incidents.filter(inc => inc.status === 'INVESTIGATING').length;
+        const critical = this.incidents.filter(inc => inc.priority === 'CRITICAL').length;
+        
+        document.getElementById('totalIncidents').textContent = total;
+        document.getElementById('openIncidents').textContent = open;
+        document.getElementById('investigatingIncidents').textContent = investigating;
+        document.getElementById('criticalIncidents').textContent = critical;
+    },
+    
+    // Más funciones: populateFormSelects(), saveIncidentFromForm(), editIncident(), etc.
+};
+```
+
+### incidents.html (Interfaz)
+
+**Componentes Principales:**
+
+1. **Panel de Estadísticas (4 Cards)**
+   - Total de Incidencias
+   - Incidencias Abiertas
+   - En Investigación
+   - Críticas
+
+2. **Sección de Filtros**
+   - Select: Filtro por Estado
+   - Select: Filtro por Criticidad
+   - Select: Filtro por Tipo
+   - Input: Búsqueda global
+
+3. **Tabla de Incidencias (8 Columnas)**
+   - Código único (`INC-PHISH-CS-2025-1210-0001`)
+   - Estado con icono (🔵 Abierta, 🔍 Investigando, etc.)
+   - Criticidad con badge de color
+   - Tipo de incidente
+   - Descripción (truncada a 50 caracteres)
+   - IP Afectada
+   - Reportado por
+   - Acciones (Editar/Eliminar)
+
+4. **Modal de Formulario (7 Secciones Acordeón)**
+   - **Sección 1: Información Básica**
+     - Descripción (textarea, requerido)
+     - Reportado por (input, requerido)
+     - IP Afectada (input, opcional)
+     - Hostname Afectado (input, opcional)
+   
+   - **Sección 2: Información de Detección**
+     - Canal de Detección (select, requerido)
+     - Nivel de Confianza (select: Alto/Medio/Bajo)
+   
+   - **Sección 3: Clasificación Técnica**
+     - Tipo de Incidente (select 14 tipos, requerido)
+     - Área Organizacional (select 8 áreas, requerido)
+     - Fase NIST 800-61 (select 6 fases)
+     - Táctica MITRE ATT&CK (select 11 tácticas)
+   
+   - **Sección 4: Clasificación SGSI (ISO 27035)**
+     - Impacto (select: Bajo/Medio/Alto/Crítico, requerido)
+     - Urgencia (select: Baja/Media/Alta/Crítica, requerido)
+     - Categoría SGSI (select 7 categorías)
+     - Alerta de Prioridad Calculada (info box)
+   
+   - **Sección 5: Asignación y Seguimiento**
+     - Estado (select 5 estados, requerido)
+     - Asignado a (input)
+     - SLA en horas (number input)
+     - Resolución Estimada (datetime-local)
+   
+   - **Sección 6: Evidencias e IoCs**
+     - IPs Maliciosas (textarea)
+     - Hashes de Archivos (textarea)
+     - Dominios Sospechosos (textarea)
+     - Artefactos Adicionales (textarea)
+   
+   - **Sección 7: Línea de Tiempo de Acciones**
+     - Contención (textarea)
+     - Análisis (textarea)
+     - Remediación (textarea)
+     - Lecciones Aprendidas (textarea)
+
+### Almacenamiento
+
+**localStorage:**
+```javascript
+// Clave
+aegisIncidents
+
+// Formato
+[
+  {
+    id: "1702463542123",
+    code: "INC-PHISH-CS-2025-1210-0001",
+    createdAt: "2025-12-10T14:32:22.123Z",
+    updatedAt: "2025-12-10T15:45:00.000Z",
+    createdBy: "admin",
+    type: "PHISH",
+    area: "CS",
+    status: "INVESTIGATING",
+    priority: "HIGH",
+    impact: "HIGH",
+    urgency: "HIGH",
+    description: "Campaña de phishing detectada en correos corporativos",
+    reporter: "Juan Pérez",
+    affectedIP: "192.168.1.50",
+    affectedHostname: "PC-USER-01",
+    detectionChannel: "EMAIL_GATEWAY",
+    confidence: "HIGH",
+    nistPhase: "DETECTION",
+    mitreTactic: "INITIAL_ACCESS",
+    sgsiCategory: "CONFIDENTIALITY",
+    assignedTo: "Analista SOC",
+    sla: 24,
+    estimatedResolution: "2025-12-11T14:00:00.000Z",
+    iocs: {
+      maliciousIPs: ["203.0.113.50", "198.51.100.42"],
+      fileHashes: ["abc123def456..."],
+      suspiciousDomains: ["fake-banking-site.com"],
+      artifacts: ["URL: https://malicious-link.com/login"]
+    },
+    actions: [],
+    containment: "Bloqueados dominios en firewall y email gateway",
+    analysis: "Análisis de headers revela campaña coordinada",
+    remediation: "Usuarios afectados notificados, contraseñas reseteadas",
+    lessons: "Implementar autenticación multifactor en correo"
+  }
+]
+```
+
+### Flujo de Trabajo
+
+```
+Usuario Admin → admin.html → Click "Gestión de Incidencias"
+                    ↓
+              incidents.html
+                    ↓
+    ┌───────────────┴───────────────┐
+    │                               │
+Ver Dashboard          Crear Nueva Incidencia
+    │                               │
+Filtros/Búsqueda           Modal de Formulario
+    │                      (7 Secciones)
+Editar/Eliminar                    │
+    │                      Guardar (validación)
+    └──────────┬───────────────────┘
+               ↓
+        localStorage.setItem()
+               ↓
+        Renderizar Tabla
+               ↓
+        Actualizar Stats
+```
+
+### Traducciones (100+ Claves)
+
+**Ejemplos de claves agregadas en js/translations.js:**
+
+```javascript
+// Inglés
+"INCIDENTS": "Incidents",
+"INCIDENT_MANAGEMENT": "Incident Management",
+"NEW_INCIDENT": "New Incident",
+"BASIC_INFO": "Basic Information",
+"DETECTION_INFO": "Detection Information",
+"TECHNICAL_CLASSIFICATION": "Technical Classification",
+"SGSI_CLASSIFICATION": "SGSI Classification (ISO 27035)",
+"ASSIGNMENT_TRACKING": "Assignment & Tracking",
+"EVIDENCE_IOCS": "Evidence & Indicators of Compromise (IoCs)",
+"ACTIONS_TIMELINE": "Actions Timeline",
+"MALICIOUS_IPS": "Malicious IPs",
+"FILE_HASHES": "File Hashes",
+"SUSPICIOUS_DOMAINS": "Suspicious Domains",
+"FILTER_BY_STATUS": "Filter by Status",
+"TOTAL_INCIDENTS": "Total Incidents",
+"CRITICAL_INCIDENTS": "Critical Incidents",
+"STATUS_OPEN": "Open",
+"STATUS_INVESTIGATING": "Investigating",
+"INCIDENT_CREATED": "Incident created successfully",
+
+// Español
+"INCIDENTS": "Incidencias",
+"INCIDENT_MANAGEMENT": "Gestión de Incidencias",
+"NEW_INCIDENT": "Nueva Incidencia",
+"BASIC_INFO": "Información Básica",
+// ... etc.
+```
+
+### Próximas Mejoras (v1.9.0)
+
+- [ ] **Exportar a PDF/CSV**: Reportes de incidencias
+- [ ] **Timeline Visual**: Gráfico de acciones con fechas
+- [ ] **Upload de Evidencias**: Archivos adjuntos con base64
+- [ ] **Selector MITRE Completo**: Búsqueda de técnicas
+- [ ] **Notificaciones**: Alertas en tiempo real
+- [ ] **Backend Integration**: API REST para persistencia centralizada
+- [ ] **Dashboard Analytics**: Gráficos con Chart.js (incidencias por tipo, por mes, MTTR)
+- [ ] **Comentarios Colaborativos**: Sistema de chat por incidente
+- [ ] **Tags Personalizados**: Etiquetas adicionales para categorización
+
 ---
 
-**Última actualización**: Diciembre 2025 (v1.7.1)
+**Última actualización**: Diciembre 2025 (v1.8.0)

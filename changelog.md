@@ -1,5 +1,126 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+## [1.8.0] - 2025-12-10
+
+### 🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
+
+#### Nueva Funcionalidad Empresarial
+- **Gestión Completa de Incidentes de Seguridad**
+  - ✅ Registro rápido de incidencias con formulario estructurado en 7 secciones
+  - ✅ Clasificación automática según estándares internacionales (NIST 800-61, ISO/IEC 27035, MITRE ATT&CK)
+  - ✅ Generación automática de códigos únicos: `INC-[TIPO]-[ÁREA]-[AÑO]-[MMDD]-[SECUENCIA]`
+  - ✅ Cálculo automático de prioridad mediante matriz SGSI (Impacto x Urgencia)
+  - ✅ Panel de estadísticas en tiempo real (Total, Abiertas, En Investigación, Críticas)
+  - ✅ Sistema de filtrado avanzado (Estado, Criticidad, Tipo, Búsqueda global)
+  - ✅ Soporte completo bilingüe (ES/EN) con 100+ claves de traducción
+
+#### Taxonomía y Clasificación (js/taxonomy-cs.js)
+- **14 Tipos de Incidentes**
+  - PHISH (Phishing), MALW (Malware), RANS (Ransomware), DLEAK (Data Leakage)
+  - UNAUTH (Acceso No Autorizado), ATO (Account Takeover), DDOS (DDoS)
+  - VULN (Explotación Vulnerabilidad), SOCENG (Ingeniería Social), MISCONF (Configuración Errónea)
+  - PHYSEC (Seguridad Física), INTRUD (Intrusión), ZERO (Zero-Day), NETANOM (Anomalía Red)
+
+- **8 Áreas Organizacionales**
+  - CS (CyberSecurity), SOC (Security Operations Center), IT (Tecnología), NET (Redes)
+  - CLOUD (Cloud Services), APP (Aplicaciones), DATA (Base de Datos), OPS (Operaciones)
+
+- **11 Canales de Detección**
+  - SIEM, EDR/XDR, Firewall, IDS/IPS, Antivirus, User Report, Threat Intel, Email Gateway, DLP, Cloud Monitor, Audit
+
+- **Clasificación SGSI (ISO 27035)**
+  - Matriz 4x4 de Impacto x Urgencia → 16 combinaciones de prioridad
+  - 7 categorías SGSI con subcategorías (Availability, Integrity, Confidentiality, Compliance, Reputation, Financial, Operations)
+
+- **Framework NIST 800-61**
+  - 6 fases: Preparation → Detection → Containment → Eradication → Recovery → Post-mortem
+
+- **MITRE ATT&CK Framework**
+  - 11 tácticas principales con técnicas específicas (Initial Access, Execution, Persistence, etc.)
+
+#### Lógica de Negocio (js/incidents.js)
+- **Operaciones CRUD Completas**
+  - `createIncident()`: Crear con validación y código automático
+  - `updateIncident()`: Actualizar con recálculo de prioridad
+  - `deleteIncident()`: Eliminar con confirmación
+  - `getFilteredIncidents()`: Filtrado por múltiples criterios
+  - `renderIncidents()`: Renderizado dinámico de tabla con badges de color
+
+- **Gestión de IoCs (Indicators of Compromise)**
+  - IPs maliciosas, hashes de archivos, dominios sospechosos, artefactos técnicos
+  - Almacenamiento estructurado para análisis forense
+
+- **Línea de Tiempo de Acciones**
+  - Contención, Análisis, Remediación, Lecciones Aprendidas
+  - Registro cronológico de todas las actividades del incidente
+
+- **Sistema de Estadísticas**
+  - Contadores en tiempo real por estado y criticidad
+  - Actualización automática al crear/editar/eliminar incidentes
+
+#### Interfaz de Usuario (incidents.html)
+- **Panel Principal**
+  - 4 tarjetas de estadísticas (Total, Abiertas, Investigando, Críticas)
+  - Tabla responsive con 8 columnas (Código, Estado, Criticidad, Tipo, Descripción, IP, Reporter, Acciones)
+  - Badges con colores específicos por criticidad (Verde/Amarillo/Naranja/Rojo)
+  - Iconos de estado visual (🔵 Abierta, 🔍 Investigando, 🛡️ Contenida, ✅ Resuelta, ⚫ Cerrada)
+
+- **Filtros Avanzados**
+  - 3 selectores: Estado, Criticidad, Tipo
+  - Barra de búsqueda global (busca en código, descripción, IP, hostname, reporter)
+  - Aplicación en tiempo real sin recargar página
+
+- **Modal de Formulario (7 Secciones Acordeón)**
+  1. **Información Básica**: Descripción, Reporter, IP/Hostname afectado
+  2. **Detección**: Canal de detección, Nivel de confianza
+  3. **Clasificación Técnica**: Tipo, Área, Fase NIST, Táctica MITRE
+  4. **Clasificación SGSI**: Impacto, Urgencia, Categoría, Prioridad calculada
+  5. **Asignación**: Estado, Asignado a, SLA, Fecha estimada de resolución
+  6. **Evidencias e IoCs**: IPs maliciosas, hashes, dominios, artefactos
+  7. **Línea de Tiempo**: Contención, Análisis, Remediación, Lecciones aprendidas
+
+- **Integración de Navegación**
+  - Enlace desde `admin.html` en menú dropdown
+  - Icono de escudo con alerta
+  - Protección de acceso solo para administradores (Auth.requireAdmin())
+
+#### Traducciones (js/translations.js)
+- **100+ Claves Nuevas en Español e Inglés**
+  - INCIDENTS, INCIDENT_MANAGEMENT, NEW_INCIDENT, EDIT_INCIDENT, DELETE_INCIDENT
+  - Secciones: BASIC_INFO, DETECTION_INFO, TECHNICAL_CLASSIFICATION, SGSI_CLASSIFICATION, ASSIGNMENT_TRACKING, EVIDENCE_IOCS, ACTIONS_TIMELINE
+  - Campos: DETECTION_CHANNEL, AFFECTED_IP, AFFECTED_HOSTNAME, CONFIDENCE_LEVEL, IMPACT, URGENCY, PRIORITY
+  - Filtros: FILTER_BY_STATUS, FILTER_BY_CRITICALITY, FILTER_BY_TYPE, SEARCH_INCIDENTS
+  - Estadísticas: TOTAL_INCIDENTS, OPEN_INCIDENTS, INVESTIGATING, CRITICAL_INCIDENTS
+  - Estados: STATUS_OPEN, STATUS_INVESTIGATING, STATUS_CONTAINED, STATUS_RESOLVED, STATUS_CLOSED
+  - Mensajes: INCIDENT_CREATED, INCIDENT_UPDATED, INCIDENT_DELETED, CONFIRM_DELETE_INCIDENT
+
+#### Almacenamiento y Persistencia
+- **localStorage**
+  - Clave: `aegisIncidents`
+  - Formato: Array de objetos JSON con estructura completa
+  - Auto-guardado en cada operación CRUD
+  - Sin límite de incidentes (dependiente del navegador ~5-10MB)
+
+#### Archivos Creados/Modificados
+- `incidents.html` (NEW): Interfaz completa de gestión de incidencias
+- `js/taxonomy-cs.js` (NEW): Taxonomía y clasificaciones (317 líneas)
+- `js/incidents.js` (NEW): Lógica de negocio CRUD (500+ líneas)
+- `js/translations.js` (MODIFIED): +100 claves ES/EN para incidentes
+- `admin.html` (MODIFIED): Enlace a incidents.html en dropdown
+
+#### Próximas Mejoras (Roadmap v1.9.0)
+- [ ] Exportación de incidentes a PDF/CSV
+- [ ] Timeline visual de acciones con gráfico interactivo
+- [ ] Upload de evidencias (archivos adjuntos con base64)
+- [ ] Selector completo de técnicas MITRE ATT&CK con búsqueda
+- [ ] Sistema de notificaciones en tiempo real
+- [ ] Integración con API backend para persistencia centralizada
+- [ ] Dashboard de análisis con gráficos (Chart.js)
+- [ ] Sistema de comentarios colaborativos por incidente
+- [ ] Etiquetas personalizadas (tags) para categorización adicional
+
+---
+
 ## [1.7.2] - 2025-12-10
 
 ### 🔒 Protección reCAPTCHA v2

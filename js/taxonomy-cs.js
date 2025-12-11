@@ -87,43 +87,53 @@ const CSTaxonomy = {
      * Clasificación SGSI - Impacto
      */
     impact: [
-        { value: 'Minor', label: 'Menor', labelEN: 'Minor', description: 'Sin impacto significativo en servicios' },
-        { value: 'Moderate', label: 'Moderado', labelEN: 'Moderate', description: 'Degradación parcial de servicios' },
-        { value: 'Major', label: 'Mayor', labelEN: 'Major', description: 'Interrupción significativa de servicios críticos' },
-        { value: 'Critical', label: 'Crítico', labelEN: 'Critical', description: 'Fallo total de servicios esenciales' }
+        { value: 'Localized', label: 'Menor / Localizado', labelEN: 'Minor / Localized', description: 'Usuarios internos individuales o casos particulares de servicios menores afectados' },
+        { value: 'Limited', label: 'Moderado / Limitado', labelEN: 'Moderate / Limited', description: 'Se ven afectadas distintas áreas internas o un servicio en ciertas funcionalidades' },
+        { value: 'Wide', label: 'Significativo / Amplio', labelEN: 'Significant / Wide', description: 'Existen servicios afectados por sí solos, algunos servicios se ven afectados, sin embargo otros se entregan sin problemas' },
+        { value: 'Extensive', label: 'Extenso / Generalizado', labelEN: 'Extensive / Generalized', description: 'El incidente ha afectado a todos los servicios críticos, evitando operar con normalidad' }
     ],
 
     /**
      * Clasificación SGSI - Urgencia
      */
     urgency: [
-        { value: 'Low', label: 'Baja', labelEN: 'Low', description: 'Puede esperar resolución programada' },
-        { value: 'Medium', label: 'Media', labelEN: 'Medium', description: 'Requiere atención en horas' },
-        { value: 'High', label: 'Alta', labelEN: 'High', description: 'Requiere atención inmediata' },
-        { value: 'Critical', label: 'Crítica', labelEN: 'Critical', description: 'Respuesta urgente, en minutos' }
+        { value: 'Low', label: 'Baja', labelEN: 'Low', description: 'Más de tres días para su resolución; se puede acordar con el usuario el plazo' },
+        { value: 'Medium', label: 'Media', labelEN: 'Medium', description: 'Existe tolerancia en la atención del incidente, no superando los dos días desde el inicio' },
+        { value: 'High', label: 'Alta', labelEN: 'High', description: 'El incidente debe ser superado durante la jornada laboral' },
+        { value: 'Critical', label: 'Crítica', labelEN: 'Critical', description: 'Existen compromisos de servicios que afecta las operaciones y servicios críticos' }
     ],
 
     /**
      * Matriz de Prioridad (Impacto x Urgencia)
+     * Según documentación oficial:
+     *                        Baja    Media    Alta    Crítica
+     * Menor/Localizado       Baja    Media    Media   Alta
+     * Moderado/Limitado      Baja    Media    Alta    Alta
+     * Significativo/Amplio   Baja    Media    Alta    Máxima
+     * Extenso/Generalizado   Baja    Alta     Máxima Máxima
      */
     getPriority: function(impact, urgency) {
         const priorityMatrix = {
-            'Minor-Low': 'Low',
-            'Minor-Medium': 'Low',
-            'Minor-High': 'Medium',
-            'Minor-Critical': 'Medium',
-            'Moderate-Low': 'Low',
-            'Moderate-Medium': 'Medium',
-            'Moderate-High': 'Medium',
-            'Moderate-Critical': 'High',
-            'Major-Low': 'Medium',
-            'Major-Medium': 'Medium',
-            'Major-High': 'High',
-            'Major-Critical': 'High',
-            'Critical-Low': 'Medium',
-            'Critical-Medium': 'High',
-            'Critical-High': 'High',
-            'Critical-Critical': 'Critical'
+            // Menor / Localizado
+            'Localized-Low': 'Low',
+            'Localized-Medium': 'Medium',
+            'Localized-High': 'Medium',
+            'Localized-Critical': 'High',
+            // Moderado / Limitado
+            'Limited-Low': 'Low',
+            'Limited-Medium': 'Medium',
+            'Limited-High': 'High',
+            'Limited-Critical': 'High',
+            // Significativo / Amplio
+            'Wide-Low': 'Low',
+            'Wide-Medium': 'Medium',
+            'Wide-High': 'High',
+            'Wide-Critical': 'Critical',
+            // Extenso / Generalizado
+            'Extensive-Low': 'Low',
+            'Extensive-Medium': 'High',
+            'Extensive-High': 'Critical',
+            'Extensive-Critical': 'Critical'
         };
         
         const key = `${impact}-${urgency}`;
