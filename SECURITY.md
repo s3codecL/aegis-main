@@ -1,5 +1,7 @@
 # Security Policy
 
+> ⚠️ **Nunca publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.**
+
 ## 🔒 Supported Versions
 
 Actualmente estamos dando soporte de seguridad a las siguientes versiones:

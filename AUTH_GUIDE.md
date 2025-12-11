@@ -1,5 +1,7 @@
 # 🔐 Guía de Autenticación - Aegis Dashboard v1.7.0
 
+> ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
+
 ## 📋 Descripción General
 
 La versión 1.7.0 introduce un sistema completo de autenticación que protege el acceso al dashboard y permite la gestión de múltiples usuarios con diferentes roles.

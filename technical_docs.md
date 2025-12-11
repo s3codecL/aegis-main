@@ -1,5 +1,7 @@
 # 📚 Documentación Técnica - Aegis Dashboard
 
+> ⚠️ **Importante:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos. Usa variables de entorno o archivos ignorados por git.
+
 ## Estructura de Carpetas
 
 ```

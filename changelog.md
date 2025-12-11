@@ -1,5 +1,7 @@
 # 🎉 CHANGELOG - Aegis Dashboard
 
+> ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
+
 ## [1.8.0] - 2025-12-10
 
 ### 🛡️ Sistema de Gestión de Incidencias de Ciberseguridad

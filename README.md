@@ -1,5 +1,7 @@
 # 🛡️ Aegis Dashboard - Herramienta de Investigación
 
+> ⚠️ **Seguridad:** Nunca publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, capturas de pantalla, ejemplos de código o foros públicos. Usa variables de entorno o archivos de configuración ignorados por git para gestionar credenciales.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
 [![Version](https://img.shields.io/badge/version-1.8.0-blue.svg)](changelog.md)
