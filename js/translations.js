@@ -149,7 +149,7 @@ const translations = {
     "PLACEHOLDER_NAME": "John Doe",
     
     // Quickstart Page
-    "QS_HERO_TITLE": "🛡️ Aegis Dashboard",
+    "QS_HERO_TITLE": "🛡️ Aegis HUB",
     "QS_HERO_SUBTITLE": "Centralize 78 OSINT resources in one place, automatically detect search types and save valuable time in your investigations.",
     "QS_HERO_READ_GUIDE": "📚 Read the quick start guide for features",
     "QS_ACCESS_DASHBOARD": "Go to Tool →",
@@ -216,7 +216,7 @@ const translations = {
     
     // Instalación
     "QS_INSTALLATION": "Installation",
-    "QS_INSTALL_DESC": "Aegis Dashboard is a completely standalone web application. You only need a modern browser.",
+    "QS_INSTALL_DESC": "Aegis HUB is a completely standalone web application. You only need a modern browser.",
     "QS_INSTALL_OPTION1": "# Option 1: Open directly",
     "QS_INSTALL_OPEN": "Open index.html in your browser",
     "QS_INSTALL_OPTION2": "# Option 2: Use local server",
@@ -236,7 +236,7 @@ const translations = {
     
     // Preguntas Frecuentes
     "QS_FAQ": "Frequently Asked Questions",
-    "QS_FAQ_Q1": "Is the AEGIS Dashboard safe to use?",
+    "QS_FAQ_Q1": "Is AEGIS HUB safe to use?",
     "QS_FAQ_A1": "Completely safe. There is no backend server. All data is stored locally in your browser.",
     "QS_FAQ_Q2": "Do I need an internet connection?",
     "QS_FAQ_A2": "The interface works without internet, but you need a connection to access external OSINT tools.",
@@ -246,8 +246,8 @@ const translations = {
     "QS_FAQ_A4": "All modern browsers: Chrome, Firefox, Safari, Edge. Requires ES6+ and localStorage.",
     
     // CTA
-    "QS_CTA_SUBTITLE": "Access Aegis Dashboard and perform professional investigations",
-    "QS_CTA_BUTTON": "Access Dashboard",
+    "QS_CTA_SUBTITLE": "Access Aegis HUB and perform professional investigations",
+    "QS_CTA_BUTTON": "Access HUB",
     
     // Footer
     "QS_FOOTER_MADE_WITH": "Made with ❤️ for the security community -",
@@ -676,7 +676,7 @@ const translations = {
     "PLACEHOLDER_NAME": "Juan Pérez",
     
     // Quickstart Page
-    "QS_HERO_TITLE": "🛡️ Aegis Dashboard",
+    "QS_HERO_TITLE": "🛡️ Aegis HUB",
     "QS_HERO_SUBTITLE": "Centraliza 78 recursos OSINT en un solo lugar, detecta automáticamente el tipo de búsqueda y ahorra tiempo valioso en tus investigaciones.",
     "QS_HERO_READ_GUIDE": "📚 Lee la guía de inicio rápido para las funcionalidades",
     "QS_ACCESS_DASHBOARD": "Ir a la Herramienta →",
@@ -763,7 +763,7 @@ const translations = {
     
     // Preguntas Frecuentes
     "QS_FAQ": "Preguntas Frecuentes",
-    "QS_FAQ_Q1": "¿Es seguro usar el AEGIS Dashboard?",
+    "QS_FAQ_Q1": "¿Es seguro usar el AEGIS HUB?",
     "QS_FAQ_A1": "Completamente seguro. No hay servidor backend. Todos los datos se almacenan localmente en tu navegador.",
     "QS_FAQ_Q2": "¿Necesito conexión a internet?",
     "QS_FAQ_A2": "La interfaz funciona sin internet, pero necesitas conexión para acceder a las herramientas OSINT externas.",
@@ -773,7 +773,7 @@ const translations = {
     "QS_FAQ_A4": "Todos los navegadores modernos: Chrome, Firefox, Safari, Edge. Requiere ES6+ y localStorage.",
     
     // CTA
-    "QS_CTA_SUBTITLE": "Accede al Aegis Dashboard y realiza investigaciones profesionales",
+    "QS_CTA_SUBTITLE": "Accede al Aegis HUB y realiza investigaciones profesionales",
     "QS_CTA_BUTTON": "Acceder al Dashboard",
     
     // Footer
