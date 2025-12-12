@@ -743,7 +743,7 @@ const translations = {
     
     // Instalación
     "QS_INSTALLATION": "Instalación",
-    "QS_INSTALL_DESC": "El Aegis Dashboard es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
+    "QS_INSTALL_DESC": "El Aegis HUB es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
     "QS_INSTALL_OPTION1": "# Opción 1: Abrir directamente",
     "QS_INSTALL_OPEN": "Abre index.html en tu navegador",
     "QS_INSTALL_OPTION2": "# Opción 2: Usar servidor local",
