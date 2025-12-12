@@ -50,9 +50,9 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 
 ## 🎯 Inicio Rápido
 
-| Para Empezar | Para Aprender | Para Administrar |
-|--------------|---------------|------------------|
-| [Acceder al Dashboard](#-autenticación-v170) (`login.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Panel Admin](#-panel-de-administración) (`admin.html`) |
+| Para Empezar | Para Aprender | Para Administrar | Para Incidencias |
+|--------------|---------------|------------------|------------------|
+| [Acceder al Dashboard](#-autenticación-v170) (`login.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Panel Admin](#-panel-de-administración) (`admin.html`) | [Gestión de Incidencias](#-gestión-de-incidencias-de-ciberseguridad-v180) (`incidents.html`) |
 
 > **¿Primera vez?** 👉 Abre `quickstart.html` para tutorial completo, luego `login.html` para acceder  
 > **Usuario por defecto** 👉 `admin@aegis.local` / `admin123`  
@@ -245,7 +245,7 @@ npx http-server
 
 ### 📄 Archivos Principales
 
-El proyecto incluye tres interfaces principales:
+El proyecto incluye cuatro interfaces principales:
 
 #### 🔐 `login.html` - Página de Autenticación (NUEVO en v1.7.0)
 **Cuándo usar**: Primera página para acceder al dashboard
@@ -276,6 +276,21 @@ El proyecto incluye tres interfaces principales:
 - Cambio de roles (user ↔ admin)
 - Visualización de último acceso
 - **Traducción**: Soporte completo ES/EN (tabla dinámica, badges de roles)
+- **Acceso**: Solo usuarios con rol "admin"
+
+#### 🛡️ `incidents.html` - Gestión de Incidencias de Ciberseguridad (NUEVO en v1.8.0)
+**Cuándo usar**: Registrar, clasificar y gestionar incidentes de seguridad
+- Registro estructurado de incidentes en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
+- Clasificación automática según NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
+- Generación automática de códigos únicos por incidente
+- Cálculo de prioridad mediante matriz SGSI (Impacto x Urgencia)
+- Panel de estadísticas en tiempo real (Total, Abiertas, Críticas)
+- Filtros avanzados: Estado, Criticidad, Tipo, Búsqueda
+- Gestión de IoCs (IPs, hashes, dominios, artefactos)
+- Línea de tiempo de acciones (Contención, Análisis, Remediación)
+- 100+ claves de traducción ES/EN para módulo de incidencias
+- Acceso desde panel admin (solo administradores)
+- **Traducción**: Soporte completo ES/EN
 - **Acceso**: Solo usuarios con rol "admin"
 
 #### 🚀 `quickstart.html` - Guía Interactiva (v1.7.1)
@@ -397,28 +412,43 @@ El proyecto incluye tres interfaces principales:
    - Consulta `technical_docs.md` para detalles técnicos
    - Modifica `js/tools-config.js` para agregar herramientas personalizadas
    - Revisa `changelog.md` para nuevas características
+  - Gestiona incidencias avanzadas en `incidents.html` (clasificación, timeline, IoCs)
+  - Administra usuarios y roles desde `admin.html` (estadísticas, permisos, auditoría)
 
 ## 📁 Estructura de Archivos
 
 ```
 aegis-main/
-├── index.html           # 🏠 Dashboard principal - Tu herramienta de trabajo diaria
-├── quickstart.html      # 🚀 Guía interactiva - Tutorial completo y casos de uso
-├── style.css            # Estilos CSS (moderno y responsive)
-├── README.md            # Este archivo - Documentación del proyecto
-├── changelog.md         # Historial de cambios y versiones
-├── technical_docs.md    # Documentación técnica detallada
-├── js/                  # Scripts JavaScript
-│   ├── app.js              # Lógica principal de la aplicación
-│   ├── tools-config.js     # Configuración de herramientas OSINT
-│   ├── translations.js     # Sistema completo de traducciones ES/EN (100+ claves)
-│   ├── script.js           # Funciones auxiliares
-│   └── usage_examples.js   # Ejemplos de uso
-└── plugins/             # Extensiones del navegador
-    └── favorites - Chrome/ # Plugin de favoritos para Chrome
-        ├── manifest.json
-        ├── background.js
-        └── content.js
+├── index.html             # 🏠 Dashboard principal - Tu herramienta de trabajo diaria
+├── quickstart.html        # 🚀 Guía interactiva - Tutorial completo y casos de uso
+├── admin.html             # 👥 Panel de administración de usuarios
+├── incidents.html         # 🛡️ Gestión de incidencias de ciberseguridad
+├── login.html             # 🔐 Página de autenticación de usuarios
+├── style.css              # Estilos CSS (moderno y responsive)
+├── README.md              # Este archivo - Documentación del proyecto
+├── changelog.md           # Historial de cambios y versiones
+├── technical_docs.md      # Documentación técnica detallada
+├── AUTH_GUIDE.md          # Guía de autenticación y administración
+├── CATEGORY_ANALYSIS.md   # Análisis de categorías OSINT
+├── IMPLEMENTATION_SUMMARY.md # Resumen técnico de implementación
+├── SECURITY.md            # Política de seguridad y reporte de vulnerabilidades
+├── SECURITY_AUDIT.md      # Auditoría de seguridad y checklist
+├── TESTING_GUIDE.md       # Guía de pruebas y QA
+├── plugins/               # Extensiones del navegador
+│   └── favorites - Chrome/   # Plugin de favoritos para Chrome
+│       ├── manifest.json
+│       ├── background.js
+│       └── content.js
+├── js/                    # Scripts JavaScript
+│   ├── app.js                # Lógica principal de la aplicación
+│   ├── auth.js               # Lógica de autenticación y sesiones
+│   ├── incidents.js          # Lógica de gestión de incidencias
+│   ├── script.js             # Funciones auxiliares
+│   ├── taxonomy-cs.js        # Taxonomía y clasificación de incidentes
+│   ├── tools-config.js       # Configuración de herramientas OSINT
+│   ├── translations.js       # Sistema completo de traducciones ES/EN (100+ claves)
+│   └── usage_examples.js     # Ejemplos de uso
+└── ...otros archivos y carpetas auxiliares
 ```
 
 ### 📝 Descripción de Archivos Clave
@@ -427,6 +457,8 @@ aegis-main/
 |---------|-----------|-------------|
 | `index.html` | Dashboard principal con todas las funcionalidades | Uso diario, investigaciones OSINT |
 | `quickstart.html` | Guía interactiva y tutorial | Primera vez, aprendizaje, referencia |
+| `admin.html` | Panel de administración de usuarios | Gestión de usuarios, roles y estadísticas |
+| `incidents.html` | Gestión de incidencias de ciberseguridad | Registrar, clasificar y gestionar incidentes |
 | `style.css` | Estilos y temas (oscuro/claro) | Personalización visual |
 | `js/app.js` | Lógica de búsqueda y gestión de datos | Desarrollo y mantenimiento |
 | `js/tools-config.js` | Base de datos de herramientas OSINT | Agregar/modificar herramientas |
