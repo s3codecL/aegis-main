@@ -67,9 +67,17 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 
 ### Flujo de Autenticación
 ```
-quickstart.html → login.html → index.html (Dashboard)
-                       ↓
-                  admin.html (Solo Admin)
+quickstart.html (Público)
+  ↓
+login.html ──→ [Registro] ──→
+  ↓             ↓
+[Recuperar Contraseña]   ↓
+  ↓             ↓
+   index.html (Dashboard, requiere login)
+  ↓
+ ┌───────────────┬───────────────┐
+ |               |               |
+admin.html   incidents.html   (Solo Admin)
 ```
 
 ### Características de Seguridad
