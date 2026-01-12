@@ -87,3 +87,6 @@ SECURITY_AUDIT.md
 # Optional: Keep these if you want to track them
 # !.vscode/settings.json
 # !.vscode/tasks.json
+
+# Vercel config (solo para despliegue en Vercel, ignorar en GitHub Pages)
+vercel.json
