@@ -1599,3 +1599,19 @@ tr[title]:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
+
+/* Fix: input text color for login fields */
+input,
+input:focus,
+input:active {
+  color: #111 !important;
+  background-color: #fff;
+}
+
+/* Fix: input text color for dark mode */
+[data-bs-theme="dark"] input,
+[data-bs-theme="dark"] input:focus,
+[data-bs-theme="dark"] input:active {
+  color: #fff !important;
+  background-color: #222;
+}
