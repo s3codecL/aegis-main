@@ -1,0 +1,60 @@
+/* Admin Dashboard Specific Styles */
+[data-bs-theme="dark"] body {
+    background: #000000 !important;
+}
+
+[data-bs-theme="light"] body {
+    background: #ffffff !important;
+}
+
+/* Admin Stats Cards */
+[data-bs-theme="dark"] .card {
+    background: rgba(15, 20, 51, 0.6) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+[data-bs-theme="dark"] .card:hover {
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25),
+        0 10px 20px rgba(59, 130, 246, 0.15),
+        0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    transform: translateY(-8px) scale(1.01) !important;
+}
+
+[data-bs-theme="light"] .card {
+    background: #ffffff !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Admin Table Styles */
+[data-bs-theme="light"] .table thead th {
+    background-color: #f8fafc !important;
+    color: #475569 !important;
+    border-color: #e5e7eb !important;
+}
+
+[data-bs-theme="dark"] .table thead th {
+    background-color: rgba(15, 20, 51, 0.8) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.bg-primary-lt {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--color-primary);
+}
