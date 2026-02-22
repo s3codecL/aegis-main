@@ -46,6 +46,16 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 25px -5px rgba(59, 130, 246, 0.15);
     --shadow-xl: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+
+    /* Glassmorphism Defaults */
+    --glass-bg: rgba(15, 20, 51, 0.6);
+    --glass-border: rgba(59, 130, 246, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-blur: blur(12px);
+
+    /* Animation Timings */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
