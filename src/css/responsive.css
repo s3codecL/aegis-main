@@ -1,0 +1,81 @@
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+    .main-container {
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .right-panel {
+        width: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-stats .stats-bar {
+        justify-content: center;
+    }
+
+    .main-container {
+        padding: var(--spacing-md);
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .right-panel {
+        width: 100%;
+        max-height: none;
+        position: static;
+    }
+
+    .navbar-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-brand small {
+        display: none;
+    }
+
+    .view-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand h1 {
+        font-size: 1.125rem;
+    }
+
+    .stat-item {
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .sidebar {
+        padding: var(--spacing-md);
+    }
+
+    .navbar-brand h1 {
+        font-size: 1rem;
+    }
+}

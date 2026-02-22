@@ -1,0 +1,55 @@
+[data-bs-theme="light"] {
+    --bg-primary: var(--bg-light);
+    --bg-secondary: var(--bg-light-secondary);
+    --bg-tertiary: #ffffff;
+    --text: var(--text-light);
+    --text-muted: var(--text-light-muted);
+    --border: var(--border-light);
+}
+
+[data-bs-theme="dark"] {
+    --bg-primary: var(--bg-dark);
+    --bg-secondary: var(--bg-dark-secondary);
+    --bg-tertiary: var(--bg-dark-tertiary);
+    --text: var(--text-dark);
+    --text-muted: var(--text-dark-muted);
+    --border: var(--border-dark);
+}
+
+/* Light Theme Overrides */
+[data-bs-theme="light"] body {
+    background: #ffffff;
+}
+
+[data-bs-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+[data-bs-theme="light"] .card {
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--text-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-bs-theme="light"] .navbar-stats {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-bs-theme="light"] .sidebar {
+    background: rgba(248, 250, 252, 0.95);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Dark Theme Overrides */
+[data-bs-theme="dark"] body {
+    background: #000000;
+}
+
+[data-bs-theme="dark"] .modal-content {
+    background: rgba(26, 31, 58, 0.98);
+    color: var(--text-dark);
+}
