@@ -11,19 +11,20 @@ aegis-main/
 ├── admin.html                 # Panel de administración
 ├── incidents.html             # Gestión de incidencias (v1.8.0)
 ├── quickstart.html            # Guía rápida
-├── style.css                  # Estilos globales
+├── style.css                  # Estilos legado (reemplazado por src/css)
 ├── README.md                  # Documentación principal
 ├── changelog.md               # Registro de cambios
-├── usage_examples.js          # Ejemplos de uso
 ├── technical_docs.md          # Este archivo
-├── js/                        # 📁 Carpeta centralizada de JavaScript
-│   ├── app.js                # Lógica principal de la aplicación
-│   ├── auth.js               # Sistema de autenticación (v1.7.0)
-│   ├── taxonomy-cs.js        # Taxonomía de incidencias (v1.8.0)
-│   ├── incidents.js          # Lógica de incidencias (v1.8.0)
-│   ├── script.js             # Scripts adicionales
-│   ├── tools-config.js       # Configuración de herramientas
-│   └── translations.js       # Archivos de traducción (ES/EN)
+├── src/                       # 📁 Source code principal
+│   ├── css/                  # Estilos CSS modulares
+│   └── js/                   # Módulos JavaScript (ES6)
+│       ├── app.js            # Punto de entrada y lógica principal
+│       ├── auth.js           # Sistema de autenticación
+│       ├── taxonomy-cs.js    # Taxonomía de incidencias
+│       ├── incidents.js      # Lógica de incidencias
+│       ├── tools-config.js   # Configuración de herramientas
+│       ├── translations.js   # Diccionarios de traducción
+│       └── usage_examples.js # Ejemplos de uso
 ├── plugins/                  # Extensiones para navegadores
 │   └── favorites - Chrome/
 │       ├── background.js
@@ -43,35 +44,28 @@ aegis-main/
     HTML (index.html)
          ↓
     ┌────────────────────────────┐
-    │   CSS (style.css)          │
+    │   CSS (src/css/main.css)   │
     │  - Variables CSS           │
-    │  - Responsive Design       │
+    │  - Estilos Modulares       │
     │  - Temas (Light/Dark)      │
     └────────────────────────────┘
          ↓
     ┌──────────────────────────────────────────────────┐
-    │   Carpeta js/ - Módulos JavaScript              │
+    │   Carpeta src/js/ - Módulos ES6                  │
     │  ┌────────────────────────────────────────────┐  │
-    │  │  app.js                                    │  │
-    │  │  - App Object (Estado Global)              │  │
-    │  │  - Manejo de Eventos                       │  │
-    │  │  - Lógica de Búsqueda                      │  │
-    │  │  - Gestión de Storage                      │  │
+    │  │  app.js (Type: module)                     │  │
+    │  │  - Punto de entrada principal               │  │
+    │  │  - Manejo de Eventos y DOM                 │  │
+    │  │  - Integración de Módulos                  │  │
     │  └────────────────────────────────────────────┘  │
     │  ┌────────────────────────────────────────────┐  │
-    │  │  tools-config.js                           │  │
-    │  │  - Array de herramientas AEGIS             │  │
-    │  │  - Categorías                              │  │
-    │  │  - URLs y Templates                        │  │
+    │  │  auth.js / translations.js / tools-config.js│  │
+    │  │  - Servicios y Configuración               │  │
+    │  │  - Exportaciones ES6                       │  │
     │  └────────────────────────────────────────────┘  │
     │  ┌────────────────────────────────────────────┐  │
-    │  │  translations.js                           │  │
-    │  │  - Diccionarios (Español/English)          │  │
-    │  │  - Función t() para traducciones           │  │
-    │  └────────────────────────────────────────────┘  │
-    │  ┌────────────────────────────────────────────┐  │
-    │  │  script.js                                 │  │
-    │  │  - Funciones auxiliares                    │  │
+    │  │  incidents.js / taxonomy-cs.js             │  │
+    │  │  - Módulos de gestión de incidentes        │  │
     │  └────────────────────────────────────────────┘  │
     └──────────────────────────────────────────────────┘
 ```
