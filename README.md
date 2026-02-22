@@ -432,31 +432,18 @@ aegis-main/
 ├── admin.html             # 👥 Panel de administración de usuarios
 ├── incidents.html         # 🛡️ Gestión de incidencias de ciberseguridad
 ├── login.html             # 🔐 Página de autenticación de usuarios
-├── style.css              # Estilos CSS (moderno y responsive)
 ├── README.md              # Este archivo - Documentación del proyecto
-├── changelog.md           # Historial de cambios y versiones
-├── technical_docs.md      # Documentación técnica detallada
-├── AUTH_GUIDE.md          # Guía de autenticación y administración
-├── CATEGORY_ANALYSIS.md   # Análisis de categorías OSINT
-├── IMPLEMENTATION_SUMMARY.md # Resumen técnico de implementación
-├── SECURITY.md            # Política de seguridad y reporte de vulnerabilidades
-├── SECURITY_AUDIT.md      # Auditoría de seguridad y checklist
-├── TESTING_GUIDE.md       # Guía de pruebas y QA
-├── plugins/               # Extensiones del navegador
-│   └── favorites - Chrome/   # Plugin de favoritos para Chrome
-│       ├── manifest.json
-│       ├── background.js
-│       └── content.js
-├── js/                    # Scripts JavaScript
-│   ├── app.js                # Lógica principal de la aplicación
-│   ├── auth.js               # Lógica de autenticación y sesiones
-│   ├── incidents.js          # Lógica de gestión de incidencias
-│   ├── script.js             # Funciones auxiliares
-│   ├── taxonomy-cs.js        # Taxonomía y clasificación de incidentes
-│   ├── tools-config.js       # Configuración de herramientas OSINT
-│   ├── translations.js       # Sistema completo de traducciones ES/EN (100+ claves)
-│   └── usage_examples.js     # Ejemplos de uso
-└── ...otros archivos y carpetas auxiliares
+├── src/                   # 📁 Archivos de origen (Modernizados)
+│   ├── css/               # Estilos CSS modulares
+│   └── js/                # Módulos JavaScript (ES6)
+│       ├── app.js            # Lógica principal y punto de entrada
+│       ├── auth.js           # Módulo de autenticación y sesiones
+│       ├── incidents.js      # Gestión de incidentes
+│       ├── taxonomy-cs.js    # Taxonomía técnica
+│       ├── tools-config.js   # Configuración de herramientas
+│       ├── translations.js   # Internacionalización (ES/EN)
+│       └── usage_examples.js # Ejemplos de uso
+└── plugins/               # Extensiones del navegador
 ```
 
 ### 📝 Descripción de Archivos Clave
