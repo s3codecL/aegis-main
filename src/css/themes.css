@@ -1,10 +1,10 @@
 [data-bs-theme="light"] {
-    --bg-primary: var(--bg-light);
-    --bg-secondary: var(--bg-light-secondary);
-    --bg-tertiary: #ffffff;
-    --text: var(--text-light);
-    --text-muted: var(--text-light-muted);
-    --border: var(--border-light);
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: rgba(148, 163, 184, 0.2);
 }
 
 [data-bs-theme="dark"] {
@@ -18,13 +18,13 @@
 
 /* Light Theme Overrides */
 [data-bs-theme="light"] body {
-    background: #f1f5f9;
+    background: #f8fafc;
 }
 
 [data-bs-theme="light"] .navbar {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border-bottom: 2px solid rgba(59, 130, 246, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 [data-bs-theme="light"] .card {
@@ -41,18 +41,56 @@
 
 [data-bs-theme="light"] .navbar-stats {
     background: #ffffff;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
 
 [data-bs-theme="light"] .sidebar {
     background: #ffffff;
-    border: 1px solid rgba(59, 130, 246, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+[data-bs-theme="light"] .category-item {
+    color: #475569;
+}
+
+[data-bs-theme="light"] .category-item:hover {
+    background: rgba(59, 130, 246, 0.05);
+    color: var(--color-primary);
+}
+
+[data-bs-theme="light"] .view-tabs {
+    background: rgba(148, 163, 184, 0.1);
+}
+
+[data-bs-theme="light"] .tab-btn {
+    color: #64748b;
+}
+
+[data-bs-theme="light"] .tab-btn:hover {
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-bs-theme="light"] .tab-btn.active {
+    background: #ffffff;
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 [data-bs-theme="light"] .stat-item {
-    background-color: #f8fafc;
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    background-color: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+[data-bs-theme="light"] .stat-label {
+    color: #64748b;
+}
+
+[data-bs-theme="light"] .stat-value {
+    color: var(--color-primary);
 }
 
 /* Dark Theme Overrides */
