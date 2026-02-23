@@ -120,6 +120,18 @@
     margin: 0;
     flex: 1 0 auto;
     min-height: calc(100vh - 160px);
+    transition: all 0.3s var(--ease-out-expo);
+}
+
+/* Estado cuando un panel lateral está abierto */
+body.panel-open .main-container {
+    padding-right: 340px;
+}
+
+@media (max-width: 1200px) {
+    body.panel-open .main-container {
+        padding-right: var(--spacing-lg);
+    }
 }
 
 @media (max-width: 991px) {
@@ -166,17 +178,18 @@
 
 .footer {
     flex-shrink: 0;
-    padding: var(--spacing-lg);
-    background: rgba(15, 20, 26, 0.95);
-    /* Menos transparente para evitar overlap visual previo */
-    backdrop-filter: blur(10px);
+    padding: var(--spacing-lg) 0;
+    margin-top: auto;
+    background: transparent;
     border-top: 1px solid rgba(59, 130, 246, 0.1);
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
     text-align: center;
     color: var(--text-muted);
     font-size: 0.875rem;
     width: 100%;
-    z-index: 10;
+}
+
+[data-bs-theme="light"] .footer {
+    border-top: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 /* Categories Sidebar */
