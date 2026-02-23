@@ -157,6 +157,8 @@ export const translations = {
     "ADMIN_ROLE": "Administrator",
     "INCIDENT_MANAGEMENT": "Incidents",
     "CLOSE_TOOLTIP": "Close panel",
+    "CLOSE_SIDEBAR": "Collapse Sidebar",
+    "EXPAND_SIDEBAR": "Expand Sidebar",
 
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "you@example.com",
@@ -687,6 +689,9 @@ export const translations = {
     "BACK_TO_HOME": "← Volver al inicio",
     "LOGOUT": "Cerrar Sesión",
     "ADMIN_PANEL": "Panel Admin",
+    "CLOSE_TOOLTIP": "Cerrar panel",
+    "CLOSE_SIDEBAR": "Colapsar Barra Lateral",
+    "EXPAND_SIDEBAR": "Expandir Barra Lateral",
 
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "tu@ejemplo.com",
