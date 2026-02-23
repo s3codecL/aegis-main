@@ -80,13 +80,16 @@ const Auth = {
         const password = document.getElementById('login-password').value;
         const rememberMe = document.getElementById('remember-me').checked;
 
-        // Validar reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            const lang = localStorage.getItem('osintLanguage') || 'es';
-            const message = t('RECAPTCHA_ERROR', lang);
-            this.showAlert(message, 'danger');
-            return;
+        // Validar reCAPTCHA (si está habilitado)
+        if (typeof grecaptcha !== 'undefined') {
+            const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
+            const recaptchaResponse = grecaptcha.getResponse(widgetId);
+            if (!recaptchaResponse) {
+                const lang = localStorage.getItem('osintLanguage') || 'es';
+                const message = t('RECAPTCHA_ERROR', lang);
+                this.showAlert(message, 'danger');
+                return;
+            }
         }
 
         if (!email || !password) {
@@ -107,7 +110,10 @@ const Auth = {
         // Verificar contraseña
         if (!this.verifyPassword(password, user.password)) {
             this.showAlert('Contraseña incorrecta.', 'danger');
-            grecaptcha.reset(); // Reset reCAPTCHA en login
+            if (typeof grecaptcha !== 'undefined') {
+                const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
+                grecaptcha.reset(widgetId);
+            }
             return;
         }
 
@@ -140,12 +146,15 @@ const Auth = {
         const acceptTerms = document.getElementById('accept-terms').checked;
 
         // Validar reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse(1); // Index 1 para el segundo widget
-        if (!recaptchaResponse) {
-            const lang = localStorage.getItem('osintLanguage') || 'es';
-            const message = t('RECAPTCHA_ERROR', lang);
-            this.showAlert(message, 'danger');
-            return;
+        if (typeof grecaptcha !== 'undefined') {
+            const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
+            const recaptchaResponse = grecaptcha.getResponse(widgetId);
+            if (!recaptchaResponse) {
+                const lang = localStorage.getItem('osintLanguage') || 'es';
+                const message = t('RECAPTCHA_ERROR', lang);
+                this.showAlert(message, 'danger');
+                return;
+            }
         }
 
         // Validaciones
@@ -172,7 +181,10 @@ const Auth = {
         // Validar formato de email
         if (!this.validateEmail(email)) {
             this.showAlert('Formato de correo electrónico inválido.', 'danger');
-            grecaptcha.reset(1); // Reset reCAPTCHA en register (widget #1)
+            if (typeof grecaptcha !== 'undefined') {
+                const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
+                grecaptcha.reset(widgetId);
+            }
             return;
         }
 
@@ -180,7 +192,10 @@ const Auth = {
         const users = this.getUsers();
         if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
             this.showAlert('Este correo electrónico ya está registrado.', 'danger');
-            grecaptcha.reset(1); // Reset reCAPTCHA en register (widget #1)
+            if (typeof grecaptcha !== 'undefined') {
+                const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
+                grecaptcha.reset(widgetId);
+            }
             return;
         }
 
@@ -215,14 +230,54 @@ const Auth = {
      * Login con Google (simulado)
      */
     loginWithGoogle: function () {
-        this.showAlert('Funcionalidad de Google OAuth en desarrollo. Por ahora, usa el login con email.', 'danger');
+        this.showAlert('Conectando con Google...', 'success');
+
+        setTimeout(() => {
+            const mockUser = {
+                id: 'google_' + Math.random().toString(36).substr(2, 9),
+                name: 'Google User',
+                email: 'google@user.test',
+                role: 'user',
+                avatar: null,
+                createdAt: new Date().toISOString(),
+                lastLogin: new Date().toISOString()
+            };
+
+            // Simular entrada exitosa
+            this.createSession(mockUser, true);
+            this.showAlert('¡Bienvenido! Iniciaste sesión con Google.', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }, 1500);
     },
 
     /**
      * Login con GitHub (simulado)
      */
     loginWithGithub: function () {
-        this.showAlert('Funcionalidad de GitHub OAuth en desarrollo. Por ahora, usa el login con email.', 'danger');
+        this.showAlert('Conectando con GitHub...', 'success');
+
+        setTimeout(() => {
+            const mockUser = {
+                id: 'github_' + Math.random().toString(36).substr(2, 9),
+                name: 'GitHub User',
+                email: 'github@user.test',
+                role: 'user',
+                avatar: null,
+                createdAt: new Date().toISOString(),
+                lastLogin: new Date().toISOString()
+            };
+
+            // Simular entrada exitosa
+            this.createSession(mockUser, true);
+            this.showAlert('¡Bienvenido! Iniciaste sesión con GitHub.', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }, 1500);
     },
 
     /**
