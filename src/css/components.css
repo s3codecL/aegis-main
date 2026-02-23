@@ -455,3 +455,43 @@
     background: rgba(255, 255, 255, 0.9) !important;
     border-color: rgba(59, 130, 246, 0.2) !important;
 }
+
+/* Back to Top Professional Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-out-expo);
+    z-index: 1050;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+    color: white;
+    filter: brightness(1.1);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+[data-bs-theme="light"] .back-to-top {
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+}
