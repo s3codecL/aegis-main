@@ -143,6 +143,25 @@
     border: 1px solid rgba(59, 130, 246, 0.1) !important;
 }
 
+/* Sidebar and Panels close buttons in Light Mode */
+[data-bs-theme="light"] .sidebar .btn-ghost,
+[data-bs-theme="light"] .right-panel .btn-ghost {
+    color: #0f172a !important;
+    /* Más oscuro para visibilidad */
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="light"] .sidebar .btn-ghost:hover,
+[data-bs-theme="light"] .right-panel .btn-ghost:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="light"] .sidebar-header h5,
+[data-bs-theme="light"] .panel-header h5 {
+    color: #0f172a !important;
+    font-weight: 700;
+}
+
 /* Vibrant Utility Colors in Light Mode */
 [data-bs-theme="light"] .text-danger {
     color: var(--color-danger) !important;
