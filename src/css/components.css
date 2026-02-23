@@ -387,3 +387,41 @@
     border-color: var(--color-primary-light);
     box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
 }
+
+/* SweetAlert2 Glassmorphism */
+.swal2-popup {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-2xl) !important;
+    color: var(--text) !important;
+    box-shadow: var(--glass-shadow) !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+    color: var(--text) !important;
+}
+
+.swal2-confirm {
+    background: var(--gradient-primary) !important;
+    border-radius: var(--radius-pill) !important;
+    font-weight: 700 !important;
+}
+
+.swal2-cancel {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--radius-pill) !important;
+    color: var(--text) !important;
+}
+
+[data-bs-theme="light"] .swal2-popup {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+[data-bs-theme="light"] .swal2-cancel {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #1e293b !important;
+}
