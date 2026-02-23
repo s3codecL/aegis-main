@@ -229,13 +229,13 @@ const App = {
           </div>
           <p class="text-muted small">${description}</p>
           <a href="${url}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-            Ir
+            ${t("GO", this.config.currentLanguage)}
           </a>
           <button class="btn btn-sm btn-outline-warning" onclick="App.addFavorite('${tool.id}')">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
             </svg>
-            Favorito
+            ${t("FAVORITES", this.config.currentLanguage)}
           </button>
         </div>`;
     });
@@ -396,7 +396,7 @@ const App = {
                     </td>
                     <td class="text-end">
                       <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
-                        Ir
+                        ${t("GO", this.config.currentLanguage)}
                       </button>
                       <button class="btn btn-sm btn-${isFavorite ? "warning" : "outline-warning"
           }" onclick="App.toggleFavorite('${tool.id}')">
@@ -465,7 +465,7 @@ const App = {
       if (badge) {
         badge.textContent = this.state.favorites.length;
       }
-      this.showSuccess("Agregado a favoritos");
+      this.showSuccess(t("SUCCESS", this.config.currentLanguage));
     }
   },
 
@@ -510,8 +510,8 @@ const App = {
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="64" height="64" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
             <path d="M12 3c-4.97 0 -9 4.03 -9 9s4.03 9 9 9s9 -4.03 9 -9s-4.03 -9 -9 -9m0 2v6l5.25 3.15"></path>
           </svg>
-          <h5>Sin historial</h5>
-          <p class="text-muted">Tus búsquedas aparecerán aquí</p>
+          <h5>${t("NO_HISTORY", this.config.currentLanguage)}</h5>
+          <p class="text-muted">${t("NO_HISTORY_DESC", this.config.currentLanguage)}</p>
         </div>`;
       return;
     }
@@ -534,18 +534,19 @@ const App = {
   // Render history in right panel
   renderHistoryPanel: function () {
     const container = document.getElementById("panel-list");
+    const lang = this.config.currentLanguage;
     if (!container) return;
 
     if (this.state.searchHistory.length === 0) {
       container.innerHTML =
-        '<p class="text-muted">No hay historial de búsquedas</p>';
+        `<p class="text-muted">${t("NO_HISTORY_SEARCHES", lang)}</p>`;
       return;
     }
 
     let html = `
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <strong>Búsquedas recientes</strong>
-        <button class="btn btn-sm btn-outline-danger" onclick="App.clearHistory()" title="Borrar historial">
+        <strong>${t("RECENT_SEARCHES", lang)}</strong>
+        <button class="btn btn-sm btn-outline-danger" onclick="App.clearHistory()" title="${t("DELETE_HISTORY", lang)}">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
             <path d="M4 7l16 0"></path>
             <path d="M10 11l0 6"></path>
@@ -553,7 +554,7 @@ const App = {
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
             <path d="M9 7v-1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1"></path>
           </svg>
-          Limpiar
+          ${t("CLEAN", lang)}
         </button>
       </div>
       <div class="list-group">`;
@@ -598,8 +599,8 @@ const App = {
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
           </svg>
-          <h5>Sin favoritos</h5>
-          <p class="text-muted">Haz clic en la estrella para agregar herramientas a favoritos</p>
+          <h5>${t("NO_FAVORITES", this.config.currentLanguage)}</h5>
+          <p class="text-muted">${t("NO_FAVORITES_DESC", this.config.currentLanguage)}</p>
         </div>`;
       return;
     }
@@ -738,6 +739,12 @@ const App = {
       el.placeholder = t(key, lang);
     });
 
+    // Update titles with data-i18n-title
+    document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-title");
+      el.title = t(key, lang);
+    });
+
     // Update placeholders
     const searchInput = document.getElementById("search-input");
     if (searchInput) searchInput.placeholder = t("ENTER_PLACEHOLDER", lang);
@@ -837,14 +844,32 @@ const App = {
     const adminLink = document.getElementById("admin-link");
     const incidentsLink = document.getElementById("incidents-link");
     const adminDivider = document.getElementById("admin-divider");
+    const lang = this.config.currentLanguage;
 
-    if (displayName) displayName.textContent = user.name || user.email;
+    if (displayName) {
+      if (user.name) {
+        displayName.textContent = user.name;
+        displayName.removeAttribute("data-i18n");
+      } else {
+        displayName.setAttribute("data-i18n", "USER_DEFAULT_NAME");
+        displayName.textContent = t("USER_DEFAULT_NAME", lang);
+      }
+    }
+
     if (userEmail) userEmail.textContent = user.email;
 
     // Show admin elements if applicable
     if (user.role === 'admin') {
-      if (adminLink) adminLink.style.display = 'flex';
-      if (incidentsLink) incidentsLink.style.display = 'flex';
+      if (adminLink) {
+        adminLink.style.display = 'flex';
+        const label = adminLink.querySelector("span");
+        if (label) label.textContent = t("ADMIN_PANEL", lang);
+      }
+      if (incidentsLink) {
+        incidentsLink.style.display = 'flex';
+        const label = incidentsLink.querySelector("span");
+        if (label) label.textContent = t("INCIDENT_MANAGEMENT", lang);
+      }
       if (adminDivider) adminDivider.style.display = 'block';
     }
   },
@@ -1017,7 +1042,7 @@ App.renderFavoritesPanel = function () {
   if (!container) return;
 
   if (this.state.favorites.length === 0) {
-    container.innerHTML = '<p class="text-muted">No tienes favoritos aún</p>';
+    container.innerHTML = `<p class="text-muted">${t("NO_FAVORITES_YET", this.config.currentLanguage) || "No tienes favoritos aún"}</p>`;
     return;
   }
 
