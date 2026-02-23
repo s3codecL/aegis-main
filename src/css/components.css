@@ -389,6 +389,12 @@
 }
 
 /* SweetAlert2 Glassmorphism */
+.swal2-container {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
 .swal2-popup {
     background: var(--glass-bg) !important;
     backdrop-filter: var(--glass-blur) !important;
@@ -424,4 +430,20 @@
 [data-bs-theme="light"] .swal2-cancel {
     background: rgba(0, 0, 0, 0.05) !important;
     color: #1e293b !important;
+}
+
+/* Toast Styles */
+.swal2-popup-toast {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--text) !important;
+    box-shadow: var(--glass-shadow) !important;
+}
+
+[data-bs-theme="light"] .swal2-popup-toast {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
 }
