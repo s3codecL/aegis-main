@@ -1,15 +1,43 @@
 .navbar {
-    background: rgba(15, 20, 51, 0.8) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-    padding: 0.75rem 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(15, 20, 51, 0.7) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     z-index: 1030;
     position: sticky !important;
     top: 0 !important;
     width: 100%;
-    color: white !important;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--text-dark-muted);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.vr {
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    align-self: center;
+    height: 1.5rem;
 }
 
 .navbar-brand {
@@ -90,7 +118,7 @@
     padding: var(--spacing-lg);
     max-width: 100%;
     margin: 0;
-    flex: 1;
+    flex: 1 0 auto;
     min-height: calc(100vh - 160px);
 }
 
@@ -133,18 +161,22 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2rem;
 }
 
 .footer {
-    margin-top: auto;
+    flex-shrink: 0;
     padding: var(--spacing-lg);
-    background: rgba(15, 20, 26, 0.8);
+    background: rgba(15, 20, 26, 0.95);
+    /* Menos transparente para evitar overlap visual previo */
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(59, 130, 246, 0.1);
-    box-shadow: 0 -8px 32px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
     text-align: center;
     color: var(--text-muted);
     font-size: 0.875rem;
+    width: 100%;
+    z-index: 10;
 }
 
 /* Categories Sidebar */
@@ -211,13 +243,13 @@
 }
 
 .tab-btn {
-    padding: 0.6rem 1.25rem;
+    padding: 0.6rem 1.5rem;
     border: none;
     background: transparent;
     color: var(--text-dark-muted);
     font-weight: 600;
     font-size: 0.9rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-pill);
     cursor: pointer;
     transition: all 0.3s var(--ease-out-expo);
     display: flex;
