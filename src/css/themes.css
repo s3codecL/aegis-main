@@ -190,3 +190,16 @@
     background: rgba(26, 31, 58, 0.98);
     color: var(--text-dark);
 }
+
+/* Sidebar and Panels buttons in Dark Mode */
+[data-bs-theme="dark"] .sidebar .btn-ghost,
+[data-bs-theme="dark"] .right-panel .btn-ghost {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .sidebar .btn-ghost:hover,
+[data-bs-theme="dark"] .right-panel .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-primary-light) !important;
+}
