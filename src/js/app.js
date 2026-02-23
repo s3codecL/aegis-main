@@ -578,7 +578,7 @@ const App = {
     const lang = this.config.currentLanguage;
     Swal.fire({
       title: t("CONFIRM_DELETE_HISTORY", lang),
-      icon: 'warning',
+      icon: 'error',
       showCancelButton: true,
       confirmButtonText: t("CLEAN", lang),
       cancelButtonText: t("CANCEL", lang) || 'Cancelar',
