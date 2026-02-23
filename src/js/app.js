@@ -1027,9 +1027,25 @@ window.App = App;
 // Expose functions for HTML event handlers
 window.handleLogout = (e) => {
   e.preventDefault();
-  if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-    Auth.logout();
-  }
+  const lang = App.config.currentLanguage;
+  const theme = App.config.currentTheme;
+
+  Swal.fire({
+    title: lang === 'en' ? 'Are you sure?' : '¿Estás seguro?',
+    text: lang === 'en' ? 'Do you want to logout?' : '¿Deseas cerrar sesión?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: lang === 'en' ? 'Yes, logout' : 'Sí, cerrar sesión',
+    cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
+    background: theme === 'dark' ? '#1a1f3c' : '#fff',
+    color: theme === 'dark' ? '#fff' : '#000'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Auth.logout();
+    }
+  });
 };
 
 window.toggleSidebar = () => {
