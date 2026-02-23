@@ -65,6 +65,7 @@ export const translations = {
     "CLOSE": "Close",
     "CONTINUE": "Continue",
     "ACCEPT": "Accept",
+    "CLEAN": "Clean",
 
     // Modals
     "ERROR": "Error",
@@ -151,6 +152,11 @@ export const translations = {
     "LOGOUT": "Logout",
     "ADMIN_PANEL": "Admin Panel",
     "RECAPTCHA_ERROR": "Please complete the reCAPTCHA verification.",
+    "USER_DEFAULT_NAME": "User",
+    "USER_ROLE": "User",
+    "ADMIN_ROLE": "Administrator",
+    "INCIDENT_MANAGEMENT": "Incidents",
+    "CLOSE_TOOLTIP": "Close panel",
 
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "you@example.com",
@@ -594,6 +600,7 @@ export const translations = {
     "CLOSE": "Cerrar",
     "CONTINUE": "Continuar",
     "ACCEPT": "Aceptar",
+    "CLEAN": "Limpiar",
 
     // Modals
     "ERROR": "Error",
