@@ -21,6 +21,7 @@ const App = {
     searchHistory: JSON.parse(localStorage.getItem("osintHistory")) || [],
     searches: JSON.parse(localStorage.getItem("osintSearches")) || 0,
     lastSearchQuery: "", // Track last search query for auto-fill
+    activeRightPanel: "history", // "history" or "favorites"
   },
 
   // Initialize the application
@@ -789,6 +790,22 @@ const App = {
     this.renderHistory();
     this.setupCategories();
 
+    // Update right panel title if open
+    const panel = document.getElementById("right-panel");
+    if (panel && panel.classList.contains("active")) {
+      const title = document.getElementById("panel-title");
+      if (title) {
+        const key = this.state.activeRightPanel === "favorites" ? "FAVORITES" : "HISTORY";
+        title.textContent = t(key, lang);
+      }
+      // Refresh panel content
+      if (this.state.activeRightPanel === "favorites") {
+        this.renderFavoritesPanel();
+      } else {
+        this.renderHistoryPanel();
+      }
+    }
+
     // Update sidebar header
     const sidebarHeader = document.querySelector(".sidebar-header h5");
     if (sidebarHeader) sidebarHeader.textContent = t("TOOLS", lang);
@@ -1021,6 +1038,15 @@ window.toggleSidebar = () => {
   if (sidebar && mainContent) {
     sidebar.classList.toggle("collapsed");
     mainContent.classList.toggle("expanded");
+
+    // Update tooltip dynamically
+    const btn = document.getElementById("toggle-sidebar-btn");
+    if (btn) {
+      const isCollapsed = sidebar.classList.contains("collapsed");
+      const key = isCollapsed ? "EXPAND_SIDEBAR" : "CLOSE_SIDEBAR";
+      btn.setAttribute("data-i18n-title", key);
+      btn.title = t(key, App.config.currentLanguage);
+    }
   }
 };
 
@@ -1029,6 +1055,7 @@ window.toggleHistoryPanel = () => {
   const title = document.getElementById("panel-title");
   if (panel && title) {
     const isOpening = !panel.classList.contains("active");
+    App.state.activeRightPanel = "history";
     title.textContent = t("HISTORY", App.config.currentLanguage);
     App.renderHistoryPanel();
     panel.classList.toggle("active");
@@ -1047,6 +1074,7 @@ window.toggleFavoritesPanel = () => {
   const title = document.getElementById("panel-title");
   if (panel && title) {
     const isOpening = !panel.classList.contains("active");
+    App.state.activeRightPanel = "favorites";
     title.textContent = t("FAVORITES", App.config.currentLanguage);
     App.renderFavoritesPanel();
     panel.classList.toggle("active");
