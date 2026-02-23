@@ -57,6 +57,9 @@
     /* Animation Timings */
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
     --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Fonts */
+    --font-primary: 'Outfit', sans-serif;
 }
 
 * {
@@ -66,7 +69,7 @@
 }
 
 body {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: var(--font-primary);
     background: var(--bg-primary);
     color: var(--text);
     transition: var(--transition);
