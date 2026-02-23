@@ -127,7 +127,8 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Please fill in all required fields",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis Dashboard - Personal Investigation Tool (Aegis: the shield of Zeus, symbol of divine protection)",
+    "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
+    "FOOTER_MADE_WITH": "Made with ❤️ for the security community - s3codecL",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
     // Authentication
@@ -664,7 +665,8 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Por favor completa todos los campos requeridos",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis Dashboard - (Egida) El escudo de Zeus, símbolo de protección divina",
+    "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
+    "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - s3codecL",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
     // Authentication
