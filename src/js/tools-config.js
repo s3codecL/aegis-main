@@ -101,8 +101,6 @@ export const toolsData = [
 
   // REAL_TIME_THREAT_MAPS (2)
   { id: "threatmap", name: "Kaspersky Threat Map", url: "https://cybermap.kaspersky.com/", category: "REAL_TIME_THREAT_MAPS" },
-  { id: "netlab", name: "Netlab 360", url: "https://data.netlab.360.com/", category: "REAL_TIME_THREAT_MAPS" },
-
   { id: "netlab", name: "Netlab 360", url: "https://data.netlab.360.com/", category: "REAL_TIME_THREAT_MAPS" }
 ];
 
