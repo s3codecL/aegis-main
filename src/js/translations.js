@@ -130,7 +130,7 @@ export const translations = {
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
     // Authentication
-    "WELCOME_AEGIS": "Welcome to Aegis",
+    "WELCOME_AEGIS": "Welcome to <span>Aegis</span>",
     "LOGIN_SUBTITLE": "Access your OSINT tools",
     "LOGIN": "Login",
     "REGISTER": "Register",
@@ -659,7 +659,7 @@ export const translations = {
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
     // Authentication
-    "WELCOME_AEGIS": "Bienvenido a Aegis",
+    "WELCOME_AEGIS": "Bienvenido a <span>Aegis</span>",
     "LOGIN_SUBTITLE": "Accede a tus herramientas OSINT",
     "LOGIN": "Iniciar Sesión",
     "REGISTER": "Registrarse",
