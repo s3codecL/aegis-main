@@ -128,7 +128,7 @@ export const translations = {
 
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
-    "FOOTER_MADE_WITH": "Made with ❤️ for the security community - s3codecL",
+    "FOOTER_MADE_WITH": "Made with ❤️ for the security community - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
     // Authentication
@@ -666,7 +666,7 @@ export const translations = {
 
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
-    "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - s3codecL",
+    "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
     // Authentication
@@ -1107,7 +1107,7 @@ export const Translations = {
       const key = el.getAttribute("data-i18n");
       const translation = translations[lang][key];
       if (translation) {
-        el.textContent = translation;
+        el.innerHTML = translation;
       }
     });
 
