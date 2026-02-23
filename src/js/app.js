@@ -974,9 +974,17 @@ window.toggleHistoryPanel = () => {
   const panel = document.getElementById("right-panel");
   const title = document.getElementById("panel-title");
   if (panel && title) {
-    title.textContent = t("HISTORY", Translations.currentLanguage);
+    const isOpening = !panel.classList.contains("active");
+    title.textContent = t("HISTORY", App.config.currentLanguage);
     App.renderHistoryPanel();
     panel.classList.toggle("active");
+
+    // Sincronizar clase de layout
+    if (isOpening) {
+      document.body.classList.add("panel-open");
+    } else {
+      document.body.classList.remove("panel-open");
+    }
   }
 };
 
@@ -984,14 +992,23 @@ window.toggleFavoritesPanel = () => {
   const panel = document.getElementById("right-panel");
   const title = document.getElementById("panel-title");
   if (panel && title) {
-    title.textContent = t("FAVORITES", Translations.currentLanguage);
+    const isOpening = !panel.classList.contains("active");
+    title.textContent = t("FAVORITES", App.config.currentLanguage);
     App.renderFavoritesPanel();
     panel.classList.toggle("active");
+
+    // Sincronizar clase de layout
+    if (isOpening) {
+      document.body.classList.add("panel-open");
+    } else {
+      document.body.classList.remove("panel-open");
+    }
   }
 };
 
 window.closeRightPanel = () => {
   document.getElementById("right-panel")?.classList.remove("active");
+  document.body.classList.remove("panel-open");
 };
 
 // Implement renderFavoritesPanel
