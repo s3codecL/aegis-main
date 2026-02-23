@@ -409,8 +409,17 @@ const Auth = {
         }
 
         if (!this.isAdmin()) {
-            alert('Acceso denegado. Se requieren permisos de administrador.');
-            window.location.href = 'index.html';
+            Swal.fire({
+                icon: 'error',
+                title: 'Acceso Denegado',
+                text: 'Se requieren permisos de administrador.',
+                confirmButtonText: 'Entendido',
+                customClass: {
+                    popup: 'swal2-popup'
+                }
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
             return false;
         }
 
@@ -512,19 +521,20 @@ const Auth = {
      * Mostrar alerta
      */
     showAlert: function (message, type = 'danger') {
-        const container = document.getElementById('alert-container');
-        if (!container) return;
+        const icon = type === 'success' ? 'success' : (type === 'danger' ? 'error' : 'info');
 
-        const alert = document.createElement('div');
-        alert.className = `alert alert-${type}`;
-        alert.textContent = message;
-
-        container.innerHTML = '';
-        container.appendChild(alert);
-
-        setTimeout(() => {
-            alert.remove();
-        }, 5000);
+        Swal.fire({
+            icon: icon,
+            title: message,
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            customClass: {
+                popup: 'swal2-popup-toast'
+            }
+        });
     },
 
     /**
