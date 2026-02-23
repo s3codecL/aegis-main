@@ -575,17 +575,28 @@ const App = {
 
   // Clear search history
   clearHistory: function () {
-    if (!confirm(t("CONFIRM_DELETE_HISTORY", this.config.currentLanguage))) {
-      return;
-    }
-
-    this.state.searchHistory = [];
-    this.state.searches = 0;
-    localStorage.setItem("osintHistory", JSON.stringify(this.state.searchHistory));
-    localStorage.setItem("osintSearches", JSON.stringify(this.state.searches));
-    this.updateStats();
-    this.renderHistoryPanel();
-    this.renderHistory();
+    const lang = this.config.currentLanguage;
+    Swal.fire({
+      title: t("CONFIRM_DELETE_HISTORY", lang),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: t("CLEAN", lang),
+      cancelButtonText: t("CANCEL", lang) || 'Cancelar',
+      customClass: {
+        popup: 'swal2-popup'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.state.searchHistory = [];
+        this.state.searches = 0;
+        localStorage.setItem("osintHistory", JSON.stringify(this.state.searchHistory));
+        localStorage.setItem("osintSearches", JSON.stringify(this.state.searches));
+        this.updateStats();
+        this.renderHistoryPanel();
+        this.renderHistory();
+        this.showSuccess(t("CLEAN_SUCCESS", lang) || "Historial borrado");
+      }
+    });
   },
 
   // Render favorites view with all favorite tools
@@ -887,16 +898,34 @@ const App = {
 
   // Show error modal
   showError: function (message) {
-    const errorText = document.getElementById("errorModalText");
-    if (errorText) errorText.textContent = message;
-    new bootstrap.Modal(document.getElementById("errorModal")).show();
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: message,
+      confirmButtonText: 'OK',
+      customClass: {
+        popup: 'swal2-popup'
+      }
+    });
   },
 
   // Show success modal
   showSuccess: function (message) {
-    const successText = document.getElementById("successModalText");
-    if (successText) successText.textContent = message;
-    new bootstrap.Modal(document.getElementById("successModal")).show();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      customClass: {
+        popup: 'swal2-popup-toast'
+      }
+    });
+
+    Toast.fire({
+      icon: 'success',
+      title: message
+    });
   },
 
   // CUSTOM TOOLS LOGIC
