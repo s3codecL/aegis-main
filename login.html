@@ -16,15 +16,37 @@
     <script>
         var loginWidgetId;
         var registerWidgetId;
+
+        window.renderRecaptchas = function () {
+            const savedTheme = localStorage.getItem('osintTheme') || 'dark';
+
+            // Reemplazar contenedores para permitir re-renderizado
+            const loginContainer = document.getElementById('login-recaptcha');
+            const registerContainer = document.getElementById('register-recaptcha');
+
+            if (loginContainer) {
+                const newLogin = loginContainer.cloneNode(false);
+                newLogin.innerHTML = '';
+                loginContainer.parentNode.replaceChild(newLogin, loginContainer);
+                loginWidgetId = grecaptcha.render(newLogin, {
+                    'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
+                    'theme': savedTheme
+                });
+            }
+
+            if (registerContainer) {
+                const newRegister = registerContainer.cloneNode(false);
+                newRegister.innerHTML = '';
+                registerContainer.parentNode.replaceChild(newRegister, registerContainer);
+                registerWidgetId = grecaptcha.render(newRegister, {
+                    'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
+                    'theme': savedTheme
+                });
+            }
+        };
+
         var onloadCallback = function () {
-            loginWidgetId = grecaptcha.render('login-recaptcha', {
-                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
-                'theme': 'dark'
-            });
-            registerWidgetId = grecaptcha.render('register-recaptcha', {
-                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
-                'theme': 'dark'
-            });
+            window.renderRecaptchas();
         };
     </script>
 </head>
@@ -328,6 +350,9 @@
                         document.body.setAttribute('data-bs-theme', newTheme);
                         localStorage.setItem('osintTheme', newTheme);
                         updateIcons(newTheme);
+
+                        // Recargar reCAPTCHA con el nuevo tema
+                        if (window.renderRecaptchas) window.renderRecaptchas();
                     };
                 }
 
