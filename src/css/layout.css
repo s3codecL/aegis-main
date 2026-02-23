@@ -3,12 +3,17 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(59, 130, 246, 0.15);
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
+    /* Aumentado de 0.5rem */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     z-index: 1030;
     position: sticky !important;
     top: 0 !important;
     width: 100%;
+    min-height: 70px;
+    /* Asegura altura mínima */
+    display: flex;
+    align-items: center;
 }
 
 .btn-icon {
@@ -47,21 +52,26 @@
 }
 
 .navbar-brand h1 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    /* Aumentado de 1.25rem */
     font-weight: 700;
     margin: 0;
     color: var(--color-primary);
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .navbar-brand small {
     display: block;
-    font-size: 0.75rem;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    /* Aumentado de 0.75rem */
+    opacity: 0.9;
 }
 
 .icon-brand {
     color: var(--color-primary);
+    width: 32px;
+    /* Aumentado */
+    height: 32px;
 }
 
 .navbar-controls {
