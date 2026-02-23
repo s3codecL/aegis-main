@@ -343,6 +343,9 @@ const App = {
     // Update search count
     this.state.searches = (this.state.searches || 0) + 1;
     localStorage.setItem("osintSearches", JSON.stringify(this.state.searches));
+
+    // Actualizar UI de estadísticas
+    this.updateStats();
   },
 
   // Filter tools by name/description
@@ -430,6 +433,9 @@ const App = {
       "osintFavorites",
       JSON.stringify(this.state.favorites)
     );
+
+    // Actualizar UI de estadísticas
+    this.updateStats();
 
     // Actualizar el badge con el contador correcto
     const badge = document.getElementById("favorites-count");

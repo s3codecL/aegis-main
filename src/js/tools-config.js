@@ -103,18 +103,7 @@ export const toolsData = [
   { id: "threatmap", name: "Kaspersky Threat Map", url: "https://cybermap.kaspersky.com/", category: "REAL_TIME_THREAT_MAPS" },
   { id: "netlab", name: "Netlab 360", url: "https://data.netlab.360.com/", category: "REAL_TIME_THREAT_MAPS" },
 
-  // OTHERS (Extra tools to reach 78)
-  { id: "tormetrics", name: "Tor Metrics", template: "https://metrics.torproject.org/rs.html#search/{{query}}", category: "SEARCH_TOOLS" },
-  { id: "hostio", name: "Host.io", template: "https://host.io/{{query}}", category: "WEBSITE_SECURITY" },
-  { id: "silentpush", name: "Silent Push", template: "https://www.silentpush.com/search?q={{query}}", category: "THREAT_INTELLIGENCE" },
-  { id: "archive", name: "Wayback Machine", template: "https://web.archive.org/web/*/{{query}}", category: "WEBSITE_SECURITY" },
-  { id: "gtmetrix", name: "GTmetrix", template: "https://gtmetrix.com/reports/{{query}}", category: "WEBSITE_SECURITY" },
-  { id: "similarweb", name: "SimilarWeb", template: "https://www.similarweb.com/website/{{query}}", category: "WEBSITE_SECURITY" },
-  { id: "silentpush-live", name: "Silent Push Live Scan", template: "https://www.silentpush.com/live-scan?q={{query}}", category: "THREAT_INTELLIGENCE" },
-  { id: "nordvpn-file-checker", name: "NordVPN File Checker", url: "https://nordvpn.com/es/file-checker/", category: "MALWARE_ANALYSIS" },
-  { id: "threatstream", name: "ThreatStream", url: "https://www.anomali.com/products/threatstream", category: "THREAT_INTELLIGENCE" },
-  { id: "whoisxml", name: "WhoisXML", template: "https://whois.whoisxmlapi.com/lookup/{{query}}", category: "IP_INFO" },
-  { id: "whoxy", name: "Whoxy", template: "https://www.whoxy.com/{{query}}", category: "IP_INFO" }
+  { id: "netlab", name: "Netlab 360", url: "https://data.netlab.360.com/", category: "REAL_TIME_THREAT_MAPS" }
 ];
 
 window.toolsData = toolsData;
