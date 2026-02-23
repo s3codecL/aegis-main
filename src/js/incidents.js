@@ -195,14 +195,18 @@ const IncidentManager = {
      * Eliminar incidente
      */
     deleteIncident: function (id) {
-        if (!confirm('¿Estás seguro de eliminar este incidente? Esta acción no se puede deshacer.')) {
-            return false;
-        }
+        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+        const title = lang === 'en' ? 'Are you sure?' : '¿Estás seguro?';
+        const text = translations[lang]["CONFIRM_DELETE_INCIDENT"] || '¿Estás seguro de eliminar este incidente? Esta acción no se puede deshacer.';
+        const confirmBtn = lang === 'en' ? 'Yes, delete' : 'Sí, eliminar';
 
-        this.state.incidents = this.state.incidents.filter(inc => inc.id !== id);
-        this.saveIncidents();
-        this.renderIncidents();
-        this.updateStats();
+        this.confirmDelete(title, text, confirmBtn, () => {
+            this.state.incidents = this.state.incidents.filter(inc => inc.id !== id);
+            this.saveIncidents();
+            this.renderIncidents();
+            this.updateStats();
+            this.showAlert(translations[lang]["INCIDENT_DELETED"] || 'Incidente eliminado correctamente', 'success');
+        });
 
         return true;
     },
@@ -305,29 +309,19 @@ const IncidentManager = {
             const critColor = CSTaxonomy.getCriticalityColor(incident.classification.criticality);
             const critLabel = CSTaxonomy.getCriticalityLabel(incident.classification.criticality, lang);
             const typeLabel = CSTaxonomy.getIncidentTypeLabel(incident.classification.type, lang);
-            const date = new Date(incident.detection.timestamp).toLocaleString(lang === 'en' ? 'en-US' : 'es-ES');
 
             return `
-                <tr onclick="IncidentManager.viewIncident('${incident.id}')" style="cursor: pointer;">
-                    <td>
-                        <strong>${incident.code}</strong>
-                        <br><small class="text-muted">${date}</small>
-                    </td>
-                        <td style="vertical-align: middle;">
-                            <span class="badge status-badge" style="background-color: ${statusBadge.color};">
-                                ${statusBadge.label}
-                            </span>
-                        </td>
-                        <td style="vertical-align: middle; text-align: center; width: 32px;">
-                            <span class="status-icon">${statusBadge.icon}</span>
+                    <tr class="align-middle">
+                        <td class="fw-bold text-primary" style="font-family: monospace;">${incident.code}</td>
+                        <td>${statusBadge}</td>
+                        <td class="text-center">
+                             <span class="status-dot-pulse bg-${critColor}"></span>
                         </td>
                         <td>
-                            <span class="badge" style="background-color: ${critColor};">
+                            <span class="badge border border-${critColor} text-${critColor} bg-${critColor}-lt">
                                 ${critLabel}
                             </span>
                         </td>
-                    <td>
-                        <div class="text-truncate" style="max-width: 200px;" title="${typeLabel}">
                             ${typeLabel}
                         </div>
                     </td>
@@ -821,21 +815,43 @@ const IncidentManager = {
         }
     },
 
-    showAlert: function (message, type = 'info') {
-        // Implementar notificación (puede usar Toastr o Bootstrap Toast)
-        console.log(`[${type.toUpperCase()}] ${message}`);
+    showAlert: function (message, type = 'success') {
+        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+        const theme = document.body.getAttribute('data-bs-theme') || 'dark';
 
-        // Fallback simple
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
-        alertDiv.style.zIndex = '9999';
-        alertDiv.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-        document.body.appendChild(alertDiv);
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: type,
+            title: message,
+            background: theme === 'dark' ? '#1a1f3c' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000'
+        });
+    },
 
-        setTimeout(() => alertDiv.remove(), 5000);
+    confirmDelete: function (title, text, confirmBtnText, callback) {
+        const theme = document.body.getAttribute('data-bs-theme') || 'dark';
+        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: confirmBtnText,
+            cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
+            background: theme === 'dark' ? '#1a1f3c' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                callback();
+            }
+        });
     }
 };
 
