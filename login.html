@@ -12,7 +12,17 @@
     <link rel="icon" href="plugins/favorites - Chrome/ico.png" type="image/png" />
 
     <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <!-- Google reCAPTCHA con Idioma Dinámico -->
+    <script>
+        (function () {
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const script = document.createElement('script');
+            script.src = `https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=${lang}`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    </script>
     <script>
         var loginWidgetId;
         var registerWidgetId;
@@ -285,15 +295,13 @@
 
         // Función para recargar reCAPTCHA con nuevo idioma
         function reloadRecaptchaWithLanguage(lang) {
-            const oldScripts = document.querySelectorAll('script[src*="recaptcha"]');
-            oldScripts.forEach(script => script.remove());
+            // Guardar estado de la pestaña actual antes de recargar
+            const activeTabBtn = document.querySelector('.tab-btn.active');
+            const mode = activeTabBtn && (activeTabBtn.textContent.includes('Registr') || activeTabBtn.getAttribute('onclick').includes('register')) ? 'register' : 'login';
+            localStorage.setItem('osintActiveTab', mode);
 
-            const recaptchaElements = document.querySelectorAll('.g-recaptcha > div');
-            recaptchaElements.forEach(el => el.innerHTML = '');
-
-            setTimeout(() => {
-                window.location.reload();
-            }, 100);
+            // Recargar para aplicar lenguaje al script de reCAPTCHA
+            window.location.reload();
         }
 
         // Initialize on page load
@@ -316,16 +324,17 @@
                     currentLangEl.textContent = lang.toUpperCase();
                 }
 
-                // Actualizar placeholders
-                setTimeout(() => {
-                    document.querySelectorAll('[data-placeholder]').forEach(element => {
-                        const key = element.getAttribute('data-placeholder');
-                        const translation = t(key, lang);
-                        if (translation) {
-                            element.placeholder = translation;
-                        }
-                    });
-                }, 100);
+                // Inicializar traducciones
+                if (Auth.initTranslations) {
+                    Auth.initTranslations(lang);
+                }
+
+                // Restaurar pestaña activa si se guardó
+                const savedTab = localStorage.getItem('osintActiveTab');
+                if (savedTab) {
+                    window.switchTab(savedTab);
+                    localStorage.removeItem('osintActiveTab');
+                }
 
                 // Theme toggle
                 const themeToggle = document.getElementById('theme-toggle');
