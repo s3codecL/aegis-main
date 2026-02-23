@@ -377,10 +377,13 @@
 }
 
 [data-bs-theme="light"] .result-item {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(59, 130, 246, 0.2);
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 [data-bs-theme="light"] .result-item:hover {
     background: #ffffff;
+    border-color: var(--color-primary-light);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
 }
