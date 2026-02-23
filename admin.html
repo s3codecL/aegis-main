@@ -65,7 +65,8 @@
                         <div class="user-avatar">
                             <span id="userInitial">A</span>
                         </div>
-                        <span class="user-name d-none d-md-inline" id="admin-name">Administrador</span>
+                        <span class="user-name d-none d-md-inline" id="admin-name"
+                            data-i18n="USER_DEFAULT_NAME">Administrador</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-chevron-down ms-1" width="14"
                             height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"></path>
@@ -87,7 +88,7 @@
                                     <path d="M12 20h9"></path>
                                     <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                                 </svg>
-                                <span>Panel Admin</span>
+                                <span data-i18n="ADMIN_PANEL">Panel Admin</span>
                             </a>
                         </li>
                         <li>
@@ -250,7 +251,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -271,7 +272,7 @@
                     <p class="text-muted mb-0"><strong id="delete-user-name"></strong></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
                 </div>
             </div>
