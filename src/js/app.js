@@ -742,7 +742,7 @@ const App = {
     // Update navbar labels
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      el.textContent = t(key, lang);
+      el.innerHTML = t(key, lang);
     });
 
     // Update placeholders with data-i18n-placeholder
@@ -782,7 +782,7 @@ const App = {
 
     // Update footer
     const footerInfo = document.getElementById("footer-info");
-    if (footerInfo) footerInfo.textContent = t("PRIVACY_NOTICE", lang);
+    if (footerInfo) footerInfo.innerHTML = t("PRIVACY_NOTICE", lang);
 
     // Re-render current views
     this.renderTools();
