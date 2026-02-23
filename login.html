@@ -5,11 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Aegis HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="src/css/main.css" />
     <link rel="stylesheet" href="src/css/login.css" />
     <link rel="icon" href="plugins/favorites - Chrome/ico.png" type="image/png" />
+
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script>
+        var loginWidgetId;
+        var registerWidgetId;
+        var onloadCallback = function () {
+            loginWidgetId = grecaptcha.render('login-recaptcha', {
+                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
+                'theme': 'dark'
+            });
+            registerWidgetId = grecaptcha.render('register-recaptcha', {
+                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
+                'theme': 'dark'
+            });
+        };
+    </script>
 </head>
 
 <body data-bs-theme="dark">
@@ -46,7 +63,7 @@
                     <path d="M9.5 10.5c.8.6 1.5.9 2.5.9s1.7-.3 2.5-.9" fill="none" stroke="currentColor"
                         stroke-linecap="round"></path>
                 </svg>
-                <h1 data-i18n="WELCOME_AEGIS">Bienvenido a Aegis</h1>
+                <h1 data-i18n="WELCOME_AEGIS">Bienvenido a <span>Aegis</span></h1>
                 <p data-i18n="LOGIN_SUBTITLE">Accede a tus herramientas OSINT</p>
             </div>
 
@@ -85,8 +102,7 @@
                     </div>
 
                     <!-- reCAPTCHA -->
-                    <div class="g-recaptcha" data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5"
-                        style="margin-bottom: 1rem;"></div>
+                    <div id="login-recaptcha" class="g-recaptcha"></div>
 
                     <button type="submit" class="btn-primary" data-i18n="SIGN_IN">Iniciar Sesión</button>
                 </form>
@@ -158,8 +174,7 @@
                     </div>
 
                     <!-- reCAPTCHA -->
-                    <div class="g-recaptcha" data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5"
-                        style="margin-bottom: 1rem;"></div>
+                    <div id="register-recaptcha" class="g-recaptcha"></div>
 
                     <button type="submit" class="btn-primary" data-i18n="CREATE_ACCOUNT">Crear Cuenta</button>
                 </form>
@@ -206,10 +221,10 @@
 
     <!-- Auth Script -->
     <script type="module">
-        import Auth from 'src/js/auth.js';
-        import { t } from 'src/js/translations.js';
+        import Auth from './src/js/auth.js';
+        import { t } from './src/js/translations.js';
 
-        // Tab switching
+        // Export functions to window for onclick handlers
         window.switchTab = function (tab) {
             const loginTab = document.getElementById('login-tab');
             const registerTab = document.getElementById('register-tab');
@@ -218,19 +233,32 @@
             tabButtons.forEach(btn => btn.classList.remove('active'));
 
             if (tab === 'login') {
-                loginTab.classList.add('active');
-                registerTab.classList.remove('active');
-                tabButtons[0].classList.add('active');
+                if (loginTab) loginTab.classList.add('active');
+                if (registerTab) registerTab.classList.remove('active');
+                if (tabButtons[0]) tabButtons[0].classList.add('active');
             } else {
-                loginTab.classList.remove('active');
-                registerTab.classList.add('active');
-                tabButtons[1].classList.add('active');
+                if (loginTab) loginTab.classList.remove('active');
+                if (registerTab) registerTab.classList.add('active');
+                if (tabButtons[1]) tabButtons[1].classList.add('active');
             }
         };
 
         window.showForgotPassword = function (e) {
             e.preventDefault();
-            Auth.showAlert('Se ha enviado un enlace de recuperación a tu correo electrónico.', 'success');
+            if (window.Auth && window.Auth.showAlert) {
+                window.Auth.showAlert('Se ha enviado un enlace de recuperación a tu correo electrónico.', 'success');
+            } else {
+                alert('Se ha enviado un enlace de recuperación a tu correo electrónico.');
+            }
+        };
+
+        // Simulated OAuth logic
+        window.loginWithGoogle = function () {
+            if (window.Auth) window.Auth.loginWithGoogle();
+        };
+
+        window.loginWithGithub = function () {
+            if (window.Auth) window.Auth.loginWithGithub();
         };
 
         // Función para recargar reCAPTCHA con nuevo idioma
@@ -253,8 +281,12 @@
             document.documentElement.setAttribute('data-bs-theme', savedTheme);
             document.body.setAttribute('data-bs-theme', savedTheme);
 
-            document.addEventListener('DOMContentLoaded', function () {
-                console.log('=== LOGIN PAGE LOADED ===');
+            const initializePage = () => {
+                console.log('=== LOGIN PAGE INITIALIZED ===');
+
+                // Export Auth to window and initialize
+                window.Auth = Auth;
+                if (Auth.init) Auth.init();
 
                 const lang = localStorage.getItem('osintLanguage') || 'es';
                 const currentLangEl = document.getElementById('current-lang');
@@ -262,9 +294,7 @@
                     currentLangEl.textContent = lang.toUpperCase();
                 }
 
-                // El sistema Auth se auto-inicializa en auth.js al detectar login.html
-
-                // Actualizar placeholders manually
+                // Actualizar placeholders
                 setTimeout(() => {
                     document.querySelectorAll('[data-placeholder]').forEach(element => {
                         const key = element.getAttribute('data-placeholder');
@@ -281,9 +311,13 @@
                 const moonIcon = document.querySelector('#theme-toggle .icon-moon');
 
                 if (themeToggle && sunIcon && moonIcon) {
+                    const updateIcons = (theme) => {
+                        sunIcon.style.display = theme === 'dark' ? 'inline-block' : 'none';
+                        moonIcon.style.display = theme === 'dark' ? 'none' : 'inline-block';
+                    };
+
                     const currentTheme = localStorage.getItem('osintTheme') || 'dark';
-                    sunIcon.style.display = currentTheme === 'dark' ? 'inline-block' : 'none';
-                    moonIcon.style.display = currentTheme === 'dark' ? 'none' : 'inline-block';
+                    updateIcons(currentTheme);
 
                     themeToggle.onclick = function (e) {
                         e.preventDefault();
@@ -293,9 +327,7 @@
                         document.documentElement.setAttribute('data-bs-theme', newTheme);
                         document.body.setAttribute('data-bs-theme', newTheme);
                         localStorage.setItem('osintTheme', newTheme);
-
-                        sunIcon.style.display = newTheme === 'dark' ? 'inline-block' : 'none';
-                        moonIcon.style.display = newTheme === 'dark' ? 'none' : 'inline-block';
+                        updateIcons(newTheme);
                     };
                 }
 
@@ -325,7 +357,13 @@
                         reloadRecaptchaWithLanguage(newLang);
                     };
                 }
-            });
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializePage);
+            } else {
+                initializePage();
+            }
         })();
     </script>
 </body>
