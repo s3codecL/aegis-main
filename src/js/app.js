@@ -214,34 +214,60 @@ const App = {
     const queryTypeUpper = queryType.toUpperCase();
     const typeTranslation = translations[this.config.currentLanguage]?.[queryTypeUpper] || queryType;
 
-    let resultsHTML = `<div class="search-results">
-      <div class="alert alert-info">
-        <strong>${detectedTypeLabel}</strong> ${typeTranslation}
-      </div>
-      <div class="results-list">`;
+    let resultsHTML = `
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="alert alert-info py-2 d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+              <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+              <path d="M12 9h.01"></path>
+              <path d="M11 12h1v4h1"></path>
+            </svg>
+            <div>
+              <strong>${detectedTypeLabel}</strong> <span class="badge bg-primary-lt ms-1">${typeTranslation}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12">
+          <div class="card">
+            <div class="table-responsive">
+              <table class="table table-vcenter">
+                <tbody>`;
 
     relevantTools.forEach((tool) => {
       const url = this.buildToolUrl(tool, query);
+      const isFavorite = this.state.favorites.includes(tool.id);
       const description = t('DESC_' + tool.id, this.config.currentLanguage);
+
       resultsHTML += `
-        <div class="result-item" title="${description}">
-          <div class="result-header">
-            <h6>${tool.name}</h6>
-          </div>
-          <p class="text-muted small">${description}</p>
-          <a href="${url}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-            ${t("GO", this.config.currentLanguage)}
-          </a>
-          <button class="btn btn-sm btn-outline-warning" onclick="App.addFavorite('${tool.id}')">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
-            </svg>
-            ${t("FAVORITES", this.config.currentLanguage)}
-          </button>
-        </div>`;
+                  <tr title="${description}">
+                    <td width="80%">
+                      <div class="text-heading font-weight-bold">${tool.name}</div>
+                      <div class="text-muted small">${description}</div>
+                    </td>
+                    <td class="text-end">
+                      <div class="d-flex align-items-center justify-content-end gap-2">
+                        <a href="${url}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                          ${t("GO", this.config.currentLanguage)}
+                        </a>
+                        <button class="btn btn-sm btn-${isFavorite ? "warning" : "ghost-warning"} btn-icon" onclick="App.toggleFavorite('${tool.id}')">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor">
+                            <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>`;
     });
 
-    resultsHTML += `</div></div>`;
+    resultsHTML += `
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>`;
     resultsContainer.innerHTML = resultsHTML;
   },
 
@@ -393,18 +419,19 @@ const App = {
                   <tr title="${description}">
                     <td width="80%">
                       <div class="text-heading font-weight-bold">${tool.name}</div>
-                      <div class="text-muted">${description}</div>
+                      <div class="text-muted small">${description}</div>
                     </td>
                     <td class="text-end">
-                      <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
-                        ${t("GO", this.config.currentLanguage)}
-                      </button>
-                      <button class="btn btn-sm btn-${isFavorite ? "warning" : "outline-warning"
-          }" onclick="App.toggleFavorite('${tool.id}')">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
-                        </svg>
-                      </button>
+                      <div class="d-flex align-items-center justify-content-end gap-2">
+                        <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
+                          ${t("GO", this.config.currentLanguage)}
+                        </button>
+                        <button class="btn btn-sm btn-${isFavorite ? "warning" : "ghost-warning"} btn-icon" onclick="App.toggleFavorite('${tool.id}')">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor">
+                            <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
+                          </svg>
+                        </button>
+                      </div>
                     </td>
                   </tr>`;
       });
@@ -661,19 +688,19 @@ const App = {
                   <tr title="${description}">
                     <td width="80%">
                       <div class="text-heading font-weight-bold">${tool.name}</div>
-                      <div class="text-muted">${description}</div>
+                      <div class="text-muted small">${description}</div>
                     </td>
                     <td class="text-end">
-                      <button class="btn btn-sm btn-ghost-warning btn-icon" onclick="App.toggleFavorite('${tool.id}')">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""
-          }" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"
-          }" stroke="currentColor">
-                          <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
-                        </svg>
-                      </button>
-                      <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
-                        Ir
-                      </button>
+                      <div class="d-flex align-items-center justify-content-end gap-2">
+                        <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
+                          ${t("GO", this.config.currentLanguage)}
+                        </button>
+                        <button class="btn btn-sm btn-${isFavorite ? "warning" : "ghost-warning"} btn-icon" onclick="App.toggleFavorite('${tool.id}')">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor">
+                            <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
+                          </svg>
+                        </button>
+                      </div>
                     </td>
                   </tr>`;
       });
