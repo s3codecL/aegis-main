@@ -629,12 +629,18 @@ const App = {
       showCancelButton: true,
       confirmButtonText: t("CLEAN", lang),
       cancelButtonText: t("CANCEL", lang) || 'Cancelar',
+      background: 'rgba(15, 23, 42, 0.9)',
+      color: '#fff',
+      showClass: {
+        popup: 'premium-swal-show'
+      },
+      hideClass: {
+        popup: 'premium-swal-hide'
+      },
       customClass: {
         popup: 'premium-swal-popup',
         title: 'premium-swal-title'
-      },
-      background: 'rgba(15, 23, 42, 0.9)',
-      color: '#fff'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         this.state.searchHistory = [];
@@ -962,35 +968,48 @@ const App = {
     if (favCountEl) favCountEl.textContent = this.state.favorites.length;
   },
 
-  // Show error modal
-  showError: function (message) {
+  // Show success modal
+  showSuccess: function (message) {
+    const lang = this.config.currentLanguage;
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: message,
-      confirmButtonText: 'OK',
+      icon: 'success',
+      title: message,
+      confirmButtonText: t("OK", lang) || 'Entendido',
+      background: 'rgba(15, 23, 42, 0.9)',
+      color: '#fff',
+      showClass: {
+        popup: 'premium-swal-show'
+      },
+      hideClass: {
+        popup: 'premium-swal-hide'
+      },
       customClass: {
-        popup: 'swal2-popup'
+        popup: 'premium-swal-popup',
+        title: 'premium-swal-title'
       }
     });
   },
 
-  // Show success modal
-  showSuccess: function (message) {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
+  // Show error modal
+  showError: function (message) {
+    const lang = this.config.currentLanguage;
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: message,
+      confirmButtonText: t("OK", lang) || 'Entendido',
+      background: 'rgba(15, 23, 42, 0.9)',
+      color: '#fff',
+      showClass: {
+        popup: 'premium-swal-show'
+      },
+      hideClass: {
+        popup: 'premium-swal-hide'
+      },
       customClass: {
-        popup: 'swal2-popup-toast'
+        popup: 'premium-swal-popup',
+        title: 'premium-swal-title'
       }
-    });
-
-    Toast.fire({
-      icon: 'success',
-      title: message
     });
   },
 
