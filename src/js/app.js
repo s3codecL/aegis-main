@@ -752,28 +752,22 @@ const App = {
 
   // Toggle theme
   toggleTheme: function () {
-    const newTheme = this.config.currentTheme === "dark" ? "light" : "dark";
+    const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-bs-theme", newTheme);
     this.config.currentTheme = newTheme;
-    document.body.setAttribute("data-bs-theme", newTheme);
     localStorage.setItem("osintTheme", newTheme);
-
-    // Cambiar iconos
-    const moonIcon = document.querySelector('.icon-moon');
-    const sunIcon = document.querySelector('.icon-sun');
-    if (newTheme === 'dark') {
-      moonIcon.style.display = 'none';
-      sunIcon.style.display = 'block';
-    } else {
-      moonIcon.style.display = 'block';
-      sunIcon.style.display = 'none';
-    }
+    this.updateThemeIcons();
   },
 
   // Setup theme on load
   setupTheme: function () {
-    document.body.setAttribute("data-bs-theme", this.config.currentTheme);
+    document.documentElement.setAttribute("data-bs-theme", this.config.currentTheme);
+    this.updateThemeIcons();
+  },
 
-    // Establecer iconos correctos
+  // Update theme icons
+  updateThemeIcons: function () {
     const moonIcon = document.querySelector('.icon-moon');
     const sunIcon = document.querySelector('.icon-sun');
     if (this.config.currentTheme === 'dark') {
