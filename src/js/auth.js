@@ -414,8 +414,11 @@ const Auth = {
                 title: 'Acceso Denegado',
                 text: 'Se requieren permisos de administrador.',
                 confirmButtonText: 'Entendido',
+                background: 'rgba(15, 23, 42, 0.9)',
+                color: '#fff',
                 customClass: {
-                    popup: 'swal2-popup'
+                    popup: 'premium-swal-popup',
+                    title: 'premium-swal-title'
                 }
             }).then(() => {
                 window.location.href = 'index.html';
@@ -531,8 +534,10 @@ const Auth = {
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
+            background: 'rgba(15, 23, 42, 0.9)',
+            color: '#fff',
             customClass: {
-                popup: 'swal2-popup-toast'
+                popup: 'swal2-popup-toast premium-swal-popup'
             }
         });
     },
