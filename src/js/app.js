@@ -452,6 +452,12 @@ const App = {
     if (favView && favView.classList.contains("active")) {
       this.renderFavoritesView();
     }
+
+    // Actualizar el panel lateral si está activo
+    const panel = document.getElementById("right-panel");
+    if (panel && panel.classList.contains("active") && this.state.activeRightPanel === "favorites") {
+      this.renderFavoritesPanel();
+    }
   },
 
   // Add to favorites
@@ -462,11 +468,17 @@ const App = {
         "osintFavorites",
         JSON.stringify(this.state.favorites)
       );
-      const badge = document.getElementById("favorites-count");
-      if (badge) {
-        badge.textContent = this.state.favorites.length;
-      }
+      this.updateStats();
       this.showSuccess(t("SUCCESS", this.config.currentLanguage));
+
+      // Re-renderizar si es necesario
+      this.renderTools();
+
+      // Actualizar el panel lateral si está activo
+      const panel = document.getElementById("right-panel");
+      if (panel && panel.classList.contains("active") && this.state.activeRightPanel === "favorites") {
+        this.renderFavoritesPanel();
+      }
     }
   },
 
