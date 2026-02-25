@@ -153,16 +153,16 @@
 }
 
 .card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 25px rgba(59, 130, 246, 0.25) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 25px rgba(59, 130, 246, 0.15) !important;
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(59, 130, 246, 0.6) !important;
-    background: rgba(26, 31, 58, 0.85);
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    background: var(--glass-bg);
 }
 
 .card-stats {
-    background: rgba(15, 23, 42, 0.45) !important;
-    border: 1px solid rgba(59, 130, 246, 0.15) !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--border) !important;
 }
 
 .card-stats:hover {
@@ -305,9 +305,9 @@
 
 .form-control,
 .form-select {
-    background-color: white !important;
-    color: #1e293b !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background-color: var(--modal-input-bg) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--modal-input-border) !important;
     border-radius: 12px !important;
     padding: 0.85rem 1.25rem !important;
     transition: all 0.3s ease;
@@ -333,9 +333,9 @@
 
 .form-control:focus,
 .form-select:focus {
-    background-color: white !important;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2) !important;
-    border-color: #2563eb !important;
+    background-color: var(--modal-input-focus-bg) !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
+    border-color: var(--color-primary) !important;
 }
 
 [data-bs-theme="dark"] .form-control:focus,
@@ -412,7 +412,7 @@
 }
 
 .alert-info {
-    background: rgba(15, 23, 42, 0.5);
+    background: var(--bg-tertiary);
     border-color: var(--color-info);
     color: var(--color-info);
 }
