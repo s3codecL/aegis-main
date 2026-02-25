@@ -66,6 +66,7 @@ export const translations = {
     "CONTINUE": "Continue",
     "ACCEPT": "Accept",
     "CLEAN": "Clean",
+    "CLEAN_SUCCESS": "History cleared successfully",
 
     // Modals
     "ERROR": "Error",
@@ -605,6 +606,7 @@ export const translations = {
     "CONTINUE": "Continuar",
     "ACCEPT": "Aceptar",
     "CLEAN": "Limpiar",
+    "CLEAN_SUCCESS": "Historial borrado con éxito",
 
     // Modals
     "ERROR": "Error",
