@@ -205,7 +205,29 @@ const IncidentManager = {
             this.saveIncidents();
             this.renderIncidents();
             this.updateStats();
-            this.showAlert(translations[lang]["INCIDENT_DELETED"] || 'Incidente eliminado correctamente', 'success');
+
+            // Pequeña espera para que la confirmación se cierre totalmente
+            setTimeout(() => {
+                Swal.fire({
+                    title: lang === 'en' ? 'Deleted!' : '¡Eliminado!',
+                    text: translations[lang]["INCIDENT_DELETED"] || 'Incidente eliminado correctamente',
+                    icon: 'success',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    background: 'rgba(15, 23, 42, 0.9)',
+                    color: '#fff',
+                    showClass: {
+                        popup: 'premium-swal-show'
+                    },
+                    hideClass: {
+                        popup: 'premium-swal-hide'
+                    },
+                    customClass: {
+                        popup: 'premium-swal-popup',
+                        title: 'premium-swal-title'
+                    }
+                });
+            }, 300);
         });
 
         return true;
@@ -310,44 +332,58 @@ const IncidentManager = {
             const critLabel = CSTaxonomy.getCriticalityLabel(incident.classification.criticality, lang);
             const typeLabel = CSTaxonomy.getIncidentTypeLabel(incident.classification.type, lang);
 
+            const statusColorClass = incident.classification.status.toLowerCase().replace(' ', '-');
+
             return `
                     <tr class="align-middle">
                         <td class="fw-bold text-primary" style="font-family: monospace;">${incident.code}</td>
-                        <td>${statusBadge}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="status-dot-pulse bg-${statusColorClass}"></span>
+                                ${statusBadge.label}
+                            </div>
+                        </td>
                         <td class="text-center">
                              <span class="status-dot-pulse bg-${critColor}"></span>
                         </td>
                         <td>
-                            <span class="badge border border-${critColor} text-${critColor} bg-${critColor}-lt">
+                            <span class="badge border border-${critColor} text-${critColor} bg-${critColor}-lt" style="border-radius: 50px !important; padding: 0.4rem 1rem;">
                                 ${critLabel}
                             </span>
                         </td>
-                            ${typeLabel}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-truncate" style="max-width: 250px;" title="${incident.description}">
-                            ${incident.description}
-                        </div>
-                    </td>
-                    <td>
-                        ${incident.affected.ip || incident.affected.hostname || '<span class="text-muted">-</span>'}
-                    </td>
-                    <td>${incident.detection.reportedBy}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); IncidentManager.editIncident('${incident.id}')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                            </svg>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="event.stopPropagation(); IncidentManager.deleteIncident('${incident.id}')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                        </button>
-                    </td>
-                </tr>
+                        <td>
+                            <span class="text-body fw-medium">${typeLabel}</span>
+                        </td>
+                        <td>
+                            <div class="text-truncate" style="max-width: 250px;" title="${incident.description}">
+                                ${incident.description}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="font-monospace small text-body">
+                                ${incident.affected.ip || incident.affected.hostname || '<span class="text-muted">-</span>'}
+                            </span>
+                        </td>
+                        <td><span class="text-body">${incident.detection.reportedBy}</span></td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn-action-pill btn-edit" onclick="event.stopPropagation(); IncidentManager.editIncident('${incident.id}')" title="Editar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn-action-pill btn-delete" onclick="event.stopPropagation(); IncidentManager.deleteIncident('${incident.id}')" title="Eliminar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
             `;
         }).join('');
     },
@@ -621,7 +657,9 @@ const IncidentManager = {
             lessons: document.getElementById('incidentLessons')?.value || ''
         };
 
-        if (this.state.currentIncident) {
+        const isUpdate = !!this.state.currentIncident;
+
+        if (isUpdate) {
             // Actualizar
             this.updateIncident(this.state.currentIncident.id, {
                 description: formData.description,
@@ -638,18 +676,43 @@ const IncidentManager = {
                 nistPhase: formData.nistPhase || this.state.currentIncident.nistPhase,
                 iocs: formData.iocs || this.state.currentIncident.iocs
             });
-            this.showAlert('Incidente actualizado correctamente', 'success');
         } else {
             // Crear nuevo
             this.createIncident(formData);
-            this.showAlert('Incidente creado correctamente', 'success');
         }
 
         // Cerrar modal y resetear
         const modalElement = document.getElementById('incidentModal');
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+        const showSuccess = () => {
+            const isUpdate = !!this.state.currentIncident;
+            Swal.fire({
+                title: isUpdate ? '¡Actualizado!' : '¡Creado!',
+                text: isUpdate ? 'Incidente actualizado correctamente' : 'Incidente creado correctamente',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false,
+                background: 'rgba(15, 23, 42, 0.9)',
+                color: '#fff',
+                showClass: {
+                    popup: 'premium-swal-show'
+                },
+                hideClass: {
+                    popup: 'premium-swal-hide'
+                },
+                customClass: {
+                    popup: 'premium-swal-popup'
+                }
+            });
+        };
+
         if (modalInstance) {
             modalInstance.hide();
+            // Esperar a que el modal de Bootstrap se oculte completamente para evitar conflictos
+            setTimeout(showSuccess, 400);
+        } else {
+            showSuccess();
         }
 
         // Resetear el formulario y el estado
@@ -820,15 +883,21 @@ const IncidentManager = {
         const theme = document.body.getAttribute('data-bs-theme') || 'dark';
 
         Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
             icon: type,
             title: message,
-            background: theme === 'dark' ? '#1a1f3c' : '#fff',
-            color: theme === 'dark' ? '#fff' : '#000'
+            confirmButtonText: 'OK',
+            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000',
+            showClass: {
+                popup: 'premium-swal-show'
+            },
+            hideClass: {
+                popup: 'premium-swal-hide'
+            },
+            customClass: {
+                popup: 'premium-swal-popup',
+                title: 'premium-swal-title'
+            }
         });
     },
 
@@ -841,12 +910,20 @@ const IncidentManager = {
             text: text,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
             confirmButtonText: confirmBtnText,
             cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
-            background: theme === 'dark' ? '#1a1f3c' : '#fff',
-            color: theme === 'dark' ? '#fff' : '#000'
+            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000',
+            showClass: {
+                popup: 'premium-swal-show'
+            },
+            hideClass: {
+                popup: 'premium-swal-hide'
+            },
+            customClass: {
+                popup: 'premium-swal-popup',
+                title: 'premium-swal-title'
+            }
         }).then((result) => {
             if (result.isConfirmed) {
                 callback();
