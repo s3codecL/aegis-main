@@ -29,6 +29,11 @@
     min-width: 60px;
 }
 
+.btn-icon.btn-sm {
+    min-width: 32px;
+    padding: 0.5rem !important;
+}
+
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
