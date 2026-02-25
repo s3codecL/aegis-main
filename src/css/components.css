@@ -739,20 +739,29 @@
     border-radius: 28px !important;
     box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.2) !important;
     padding: 2.5rem !important;
-    animation: swalPopIn 0.5s var(--ease-out-expo) forwards !important;
+}
+
+.premium-swal-show {
+    animation: swalPopIn 0.5s var(--ease-out-expo) !important;
+}
+
+.premium-swal-hide {
+    animation: swalPopIn 0.3s var(--ease-out-expo) reverse !important;
 }
 
 .premium-swal-title {
     color: white !important;
     font-weight: 800 !important;
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
+    /* Reducido de 1.5rem */
     letter-spacing: -0.02em !important;
 }
 
 .swal2-html-container {
     color: rgba(255, 255, 255, 0.8) !important;
-    font-size: 1rem !important;
-    line-height: 1.6 !important;
+    font-size: 0.925rem !important;
+    /* Reducido de 1rem */
+    line-height: 1.5 !important;
     font-weight: 500 !important;
 }
 
