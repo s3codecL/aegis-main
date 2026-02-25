@@ -90,6 +90,7 @@ export const translations = {
     "USE_ANY_FAVORITE": "Use any of your favorites below",
     "NO_HISTORY_SEARCHES": "No search history",
     "RECENT_SEARCHES": "Recent searches",
+    "NO_FAVORITES_YET": "No favorites saved yet",
 
     // Actions
     "FAVORITE_PLACEHOLDER": "Enter search term...",
@@ -628,6 +629,7 @@ export const translations = {
     "USE_ANY_FAVORITE": "Usa cualquiera de tus favoritos a continuación",
     "NO_HISTORY_SEARCHES": "No hay historial de búsquedas",
     "RECENT_SEARCHES": "Búsquedas recientes",
+    "NO_FAVORITES_YET": "No tienes favoritos guardados aún",
 
     // Actions
     "FAVORITE_PLACEHOLDER": "Ingresa término de búsqueda...",
