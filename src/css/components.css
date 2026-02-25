@@ -234,20 +234,34 @@
 }
 
 .modal-footer {
-    border-top: none;
-    padding: 1.5rem 2rem 2.5rem;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 1.5rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    /* Forzar horizontal */
+    justify-content: center !important;
+    /* Centrado como en SweetAlert */
+    gap: 1rem !important;
 }
 
 .modal-footer .btn {
-    padding: 0.75rem 2.5rem;
-    min-width: 140px;
+    min-width: 120px;
     border-radius: 50px !important;
-    font-weight: 700;
-    font-size: 0.9rem;
+    /* Píldora */
+    padding: 0.75rem 1.75rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+
+[data-bs-theme="dark"] .modal-footer .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+[data-bs-theme="dark"] .modal-footer .btn-danger {
+    background: #ef4444 !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
 }
 
 .modal-footer .btn-secondary {
@@ -267,7 +281,7 @@
     background: #ef4444 !important;
     color: white !important;
     border: none !important;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 44px 12px rgba(239, 68, 68, 0.3);
 }
 
 .modal-footer .btn-secondary:hover {
@@ -768,9 +782,10 @@
 .swal2-confirm.swal2-styled {
     background: var(--gradient-primary) !important;
     border-radius: 50px !important;
-    padding: 0.8rem 2.5rem !important;
+    padding: 0.65rem 2rem !important;
+    /* Ligeramente más compacto */
     font-weight: 700 !important;
-    font-size: 0.9rem !important;
+    font-size: 0.875rem !important;
     border: none !important;
     box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3) !important;
 }
