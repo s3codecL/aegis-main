@@ -274,25 +274,8 @@
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmar Eliminación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar este usuario?</p>
-                    <p class="text-muted mb-0"><strong id="delete-user-name"></strong></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <!-- Los modales de borrado y logout ahora usan SweetAlert2 premium -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
@@ -302,7 +285,6 @@
 
         let deleteUserId = null;
         let userModal = null;
-        let deleteModal = null;
 
         // Inicializar al cargar la página
         document.addEventListener('DOMContentLoaded', function () {
@@ -369,7 +351,6 @@
 
             // Inicializar modals
             userModal = new bootstrap.Modal(document.getElementById('userModal'));
-            deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 
             // Cargar datos
             loadStats();
@@ -609,21 +590,55 @@
 
         // Eliminar usuario
         window.deleteUser = function (userId, userName) {
-            deleteUserId = userId;
-            document.getElementById('delete-user-name').textContent = userName;
-            deleteModal.show();
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            Swal.fire({
+                title: lang === 'en' ? 'Confirm Deletion' : 'Confirmar Eliminación',
+                text: `${lang === 'en' ? 'Are you sure you want to delete' : '¿Estás seguro de que deseas eliminar a'} ${userName}?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: lang === 'en' ? 'Delete' : 'Eliminar',
+                cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
+                background: 'rgba(15, 23, 42, 0.9)',
+                color: '#fff',
+                showClass: {
+                    popup: 'premium-swal-show'
+                },
+                hideClass: {
+                    popup: 'premium-swal-hide'
+                },
+                customClass: {
+                    popup: 'premium-swal-popup',
+                    title: 'premium-swal-title'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Auth.deleteUser(userId);
+                    loadStats();
+                    loadUsers();
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: lang === 'en' ? 'Deleted!' : '¡Eliminado!',
+                        text: lang === 'en' ? 'User has been deleted.' : 'El usuario ha sido eliminado.',
+                        confirmButtonText: 'OK',
+                        background: 'rgba(15, 23, 42, 0.9)',
+                        color: '#fff',
+                        showClass: {
+                            popup: 'premium-swal-show'
+                        },
+                        hideClass: {
+                            popup: 'premium-swal-hide'
+                        },
+                        customClass: {
+                            popup: 'premium-swal-popup',
+                            title: 'premium-swal-title'
+                        }
+                    });
+                }
+            });
         }
 
-        // Confirmar eliminación
-        window.confirmDelete = function () {
-            if (deleteUserId) {
-                Auth.deleteUser(deleteUserId);
-                loadStats();
-                loadUsers();
-                deleteUserId = null;
-                deleteModal.hide();
-            }
-        }
+        // Script original de eliminación eliminado (se usa SweetAlert arriba)
 
         // Cerrar sesión
         window.handleLogout = function (e) {
