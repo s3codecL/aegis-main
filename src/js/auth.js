@@ -173,6 +173,15 @@ const Auth = {
             return;
         }
 
+        // Validación de complejidad requerida
+        const hasUpper = /[A-Z]/.test(password);
+        const hasNumber = /\d/.test(password);
+        const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        if (!hasUpper || !hasNumber || !hasSpecial) {
+            this.showAlert('La contraseña requiere: 1 mayúscula, 1 número y 1 carácter especial.', 'danger');
+            return;
+        }
+
         if (password !== passwordConfirm) {
             this.showAlert('Las contraseñas no coinciden.', 'danger');
             return;
