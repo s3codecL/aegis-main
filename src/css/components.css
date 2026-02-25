@@ -114,22 +114,21 @@
     gap: var(--spacing-lg);
 }
 
-/* Modals Refined */
-div.modal-backdrop,
-.modal-backdrop.show {
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
+/* Modales Premium - Glassmorphism (Modo Oscuro) */
+[data-bs-theme="dark"] .modal-backdrop {
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
     background-color: var(--modal-backdrop-bg) !important;
     opacity: 1 !important;
 }
 
-div.modal-content {
+[data-bs-theme="dark"] .modal-content {
     background: var(--modal-bg) !important;
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
+    backdrop-filter: blur(35px) !important;
+    -webkit-backdrop-filter: blur(35px) !important;
     border: 1px solid var(--modal-border) !important;
     border-radius: 28px !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7) !important;
     color: var(--modal-text) !important;
     overflow: hidden;
 }
@@ -229,9 +228,9 @@ div.modal-content {
 
 [data-bs-theme="dark"] .form-control,
 [data-bs-theme="dark"] .form-select {
-    background-color: white !important;
-    color: #1e293b !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background-color: var(--modal-input-bg) !important;
+    color: var(--modal-text) !important;
+    border: 1px solid var(--modal-input-border) !important;
 }
 
 .form-control:focus,
@@ -243,11 +242,13 @@ div.modal-content {
 
 [data-bs-theme="dark"] .form-control:focus,
 [data-bs-theme="dark"] .form-select:focus {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+    background-color: var(--modal-input-focus-bg) !important;
+    color: var(--modal-text) !important;
+    border-color: var(--color-primary-light) !important;
 }
 
 .form-control::placeholder {
-    color: #94a3b8;
+    color: #64748b;
 }
 
 .form-check-input {
@@ -463,25 +464,25 @@ div.modal-content {
     box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
 }
 
-/* SweetAlert2 Glassmorphism */
-.swal2-container {
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+/* SweetAlert2 Glassmorphism (Modo Oscuro) */
+[data-bs-theme="dark"] .swal2-container {
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
     background-color: var(--modal-backdrop-bg) !important;
 }
 
-.swal2-popup {
+[data-bs-theme="dark"] .swal2-popup {
     background: var(--modal-bg) !important;
-    backdrop-filter: blur(30px) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
+    backdrop-filter: blur(35px) !important;
+    -webkit-backdrop-filter: blur(35px) !important;
     border: 1px solid var(--modal-border) !important;
     border-radius: 28px !important;
     color: var(--modal-text) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7) !important;
 }
 
-.swal2-title,
-.swal2-html-container {
+[data-bs-theme="dark"] .swal2-title,
+[data-bs-theme="dark"] .swal2-html-container {
     color: var(--modal-text) !important;
 }
 
@@ -499,10 +500,6 @@ div.modal-content {
     padding: 0.75rem 2rem !important;
     font-weight: 700 !important;
     border: none !important;
-}
-
-[data-bs-theme="light"] .swal2-popup {
-    background: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Toast Styles */
