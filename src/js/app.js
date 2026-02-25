@@ -624,8 +624,9 @@ const App = {
   clearHistory: function () {
     const lang = this.config.currentLanguage;
     Swal.fire({
-      title: t("CONFIRM_DELETE_HISTORY", lang),
-      icon: 'error',
+      title: lang === 'en' ? 'Are you sure?' : '¿Estás seguro?',
+      text: t("CONFIRM_DELETE_HISTORY", lang),
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonText: t("CLEAN", lang),
       cancelButtonText: t("CANCEL", lang) || 'Cancelar',
@@ -650,7 +651,25 @@ const App = {
         this.updateStats();
         this.renderHistoryPanel();
         this.renderHistory();
-        this.showSuccess(t("CLEAN_SUCCESS", lang) || "Historial borrado");
+
+        Swal.fire({
+          icon: 'success',
+          title: lang === 'en' ? 'History Cleared' : 'Historial Borrado',
+          text: t("CLEAN_SUCCESS", lang) || (lang === 'en' ? "History cleared successfully" : "Historial borrado con éxito"),
+          confirmButtonText: 'OK',
+          background: 'rgba(15, 23, 42, 0.9)',
+          color: '#fff',
+          showClass: {
+            popup: 'premium-swal-show'
+          },
+          hideClass: {
+            popup: 'premium-swal-hide'
+          },
+          customClass: {
+            popup: 'premium-swal-popup',
+            title: 'premium-swal-title'
+          }
+        });
       }
     });
   },
