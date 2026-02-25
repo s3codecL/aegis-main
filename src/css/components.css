@@ -23,6 +23,12 @@
     border-radius: var(--radius-md) !important;
 }
 
+.btn-sm {
+    padding: 0.35rem 1.1rem !important;
+    font-size: 0.75rem !important;
+    min-width: 60px;
+}
+
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
