@@ -248,11 +248,15 @@ const App = {
                     </td>
                     <td class="text-end">
                       <div class="d-flex align-items-center justify-content-end gap-2">
-                        <a href="${url}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                          ${t("GO", this.config.currentLanguage)}
+                        <a href="${url}" target="_blank" rel="noopener" class="btn-action-pill btn-edit" title="${t("GO", this.config.currentLanguage)}">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                          </svg>
                         </a>
-                        <button class="btn btn-sm btn-${isFavorite ? "warning" : "ghost-warning"} btn-icon" onclick="App.toggleFavorite('${tool.id}')">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor">
+                        <button class="btn-action-pill ${isFavorite ? "btn-warning-pill" : "btn-ghost-pill"}" onclick="App.toggleFavorite('${tool.id}')" title="Favorito">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2">
                             <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
                           </svg>
                         </button>
@@ -423,11 +427,14 @@ const App = {
                     </td>
                     <td class="text-end">
                       <div class="d-flex align-items-center justify-content-end gap-2">
-                        <button class="btn btn-sm btn-primary" onclick="App.openToolSearch('${tool.id}')">
-                          ${t("GO", this.config.currentLanguage)}
+                        <button class="btn-action-pill btn-edit" onclick="App.openToolSearch('${tool.id}')" title="${t("GO", this.config.currentLanguage)}">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                          </svg>
                         </button>
-                        <button class="btn btn-sm btn-${isFavorite ? "warning" : "ghost-warning"} btn-icon" onclick="App.toggleFavorite('${tool.id}')">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor">
+                        <button class="btn-action-pill ${isFavorite ? "btn-warning-pill" : "btn-ghost-pill"}" onclick="App.toggleFavorite('${tool.id}')" title="Favorito">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ${isFavorite ? "fill-current" : ""}" width="18" height="18" viewBox="0 0 24 24" fill="${isFavorite ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2">
                             <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"></path>
                           </svg>
                         </button>
@@ -623,8 +630,11 @@ const App = {
       confirmButtonText: t("CLEAN", lang),
       cancelButtonText: t("CANCEL", lang) || 'Cancelar',
       customClass: {
-        popup: 'swal2-popup'
-      }
+        popup: 'premium-swal-popup',
+        title: 'premium-swal-title'
+      },
+      background: 'rgba(15, 23, 42, 0.9)',
+      color: '#fff'
     }).then((result) => {
       if (result.isConfirmed) {
         this.state.searchHistory = [];
