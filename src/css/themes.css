@@ -1,26 +1,30 @@
 [data-bs-theme="light"] {
-    --bg-primary: #f8fafc;
+    --bg-primary: #f1f5f9;
     --bg-secondary: #ffffff;
-    --bg-tertiary: #f1f5f9;
-    --text: #1e293b;
+    --bg-tertiary: #e2e8f0;
+    --text: #0f172a;
     --text-muted: #64748b;
-    --border: rgba(148, 163, 184, 0.2);
+    --border: rgba(59, 130, 246, 0.1);
 
-    /* Fallback variables for Glassmorphism in Light Mode */
-    --glass-bg: rgba(255, 255, 255, 0.8);
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.75);
     --glass-border: rgba(59, 130, 246, 0.15);
-    --glass-blur: blur(12px);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    --glass-blur: blur(16px);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 
-    /* Modal variables for Light Mode */
-    --modal-bg: #ffffff;
-    --modal-text: #1e293b;
-    --modal-border: rgba(0, 0, 0, 0.1);
-    --modal-backdrop-bg: rgba(0, 0, 0, 0.4);
-    --modal-label: #64748b;
-    --modal-input-bg: #f8fafc;
-    --modal-input-border: #e2e8f0;
+    /* Modal & Inputs */
+    --modal-bg: rgba(255, 255, 255, 0.85);
+    --modal-text: #0f172a;
+    --modal-border: rgba(59, 130, 246, 0.2);
+    --modal-backdrop-bg: rgba(241, 245, 249, 0.8);
+    --modal-label: #475569;
+    --modal-input-bg: rgba(0, 0, 0, 0.03);
+    --modal-input-border: rgba(0, 0, 0, 0.1);
     --modal-input-focus-bg: #ffffff;
+
+    /* Panel Specifics */
+    --panel-header-bg: rgba(255, 255, 255, 0.7);
+    --panel-sidebar-bg: rgba(255, 255, 255, 0.6);
 }
 
 [data-bs-theme="dark"] {
@@ -31,7 +35,13 @@
     --text-muted: #94a3b8;
     --border: rgba(255, 255, 255, 0.1);
 
-    /* Modal Glassmorphism Variables */
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(16px);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+    /* Modal & Inputs */
     --modal-bg: rgba(15, 23, 42, 0.75);
     --modal-text: #ffffff;
     --modal-border: rgba(255, 255, 255, 0.15);
@@ -40,6 +50,10 @@
     --modal-input-bg: rgba(0, 0, 0, 0.3);
     --modal-input-border: rgba(255, 255, 255, 0.15);
     --modal-input-focus-bg: rgba(0, 0, 0, 0.45);
+
+    /* Panel Specifics */
+    --panel-header-bg: rgba(15, 20, 51, 0.7);
+    --panel-sidebar-bg: rgba(15, 20, 51, 0.6);
 }
 
 [data-bs-theme="dark"] body {
