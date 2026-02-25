@@ -304,16 +304,15 @@
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-number">
-                        < 50KB</div>
-                            <div class="stat-label" data-i18n="QS_STAT_SIZE">Tamaño Total</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label" data-i18n="QS_STAT_BREAKPOINTS">Breakpoints Responsive</div>
-                    </div>
+                    <div class="stat-number">&lt; 50KB</div>
+                    <div class="stat-label" data-i18n="QS_STAT_SIZE">Tamaño Total</div>
                 </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label" data-i18n="QS_STAT_BREAKPOINTS">Breakpoints Responsive</div>
+                </div>
+            </div>
         </section>
 
         <!-- Supported Query Types -->
@@ -633,7 +632,7 @@ http://localhost:8000</code></pre>
 
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
     <script type="module">
-        import { translations, t } from 'src/js/translations.js';
+        import { translations, t } from './src/js/translations.js';
 
         // Back to top button
         const backToTopBtn = document.getElementById('backToTop');
