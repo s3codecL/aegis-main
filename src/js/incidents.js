@@ -879,15 +879,14 @@ const IncidentManager = {
     },
 
     showAlert: function (message, type = 'success') {
-        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
-        const theme = document.body.getAttribute('data-bs-theme') || 'dark';
+        const theme = document.documentElement.getAttribute('data-bs-theme') || 'dark';
 
         Swal.fire({
             icon: type,
             title: message,
             confirmButtonText: 'OK',
-            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#fff',
-            color: theme === 'dark' ? '#fff' : '#000',
+            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.8)' : 'rgba(255, 255, 255, 0.95)',
+            color: theme === 'dark' ? '#fff' : '#0f172a',
             showClass: {
                 popup: 'premium-swal-show'
             },
@@ -902,8 +901,8 @@ const IncidentManager = {
     },
 
     confirmDelete: function (title, text, confirmBtnText, callback) {
-        const theme = document.body.getAttribute('data-bs-theme') || 'dark';
-        const lang = Translations?.currentLanguage || localStorage.getItem("osintLanguage") || "es";
+        const theme = document.documentElement.getAttribute('data-bs-theme') || 'dark';
+        const lang = localStorage.getItem("osintLanguage") || "es";
 
         Swal.fire({
             title: title,
@@ -912,8 +911,8 @@ const IncidentManager = {
             showCancelButton: true,
             confirmButtonText: confirmBtnText,
             cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
-            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#fff',
-            color: theme === 'dark' ? '#fff' : '#000',
+            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.8)' : 'rgba(255, 255, 255, 0.95)',
+            color: theme === 'dark' ? '#fff' : '#0f172a',
             showClass: {
                 popup: 'premium-swal-show'
             },
