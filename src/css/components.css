@@ -448,6 +448,21 @@
     transition: var(--transition);
 }
 
+[data-bs-theme="dark"] .table thead th {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+    color: var(--color-primary-light) !important;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.3) !important;
+    backdrop-filter: blur(5px);
+}
+
+[data-bs-theme="dark"] .table {
+    color: var(--text) !important;
+}
+
+[data-bs-theme="dark"] .table tbody td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
 .dropdown-item:hover {
     background-color: var(--bg-primary);
     color: var(--color-primary);
@@ -603,9 +618,211 @@
     color: #ef4444;
 }
 
-.dropdown-divider-user {
-    height: 1px;
-    margin: 0.5rem 0;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.05);
+/* Back to Top Professional Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-out-expo) !important;
+    z-index: 1050;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateY(20px);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.05) !important;
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important;
+    filter: brightness(1.2);
+}
+
+.back-to-top.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+[data-bs-theme="light"] .back-to-top {
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* SweetAlert2 Premium Custom Styles */
+.swal2-container.swal2-backdrop-show {
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+}
+
+@keyframes swalPopIn {
+    0% {
+        transform: scale(0.85) translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.premium-swal-popup {
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(30px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.2) !important;
+    padding: 2.5rem !important;
+    animation: swalPopIn 0.5s var(--ease-out-expo) forwards !important;
+}
+
+.premium-swal-title {
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: -0.02em !important;
+}
+
+.swal2-html-container {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    font-weight: 500 !important;
+}
+
+.swal2-confirm.swal2-styled {
+    background: var(--gradient-primary) !important;
+    border-radius: 50px !important;
+    padding: 0.8rem 2.5rem !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    border: none !important;
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3) !important;
+}
+
+.swal2-cancel.swal2-styled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 0.8rem 2.5rem !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #ef4444 !important;
+}
+
+.swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+    background-color: #ef4444 !important;
+}
+
+/* Action Pill Buttons for Tables */
+.btn-action-pill {
+    width: 60px;
+    height: 32px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid transparent;
+    transition: all 0.3s var(--ease-out-expo);
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.btn-edit:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+}
+
+.status-dot-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.status-dot-pulse.bg-open {
+    background-color: #3b82f6;
+}
+
+.status-dot-pulse.bg-in-progress {
+    background-color: #f59e0b;
+}
+
+.status-dot-pulse.bg-contained {
+    background-color: #8b5cf6;
+}
+
+.status-dot-pulse.bg-resolved {
+    background-color: #10b981;
+}
+
+.status-dot-pulse.bg-closed {
+    background-color: #6b7280;
+}
+
+.status-dot-pulse::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    animation: statusPulse 2s infinite;
+    opacity: 0.6;
+}
+
+@keyframes statusPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
