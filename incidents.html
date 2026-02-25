@@ -160,7 +160,7 @@
                 <!-- Tarjetas de Estadísticas -->
                 <div class="row mb-4">
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <div class="card">
+                        <div class="card card-stats">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="subheader" data-i18n="TOTAL_INCIDENTS">Total Incidencias</div>
@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <div class="card">
+                        <div class="card card-stats">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="subheader" data-i18n="OPEN_INCIDENTS">Abiertas</div>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <div class="card">
+                        <div class="card card-stats">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="subheader" data-i18n="INVESTIGATING">En Investigación</div>
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <div class="card">
+                        <div class="card card-stats">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="subheader" data-i18n="CRITICAL_INCIDENTS">Críticas</div>
@@ -668,7 +668,15 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         data-i18n="CANCEL">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="saveIncidentBtn" data-i18n="SAVE">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="saveIncidentBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="18" height="18"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+                            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                            <circle cx="12" cy="14" r="2"></circle>
+                            <polyline points="14 4 14 8 8 8 8 4"></polyline>
+                        </svg>
+                        <span data-i18n="SAVE_INCIDENT">Guardar Incidencia</span>
+                    </button>
                 </div>
             </div>
         </div>
