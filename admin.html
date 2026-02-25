@@ -139,50 +139,67 @@
     <!-- Main Content -->
     <div class="container-xxl py-4">
         <!-- Stats Cards -->
-        <div class="d-flex align-items-center">
-            <div class="subheader text-uppercase fw-semibold" style="font-size: 0.75rem; letter-spacing: 0.5px;"
-                data-i18n="NEW_USERS_7DAYS">Nuevos (7
-                días)</div>
-        </div>
-        <div class="h1 mb-0 fw-bold text-primary" style="font-size: 2.5rem;" id="stat-new-users">0</div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <!-- Users Table -->
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="card-title mb-0 text-primary" data-i18n="USER_MANAGEMENT_TABLE">Gestión de Usuarios</h3>
-            <button class="btn btn-primary" onclick="showAddUserModal()">
-                <svg class="me-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                <span data-i18n="ADD_USER">Añadir Usuario</span>
-            </button>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover" style="font-size: 0.9375rem;">
-                    <thead>
-                        <tr>
-                            <th class="fw-semibold" data-i18n="USER">Usuario</th>
-                            <th class="fw-semibold" data-i18n="EMAIL">Email</th>
-                            <th class="fw-semibold" data-i18n="ROLE">Rol</th>
-                            <th class="fw-semibold" data-i18n="CREATED">Creado</th>
-                            <th class="fw-semibold" data-i18n="LAST_ACCESS">Último Acceso</th>
-                            <th class="text-end fw-semibold" data-i18n="ACTIONS">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="users-table-body">
-                        <!-- Se llena dinámicamente -->
-                    </tbody>
-                </table>
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-stats p-3 d-flex flex-column gap-1">
+                    <div class="text-muted small fw-bold" data-i18n="TOTAL_USERS">Total Usuarios</div>
+                    <div class="h2 mb-0 fw-bold" id="stat-total-users">0</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-stats p-3 d-flex flex-column gap-1">
+                    <div class="text-muted small fw-bold" data-i18n="ADMINISTRATORS">Administradores</div>
+                    <div class="h2 mb-0 fw-bold" id="stat-admins">0</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-stats p-3 d-flex flex-column gap-1">
+                    <div class="text-muted small fw-bold" data-i18n="ACTIVE_USERS">Usuarios Activos</div>
+                    <div class="h2 mb-0 fw-bold" id="stat-active-users">0</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card card-stats p-3 d-flex flex-column gap-1">
+                    <div class="text-muted small fw-bold" data-i18n="NEW_USERS_7DAYS">Nuevos (7 días)</div>
+                    <div class="h2 mb-0 fw-bold text-primary" id="stat-new-users">0</div>
+                </div>
             </div>
         </div>
-    </div>
+
+
+        <!-- Users Table -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title mb-0 text-primary" data-i18n="USER_MANAGEMENT_TABLE">Gestión de Usuarios</h3>
+                <button class="btn btn-primary" onclick="showAddUserModal()">
+                    <svg class="me-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span data-i18n="ADD_USER">Añadir Usuario</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" style="font-size: 0.9375rem;">
+                        <thead>
+                            <tr>
+                                <th class="fw-semibold" data-i18n="USER">Usuario</th>
+                                <th class="fw-semibold" data-i18n="EMAIL">Email</th>
+                                <th class="fw-semibold" data-i18n="ROLE">Rol</th>
+                                <th class="fw-semibold" data-i18n="CREATED">Creado</th>
+                                <th class="fw-semibold" data-i18n="LAST_ACCESS">Último Acceso</th>
+                                <th class="text-end fw-semibold" data-i18n="ACTIONS">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Add/Edit User Modal -->
@@ -213,7 +230,7 @@
                             <small class="text-muted">Mínimo 8 caracteres</small>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-0">
                             <label for="user-role" class="form-label" data-i18n="ROLE">Rol</label>
                             <select class="form-select" id="user-role" required>
                                 <option value="user" data-i18n="ROLE_USER">Usuario</option>
@@ -221,9 +238,36 @@
                             </select>
                         </div>
                     </div>
+                    <div class="modal-body pt-0">
+                        <div class="alert alert-info mb-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="20" height="20"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 8l.01 0"></path>
+                                <path d="M11 12l1 0l0 4l1 0"></path>
+                            </svg>
+                            <div>
+                                <h4 class="alert-title" data-i18n="NOTE">Nota</h4>
+                                <div class="text-muted">
+                                    <span data-i18n="ADMIN_MODAL_NOTE">Los cambios realizados se aplicarán
+                                        inmediatamente
+                                        en el sistema de autenticación.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            data-i18n="CANCEL">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="18" height="18"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+                                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                                <circle cx="12" cy="14" r="2"></circle>
+                                <polyline points="14 4 14 8 8 8 8 4"></polyline>
+                            </svg>
+                            <span data-i18n="SAVE">Guardar</span>
+                        </button>
                     </div>
                 </form>
             </div>
