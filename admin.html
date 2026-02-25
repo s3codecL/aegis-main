@@ -216,7 +216,9 @@
                         <div class="mb-3" id="password-field">
                             <label for="user-password" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="user-password" minlength="8">
-                            <small class="text-muted">Mínimo 8 caracteres</small>
+                            <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">
+                                Requisitos: 8+ caracteres, 1 mayúscula, 1 número y 1 símbolo.
+                            </small>
                         </div>
 
                         <div class="mb-0">
@@ -488,7 +490,9 @@
             document.getElementById('user-form').reset();
             document.getElementById('edit-user-id').value = '';
             document.getElementById('password-field').style.display = 'block';
-            document.getElementById('user-password').required = true;
+            const passwordInput = document.getElementById('user-password');
+            passwordInput.required = true;
+            passwordInput.placeholder = 'Introducir contraseña segura';
             userModal.show();
         }
 
@@ -504,8 +508,14 @@
             document.getElementById('user-name').value = user.name;
             document.getElementById('user-email').value = user.email;
             document.getElementById('user-role').value = user.role;
-            document.getElementById('password-field').style.display = 'none';
-            document.getElementById('user-password').required = false;
+
+            // Permitir cambio de contraseña en edición
+            const passwordField = document.getElementById('password-field');
+            const passwordInput = document.getElementById('user-password');
+            passwordField.style.display = 'block';
+            passwordInput.required = false;
+            passwordInput.value = '';
+            passwordInput.placeholder = 'Dejar en blanco para no cambiar';
 
             userModal.show();
         }
@@ -520,9 +530,29 @@
             const password = document.getElementById('user-password').value;
             const role = document.getElementById('user-role').value;
 
+            // Función de validación de contraseña
+            const validatePassword = (pass) => {
+                if (!pass) return true; // Si está vacío (en edición) es válido
+                const minLength = pass.length >= 8;
+                const hasUpper = /[A-Z]/.test(pass);
+                const hasNumber = /\d/.test(pass);
+                const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pass);
+                return minLength && hasUpper && hasNumber && hasSpecial;
+            };
+
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+
             // Validar email
             if (!Auth.validateEmail(email)) {
-                alert('Formato de correo electrónico inválido.');
+                Auth.showAlert(lang === 'en' ? 'Invalid email format.' : 'Formato de correo electrónico inválido.', 'danger');
+                return;
+            }
+
+            // Validar requisitos de contraseña si se proporciona una
+            if (password && !validatePassword(password)) {
+                Auth.showAlert(lang === 'en'
+                    ? 'Password must have 8+ chars, 1 uppercase, 1 number and 1 special char.'
+                    : 'La contraseña requiere: 8+ caracteres, 1 mayúscula, 1 número y 1 carácter especial.', 'danger');
                 return;
             }
 
@@ -542,6 +572,11 @@
                 user.name = name;
                 user.email = email;
                 user.role = role;
+
+                // Actualizar contraseña si se proporcionó una nueva
+                if (password) {
+                    user.password = Auth.hashPassword(password);
+                }
 
                 Auth.updateUser(user);
             } else {
