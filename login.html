@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="src/css/login.css" />
     <link rel="icon" href="plugins/favorites - Chrome/ico.png" type="image/png" />
 
+    <!-- Theme Script (Prevent Flash) -->
+    <script>
+        (function () {
+            const theme = localStorage.getItem("osintTheme") || "dark";
+            document.documentElement.setAttribute("data-bs-theme", theme);
+        })();
+    </script>
+
     <!-- Google reCAPTCHA -->
     <!-- Google reCAPTCHA con Idioma Dinámico -->
     <script>
@@ -63,7 +71,7 @@
     </script>
 </head>
 
-<body data-bs-theme="dark">
+<body>
     <div class="login-container">
         <div class="login-card">
             <!-- Controles de Tema e Idioma -->
