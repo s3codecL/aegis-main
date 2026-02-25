@@ -125,23 +125,32 @@
     gap: var(--spacing-lg);
 }
 
-/* Modales Premium - Glassmorphism (Modo Oscuro) */
-[data-bs-theme="dark"] .modal-backdrop {
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
+/* Modales Premium - Glassmorphism Global */
+.modal-backdrop {
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     background-color: var(--modal-backdrop-bg) !important;
     opacity: 1 !important;
 }
 
-[data-bs-theme="dark"] .modal-content {
+[data-bs-theme="dark"] .modal-backdrop {
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+}
+
+.modal-content {
     background: var(--modal-bg) !important;
     backdrop-filter: blur(35px) !important;
     -webkit-backdrop-filter: blur(35px) !important;
     border: 1px solid var(--modal-border) !important;
     border-radius: 28px !important;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7) !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5) !important;
     color: var(--modal-text) !important;
     overflow: hidden;
+}
+
+[data-bs-theme="dark"] .modal-content {
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7) !important;
 }
 
 .modal-header {
@@ -581,6 +590,12 @@
     align-items: center;
     gap: 0.75rem;
 }
+
+/* Ocultar caret de Bootstrap para evitar doble flecha */
+.btn-user-profile.dropdown-toggle::after {
+    display: none !important;
+}
+
 
 [data-bs-theme="light"] .btn-user-profile {
     background: rgba(0, 0, 0, 0.03);
