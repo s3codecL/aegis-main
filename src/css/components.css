@@ -547,12 +547,26 @@
 /* Toast Styles */
 .swal2-popup-toast {
     background: var(--glass-bg) !important;
-    backdrop-filter: var(--glass-blur) !important;
-    -webkit-backdrop-filter: var(--glass-blur) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     border: 1px solid var(--glass-border) !important;
-    border-radius: var(--radius-lg) !important;
+    border-radius: 12px !important;
     color: var(--text) !important;
     box-shadow: var(--glass-shadow) !important;
+    padding: 0.5rem 1rem !important;
+    width: auto !important;
+    min-width: 200px !important;
+}
+
+.swal2-popup-toast .swal2-title {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    color: var(--modal-text) !important;
+}
+
+.swal2-popup-toast .swal2-success-ring {
+    border-color: rgba(59, 130, 246, 0.3) !important;
 }
 
 [data-bs-theme="light"] .swal2-popup-toast {
