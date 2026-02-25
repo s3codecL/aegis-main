@@ -815,7 +815,9 @@
 
 /* Action Pill Buttons for Tables */
 .btn-action-pill {
-    width: 60px;
+    min-width: 42px;
+    width: auto;
+    padding: 0 0.85rem;
     height: 32px;
     border-radius: 50px;
     display: flex;
