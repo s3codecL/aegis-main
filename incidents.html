@@ -13,9 +13,17 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="plugins/favorites - Chrome/ico.png" type="image/png" />
+
+    <!-- Theme Script (Prevent Flash) -->
+    <script>
+        (function () {
+            const theme = localStorage.getItem("osintTheme") || "dark";
+            document.documentElement.setAttribute("data-bs-theme", theme);
+        })();
+    </script>
 </head>
 
-<body data-bs-theme="dark">
+<body>
     <header class="navbar sticky-top">
         <div class="container-fluid px-4">
             <!-- Logo y Branding -->
