@@ -98,3 +98,43 @@
     border-color: rgba(59, 130, 246, 0.3) !important;
     color: #e2e8f0 !important;
 }
+
+/* Light Mode Visibility Enhancements */
+[data-bs-theme="light"] .form-label {
+    color: #334155 !important;
+    font-weight: 700;
+}
+
+[data-bs-theme="light"] .subheader {
+    color: #64748b !important;
+    font-weight: 700;
+}
+
+[data-bs-theme="light"] .card-stats {
+    background: #ffffff !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-bs-theme="light"] .accordion-button strong {
+    color: #2563eb !important;
+}
+
+[data-bs-theme="light"] .accordion-button.collapsed strong {
+    color: #475569 !important;
+}
+
+[data-bs-theme="light"] .text-muted {
+    color: #4b5563 !important;
+}
+
+[data-bs-theme="light"] .table thead th {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .alert-info {
+    background-color: #eff6ff !important;
+    border-color: #bfdbfe !important;
+    color: #1e40af !important;
+}
