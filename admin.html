@@ -204,7 +204,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="userModalTitle">Añadir Usuario</h5>
+                    <h5 class="modal-title" id="userModalTitle" data-i18n="ADD_USER_MODAL_TITLE">Añadir Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <form id="user-form">
@@ -212,19 +212,22 @@
                         <input type="hidden" id="edit-user-id">
 
                         <div class="mb-3">
-                            <label for="user-name" class="form-label">Nombre Completo</label>
+                            <label for="user-name" class="form-label" data-i18n="FULL_NAME">Nombre Completo</label>
                             <input type="text" class="form-control" id="user-name" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user-email" class="form-label">Correo Electrónico</label>
+                            <label for="user-email" class="form-label" data-i18n="EMAIL_ADDRESS">Correo
+                                Electrónico</label>
                             <input type="email" class="form-control" id="user-email" required>
                         </div>
 
                         <div class="mb-3" id="password-field">
-                            <label for="user-password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="user-password" minlength="8">
-                            <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">
+                            <label for="user-password" class="form-label" data-i18n="PASSWORD">Contraseña</label>
+                            <input type="password" class="form-control" id="user-password" minlength="8"
+                                data-i18n-placeholder="PLACEHOLDER_PASSWORD">
+                            <small class="text-muted d-block mt-1" style="font-size: 0.75rem;"
+                                data-i18n="PASSWORD_REQUIREMENTS">
                                 Requisitos: 8+ caracteres, 1 mayúscula, 1 número y 1 símbolo.
                             </small>
                         </div>
@@ -494,36 +497,38 @@
 
         // Mostrar modal de añadir usuario
         window.showAddUserModal = function () {
-            document.getElementById('userModalTitle').textContent = 'Añadir Usuario';
-            document.getElementById('user-form').reset();
             document.getElementById('edit-user-id').value = '';
+            document.getElementById('user-form').reset();
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const trans = translations[lang] || translations['es'];
+            document.getElementById('userModalTitle').textContent = trans['ADD_USER_MODAL_TITLE'] || 'Añadir Usuario';
             document.getElementById('password-field').style.display = 'block';
             const passwordInput = document.getElementById('user-password');
             passwordInput.required = true;
-            passwordInput.placeholder = 'Introducir contraseña segura';
+            passwordInput.placeholder = trans['USER_PASSWORD_PLACEHOLDER'] || 'Introducir contraseña segura';
             userModal.show();
         }
 
         // Editar usuario
-        window.editUser = function (userId) {
+        window.showEditUserModal = function (userId) {
             const users = Auth.getUsers();
             const user = users.find(u => u.id === userId);
 
             if (!user) return;
 
-            document.getElementById('userModalTitle').textContent = 'Editar Usuario';
             document.getElementById('edit-user-id').value = user.id;
             document.getElementById('user-name').value = user.name;
             document.getElementById('user-email').value = user.email;
             document.getElementById('user-role').value = user.role;
 
-            // Permitir cambio de contraseña en edición
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            const trans = translations[lang] || translations['es'];
+            document.getElementById('userModalTitle').textContent = trans['EDIT_USER_MODAL_TITLE'] || 'Editar Usuario';
             const passwordField = document.getElementById('password-field');
             const passwordInput = document.getElementById('user-password');
-            passwordField.style.display = 'block';
+            passwordField.style.display = 'none';
             passwordInput.required = false;
-            passwordInput.value = '';
-            passwordInput.placeholder = 'Dejar en blanco para no cambiar';
+            passwordInput.placeholder = trans['USER_PASSWORD_EDIT_PLACEHOLDER'] || 'Dejar en blanco para no cambiar';
 
             userModal.show();
         }
