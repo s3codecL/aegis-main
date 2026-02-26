@@ -35,7 +35,7 @@ export const translations = {
     "USEFUL_THINGS": "USEFUL THINGS",
 
     // Main UI
-    "AEGIS_DASHBOARD": "AEGIS Dashboard",
+    "AEGIS_DASHBOARD": "Aegis HUB",
     "INVESTIGATION_TOOL": "Investigation Tool",
     "TOOLS": "Tools",
     "FAVORITES": "Favorites",
@@ -169,10 +169,10 @@ export const translations = {
     "PLACEHOLDER_NAME": "John Doe",
 
     // Quickstart Page
-    "QS_HERO_TITLE": "🛡️ Aegis HUB",
+    "QS_HERO_TITLE": "<span>Aegis</span> HUB",
     "QS_HERO_SUBTITLE": "Centralize 78 OSINT resources in one place, automatically detect search types and save valuable time in your investigations.",
     "QS_HERO_READ_GUIDE": "📚 Read the quick start guide for features",
-    "QS_ACCESS_DASHBOARD": "Go to Tool →",
+    "QS_ACCESS_DASHBOARD": "Go to HUB",
     "QS_QUICK_START": "Quick Start",
     "QS_STEP1_TITLE": "Enter your search",
     "QS_STEP1_DESC": "Enter an IP, domain, hash, email, or text. The system will automatically detect the type.",
@@ -267,7 +267,7 @@ export const translations = {
 
     // CTA
     "QS_CTA_SUBTITLE": "Access Aegis HUB and perform professional investigations",
-    "QS_CTA_BUTTON": "Access HUB",
+    "QS_CTA_BUTTON": "Go to HUB",
 
     // Footer
     "QS_FOOTER_MADE_WITH": "Made with ❤️ for the security community -",
@@ -280,6 +280,15 @@ export const translations = {
     "ADMINISTRATORS": "Administrators",
     "ACTIVE_USERS": "Active Users",
     "NEW_USERS_7DAYS": "New (7 days)",
+
+    // User Management Modal
+    "ADD_USER_MODAL_TITLE": "Add User",
+    "EDIT_USER_MODAL_TITLE": "Edit User",
+    "FULL_NAME": "Full Name",
+    "EMAIL_ADDRESS": "Email Address",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIREMENTS": "Requirements: 8+ characters, 1 uppercase, 1 number, and 1 symbol.",
+    "ADMIN_MODAL_NOTE": "Changes made will be applied immediately in the authentication system.",
     "ADD_USER": "Add User",
     "USER": "User",
     "ROLE": "Role",
@@ -575,7 +584,7 @@ export const translations = {
     "USEFUL_THINGS": "COSAS ÚTILES",
 
     // Main UI
-    "AEGIS_DASHBOARD": "Aegis Dashboard",
+    "AEGIS_DASHBOARD": "Aegis HUB",
     "INVESTIGATION_TOOL": "Herramienta de Investigación",
     "TOOLS": "Herramientas",
     "FAVORITES": "Favoritos",
@@ -705,10 +714,10 @@ export const translations = {
     "PLACEHOLDER_NAME": "Juan Pérez",
 
     // Quickstart Page
-    "QS_HERO_TITLE": "🛡️ Aegis HUB",
+    "QS_HERO_TITLE": "<span>Aegis</span> HUB",
     "QS_HERO_SUBTITLE": "Centraliza 78 recursos OSINT en un solo lugar, detecta automáticamente el tipo de búsqueda y ahorra tiempo valioso en tus investigaciones.",
     "QS_HERO_READ_GUIDE": "📚 Lee la guía de inicio rápido para las funcionalidades",
-    "QS_ACCESS_DASHBOARD": "Ir a la Herramienta →",
+    "QS_ACCESS_DASHBOARD": "Ir al HUB",
     "QS_QUICK_START": "Inicio Rápido",
     "QS_STEP1_TITLE": "Ingresa tu búsqueda",
     "QS_STEP1_DESC": "Escribe una IP, dominio, hash, correo o texto. El sistema detectará automáticamente el tipo.",
@@ -803,7 +812,7 @@ export const translations = {
 
     // CTA
     "QS_CTA_SUBTITLE": "Accede al Aegis HUB y realiza investigaciones profesionales",
-    "QS_CTA_BUTTON": "Acceder al Dashboard",
+    "QS_CTA_BUTTON": "Ir al HUB",
 
     // Footer
     "QS_FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad -",
@@ -816,6 +825,15 @@ export const translations = {
     "ADMINISTRATORS": "Administradores",
     "ACTIVE_USERS": "Usuarios Activos",
     "NEW_USERS_7DAYS": "Nuevos (7 días)",
+
+    // User Management Modal
+    "ADD_USER_MODAL_TITLE": "Añadir Usuario",
+    "EDIT_USER_MODAL_TITLE": "Editar Usuario",
+    "FULL_NAME": "Nombre Completo",
+    "EMAIL_ADDRESS": "Correo Electrónico",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_REQUIREMENTS": "Requisitos: 8+ caracteres, 1 mayúscula, 1 número y 1 símbolo.",
+    "ADMIN_MODAL_NOTE": "Los cambios realizados se aplicarán inmediatamente en el sistema de autenticación.",
     "ADD_USER": "Agregar Usuario",
     "USER": "Usuario",
     "ROLE": "Rol",
