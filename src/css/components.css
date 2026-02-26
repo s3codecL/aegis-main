@@ -589,6 +589,10 @@
 }
 
 /* Fix "Double Arrow" in dropdown-toggle and Premium Profile Styles */
+.dropdown-toggle::after {
+    display: none !important;
+}
+
 /* Profile Styles */
 .btn-user-profile {
     background: var(--bg-tertiary) !important;
