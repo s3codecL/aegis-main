@@ -36,14 +36,20 @@ body {
 
 .hero h1 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
+    font-weight: 800;
+    /* Matching login h1 */
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
 }
 
 .hero p {
@@ -85,8 +91,29 @@ body {
 /* Grid & Cards */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
+    /* Mobile first */
     gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Default 3 cards */
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+        /* 4 cards for detection types */
+    }
+
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* 2 cards per row (2x2) */
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .card {
@@ -138,32 +165,45 @@ body {
 /* Statistics */
 .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .stats {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .stat-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
+    padding: 2rem 1rem;
     text-align: center;
     border-radius: var(--radius-xl);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 800;
     color: var(--color-primary-light);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
 }
 
 .stat-label {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     color: var(--text-dark-muted);
+    opacity: 0.8;
 }
 
 /* FAQ */
@@ -212,23 +252,6 @@ code {
     z-index: 10;
 }
 
-.social-links {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.social-links a {
-    color: var(--text-dark-muted);
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-    color: var(--color-primary-light);
-    transform: translateY(-3px);
-}
-
 /* Back to Top */
 .back-to-top {
     position: fixed;
@@ -263,21 +286,6 @@ code {
     color: #1e293b;
 }
 
-[data-bs-theme="light"] .navbar {
-    background: rgba(255, 255, 255, 0.8) !important;
-    border-color: #e2e8f0;
-    color: #1e293b !important;
-}
-
-[data-bs-theme="light"] .navbar .btn-ghost {
-    color: #64748b;
-}
-
-[data-bs-theme="light"] .navbar .btn-ghost:hover {
-    background: #f1f5f9;
-    color: #1e293b;
-}
-
 [data-bs-theme="light"] .hero {
     background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%),
         #ffffff;
@@ -285,7 +293,13 @@ code {
 }
 
 [data-bs-theme="light"] .hero h1 {
-    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    color: #0f172a;
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+[data-bs-theme="light"] .hero h1 span {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
