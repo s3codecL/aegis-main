@@ -950,3 +950,58 @@
         opacity: 0;
     }
 }
+
+/* Footer Social Links Premium Style */
+.footer-social-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.footer-social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s var(--ease-out-expo);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    text-decoration: none !important;
+}
+
+.footer-social-link:hover {
+    transform: translateY(-5px);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-social-link.github {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.footer-social-link.github:hover {
+    background: #1d4ed8;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+}
+
+/* Light Mode Footer Social */
+[data-bs-theme="light"] .footer-social-link {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+[data-bs-theme="light"] .footer-social-link:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+[data-bs-theme="light"] .footer-social-link.github {
+    background: #2563eb;
+    color: white;
+}
