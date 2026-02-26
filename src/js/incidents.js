@@ -813,11 +813,11 @@ const IncidentManager = {
 
         if (iconLight && iconDark) {
             if (currentTheme === "dark") {
-                iconLight.style.display = "none";
-                iconDark.style.display = "inline-block";
-            } else {
                 iconLight.style.display = "inline-block";
                 iconDark.style.display = "none";
+            } else {
+                iconLight.style.display = "none";
+                iconDark.style.display = "inline-block";
             }
         }
     },
