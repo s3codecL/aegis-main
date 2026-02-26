@@ -23,10 +23,14 @@
     --modal-text: #ffffff;
     --modal-border: rgba(255, 255, 255, 0.15);
     --modal-backdrop-bg: rgba(0, 0, 0, 0.65);
-    --modal-label: rgba(255, 255, 255, 0.7);
+    --modal-label: rgba(248, 250, 260, 0.8);
     --modal-input-bg: rgba(0, 0, 0, 0.3);
     --modal-input-border: rgba(255, 255, 255, 0.15);
     --modal-input-focus-bg: rgba(0, 0, 0, 0.45);
+
+    /* Text Helpers */
+    --text-on-primary: #ffffff;
+    --card-stats-bg: var(--glass-bg);
 
     /* Panel Specifics */
     --panel-header-bg: rgba(15, 20, 51, 0.7);
@@ -50,14 +54,18 @@ html[data-bs-theme="light"],
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 
     /* Modal & Inputs */
-    --modal-bg: rgba(255, 255, 255, 0.85);
+    --modal-bg: #ffffff;
     --modal-text: #0f172a;
     --modal-border: rgba(59, 130, 246, 0.2);
-    --modal-backdrop-bg: rgba(241, 245, 249, 0.8);
-    --modal-label: #475569;
-    --modal-input-bg: rgba(0, 0, 0, 0.03);
-    --modal-input-border: rgba(0, 0, 0, 0.1);
+    --modal-backdrop-bg: rgba(15, 23, 42, 0.5);
+    --modal-label: #334155;
+    --modal-input-bg: #f8fafc;
+    --modal-input-border: #cbd5e1;
     --modal-input-focus-bg: #ffffff;
+
+    /* Text Helpers */
+    --text-on-primary: #ffffff;
+    --card-stats-bg: #ffffff;
 
     /* Panel Specifics */
     --panel-header-bg: rgba(255, 255, 255, 0.7);
