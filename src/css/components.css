@@ -687,12 +687,10 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 48px;
-    height: 48px;
-    background: var(--color-primary) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 12px !important;
+    border-radius: 50% !important;
+    width: 54px !important;
+    /* Slightly larger for a more professional feel */
+    height: 54px !important;
     display: flex;
     align-items: center;
     justify-content: center;
