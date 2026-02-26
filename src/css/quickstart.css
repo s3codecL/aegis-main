@@ -9,8 +9,8 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    padding: 10rem 2rem;
-    /* Increased vertical padding for more impact */
+    padding: 8rem 2rem;
+    /* Reduced vertical padding */
     text-align: center;
     background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.25) 0%, transparent 70%),
         var(--bg-dark);
@@ -70,8 +70,8 @@ body {
 
 /* Sections */
 .section {
-    margin-bottom: 8rem;
-    /* More breathing room between sections */
+    margin-bottom: 5rem;
+    /* Reduced room between sections */
 }
 
 .section h2 {
@@ -244,7 +244,7 @@ code {
 
 /* Footer */
 .footer {
-    padding: 4rem 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
     border-top: 1px solid rgba(59, 130, 246, 0.1);
     background: rgba(0, 0, 0, 0.4);
