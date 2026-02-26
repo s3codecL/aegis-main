@@ -35,6 +35,7 @@ const IncidentManager = {
     init: function () {
         this.loadIncidents();
         this.setupEventListeners();
+        this.setupTheme(); // Aplicar tema al iniciar
         this.renderIncidents();
         this.updateStats();
     },
@@ -781,6 +782,44 @@ const IncidentManager = {
         document.getElementById('incidentUrgency')?.addEventListener('change', () => {
             this.updateCalculatedPriority();
         });
+
+        // Toggle theme
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+    },
+
+    /**
+     * Gestión de Temas
+     */
+    setupTheme: function () {
+        const theme = localStorage.getItem("osintTheme") || "dark";
+        document.documentElement.setAttribute("data-bs-theme", theme);
+        this.updateThemeIcons();
+    },
+
+    toggleTheme: function () {
+        const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-bs-theme", newTheme);
+        localStorage.setItem("osintTheme", newTheme);
+        this.updateThemeIcons();
+    },
+
+    updateThemeIcons: function () {
+        const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+        const iconLight = document.getElementById("iconLight");
+        const iconDark = document.getElementById("iconDark");
+
+        if (iconLight && iconDark) {
+            if (currentTheme === "dark") {
+                iconLight.style.display = "none";
+                iconDark.style.display = "inline-block";
+            } else {
+                iconLight.style.display = "inline-block";
+                iconDark.style.display = "none";
+            }
+        }
     },
 
     /**
