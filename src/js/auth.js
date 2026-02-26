@@ -543,8 +543,9 @@ const Auth = {
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
-            background: 'rgba(15, 23, 42, 0.9)',
-            color: '#fff',
+            background: 'var(--modal-bg)',
+            color: 'var(--text)',
+            backdrop: 'rgba(0,0,0,0.4)',
             customClass: {
                 popup: 'swal2-popup-toast premium-swal-popup'
             }
