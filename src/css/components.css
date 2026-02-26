@@ -67,9 +67,9 @@
 }
 
 .btn-outline-secondary {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-dark-muted);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+    border: 1.5px solid var(--border);
     transition: all 0.3s var(--ease-out-expo);
 }
 
@@ -94,8 +94,8 @@
 }
 
 .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--color-primary-light);
+    background: var(--border);
+    color: var(--color-primary);
 }
 
 /* Botones de Píldora Específicos */
@@ -156,8 +156,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
         0 0 25px rgba(59, 130, 246, 0.15) !important;
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(59, 130, 246, 0.4) !important;
-    background: var(--glass-bg);
+    border-color: var(--color-primary) !important;
 }
 
 .card-stats {
@@ -167,7 +166,8 @@
 
 .card-stats:hover {
     border-color: var(--color-primary) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2) !important;
+    box-shadow: var(--glass-shadow);
+    transform: translateY(-5px);
 }
 
 .tools-grid {
@@ -201,7 +201,6 @@
 }
 
 [data-bs-theme="dark"] .modal-content {
-    background: rgba(15, 23, 42, 0.8) !important;
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.2) !important;
 }
 
@@ -254,20 +253,15 @@
 }
 
 [data-bs-theme="dark"] .modal-footer .btn-secondary {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: white !important;
-}
-
-[data-bs-theme="dark"] .modal-footer .btn-danger {
-    background: #ef4444 !important;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text) !important;
 }
 
 .modal-footer .btn-secondary {
-    background: white !important;
-    color: #1e293b !important;
-    border: none !important;
+    background: var(--bg-tertiary) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
 }
 
 .modal-footer .btn-primary {
@@ -327,8 +321,8 @@
 }
 
 [data-bs-theme="dark"] .form-select option {
-    background-color: #1e293b !important;
-    color: white !important;
+    background-color: var(--bg-secondary) !important;
+    color: var(--text) !important;
 }
 
 .form-control:focus,
@@ -574,14 +568,13 @@
     letter-spacing: 0.01em;
 }
 
-/* User Dropdown */
 .dropdown-menu-user {
     min-width: 240px;
     padding: 0.5rem 0;
-    background: #111827 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border) !important;
     border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: var(--glass-shadow) !important;
     margin-top: 0.5rem !important;
 }
 
@@ -596,46 +589,43 @@
 }
 
 /* Fix "Double Arrow" in dropdown-toggle and Premium Profile Styles */
-.dropdown-toggle::after {
-    display: none !important;
-}
-
+/* Profile Styles */
 .btn-user-profile {
-    background: rgba(30, 41, 59, 0.4) !important;
-    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border) !important;
     padding: 0.4rem 1rem !important;
     border-radius: 50px !important;
     display: flex;
     align-items: center;
     gap: 0.75rem;
     transition: all 0.3s var(--ease-out-expo);
-    color: #f8fafc !important;
+    color: var(--text) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-user-profile:hover {
-    background: rgba(30, 41, 59, 0.6) !important;
-    border-color: rgba(59, 130, 246, 0.5) !important;
+    background: var(--bg-primary) !important;
+    border-color: var(--color-primary) !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(59, 130, 246, 0.1);
+    box-shadow: var(--glass-shadow);
 }
 
 .dropdown-menu-user {
     min-width: 240px;
     padding: 0.6rem 0;
-    background: rgba(15, 23, 42, 0.85) !important;
-    backdrop-filter: blur(25px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: var(--modal-bg) !important;
+    backdrop-filter: var(--glass-blur) saturate(180%) !important;
+    -webkit-backdrop-filter: var(--glass-blur) saturate(180%) !important;
+    border: 1px solid var(--modal-border) !important;
     border-radius: 16px !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: var(--glass-shadow) !important;
     margin-top: 0.75rem !important;
 }
 
 .dropdown-header-user {
     padding: 0.75rem 1.25rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 0.8rem;
     font-weight: 500;
 }
@@ -645,7 +635,7 @@
     display: flex;
     align-items: center;
     gap: 0.85rem;
-    color: #e2e8f0;
+    color: var(--text);
     font-weight: 500;
     font-size: 0.875rem;
     transition: all 0.2s ease;
@@ -663,7 +653,7 @@
 
 .dropdown-divider-user {
     margin: 0.4rem 0;
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--border);
 }
 
 .dropdown-item-user:hover {
@@ -728,12 +718,11 @@
 
 /* SweetAlert2 Premium Custom Styles */
 .swal2-container.swal2-backdrop-show {
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    background: rgba(15, 23, 42, 0.5) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    background: var(--modal-backdrop-bg) !important;
 }
 
-/* Forzar limpieza al ocultar */
 .swal2-container.swal2-backdrop-hide {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -753,12 +742,12 @@
 }
 
 .premium-swal-popup {
-    background: rgba(15, 23, 42, 0.85) !important;
-    backdrop-filter: blur(30px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+    background: var(--modal-bg) !important;
+    backdrop-filter: var(--glass-blur) saturate(180%) !important;
+    -webkit-backdrop-filter: var(--glass-blur) saturate(180%) !important;
+    border: 1px solid var(--modal-border) !important;
     border-radius: 28px !important;
-    box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.2) !important;
+    box-shadow: var(--glass-shadow) !important;
     padding: 2.5rem !important;
 }
 
@@ -783,17 +772,15 @@
 }
 
 .premium-swal-title {
-    color: white !important;
+    color: var(--text) !important;
     font-weight: 800 !important;
     font-size: 1.25rem !important;
-    /* Reducido de 1.5rem */
     letter-spacing: -0.02em !important;
 }
 
 .swal2-html-container {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-muted) !important;
     font-size: 0.925rem !important;
-    /* Reducido de 1rem */
     line-height: 1.5 !important;
     font-weight: 500 !important;
 }
@@ -810,13 +797,19 @@
 }
 
 .swal2-cancel.swal2-styled {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: white !important;
+    background: var(--bg-tertiary) !important;
+    color: var(--text) !important;
     border-radius: 50px !important;
-    padding: 0.8rem 2.5rem !important;
+    padding: 0.65rem 2rem !important;
     font-weight: 700 !important;
-    font-size: 0.9rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-size: 0.875rem !important;
+    border: 1px solid var(--border) !important;
+    transition: all 0.3s ease !important;
+}
+
+.swal2-cancel.swal2-styled:hover {
+    background: var(--bg-primary) !important;
+    border-color: var(--color-primary) !important;
 }
 
 .swal2-icon.swal2-warning {
@@ -885,16 +878,17 @@
 }
 
 .btn-ghost-pill {
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    border-color: var(--border);
 }
 
 .btn-ghost-pill:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-primary);
     color: #f59e0b;
-    border-color: rgba(245, 158, 11, 0.3);
+    border-color: rgba(245, 158, 11, 0.5);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .status-dot-pulse {
