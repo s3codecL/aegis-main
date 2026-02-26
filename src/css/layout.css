@@ -1,5 +1,6 @@
 .navbar {
-    background: var(--panel-header-bg, rgba(15, 20, 51, 0.7)) !important;
+    background: var(--panel-header-bg) !important;
+    color: var(--text) !important;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
@@ -82,7 +83,7 @@
 
 /* Stats Bar */
 .navbar-stats {
-    background: var(--panel-header-bg, rgba(15, 20, 51, 0.8));
+    background: var(--panel-header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     padding: var(--spacing-md) 0;
@@ -156,10 +157,11 @@ body.panel-open .main-container {
 
 .sidebar {
     width: 280px;
-    background: var(--panel-sidebar-bg, rgba(26, 31, 58, 0.6));
-    backdrop-filter: blur(10px);
+    background: var(--panel-sidebar-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     border-radius: var(--radius-2xl);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border) !important;
     padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
@@ -213,9 +215,9 @@ body.panel-open .main-container {
 }
 
 [data-bs-theme="light"] .footer {
-    background: rgba(255, 255, 255, 0.9);
-    border-top: 1px solid rgba(59, 130, 246, 0.1);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    background: var(--panel-header-bg);
+    border-top: 1px solid var(--border);
+    box-shadow: var(--glass-shadow);
 }
 
 .social-links a {
@@ -302,7 +304,7 @@ body.panel-open .main-container {
     display: flex;
     gap: var(--spacing-sm);
     padding: 4px;
-    background: var(--bg-tertiary);
+    background: var(--bg-tertiary) !important;
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-xl);
     border-bottom: none;
@@ -313,7 +315,7 @@ body.panel-open .main-container {
     padding: 0.6rem 1.5rem;
     border: none;
     background: transparent;
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
     font-weight: 600;
     font-size: 0.9rem;
     border-radius: var(--radius-pill);
@@ -325,8 +327,8 @@ body.panel-open .main-container {
 }
 
 .tab-btn:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-primary);
+    background: var(--border);
 }
 
 .tab-btn.active {
