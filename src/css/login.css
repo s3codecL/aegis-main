@@ -91,8 +91,8 @@
 }
 
 .login-controls .btn-outline-secondary:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: white !important;
+    background: var(--border) !important;
+    color: var(--color-primary) !important;
 }
 
 .logo-section {
@@ -124,7 +124,7 @@
 }
 
 .logo-section p {
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
     font-size: 0.95rem;
 }
 
@@ -142,7 +142,7 @@
     padding: 0.6rem 1rem;
     border: none;
     background: transparent;
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
     font-weight: 600;
     font-size: 0.9rem;
     border-radius: var(--radius-pill);
@@ -175,7 +175,7 @@
     margin-bottom: 0.5rem;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -194,8 +194,13 @@
 .form-control:focus {
     outline: none;
     border-color: var(--color-primary) !important;
-    background: rgba(0, 0, 0, 0.4) !important;
+    background: var(--modal-input-focus-bg) !important;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
 }
 
 .checkbox-container {
@@ -270,7 +275,7 @@
 .divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border);
 }
 
 .divider:not(:empty)::before {
@@ -319,7 +324,7 @@
 }
 
 .back-link a {
-    color: var(--text-dark-muted);
+    color: var(--text-muted);
     font-size: 0.9rem;
     transition: var(--transition);
 }
