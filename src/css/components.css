@@ -689,8 +689,10 @@
     right: 2rem;
     border-radius: 50% !important;
     width: 54px !important;
-    /* Slightly larger for a more professional feel */
     height: 54px !important;
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
