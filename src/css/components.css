@@ -448,6 +448,8 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
+    list-style: none;
+    padding: 0.5rem 0;
 }
 
 .dropdown-item {
@@ -576,6 +578,7 @@
     border-radius: 12px !important;
     box-shadow: var(--glass-shadow) !important;
     margin-top: 0.5rem !important;
+    list-style: none !important;
 }
 
 [data-bs-theme="light"] .dropdown-menu-user {
