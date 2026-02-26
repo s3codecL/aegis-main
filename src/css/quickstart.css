@@ -28,11 +28,13 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    padding: 8rem 2rem;
+    padding: 10rem 2rem;
+    /* Increased vertical padding for more impact */
     text-align: center;
-    background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.2) 0%, transparent 70%),
+    background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.25) 0%, transparent 70%),
         var(--bg-dark);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+    /* Slightly thicker border */
     overflow: hidden;
 }
 
@@ -81,7 +83,8 @@ body {
 
 /* Sections */
 .section {
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
+    /* More breathing room between sections */
 }
 
 .section h2 {
@@ -248,14 +251,15 @@ code {
 /* Back to Top */
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 48px;
-    height: 48px;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 56px;
+    height: 56px;
     background: var(--color-primary);
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 50% !important;
+    /* Forced rounded */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -294,7 +298,7 @@ code {
 }
 
 [data-bs-theme="light"] .hero {
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 70%),
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%),
         #ffffff;
     border-color: #e2e8f0;
 }
