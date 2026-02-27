@@ -129,7 +129,7 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Please fill in all required fields",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
+    "FOOTER_TEXT": "🛡️ Aegis HUB v1.9.0 | 2025",
     "FOOTER_MADE_WITH": "Made with ❤️ for the security community - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
@@ -716,7 +716,7 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Por favor completa todos los campos requeridos",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis HUB v1.8.0 | 2025",
+    "FOOTER_TEXT": "🛡️ Aegis HUB v1.9.0 | 2025",
     "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
