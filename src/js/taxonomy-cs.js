@@ -118,13 +118,21 @@ export const CSTaxonomy = {
     getPriority: function (impact, urgency) {
         if (!impact || !urgency) return 'Low';
 
+        let imp = 'Low';
+        if (impact === 'Wide' || impact === 'Extensive' || impact === 'High') imp = 'High';
+        else if (impact === 'Limited' || impact === 'Medium') imp = 'Medium';
+
+        let urg = 'Low';
+        if (urgency === 'High' || urgency === 'Critical') urg = 'High';
+        else if (urgency === 'Medium') urg = 'Medium';
+
         const map = {
             'High': { 'High': 'Critical', 'Medium': 'High', 'Low': 'Medium' },
             'Medium': { 'High': 'High', 'Medium': 'Medium', 'Low': 'Low' },
             'Low': { 'High': 'Medium', 'Medium': 'Low', 'Low': 'Low' }
         };
 
-        return map[impact][urgency] || 'Low';
+        return map[imp]?.[urg] || 'Low';
     },
 
     /**
