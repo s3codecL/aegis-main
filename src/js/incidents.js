@@ -95,7 +95,8 @@ const IncidentManager = {
                 typeLabel: CSTaxonomy.getIncidentTypeLabel(data.type),
                 criticality: priority, // <-- criticidad calculada
                 status: data.status || 'Open',
-                confidence: data.confidence || 0
+                confidence: data.confidence || 'MEDIUM',
+                area: data.area || ''
             },
             sgsi: {
                 impact: data.sgsi.impact,
@@ -122,8 +123,8 @@ const IncidentManager = {
                     assigned: data.assignment?.remediation?.user ? timestamp : null
                 }
             },
-            nistPhase: data.nistPhase || 2, // Por defecto: Detección y Análisis
-            mitreAttack: data.mitreAttack || [],
+            nistPhase: data.nistPhase || '', // Por defecto vacío si no hay selección
+            mitreTactic: data.mitreTactic || '', // Usa la táctica del formulario
             iocs: {
                 ips: data.iocs?.ips || [],
                 hashes: data.iocs?.hashes || [],
@@ -550,9 +551,8 @@ const IncidentManager = {
         if (typeEl) typeEl.value = incident.classification.type;
 
         const areaEl = document.getElementById('incidentArea');
-        if (areaEl && incident.code) {
-            const areaPart = incident.code.split('-')[1];
-            areaEl.value = areaPart;
+        if (areaEl) {
+            areaEl.value = incident.classification?.area || (incident.code ? incident.code.split('-')[2] : '');
         }
 
         const channelEl = document.getElementById('incidentDetectionChannel');
@@ -626,6 +626,12 @@ const IncidentManager = {
     saveIncidentFromForm: function (event) {
         event.preventDefault();
 
+        const form = document.getElementById('incidentForm');
+        if (form && !form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         const formData = {
             type: document.getElementById('incidentType').value,
             area: document.getElementById('incidentArea').value,
@@ -665,17 +671,28 @@ const IncidentManager = {
             this.updateIncident(this.state.currentIncident.id, {
                 description: formData.description,
                 affected: { ip: formData.ip, hostname: formData.hostname },
+                detection: {
+                    ...this.state.currentIncident.detection,
+                    channel: formData.channel || this.state.currentIncident.detection.channel,
+                    reportedBy: formData.reportedBy || this.state.currentIncident.detection.reportedBy
+                },
                 classification: {
                     ...this.state.currentIncident.classification,
                     type: formData.type || this.state.currentIncident.classification.type,
                     criticality: formData.criticality || this.state.currentIncident.classification.criticality,
                     status: formData.status || this.state.currentIncident.classification.status,
-                    confidence: formData.confidence || this.state.currentIncident.classification.confidence
+                    confidence: formData.confidence || this.state.currentIncident.classification.confidence,
+                    area: formData.area || this.state.currentIncident.classification.area
                 },
                 sgsi: { ...this.state.currentIncident.sgsi, ...formData.sgsi },
                 assignment: formData.assignment || this.state.currentIncident.assignment,
                 nistPhase: formData.nistPhase || this.state.currentIncident.nistPhase,
-                iocs: formData.iocs || this.state.currentIncident.iocs
+                mitreTactic: formData.mitreTactic || this.state.currentIncident.mitreTactic,
+                iocs: formData.iocs || this.state.currentIncident.iocs,
+                containment: formData.containment !== undefined ? formData.containment : this.state.currentIncident.containment,
+                analysis: formData.analysis !== undefined ? formData.analysis : this.state.currentIncident.analysis,
+                remediation: formData.remediation !== undefined ? formData.remediation : this.state.currentIncident.remediation,
+                lessons: formData.lessons !== undefined ? formData.lessons : this.state.currentIncident.lessons
             });
         } else {
             // Crear nuevo
@@ -687,7 +704,7 @@ const IncidentManager = {
         const modalInstance = bootstrap.Modal.getInstance(modalElement);
 
         const showSuccess = () => {
-            const isUpdate = !!this.state.currentIncident;
+            // isUpdate ya está capturado del scope superior
             Swal.fire({
                 title: isUpdate ? '¡Actualizado!' : '¡Creado!',
                 text: isUpdate ? 'Incidente actualizado correctamente' : 'Incidente creado correctamente',
