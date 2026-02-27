@@ -124,3 +124,20 @@ html[data-bs-theme="light"] body .subheader {
     border-color: #bfdbfe !important;
     color: #1e40af !important;
 }
+
+/* Light Mode Table Header Fix */
+html[data-bs-theme="light"] body .table thead th {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+html[data-bs-theme="light"] .accordion-item {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+html[data-bs-theme="light"] .card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
