@@ -738,7 +738,7 @@ http://localhost:8000</code></pre>
 
         window.setTheme = function (theme) {
             htmlElement.setAttribute('data-bs-theme', theme);
-            localStorage.setItem('theme', theme);
+            localStorage.setItem('osintTheme', theme);
 
             if (theme === 'dark') {
                 moonIcon.style.display = 'none';
@@ -750,7 +750,7 @@ http://localhost:8000</code></pre>
         }
 
         // Initialize theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const savedTheme = localStorage.getItem('osintTheme') || 'dark';
         window.setTheme(savedTheme);
 
         themeToggle.addEventListener('click', () => {
