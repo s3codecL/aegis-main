@@ -117,15 +117,7 @@ html[data-bs-theme="light"] body .subheader {
     color: #475569 !important;
 }
 
-[data-bs-theme="light"] .text-muted {
-    color: #4b5563 !important;
-}
 
-[data-bs-theme="light"] .table thead th {
-    background-color: #f8fafc !important;
-    color: #1e293b !important;
-    border-bottom: 2px solid #e2e8f0 !important;
-}
 
 [data-bs-theme="light"] .alert-info {
     background-color: #eff6ff !important;
