@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-[![Version](https://img.shields.io/badge/version-1.8.0-blue.svg)](changelog.md)
+## [Version](https://img.shields.io/badge/version-1.8.0--Jarvis-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -12,7 +12,12 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 
 ## 🚀 Novedades v1.8.0
 
-🛡️ **Gestión de Incidencias de Ciberseguridad (v1.8.0)**
+🛡️ **Estabilización de Temas y Datos (v1.8.0)**
+- **Unificación de Temas**: Lógica estandarizada en `osintTheme` para toda la plataforma.
+- **Fix Modo Claro**: Visibilidad mejorada en tablas y componentes críticos.
+- **Persistencia de Datos**: Corrección en el mapeo de áreas (`OP` standardized) y persistencia de formularios.
+
+🛡️ **Gestión de Incidencias de Ciberseguridad**
 - Sistema completo de gestión de incidentes de seguridad
 - Clasificación automática según NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
 - Generación automática de códigos únicos por incidente
@@ -295,7 +300,7 @@ El proyecto incluye cuatro interfaces principales:
 - Panel de estadísticas en tiempo real (Total, Abiertas, Críticas)
 - Filtros avanzados: Estado, Criticidad, Tipo, Búsqueda
 - Gestión de IoCs (IPs, hashes, dominios, artefactos)
-- Línea de tiempo de acciones (Contención, Análisis, Remediación)
+- Línea de tiempo de acciones: Contención, Análisis, Remediación
 - 100+ claves de traducción ES/EN para módulo de incidencias
 - Acceso desde panel admin (solo administradores)
 - **Traducción**: Soporte completo ES/EN
@@ -620,8 +625,16 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 🗺️ Roadmap
 ✅ Completado
-v1.8.0 (2025-12-10)
-🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
+v## [1.8.0] - 2026-02-27
+
+### 🛡️ Jarvis Update - Estabilización y Temas
+- **Unificación de Temas (v1.8.0 Stable)**
+  - ✅ **Standardización Global**: Todas las páginas (`index`, `incidents`, `admin`, `login`, `quickstart`) unificadas bajo la clave `osintTheme` y el atributo `data-bs-theme` en `<html>`.
+  - ✅ **Resolución de Conflictos**: Eliminados listeners duplicados que bloqueaban el cambio de tema en el módulo de incidencias.
+  - ✅ **Iconografía Corregida**: Sistema de iconos Sun/Moon optimizado para evitar parpadeos y bugs visuales (círculos blancos).
+  - ✅ **Modo Claro (Premium)**: Ajustes de contraste en cabeceras de tablas y bordes para una visibilidad perfecta sin perder la estética Aegis.
+
+### 🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
  - [x] Registro y clasificación automática de incidentes
  - [x] Panel de estadísticas en tiempo real
  - [x] Filtros avanzados y gestión de IoCs
