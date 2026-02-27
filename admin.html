@@ -297,7 +297,6 @@
             // Inicializar tema
             const currentTheme = localStorage.getItem('osintTheme') || 'dark';
             document.documentElement.setAttribute('data-bs-theme', currentTheme);
-            document.body.setAttribute('data-bs-theme', currentTheme);
             updateThemeIcon(currentTheme);
 
             // Inicializar idioma y traducciones
@@ -319,7 +318,6 @@
                     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
                     document.documentElement.setAttribute('data-bs-theme', newTheme);
-                    document.body.setAttribute('data-bs-theme', newTheme);
                     localStorage.setItem('osintTheme', newTheme);
                     updateThemeIcon(newTheme);
                 });
