@@ -477,6 +477,16 @@
     backdrop-filter: blur(5px);
 }
 
+[data-bs-theme="light"] .table thead th {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+[data-bs-theme="light"] .text-muted {
+    color: #4b5563 !important;
+}
+
 [data-bs-theme="dark"] .table {
     color: var(--text) !important;
 }
@@ -980,15 +990,11 @@
     text-decoration: none !important;
 }
 
-html[data-bs-theme="dark"] body .footer-social-link {
-    background: rgba(255, 255, 255, 0.05) !important;
-}
-
 .footer-social-link:hover {
     transform: translateY(-5px);
-    color: white;
-    background: #2563eb;
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+    color: white !important;
+    background: #2563eb !important;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4) !important;
 }
 
 /* GitHub specific hover and specific icons if needed can go here */
@@ -1000,7 +1006,7 @@ html[data-bs-theme="dark"] body .footer-social-link {
 }
 
 [data-bs-theme="light"] .footer-social-link:hover {
-    background: #2563eb;
-    color: white;
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+    background: #2563eb !important;
+    color: white !important;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4) !important;
 }
