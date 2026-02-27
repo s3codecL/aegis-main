@@ -38,6 +38,7 @@ const IncidentManager = {
         this.setupTheme(); // Aplicar tema al iniciar
         this.renderIncidents();
         this.updateStats();
+        this.populateFormSelects();
     },
 
     /**
@@ -183,8 +184,46 @@ const IncidentManager = {
             updates.classification.criticality = newPriority;
         }
 
-        // Merge updates
-        this.state.incidents[index] = this.deepMerge(this.state.incidents[index], updates);
+        // Map flat formData values into the nested incident structure before merging
+        const mappedUpdates = {
+            description: updates.description,
+            nistPhase: updates.nistPhase,
+            mitreTactic: updates.mitreTactic,
+            iocs: updates.iocs,
+            sgsi: updates.sgsi,
+            timeline: updates.timeline,
+            containment: updates.containment,
+            analysis: updates.analysis,
+            remediation: updates.remediation,
+            lessons: updates.lessons,
+        };
+
+        if (updates.type !== undefined || updates.status !== undefined || updates.area !== undefined || updates.confidence !== undefined) {
+            mappedUpdates.classification = {
+                ...(updates.type !== undefined && { type: updates.type, typeLabel: CSTaxonomy.getIncidentTypeLabel(updates.type) }),
+                ...(updates.status !== undefined && { status: updates.status }),
+                ...(updates.area !== undefined && { area: updates.area }),
+                ...(updates.confidence !== undefined && { confidence: updates.confidence }),
+                ...(updates.classification?.criticality !== undefined && { criticality: updates.classification.criticality })
+            };
+        }
+
+        if (updates.ip !== undefined || updates.hostname !== undefined) {
+            mappedUpdates.affected = {
+                ...(updates.ip !== undefined && { ip: updates.ip }),
+                ...(updates.hostname !== undefined && { hostname: updates.hostname })
+            };
+        }
+
+        if (updates.channel !== undefined || updates.reportedBy !== undefined) {
+            mappedUpdates.detection = {
+                ...(updates.channel !== undefined && { channel: updates.channel }),
+                ...(updates.reportedBy !== undefined && { reportedBy: updates.reportedBy })
+            };
+        }
+
+        // Merge updates using the mapped structure
+        this.state.incidents[index] = this.deepMerge(this.state.incidents[index], mappedUpdates);
 
         this.saveIncidents();
         this.renderIncidents();
@@ -446,7 +485,6 @@ const IncidentManager = {
         if (!incident) return;
 
         this.state.currentIncident = incident;
-        this.populateFormSelects();
         this.populateForm(incident);
 
         const modalTitle = document.getElementById('incidentModalLabel');
