@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-## [Version](https://img.shields.io/badge/version-1.8.0--Jarvis-blue.svg)](changelog.md)
+[![Version](https://img.shields.io/badge/version-1.9.0-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -10,12 +10,10 @@
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
-## 🚀 Novedades v1.8.0
+## 🚀 Novedades v1.9.0
 
-🛡️ **Estabilización de Temas y Datos (v1.8.0)**
-- **Unificación de Temas**: Lógica estandarizada en `osintTheme` para toda la plataforma.
-- **Fix Modo Claro**: Visibilidad mejorada en tablas y componentes críticos.
-- **Persistencia de Datos**: Corrección en el mapeo de áreas (`OP` standardized) y persistencia de formularios.
+- **Persistencia de Datos**: Corrección en el mapeo de áreas (`OP` standardized) e integridad de formularios al editar.
+- **Arquitectura Modular**: Organización limpia de archivos separando lógica (`src/js`) y estilos (`src/css`) para mayor escalabilidad.
 
 🛡️ **Gestión de Incidencias de Ciberseguridad**
 - Sistema completo de gestión de incidentes de seguridad
@@ -117,7 +115,7 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Sesiones persistentes**: "Recordarme" con tokens
 - **OAuth preparado**: Google y GitHub (integración futura)
 
-### 🛡️ Gestión de Incidencias de Ciberseguridad (v1.8.0)
+### 🛡️ Gestión de Incidencias de Ciberseguridad (v1.9.0)
 - **Sistema completo de incident response**:
   - Registro estructurado en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
   - Generación automática de código: `INC-[TIPO]-[ÁREA]-[AÑO]-[MMDD]-[SECUENCIA]`
@@ -291,7 +289,7 @@ El proyecto incluye cuatro interfaces principales:
 - **Traducción**: Soporte completo ES/EN (tabla dinámica, badges de roles)
 - **Acceso**: Solo usuarios con rol "admin"
 
-#### 🛡️ `incidents.html` - Gestión de Incidencias de Ciberseguridad (NUEVO en v1.8.0)
+#### 🛡️ `incidents.html` - Gestión de Incidencias de Ciberseguridad (v1.9.0)
 **Cuándo usar**: Registrar, clasificar y gestionar incidentes de seguridad
 - Registro estructurado de incidentes en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
 - Clasificación automática según NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
@@ -625,9 +623,9 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 🗺️ Roadmap
 ✅ Completado
-v## [1.8.0] - 2026-02-27
+## [1.9.0] - 2026-02-27
 
-### 🛡️ Jarvis Update - Estabilización y Temas
+### 🛡️ Update - Estabilización y Temas
 - **Unificación de Temas (v1.8.0 Stable)**
   - ✅ **Standardización Global**: Todas las páginas (`index`, `incidents`, `admin`, `login`, `quickstart`) unificadas bajo la clave `osintTheme` y el atributo `data-bs-theme` en `<html>`.
   - ✅ **Resolución de Conflictos**: Eliminados listeners duplicados que bloqueaban el cambio de tema en el módulo de incidencias.
