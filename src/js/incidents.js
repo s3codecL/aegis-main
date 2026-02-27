@@ -705,32 +705,25 @@ const IncidentManager = {
         const isUpdate = !!this.state.currentIncident;
 
         if (isUpdate) {
-            // Actualizar
+            // Actualizar pasando propiedades planas para que updateIncident las mapee correctamente
             this.updateIncident(this.state.currentIncident.id, {
                 description: formData.description,
-                affected: { ip: formData.ip, hostname: formData.hostname },
-                detection: {
-                    ...this.state.currentIncident.detection,
-                    channel: formData.channel || this.state.currentIncident.detection.channel,
-                    reportedBy: formData.reportedBy || this.state.currentIncident.detection.reportedBy
-                },
-                classification: {
-                    ...this.state.currentIncident.classification,
-                    type: formData.type || this.state.currentIncident.classification.type,
-                    criticality: formData.criticality || this.state.currentIncident.classification.criticality,
-                    status: formData.status || this.state.currentIncident.classification.status,
-                    confidence: formData.confidence || this.state.currentIncident.classification.confidence,
-                    area: formData.area || this.state.currentIncident.classification.area
-                },
-                sgsi: { ...this.state.currentIncident.sgsi, ...formData.sgsi },
-                assignment: formData.assignment || this.state.currentIncident.assignment,
-                nistPhase: formData.nistPhase || this.state.currentIncident.nistPhase,
-                mitreTactic: formData.mitreTactic || this.state.currentIncident.mitreTactic,
-                iocs: formData.iocs || this.state.currentIncident.iocs,
-                containment: formData.containment !== undefined ? formData.containment : this.state.currentIncident.containment,
-                analysis: formData.analysis !== undefined ? formData.analysis : this.state.currentIncident.analysis,
-                remediation: formData.remediation !== undefined ? formData.remediation : this.state.currentIncident.remediation,
-                lessons: formData.lessons !== undefined ? formData.lessons : this.state.currentIncident.lessons
+                ip: formData.ip,
+                hostname: formData.hostname,
+                channel: formData.channel,
+                reportedBy: formData.reportedBy,
+                type: formData.type,
+                area: formData.area,
+                status: formData.status,
+                confidence: formData.confidence,
+                sgsi: formData.sgsi,
+                nistPhase: formData.nistPhase,
+                mitreTactic: formData.mitreTactic,
+                iocs: formData.iocs,
+                containment: formData.containment,
+                analysis: formData.analysis,
+                remediation: formData.remediation,
+                lessons: formData.lessons
             });
         } else {
             // Crear nuevo
@@ -848,21 +841,29 @@ const IncidentManager = {
      * Gestión de Temas
      */
     setupTheme: function () {
-        const theme = localStorage.getItem("osintTheme") || "dark";
-        document.documentElement.setAttribute("data-bs-theme", theme);
-        this.updateThemeIcons();
+        const theme = localStorage.getItem('osintTheme') || 'dark';
+        document.documentElement.setAttribute('data-bs-theme', theme);
+        this.updateThemeIcons(theme);
+
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            // Remove any existing listeners to prevent double-execution
+            const newToggle = themeToggle.cloneNode(true);
+            themeToggle.parentNode.replaceChild(newToggle, themeToggle);
+
+            newToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-bs-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+
+                document.documentElement.setAttribute('data-bs-theme', next);
+                localStorage.setItem('osintTheme', next);
+                this.updateThemeIcons(next);
+            });
+        }
     },
 
-    toggleTheme: function () {
-        const currentTheme = document.documentElement.getAttribute("data-bs-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-bs-theme", newTheme);
-        localStorage.setItem("osintTheme", newTheme);
-        this.updateThemeIcons();
-    },
-
-    updateThemeIcons: function () {
-        const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+    updateThemeIcons: function (currentTheme) {
+        currentTheme = currentTheme || document.documentElement.getAttribute("data-bs-theme");
         const iconLight = document.getElementById("iconLight");
         const iconDark = document.getElementById("iconDark");
 
