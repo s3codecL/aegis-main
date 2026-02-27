@@ -4,7 +4,7 @@ import { translations, Translations } from './translations.js';
 
 /**
  * Aegis Dashboard - Incident Management System
- * Version: 1.8.0
+ * Version: 1.9.0
  * 
  * Sistema de gestión de incidentes de ciberseguridad
  * Compatible con NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
