@@ -2,14 +2,19 @@
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
-## [1.8.0] - 2026-02-27
+## [1.9.0] - 2026-02-27
 
 ### 🛡️ Update - Estabilización y Temas
-- **Unificación de Temas (v1.8.0 Stable)**
-  - ✅ **Standardización Global**: Todas las páginas (`index`, `incidents`, `admin`, `login`, `quickstart`) unificadas bajo la clave `osintTheme` y el atributo `data-bs-theme` en `<html>`.
-  - ✅ **Resolución de Conflictos**: Eliminados listeners duplicados que bloqueaban el cambio de tema en el módulo de incidencias.
-  - ✅ **Iconografía Corregida**: Sistema de iconos Sun/Moon optimizado para evitar parpadeos y bugs visuales (círculos blancos).
-  - ✅ **Modo Claro (Premium)**: Ajustes de contraste en cabeceras de tablas y bordes para una visibilidad perfecta sin perder la estética Aegis.
+- **Unificación de Temas (v1.9.0 Stable)**
+  - ✅ **Standardización Global**: Todas las páginas unificadas bajo `osintTheme` y el atributo `data-bs-theme` en `<html>`.
+  - ✅ **Resolución de Conflictos**: Eliminados listeners duplicados que bloqueaban el cambio de tema.
+  - ✅ **Iconografía Corregida**: Sistema de iconos Sun/Moon optimizado.
+  - ✅ **Modo Claro (Premium)**: Ajustes de contraste para una visibilidad perfecta.
+- **Estabilización de Datos**
+  - ✅ **Persistencia de Edición**: Corregido bug que eliminaba datos anidados al guardar cambios en incidentes.
+  - ✅ **Taxonomía Sincronizada**: Ajuste de códigos organizacionales para consistencia total.
+- **Arquitectura Modular**
+  - ✅ **Reorganización Estructural**: Migración a una estructura modular separando lógica en `src/js` y estilos en `src/css`, mejorando la mantenibilidad del código.
 
 ### 🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
 
