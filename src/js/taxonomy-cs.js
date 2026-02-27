@@ -1,6 +1,6 @@
 /**
  * Aegis Dashboard - Cybersecurity Taxonomy
- * Version: 1.8.0
+ * Version: 1.9.0
  * 
  * Taxonomías para clasificación de incidentes de ciberseguridad:
  * - Tipos de incidentes
