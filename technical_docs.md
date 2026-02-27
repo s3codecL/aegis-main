@@ -9,7 +9,7 @@ aegis-main/
 ├── index.html                 # Página principal (Dashboard)
 ├── login.html                 # Página de autenticación
 ├── admin.html                 # Panel de administración
-├── incidents.html             # Gestión de incidencias (v1.8.0)
+├── incidents.html             # Gestión de incidencias (v1.9.0)
 ├── quickstart.html            # Guía rápida
 ├── style.css                  # Estilos legado (reemplazado por src/css)
 ├── README.md                  # Documentación principal
@@ -31,6 +31,18 @@ aegis-main/
 │       ├── content.js
 │       └── manifest.json
 ```
+
+---
+
+## 🏛️ Arquitectura Modular (v1.9.0)
+
+A partir de la versión 1.9.0, el proyecto ha migrado a una estructura altamente modular para separar responsabilidades y facilitar el crecimiento del sistema:
+
+- **Lógica Central (`src/js/`)**: Contiene todos los módulos ES6 que gestionan la autenticación, gestión de incidentes y lógica de la aplicación.
+- **Estilos Sistematizados (`src/css/`)**: Los estilos se han dividido en archivos específicos (main, themes, layout, forms) para evitar colisiones y facilitar la personalización de temas.
+- **Activos Estáticos (`public/`)**: Organización clara de iconos y recursos compartidos.
+
+---
 
 ## Arquitectura de la Aplicación
 
@@ -155,8 +167,9 @@ La aplicación usa localStorage para guardar:
   "aegisFavorites": "[\"vt\", \"shodan\"]",
   "aegisHistory": "[{query: \"8.8.8.8\", date: \"2024-01-01\"}]",
   "aegisSearches": "42",
-  "aegisLanguage": "es",
-  "aegisTheme": "dark",
+  "osintLanguage": "es",
+  "osintTheme": "dark",
+  "aegisIncidents": "[{...}] // v1.9.0",
   "toolConfigVersion": "v1"
 }
 ```
@@ -291,9 +304,10 @@ executeToolSearch: function(autoQuery = null) {
 El tema debe aplicarse tanto a `document.documentElement` como a `document.body`:
 
 ```javascript
-// Correcto - aplicar a ambos elementos
+// CORRECTO - Aplicar únicamente a document.documentElement para coherencia CSS
 document.documentElement.setAttribute('data-bs-theme', theme);
-document.body.setAttribute('data-bs-theme', theme);
+
+// El uso de document.body.setAttribute está depreciado para evitar conflictos de contraste.
 ```
 
 #### Selectores CSS
@@ -947,7 +961,7 @@ document.querySelectorAll('[data-placeholder]').forEach(el => {
 11. **Más Botones de Acceso Rápido**: Identificar y agregar más funciones frecuentes
 12. **Configuración de Accesos**: Permitir al usuario personalizar botones de acceso rápido
 
-## Sistema de Gestión de Incidencias de Ciberseguridad (v1.8.0)
+## Sistema de Gestión de Incidencias de Ciberseguridad (v1.9.0)
 
 ### Arquitectura del Módulo
 
@@ -1555,4 +1569,4 @@ Editar/Eliminar                    │
 
 ---
 
-**Última actualización**: Diciembre 2025 (v1.8.0)
+**Última actualización**: Diciembre 2025 (v1.9.0)
