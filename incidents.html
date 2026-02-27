@@ -768,11 +768,35 @@
                 });
             }
 
-            // Poblar selects cuando se abre el modal
+            // Resetear formulario si es Nuevo Incidente (no hay currentIncident)
             const incidentModal = document.getElementById('incidentModal');
             if (incidentModal) {
-                incidentModal.addEventListener('shown.bs.modal', function () {
-                    IncidentManager.populateFormSelects();
+                // Remove the 'shown.bs.modal' that wiped data
+                // Add show event to clear form manually only if not edit
+                incidentModal.addEventListener('show.bs.modal', function (e) {
+                    if (window.IncidentManager && !window.IncidentManager.state.currentIncident) {
+                        const form = document.getElementById('incidentForm');
+                        if (form) form.reset();
+
+                        // Resetea prioridad a Default
+                        const priorityBadge = document.getElementById('incidentCalculatedPriority');
+                        const priorityText = document.getElementById('priorityResultText');
+                        if (priorityBadge && priorityText) {
+                            priorityBadge.className = 'badge bg-secondary w-100 p-2 text-start';
+                            const lang = Translations.currentLanguage;
+                            priorityText.textContent = lang === 'en' ? 'Uncalculated' : 'Sin calcular';
+                            priorityBadge.setAttribute('data-priority', 'none');
+                        }
+                    }
+                });
+
+                // When modal is hidden, always clear currentIncident state so next time "Nuevo Incidente" starts fresh
+                incidentModal.addEventListener('hidden.bs.modal', function () {
+                    if (window.IncidentManager) {
+                        window.IncidentManager.state.currentIncident = null;
+                        const form = document.getElementById('incidentForm');
+                        if (form) form.reset();
+                    }
                 });
             }
         });
