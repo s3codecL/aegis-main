@@ -783,16 +783,20 @@ const App = {
   toggleLanguage: function () {
     this.config.currentLanguage =
       this.config.currentLanguage === "es" ? "en" : "es";
+
+    // The button shows the language that will be switched TO.
     document.getElementById("current-lang").textContent =
-      this.config.currentLanguage.toUpperCase();
+      this.config.currentLanguage === "es" ? "EN" : "ES";
+
     localStorage.setItem("osintLanguage", this.config.currentLanguage);
     this.applyLanguage();
   },
 
   // Setup language
   setupLanguage: function () {
+    // The button shows the language that will be switched TO.
     document.getElementById("current-lang").textContent =
-      this.config.currentLanguage.toUpperCase();
+      this.config.currentLanguage === "es" ? "EN" : "ES";
     this.applyLanguage();
   },
 
