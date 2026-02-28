@@ -255,8 +255,8 @@ const IncidentManager = {
                     icon: 'success',
                     timer: 2000,
                     showConfirmButton: false,
-                    background: 'rgba(15, 23, 42, 0.9)',
-                    color: '#fff',
+                    background: 'var(--modal-bg)',
+                    color: 'var(--text)',
                     showClass: {
                         popup: 'premium-swal-show'
                     },
@@ -742,8 +742,8 @@ const IncidentManager = {
                 icon: 'success',
                 timer: 2000,
                 showConfirmButton: false,
-                background: 'rgba(15, 23, 42, 0.9)',
-                color: '#fff',
+                background: 'var(--modal-bg)',
+                color: 'var(--text)',
                 showClass: {
                     popup: 'premium-swal-show'
                 },
@@ -751,7 +751,8 @@ const IncidentManager = {
                     popup: 'premium-swal-hide'
                 },
                 customClass: {
-                    popup: 'premium-swal-popup'
+                    popup: 'premium-swal-popup',
+                    title: 'premium-swal-title'
                 }
             });
         };
@@ -980,8 +981,8 @@ const IncidentManager = {
             icon: type,
             title: message,
             confirmButtonText: 'OK',
-            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.8)' : 'rgba(255, 255, 255, 0.95)',
-            color: theme === 'dark' ? '#fff' : '#0f172a',
+            background: 'var(--modal-bg)',
+            color: 'var(--text)',
             showClass: {
                 popup: 'premium-swal-show'
             },
@@ -1006,8 +1007,8 @@ const IncidentManager = {
             showCancelButton: true,
             confirmButtonText: confirmBtnText,
             cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
-            background: theme === 'dark' ? 'rgba(15, 23, 42, 0.8)' : 'rgba(255, 255, 255, 0.95)',
-            color: theme === 'dark' ? '#fff' : '#0f172a',
+            background: 'var(--modal-bg)',
+            color: 'var(--text)',
             showClass: {
                 popup: 'premium-swal-show'
             },
