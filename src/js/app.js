@@ -623,8 +623,8 @@ const App = {
       showCancelButton: true,
       confirmButtonText: t("CLEAN", lang),
       cancelButtonText: t("CANCEL", lang) || 'Cancelar',
-      background: 'rgba(15, 23, 42, 0.9)',
-      color: '#fff',
+      background: 'var(--modal-bg)',
+      color: 'var(--text)',
       showClass: {
         popup: 'premium-swal-show'
       },
@@ -985,8 +985,8 @@ const App = {
       icon: 'success',
       title: message,
       confirmButtonText: t("OK", lang) || 'Entendido',
-      background: 'rgba(15, 23, 42, 0.9)',
-      color: '#fff',
+      background: 'var(--modal-bg)',
+      color: 'var(--text)',
       showClass: {
         popup: 'premium-swal-show'
       },
@@ -1008,8 +1008,8 @@ const App = {
       title: 'Oops...',
       text: message,
       confirmButtonText: t("OK", lang) || 'Entendido',
-      background: 'rgba(15, 23, 42, 0.9)',
-      color: '#fff',
+      background: 'var(--modal-bg)',
+      color: 'var(--text)',
       showClass: {
         popup: 'premium-swal-show'
       },
@@ -1117,8 +1117,12 @@ window.handleLogout = (e) => {
     cancelButtonColor: '#d33',
     confirmButtonText: lang === 'en' ? 'Yes, logout' : 'Sí, cerrar sesión',
     cancelButtonText: lang === 'en' ? 'Cancel' : 'Cancelar',
-    background: theme === 'dark' ? '#1a1f3c' : '#fff',
-    color: theme === 'dark' ? '#fff' : '#000'
+    background: 'var(--modal-bg)',
+    color: 'var(--text)',
+    customClass: {
+      popup: 'premium-swal-popup',
+      title: 'premium-swal-title'
+    }
   }).then((result) => {
     if (result.isConfirmed) {
       Auth.logout();
