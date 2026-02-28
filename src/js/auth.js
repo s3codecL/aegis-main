@@ -423,8 +423,14 @@ const Auth = {
                 title: 'Acceso Denegado',
                 text: 'Se requieren permisos de administrador.',
                 confirmButtonText: 'Entendido',
-                background: 'rgba(15, 23, 42, 0.9)',
-                color: '#fff',
+                background: 'var(--modal-bg)',
+                color: 'var(--text)',
+                showClass: {
+                    popup: 'premium-swal-show'
+                },
+                hideClass: {
+                    popup: 'premium-swal-hide'
+                },
                 customClass: {
                     popup: 'premium-swal-popup',
                     title: 'premium-swal-title'
