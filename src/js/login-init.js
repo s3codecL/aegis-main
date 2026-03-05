@@ -23,8 +23,13 @@ const LoginInit = {
         const savedTheme = localStorage.getItem('osintTheme') || 'dark';
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
 
-        // Load reCAPTCHA script
-        this.loadRecaptcha();
+        // Load reCAPTCHA script if enabled
+        if (Auth.config.useRecaptcha) {
+            this.loadRecaptcha();
+        } else {
+            // Hide recaptcha containers if disabled
+            document.querySelectorAll('.g-recaptcha').forEach(el => el.style.display = 'none');
+        }
 
         // Setup event listeners
         this.setupEventListeners();
@@ -68,7 +73,7 @@ const LoginInit = {
         if (loginEl) {
             loginEl.innerHTML = '';
             this.widgets.login = grecaptcha.render(loginEl, {
-                'sitekey': 'YOUR_RECAPTCHA_SITE_KEY',
+                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
                 'theme': savedTheme
             });
         }
@@ -78,7 +83,7 @@ const LoginInit = {
         if (registerEl) {
             registerEl.innerHTML = '';
             this.widgets.register = grecaptcha.render(registerEl, {
-                'sitekey': 'YOUR_RECAPTCHA_SITE_KEY',
+                'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
                 'theme': savedTheme
             });
         }
