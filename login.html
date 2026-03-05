@@ -7,6 +7,9 @@
     <title>Login - Aegis Board</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
+    <!-- Tabler UI CSS (Missing in previous update) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
+
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="src/css/main.css" />
@@ -97,6 +100,11 @@
                         <label class="form-label" data-i18n="PASSWORD">Contraseña</label>
                         <input type="password" class="form-control" id="register-password" required
                             data-i18n-placeholder="PLACEHOLDER_PASSWORD" placeholder="••••••••">
+                    </div>
+                    <div class="form-group mb-3 d-flex align-items-center gap-2">
+                        <input type="checkbox" id="accept-terms" style="width:16px;height:16px;cursor:pointer;">
+                        <label for="accept-terms" class="form-label mb-0" data-i18n="ACCEPT_TERMS"
+                            style="cursor:pointer;">Acepto los términos y condiciones</label>
                     </div>
                     <div id="register-recaptcha" class="g-recaptcha"></div>
                     <button type="submit" class="btn-primary" data-i18n="CREATE_ACCOUNT">Crear Cuenta</button>
