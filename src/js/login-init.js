@@ -38,12 +38,9 @@ const LoginInit = {
         // Setup event listeners (theme/lang toggle)
         this.setupEventListeners();
 
-        // Attach form submit listeners FIRST (before Auth.init which may fail)
-        const loginForm = document.getElementById('login-form');
-        if (loginForm) loginForm.addEventListener('submit', (e) => { e.preventDefault(); Auth.handleLogin(e); });
-
-        const registerForm = document.getElementById('register-form');
-        if (registerForm) registerForm.addEventListener('submit', (e) => { e.preventDefault(); Auth.handleRegister(e); });
+        // Attach login/register as button click handlers (not form submit)
+        document.getElementById('btn-login')?.addEventListener('click', () => Auth.handleLogin({ preventDefault: () => { } }));
+        document.getElementById('btn-register')?.addEventListener('click', () => Auth.handleRegister({ preventDefault: () => { } }));
 
         // Restore tab
         const savedTab = localStorage.getItem('osintActiveTab');
@@ -87,6 +84,7 @@ const LoginInit = {
                 'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
                 'theme': savedTheme
             });
+            window.loginWidgetId = this.widgets.login; // Expose for auth.js
         }
 
         // Render Register reCAPTCHA
@@ -97,27 +95,17 @@ const LoginInit = {
                 'sitekey': '6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5',
                 'theme': savedTheme
             });
+            window.registerWidgetId = this.widgets.register; // Expose for auth.js
         }
     },
 
     setupEventListeners: function () {
-        // Theme Toggle
+        // Theme Toggle - reload page to fix reCAPTCHA theme (same as pressing F5)
         document.getElementById('theme-toggle')?.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-bs-theme', newTheme);
             localStorage.setItem('osintTheme', newTheme);
-            this.updateIcons(newTheme);
-            // Reset reCAPTCHA with new theme (full re-render after short delay)
-            if (Auth.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
-                try {
-                    if (this.widgets.login !== null) grecaptcha.reset(this.widgets.login);
-                    if (this.widgets.register !== null) grecaptcha.reset(this.widgets.register);
-                } catch (err) {
-                    // If reset fails, re-render
-                    setTimeout(() => this.renderRecaptchas(), 100);
-                }
-            }
+            window.location.reload();
         });
 
         // Language Toggle
