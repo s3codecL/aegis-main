@@ -1,16 +1,16 @@
-# 🛡️ Aegis HUB - Herramienta de Investigación
+# 🛡️ Aegis Board - Herramienta de Investigación
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)
-[![Version](https://img.shields.io/badge/version-1.9.0-blue.svg)](changelog.md)
-[![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)
-[![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)
+[![GitHub release](https://img.shields.io/github/release/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](changelog.md)
+[![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/issues)
+[![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegis-main/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegisboard/graphs/commit-activity)
 
 Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
 
-## 🚀 Novedades v1.9.0
+## 🚀 Novedades v2.0.0
 
 - **Persistencia de Datos**: Corrección en el mapeo de áreas (`OP` standardized) e integridad de formularios al editar.
 - **Arquitectura Modular**: Organización limpia de archivos separando lógica (`src/js`) y estilos (`src/css`) para mayor escalabilidad.
@@ -55,18 +55,17 @@ Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** dise
 
 | Para Empezar | Para Aprender | Para Administrar | Para Incidencias |
 |--------------|---------------|------------------|------------------|
-| [Acceder al Dashboard](#-autenticación-v170) (`login.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Panel Admin](#-panel-de-administración) (`admin.html`) | [Gestión de Incidencias](#-gestión-de-incidencias-de-ciberseguridad-v180) (`incidents.html`) |
+| [Acceder al Dashboard](#-autenticación) (`login.html`) | [Ver Guía Interactiva](#-archivos-principales) (`quickstart.html`) | [Panel Admin](#-panel-de-administración) (`admin.html`) | [Gestión de Incidencias](#-gestión-de-incidencias-de-ciberseguridad-v180) (`incidents.html`) |
 
 > **¿Primera vez?** 👉 Abre `quickstart.html` para tutorial completo, luego `login.html` para acceder  
-> **Usuario por defecto** 👉 `admin@aegis.local` / `admin123`  
+> **Acceso Flexible** 👉 Regístrate para crear tu cuenta personal, o usa Google/GitHub para entrar al instante.
 > **¿Listo para trabajar?** 👉 Login → Dashboard para tus investigaciones OSINT
 
-## 🔐 Autenticación (v1.7.0)
+## 🔐 Autenticación
 
-### Credenciales por Defecto
-- **Email**: `admin@aegis.local`
-- **Password**: `admin123`
-- **Rol**: Administrador
+### Métodos de Acceso
+1. **Google / GitHub**: La forma recomendada y más rápida. Sin contraseñas extra económicamente seguras.
+2. **Registro**: Crea tu propia cuenta personal con email y contraseña.
 
 ### Flujo de Autenticación
 ```
@@ -113,9 +112,9 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 - **Panel de administración**: CRUD de usuarios, estadísticas
 - **Roles y permisos**: Usuario regular vs Administrador
 - **Sesiones persistentes**: "Recordarme" con tokens
-- **OAuth preparado**: Google y GitHub (integración futura)
+- **OAuth**: Google y GitHub completamente funcionales
 
-### 🛡️ Gestión de Incidencias de Ciberseguridad (v1.9.0)
+### 🛡️ Gestión de Incidencias de Ciberseguridad (v2.0.0)
 - **Sistema completo de incident response**:
   - Registro estructurado en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
   - Generación automática de código: `INC-[TIPO]-[ÁREA]-[AÑO]-[MMDD]-[SECUENCIA]`
@@ -235,8 +234,8 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 
 1. **Clonar o descargar el repositorio**
 ```bash
-git clone <url-del-repositorio>
-cd aegis-main
+git clone https://github.com/s3codecL/aegisboard.git
+cd aegisboard
 ```
 
 2. **Abrir en navegador**
@@ -262,12 +261,12 @@ El proyecto incluye cuatro interfaces principales:
 **Cuándo usar**: Primera página para acceder al dashboard
 - Login con email/password
 - Registro de nuevos usuarios
-- OAuth con Google/GitHub (preparado)
+- OAuth con Google/GitHub funcional
 - Recuperación de contraseña
 - "Recordarme" para sesión persistente
 - **Traducción**: Soporte completo ES/EN con toggle de idioma
 - **Acceso**: Punto de entrada obligatorio al dashboard
-- **Credenciales por defecto**: `admin@aegis.local` / `admin123`
+- **Acceso**: Punto de entrada obligatorio al dashboard. Regístrate o usa OAuth.
 
 #### 🏠 `index.html` - Dashboard Principal
 **Cuándo usar**: Para trabajo diario de investigación OSINT (requiere autenticación)
@@ -289,7 +288,7 @@ El proyecto incluye cuatro interfaces principales:
 - **Traducción**: Soporte completo ES/EN (tabla dinámica, badges de roles)
 - **Acceso**: Solo usuarios con rol "admin"
 
-#### 🛡️ `incidents.html` - Gestión de Incidencias de Ciberseguridad (v1.9.0)
+#### 🛡️ `incidents.html` - Gestión de Incidencias de Ciberseguridad (v2.0.0)
 **Cuándo usar**: Registrar, clasificar y gestionar incidentes de seguridad
 - Registro estructurado de incidentes en 7 secciones (Básica, Detección, Clasificación Técnica, SGSI, Asignación, Evidencias, Timeline)
 - Clasificación automática según NIST 800-61, ISO/IEC 27035 y MITRE ATT&CK
@@ -339,12 +338,10 @@ El proyecto incluye cuatro interfaces principales:
 ## 📖 Guía de Uso
 
 ### Primera Vez - Autenticación
-1. Abre `login.html` en tu navegador
-2. Usa credenciales por defecto:
-   - Email: `admin@aegis.local`
-   - Password: `admin123`
-3. O crea una cuenta nueva en la pestaña "Registrarse"
-4. Serás redirigido automáticamente al dashboard
+1. Abre `login.html` en tu navegador.
+2. Haz clic en el botón de **Google** o **GitHub** para acceso instantáneo (Recomendado).
+3. O crea una cuenta nueva en la pestaña **"Registrarse"** para tener tu propio acceso personal.
+4. Serás redirigido automáticamente al dashboard.
 
 ### Búsqueda Básica
 1. Ingresa tu término de búsqueda en la barra de búsqueda
@@ -429,7 +426,7 @@ El proyecto incluye cuatro interfaces principales:
 ## 📁 Estructura de Archivos
 
 ```
-aegis-main/
+aegisboard/
 ├── index.html             # 🏠 Dashboard principal - Tu herramienta de trabajo diaria
 ├── quickstart.html        # 🚀 Guía interactiva - Tutorial completo y casos de uso
 ├── admin.html             # 👥 Panel de administración de usuarios
@@ -613,30 +610,28 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 ## 📊 Estadísticas del Proyecto
 
-![GitHub repo size](https://img.shields.io/github/repo-size/s3codecL/aegis-main)
-![GitHub contributors](https://img.shields.io/github/contributors/s3codecL/aegis-main)
-![GitHub last commit](https://img.shields.io/github/last-commit/s3codecL/aegis-main)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/s3codecL/aegis-main)
+![GitHub repo size](https://img.shields.io/github/repo-size/s3codecL/aegisboard)
+![GitHub contributors](https://img.shields.io/github/contributors/s3codecL/aegisboard)
+![GitHub last commit](https://img.shields.io/github/last-commit/s3codecL/aegisboard)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/s3codecL/aegisboard)
 
 ## 🗺️ Roadmap
 
 
 🗺️ Roadmap
 ✅ Completado
-## [1.9.0] - 2026-02-27
+## [2.0.0] - 2026-03-05
 
-### 🛡️ Update - Estabilización y Temas
-- **Unificación de Temas (v1.8.0 Stable)**
-  - ✅ **Standardización Global**: Todas las páginas (`index`, `incidents`, `admin`, `login`, `quickstart`) unificadas bajo la clave `osintTheme` y el atributo `data-bs-theme` en `<html>`.
-  - ✅ **Resolución de Conflictos**: Eliminados listeners duplicados que bloqueaban el cambio de tema en el módulo de incidencias.
-  - ✅ **Iconografía Corregida**: Sistema de iconos Sun/Moon optimizado para evitar parpadeos y bugs visuales (círculos blancos).
-  - ✅ **Modo Claro (Premium)**: Ajustes de contraste en cabeceras de tablas y bordes para una visibilidad perfecta sin perder la estética Aegis.
+### 🛡️ OAuth & Security Major Release
+- [x] **Autenticación OAuth 2.0**: Integración segura con Google y GitHub (flujo implícito).
+- [x] **Manifest V3**: Extensión de navegador migrada a MV3 con nueva UI Glassmorphism.
+- [x] **Limpieza de Seguridad**: Eliminación de credenciales hardcoded y secretos (vulnerability scrub).
+- [x] **Estandarización**: Repositorio renombrado a `aegisboard` con documentación estandarizada.
 
-### 🛡️ Sistema de Gestión de Incidencias de Ciberseguridad
- - [x] Registro y clasificación automática de incidentes
- - [x] Panel de estadísticas en tiempo real
- - [x] Filtros avanzados y gestión de IoCs
- - [x] Interfaz responsive y traducción ES/EN
+### 🛡️ Sistema de Gestión de Incidencias (v2.0.0)
+- [x] Registro y clasificación automática de incidentes (NIST, ISO, MITRE).
+- [x] Panel de estadísticas en tiempo real y gestión de IoCs.
+- [x] Unificación de Temas (v1.8.0 Stable) y estandarización global.
 
 v1.7.2 (2025-12-10)
 🔒 Protección reCAPTCHA v2
@@ -664,18 +659,17 @@ Versiones anteriores
  - [x] Tooltips bilingües y verificación de sitios
 
 🚧 En Desarrollo
- - [ ] Validación backend de reCAPTCHA - Verificación server-side con Google API
- - [ ] Integración con APIs de herramientas OSINT - Consultas automatizadas
- - [ ] Exportación de resultados - PDF, JSON, CSV con plantillas
- - [ ] Plantillas de investigación - Workflows predefinidos personalizables
+ - [ ] **Base de datos PostgreSQL**: Integración con Supabase para persistencia centralizada.
+ - [ ] Validación backend de reCAPTCHA - Verificación server-side con Google API.
+ - [ ] Integración con APIs de herramientas OSINT - Consultas automatizadas.
+ - [ ] Exportación de resultados - PDF, JSON, CSV con plantillas.
+ - [ ] Plantillas de investigación - Workflows predefinidos personalizables.
 
-📋 Planificado (v1.8.0+)
- - [ ] OAuth funcional - Login funcional con Google y GitHub
- - [ ] Modo de trabajo colaborativo - Compartir investigaciones en equipo
- - [ ] Integración con navegadores - Extensión mejorada para Chrome/Firefox
- - [ ] Modo offline con cache (PWA) - Funcionalidad sin conexión
- - [ ] Análisis de grafos de relaciones - Visualización de conexiones
- - [ ] Más idiomas - FR, DE, PT, IT, RU
+📋 Planificado (v2.1.0+)
+ - [ ] Modo de trabajo colaborativo - Compartir investigaciones en equipo.
+ - [ ] Modo offline con cache (PWA) - Funcionalidad sin conexión.
+ - [ ] Análisis de grafos de relaciones - Visualización de conexiones.
+ - [ ] Más idiomas - FR, DE, PT, IT, RU.
 
 Ver [issues](../../issues) para el roadmap completo.
 
