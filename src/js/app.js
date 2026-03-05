@@ -1,9 +1,8 @@
-import Auth from './auth.js';
-import { translations, t, Translations } from './translations.js';
 import toolsData from './tools-config.js';
+import CryptoUtils from './crypto-utils.js';
 
 // =============================================
-// OSINT Dashboard - Main Application Logic
+// Aegis Board - Main Application Logic
 // =============================================
 
 const App = {
@@ -17,8 +16,8 @@ const App = {
   // Data storage
   state: {
     tools: [],
-    favorites: JSON.parse(localStorage.getItem("osintFavorites")) || [],
-    searchHistory: JSON.parse(localStorage.getItem("osintHistory")) || [],
+    favorites: CryptoUtils.decrypt(localStorage.getItem("osintFavorites")) || [],
+    searchHistory: CryptoUtils.decrypt(localStorage.getItem("osintHistory")) || [],
     searches: JSON.parse(localStorage.getItem("osintSearches")) || 0,
     lastSearchQuery: "", // Track last search query for auto-fill
     activeRightPanel: "history", // "history" or "favorites"
@@ -54,7 +53,7 @@ const App = {
     );
     localStorage.setItem(
       "osintFavorites",
-      JSON.stringify(this.state.favorites)
+      CryptoUtils.encrypt(this.state.favorites)
     );
   },
 
@@ -364,7 +363,7 @@ const App = {
     this.state.searchHistory = this.state.searchHistory.slice(0, 50);
     localStorage.setItem(
       "osintHistory",
-      JSON.stringify(this.state.searchHistory)
+      CryptoUtils.encrypt(this.state.searchHistory)
     );
 
     // Update search count
@@ -459,7 +458,7 @@ const App = {
     // Guardar en localStorage
     localStorage.setItem(
       "osintFavorites",
-      JSON.stringify(this.state.favorites)
+      CryptoUtils.encrypt(this.state.favorites)
     );
 
     // Actualizar UI de estadísticas
