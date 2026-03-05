@@ -343,7 +343,12 @@
 }
 
 [data-bs-theme="light"] .logo-section h1 {
-    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    color: var(--text);
+    /* No gradient override - keep the span gradient working */
+}
+
+[data-bs-theme="light"] .logo-section h1 span {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
