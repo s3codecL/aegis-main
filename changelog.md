@@ -2,6 +2,17 @@
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
+## [2.0.0] - 2026-03-05
+### Añadido
+- **Autenticación OAuth 2.0**: Integración completa y segura con Google (flujo implícito) y GitHub.
+- **Manifest V3**: Extensión de navegador migrada a MV3 con nueva UI Glassmorphism.
+- **Omnibox Support**: Búsqueda directa desde la barra de direcciones con el prefijo `aegis`.
+- **Placeholder Seguro**: Reemplazo de credenciales legacy por placeholders dinámicos.
+
+### Cambiado
+- **Repositorio**: Renombrado oficial a `aegisboard`.
+- **Documentación**: Estandarización completa de guías técnicas y de usuario.
+
 ## [1.9.0] - 2026-02-27
 
 ### 🛡️ Update - Estabilización y Temas
@@ -122,7 +133,7 @@
 - `js/translations.js` (MODIFIED): +100 claves ES/EN para incidentes
 - `admin.html` (MODIFIED): Enlace a incidents.html en dropdown
 
-#### Próximas Mejoras (Roadmap v1.9.0)
+#### Próximas Mejoras (Roadmap v2.0.0)
 - [ ] Exportación de incidentes a PDF/CSV
 - [ ] Timeline visual de acciones con gráfico interactivo
 - [ ] Upload de evidencias (archivos adjuntos con base64)
@@ -162,8 +173,8 @@
 
 #### Configuración Técnica
 - **Claves de Google reCAPTCHA**
-  - Site Key: `6Le4gicsAAAAAE1h_...`
-  - Secret Key: `6Le4gicsAAAAAEh...`
+  - Site Key: `YOUR_RECAPTCHA_SITE_KEY_...`
+  - Secret Key: `YOUR_RECAPTCHA_SECRET_KEY_...`
   - Dominios configurados: `localhost`, `127.0.0.1`
 
 - **Validación en Frontend (js/auth.js)**
@@ -334,7 +345,7 @@
   - Tokens de sesión con expiración (24 horas)
   - Storage dual: localStorage (recordarme) + sessionStorage
   - Auth guards para proteger rutas
-  - Usuario admin por defecto: `admin@aegis.local` / `admin123`
+  - Usuario admin por defecto: `[Usa tu cuenta personal]` / `[TU_CONTRASEÑA]`
 
 - **Panel de Administración** (`admin.html`)
   - Dashboard con estadísticas de usuarios
