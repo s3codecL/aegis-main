@@ -13,7 +13,7 @@ Actualmente estamos dando soporte de seguridad a las siguientes versiones:
 
 ## 🛡️ Reporting a Vulnerability
 
-La seguridad de Aegis Dashboard es una prioridad. Si descubres una vulnerabilidad de seguridad, por favor ayúdanos a proteger a nuestros usuarios siguiendo estos pasos:
+La seguridad de Aegis Board es una prioridad. Si descubres una vulnerabilidad de seguridad, por favor ayúdanos a proteger a nuestros usuarios siguiendo estos pasos:
 
 ### ⚠️ NO hacer
 
