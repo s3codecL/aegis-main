@@ -35,7 +35,7 @@ export const translations = {
     "USEFUL_THINGS": "USEFUL THINGS",
 
     // Main UI
-    "AEGIS_DASHBOARD": "Aegis HUB",
+    "AEGIS_DASHBOARD": "Aegis Board",
     "INVESTIGATION_TOOL": "Investigation Tool",
     "TOOLS": "Tools",
     "FAVORITES": "Favorites",
@@ -129,7 +129,7 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Please fill in all required fields",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis HUB v1.9.0 | 2025",
+    "FOOTER_TEXT": "🛡️ Aegis Board v2.0.0 | 2025",
     "FOOTER_MADE_WITH": "Made with ❤️ for the security community - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
@@ -236,7 +236,7 @@ export const translations = {
 
     // Instalación
     "QS_INSTALLATION": "Installation",
-    "QS_INSTALL_DESC": "Aegis HUB is a completely standalone web application. You only need a modern browser.",
+    "QS_INSTALL_DESC": "Aegis Board is a completely standalone web application. You only need a modern browser.",
     "QS_INSTALL_OPTION1": "# Option 1: Open directly",
     "QS_INSTALL_OPEN": "Open index.html in your browser",
     "QS_INSTALL_OPTION2": "# Option 2: Use local server",
@@ -266,7 +266,7 @@ export const translations = {
     "QS_FAQ_A4": "All modern browsers: Chrome, Firefox, Safari, Edge. Requires ES6+ and localStorage.",
 
     // CTA
-    "QS_CTA_SUBTITLE": "Access Aegis HUB and perform professional investigations",
+    "QS_CTA_SUBTITLE": "Access Aegis Board and perform professional investigations",
     "QS_CTA_BUTTON": "Go to HUB",
 
     // Footer
@@ -622,7 +622,7 @@ export const translations = {
     "USEFUL_THINGS": "COSAS ÚTILES",
 
     // Main UI
-    "AEGIS_DASHBOARD": "Aegis HUB",
+    "AEGIS_DASHBOARD": "Aegis Board",
     "INVESTIGATION_TOOL": "Herramienta de Investigación",
     "TOOLS": "Herramientas",
     "FAVORITES": "Favoritos",
@@ -716,7 +716,7 @@ export const translations = {
     "TOOL_ERROR_REQUIRED": "Por favor completa todos los campos requeridos",
 
     // Footer
-    "FOOTER_TEXT": "🛡️ Aegis HUB v1.9.0 | 2025",
+    "FOOTER_TEXT": "🛡️ Aegis Board v2.0.0 | 2025",
     "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
@@ -819,7 +819,7 @@ export const translations = {
 
     // Instalación
     "QS_INSTALLATION": "Instalación",
-    "QS_INSTALL_DESC": "El Aegis HUB es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
+    "QS_INSTALL_DESC": "El Aegis Board es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
     "QS_INSTALL_OPTION1": "# Opción 1: Abrir directamente",
     "QS_INSTALL_OPEN": "Abre index.html en tu navegador",
     "QS_INSTALL_OPTION2": "# Opción 2: Usar servidor local",
@@ -849,7 +849,7 @@ export const translations = {
     "QS_FAQ_A4": "Todos los navegadores modernos: Chrome, Firefox, Safari, Edge. Requiere ES6+ y localStorage.",
 
     // CTA
-    "QS_CTA_SUBTITLE": "Accede al Aegis HUB y realiza investigaciones profesionales",
+    "QS_CTA_SUBTITLE": "Accede al Aegis Board y realiza investigaciones profesionales",
     "QS_CTA_BUTTON": "Ir al HUB",
 
     // Footer
@@ -1205,7 +1205,7 @@ export const Translations = {
       const key = el.getAttribute("data-i18n");
       const translation = translations[lang][key];
       if (translation) {
-        el.innerHTML = translation;
+        el.textContent = translation;
       }
     });
 
