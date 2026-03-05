@@ -149,6 +149,7 @@ export const translations = {
     "ACCEPT_TERMS": "I accept the terms and conditions",
     "OR_CONTINUE_WITH": "Or continue with",
     "OR_REGISTER_WITH": "Or register with",
+    "SOCIAL_LOGIN_OR": "Or continue with",
     "CONTINUE_GOOGLE": "Continue with Google",
     "CONTINUE_GITHUB": "Continue with GitHub",
     "BACK_TO_HOME": "← Back to home",
@@ -171,7 +172,7 @@ export const translations = {
     "PLACEHOLDER_NAME": "John Doe",
 
     // Quickstart Page
-    "QS_HERO_TITLE": "<span>Aegis</span> HUB",
+    "QS_HERO_TITLE": "<span>Aegis</span> Board",
     "QS_HERO_SUBTITLE": "Centralize 78 OSINT resources in one place, automatically detect search types and save valuable time in your investigations.",
     "QS_HERO_READ_GUIDE": "📚 Read the quick start guide for features",
     "QS_ACCESS_DASHBOARD": "Go to HUB",
@@ -739,6 +740,7 @@ export const translations = {
     "RECAPTCHA_ERROR": "Por favor, completa la verificación reCAPTCHA.",
     "OR_CONTINUE_WITH": "O continuar con",
     "OR_REGISTER_WITH": "O registrarse con",
+    "SOCIAL_LOGIN_OR": "O contínua con",
     "CONTINUE_GOOGLE": "Continuar con Google",
     "CONTINUE_GITHUB": "Continuar con GitHub",
     "BACK_TO_HOME": "← Volver al inicio",
@@ -756,7 +758,7 @@ export const translations = {
     "PLACEHOLDER_NAME": "Juan Pérez",
 
     // Quickstart Page
-    "QS_HERO_TITLE": "<span>Aegis</span> HUB",
+    "QS_HERO_TITLE": "<span>Aegis</span> Board",
     "QS_HERO_SUBTITLE": "Centraliza 78 recursos OSINT en un solo lugar, detecta automáticamente el tipo de búsqueda y ahorra tiempo valioso en tus investigaciones.",
     "QS_HERO_READ_GUIDE": "📚 Lee la guía de inicio rápido para las funcionalidades",
     "QS_ACCESS_DASHBOARD": "Ir al HUB",
