@@ -374,12 +374,18 @@ const Auth = {
                 id: 'github_user',
                 name: 'GitHub User',
                 email: 'github@aegisboard.dev',
-                role: 'user',
+                role: 'admin', // Admin access for OAuth users
                 avatar: null,
                 createdAt: new Date().toISOString(),
                 lastLogin: new Date().toISOString()
             };
             this.createSession(mockUser, true);
+            // Save to users list for admin panel
+            const existingUsers = this.getUsers();
+            if (!existingUsers.find(u => u.id === mockUser.id)) {
+                existingUsers.push(mockUser);
+                this.saveUsers(existingUsers);
+            }
             setTimeout(() => window.location.href = 'index.html', 1000);
         } catch (error) {
             this.showAlert('Error en el protocolo de GitHub OAuth.', 'danger');
