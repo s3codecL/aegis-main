@@ -1,5 +1,5 @@
 /**
- * Aegis Dashboard - Cybersecurity Taxonomy
+ * Aegis Board - Cybersecurity Taxonomy
  * Version: 2.0.0
  * 
  * Taxonomías para clasificación de incidentes de ciberseguridad:
