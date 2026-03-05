@@ -21,12 +21,12 @@ const Auth = {
         },
         oauth: {
             github: {
-                clientId: 'Ov23ligFGZqvZYvTL2RF',
-                clientSecret: 'f47220195e39b448a78de41db72dcab280047e08'
+                clientId: 'Ov23ligFGZqvZYvTL2RF'
+                // NOTA: El clientSecret NO debe estar en el frontend por seguridad.
             },
             google: {
-                clientId: '596461081924-jt3vmm6kjeldpcd58jp8vvuek2sj8g6e.apps.googleusercontent.com',
-                clientSecret: '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'
+                clientId: '596461081924-jt3vmm6kjeldpcd58jp8vvuek2sj8g6e.apps.googleusercontent.com'
+                // NOTA: No se requiere clientSecret para el flujo implícito de Google.
             }
         }
     },
