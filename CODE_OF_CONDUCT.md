@@ -81,4 +81,4 @@ Este Código de Conducta está inspirado en:
 
 ---
 
-**Versión 1.0** | Última actualización: Diciembre 2025
+**Versión 2.0.0** | Última actualización: Marzo 2026
