@@ -591,6 +591,13 @@
                 }
 
                 Auth.updateUser(user);
+                const langSave = localStorage.getItem('osintLanguage') || 'es';
+                Swal.fire({
+                    title: langSave === 'en' ? 'Saved!' : '¡Guardado!',
+                    text: langSave === 'en' ? 'User updated successfully.' : 'Usuario actualizado correctamente.',
+                    icon: 'success', timer: 2000, showConfirmButton: false,
+                    background: 'rgba(15, 23, 42, 0.95)', color: '#fff'
+                });
             } else {
                 // Crear nuevo usuario
                 if (!password || password.length < 8) {
@@ -617,6 +624,13 @@
 
                 users.push(newUser);
                 Auth.saveUsers(users);
+                const langSaveNew = localStorage.getItem('osintLanguage') || 'es';
+                Swal.fire({
+                    title: langSaveNew === 'en' ? 'Created!' : '¡Creado!',
+                    text: langSaveNew === 'en' ? 'User added successfully.' : 'Usuario creado correctamente.',
+                    icon: 'success', timer: 2000, showConfirmButton: false,
+                    background: 'rgba(15, 23, 42, 0.95)', color: '#fff'
+                });
             }
 
             loadStats();
