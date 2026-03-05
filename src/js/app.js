@@ -1,5 +1,7 @@
 import toolsData from './tools-config.js';
 import CryptoUtils from './crypto-utils.js';
+import Auth from './auth.js';
+import { translations, Translations, t } from './translations.js';
 
 // =============================================
 // Aegis Board - Main Application Logic
