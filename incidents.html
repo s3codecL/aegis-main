@@ -786,6 +786,27 @@
                     }
                 });
             }
+            // 🔑 CRITICAL: Initialize the IncidentManager (attaches all event listeners)
+            window.IncidentManager = IncidentManager;
+            IncidentManager.init();
+
+            // Language toggle
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle) {
+                langToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const currentLang = localStorage.getItem('osintLanguage') || 'es';
+                    const newLang = currentLang === 'es' ? 'en' : 'es';
+                    localStorage.setItem('osintLanguage', newLang);
+                    Translations.setLanguage(newLang);
+                    Translations.applyTranslations();
+                    updateLangButton(newLang);
+                    // Re-populate select options in new language
+                    IncidentManager.populateFormSelects();
+                    IncidentManager.populateFilters();
+                    IncidentManager.renderIncidents();
+                });
+            }
         });
 
         function updateThemeIcon(theme) {
@@ -821,8 +842,9 @@
                 <div class="col-12 text-center d-flex flex-column align-items-center gap-3">
                     <div class="footer-branding d-flex flex-column align-items-center">
                         <small class="text-muted fw-bold" data-i18n="FOOTER_TEXT">Aegis Board v2.0.0 | 2025</small>
-                        <small class="text-muted opacity-75" data-i18n="FOOTER_MADE_WITH">Made with ❤️ for the security
-                            community - s3codecL</small>
+                        <small class="text-muted opacity-75">Hecho con ❤️ para la comunidad de seguridad - <a
+                                href="https://github.com/s3codecL" target="_blank" rel="noopener noreferrer"
+                                class="text-decoration-none text-muted">s3codecL</a></small>
                     </div>
                     <div class="footer-social-container">
                         <a href="https://github.com/s3codecL" target="_blank" rel="noopener noreferrer"
