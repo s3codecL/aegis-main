@@ -40,6 +40,13 @@ const LoginInit = {
         if (Auth.init) Auth.init();
         const lang = localStorage.getItem('osintLanguage') || 'es';
         if (Auth.initTranslations) Auth.initTranslations(lang);
+
+        // Update Icons and Lang Text
+        this.updateIcons(savedTheme);
+        const langBtnText = document.getElementById('lang-text');
+        if (langBtnText) {
+            langBtnText.textContent = lang.toUpperCase();
+        }
     },
 
     loadRecaptcha: function () {
