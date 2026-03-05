@@ -18,6 +18,10 @@ const LoginInit = {
         window.switchTab = (tab) => this.switchTab(tab);
         window.loginWithGoogle = () => Auth.loginWithGoogle();
         window.loginWithGithub = () => Auth.loginWithGithub();
+        window.showForgotPassword = (e) => {
+            e.preventDefault();
+            Auth.showAlert('Por favor contacta al administrador para restablecer tu contraseña.', 'info');
+        };
 
         // Apply theme immediately
         const savedTheme = localStorage.getItem('osintTheme') || 'dark';
@@ -31,8 +35,15 @@ const LoginInit = {
             document.querySelectorAll('.g-recaptcha').forEach(el => el.style.display = 'none');
         }
 
-        // Setup event listeners
+        // Setup event listeners (theme/lang toggle)
         this.setupEventListeners();
+
+        // Attach form submit listeners FIRST (before Auth.init which may fail)
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) loginForm.addEventListener('submit', (e) => { e.preventDefault(); Auth.handleLogin(e); });
+
+        const registerForm = document.getElementById('register-form');
+        if (registerForm) registerForm.addEventListener('submit', (e) => { e.preventDefault(); Auth.handleRegister(e); });
 
         // Restore tab
         const savedTab = localStorage.getItem('osintActiveTab');
@@ -91,13 +102,22 @@ const LoginInit = {
 
     setupEventListeners: function () {
         // Theme Toggle
-        document.getElementById('theme-toggle')?.addEventListener('click', (e) => {
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-bs-theme', newTheme);
             localStorage.setItem('osintTheme', newTheme);
-            this.renderRecaptchas();
             this.updateIcons(newTheme);
+            // Reset reCAPTCHA with new theme (full re-render after short delay)
+            if (Auth.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
+                try {
+                    if (this.widgets.login !== null) grecaptcha.reset(this.widgets.login);
+                    if (this.widgets.register !== null) grecaptcha.reset(this.widgets.register);
+                } catch (err) {
+                    // If reset fails, re-render
+                    setTimeout(() => this.renderRecaptchas(), 100);
+                }
+            }
         });
 
         // Language Toggle
@@ -105,12 +125,10 @@ const LoginInit = {
             const current = localStorage.getItem('osintLanguage') || 'es';
             const next = current === 'es' ? 'en' : 'es';
             localStorage.setItem('osintLanguage', next);
-
-            // Re-load to apply language to recaptcha script
-            const activeTabBtn = document.querySelector('.tab-btn.active');
-            const mode = activeTabBtn?.getAttribute('data-i18n')?.includes('REGISTER') ? 'register' : 'login';
-            localStorage.setItem('osintActiveTab', mode);
-            window.location.reload();
+            // Apply translations immediately without page reload
+            this.applyTranslations(next);
+            const langBtnText = document.getElementById('lang-text');
+            if (langBtnText) langBtnText.textContent = next.toUpperCase();
         });
 
     },
@@ -131,8 +149,30 @@ const LoginInit = {
     updateIcons: function (theme) {
         const sun = document.querySelector('.icon-sun');
         const moon = document.querySelector('.icon-moon');
+        // In dark mode: show sun (to switch to light). In light mode: show moon (to switch to dark).
         if (sun) sun.style.display = theme === 'dark' ? 'inline-block' : 'none';
         if (moon) moon.style.display = theme === 'dark' ? 'none' : 'inline-block';
+    },
+
+    applyTranslations: function (lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const val = t(key, lang);
+            if (val) {
+                if (el.tagName === 'INPUT') el.placeholder = val;
+                else el.textContent = val;
+            }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            const val = t(key, lang);
+            if (val) el.placeholder = val;
+        });
+        document.querySelectorAll('[data-i18n-title]').forEach(el => {
+            const key = el.getAttribute('data-i18n-title');
+            const val = t(key, lang);
+            if (val) el.title = val;
+        });
     }
 };
 
