@@ -1,4 +1,4 @@
-# Análisis de Categorías y Herramientas OSINT - Aegis Dashboard
+# Análisis de Categorías y Herramientas OSINT - Aegis Board
 
 ## ✅ REORGANIZACIÓN COMPLETADA
 
