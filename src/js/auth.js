@@ -348,7 +348,12 @@ const Auth = {
             setTimeout(() => window.location.href = 'index.html', 1000);
         } catch (error) {
             console.error('Error Google OAuth:', error);
-            this.showAlert('Error al conectar con Google.', 'danger');
+            // Check if it's a network/CORS error vs API error
+            const isNetworkError = error instanceof TypeError && error.message.includes('fetch');
+            const msg = isNetworkError
+                ? 'Error de red al conectar con Google. Verifica tu conexión o la configuración de OAuth.'
+                : `Error al conectar con Google: ${error.message || 'Error desconocido'}.`;
+            this.showAlert(msg, 'danger');
         }
     },
 
