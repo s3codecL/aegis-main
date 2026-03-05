@@ -70,8 +70,8 @@
 
 body {
     font-family: var(--font-primary);
-    background: var(--bg-primary);
-    color: var(--text);
+    background: var(--bg-primary) !important;
+    color: var(--text) !important;
     transition: var(--transition);
     line-height: 1.6;
     font-weight: 400;
