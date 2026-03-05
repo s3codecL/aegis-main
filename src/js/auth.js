@@ -11,9 +11,10 @@ const Auth = {
         sessionKey: 'aegisSession',
         usersKey: 'aegisUsers',
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 horas
+        useRecaptcha: true, // Cambiar a true en producción después de configurar el sitio en Google reCAPTCHA
         defaultUser: {
-            email: 'admin@aegis.local',
-            password: 'admin123', // En producción, usar hash
+            email: 'admin@aegisboard.dev',
+            password: 'H5iI-wWw2teA?a36J9nXtñ.yW', // En producción, usar hash
             name: 'Administrador',
             role: 'admin',
             avatar: null
@@ -80,8 +81,8 @@ const Auth = {
         const password = document.getElementById('login-password').value;
         const rememberMe = document.getElementById('remember-me').checked;
 
-        // Validar reCAPTCHA (si está habilitado)
-        if (typeof grecaptcha !== 'undefined') {
+        // Validar reCAPTCHA (si está habilitado en config y cargado)
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
             const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
             const recaptchaResponse = grecaptcha.getResponse(widgetId);
             if (!recaptchaResponse) {
@@ -145,8 +146,8 @@ const Auth = {
         const passwordConfirm = document.getElementById('register-password-confirm').value;
         const acceptTerms = document.getElementById('accept-terms').checked;
 
-        // Validar reCAPTCHA
-        if (typeof grecaptcha !== 'undefined') {
+        // Validar reCAPTCHA (si está habilitado en config y cargado)
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
             const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
             const recaptchaResponse = grecaptcha.getResponse(widgetId);
             if (!recaptchaResponse) {
