@@ -13,6 +13,12 @@ const LoginInit = {
     },
 
     init: function () {
+        console.log("LoginInit: Initializing...");
+        // Expose to window for inline onclicks (until migration)
+        window.switchTab = (tab) => this.switchTab(tab);
+        window.loginWithGoogle = () => Auth.loginWithGoogle();
+        window.loginWithGithub = () => Auth.loginWithGithub();
+
         // Apply theme immediately
         const savedTheme = localStorage.getItem('osintTheme') || 'dark';
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
@@ -95,14 +101,6 @@ const LoginInit = {
             window.location.reload();
         });
 
-        // Expose to window for inline onclicks (until migration)
-        window.switchTab = (tab) => this.switchTab(tab);
-        window.loginWithGoogle = () => Auth.loginWithGoogle();
-        window.loginWithGithub = () => Auth.loginWithGithub();
-        window.showForgotPassword = (e) => {
-            e.preventDefault();
-            Auth.showAlert('E-mail recovery link sent.', 'success');
-        };
     },
 
     switchTab: function (tab) {
