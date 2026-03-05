@@ -50,7 +50,7 @@ A partir de la versión 2.0.0, el proyecto ha migrado a una estructura altamente
 
 ```
 ┌─────────────────────────────────────────────────┐
-│         Aegis Dashboard - Arquitectura          │
+│          Aegis Board - Arquitectura           │
 └─────────────────────────────────────────────────┘
 
     HTML (index.html)
@@ -408,7 +408,7 @@ La carpeta `PLUGINS/` contiene extensiones para:
 ```json
 {
   "manifest_version": 3,
-  "name": "AEGIS Dashboard",
+  "name": "Aegis Board",
   "permissions": ["contextMenus"],
   "background": { "service_worker": "background.js" }
 }
