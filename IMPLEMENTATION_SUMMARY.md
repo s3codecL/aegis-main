@@ -369,4 +369,4 @@ Para preguntas o problemas:
 
 ---
 
-**¡Gracias por usar Aegis HUB!** 🛡️
+**¡Gracias por usar Aegis Board!** 🛡️
