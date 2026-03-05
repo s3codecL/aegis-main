@@ -1,4 +1,4 @@
-# 📚 Documentación Técnica - Aegis Dashboard
+# 📚 Documentación Técnica - Aegis Board
 
 > ⚠️ **Importante:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos. Usa variables de entorno o archivos ignorados por git.
 
@@ -1569,4 +1569,4 @@ Editar/Eliminar                    │
 
 ---
 
-**Última actualización**: Diciembre 2025 (v2.0.0)
+**Última actualización**: Marzo 2026 (v2.0.0)
