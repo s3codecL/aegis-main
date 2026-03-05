@@ -7,8 +7,8 @@
 
 1. Abrir `login.html` en el navegador
 2. Credenciales por defecto:
-   - Email: `admin@aegis.local`
-   - Password: `admin123`
+   - Email: `[Registro o OAuth]`
+   - Password: `[TU_CONTRASEÑA]`
 3. Click "Iniciar Sesión"
 4. ✅ **Esperado**: Redirección a `index.html` con mensaje de bienvenida
 5. ✅ **Verificar**: Nombre de usuario visible en navbar
@@ -38,7 +38,7 @@
 **Objetivo**: Verificar acceso y funciones del panel admin
 
 1. Hacer logout (menú usuario → Cerrar Sesión)
-2. Login con admin: `admin@aegis.local` / `admin123`
+2. Login con admin: `[Registro o OAuth]` / `[TU_CONTRASEÑA]`
 3. Click en menú de usuario → "Panel Admin"
 4. ✅ **Esperado**: Redirección a `admin.html`
 5. ✅ **Verificar**: Estadísticas muestran 2 usuarios (admin + test)
@@ -125,7 +125,7 @@
 
 **Email duplicado**:
 1. En `login.html`, pestaña "Registrarse"
-2. Usar email existente: `admin@aegis.local`
+2. Usar email existente: `[Registro o OAuth]`
 3. ✅ **Esperado**: Error "Este correo ya está registrado"
 
 **Contraseñas no coinciden**:
@@ -244,7 +244,7 @@ localStorage.setItem('aegisSession', JSON.stringify(session));
 3. ✅ **Esperado**: Error "Email ya registrado"
 
 ### Edge 3: Espacios en Email
-1. Email: ` admin@aegis.local ` (con espacios)
+1. Email: ` [Registro o OAuth] ` (con espacios)
 2. ✅ **Esperado**: Trim automático, login exitoso
 
 ### Edge 4: Navegación con Tabs Abiertos
@@ -330,8 +330,8 @@ localStorage.setItem('aegisSession', JSON.stringify(session));
 ### Datos de Prueba Recomendados
 ```javascript
 // Usuario Admin
-Email: admin@aegis.local
-Password: admin123
+Email: [Registro o OAuth]
+Password: [TU_CONTRASEÑA]
 Rol: admin
 
 // Usuario Test 1
