@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="src/css/incidents.css" />
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" href="src/img/logos/Aegisboard-S.png" type="image/png" />
+    <link rel="icon" href="logos/Aegisboard-S.png" type="image/png" />
 
     <!-- Theme Script (Prevent Flash) -->
     <script>
@@ -28,7 +28,7 @@
         <div class="container-fluid px-4">
             <!-- Logo y Branding -->
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="src/img/logos/Aegisboard-S.png" alt="Aegis Board Logo" class="me-2"
+                <img src="logos/Aegisboard-S.png" alt="Aegis Board Logo" class="me-2"
                     style="height: 32px !important; width: auto !important;">
                 <div class="d-flex flex-column d-none d-md-flex">
                     <h1 class="mb-0" data-i18n="AEGIS_DASHBOARD">Aegis Board</h1>
@@ -41,17 +41,16 @@
                 <!-- Tema -->
                 <button class="btn btn-icon btn-ghost" id="theme-toggle" data-i18n-title="CHOOSE_THEME"
                     title="Cambiar tema">
-                    <svg id="iconLight" class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-moon" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sun" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="4"></circle>
                         <path
                             d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41">
                         </path>
-                    </svg>
-                    <svg id="iconDark" class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
                     </svg>
                 </button>
 
@@ -843,22 +842,24 @@
         });
 
         function updateThemeIcon(theme) {
-            const iconLight = document.getElementById("iconLight");
-            const iconDark = document.getElementById("iconDark");
+            const themeToggle = document.getElementById('theme-toggle');
+            if (!themeToggle) return;
+            const sunIcon = themeToggle.querySelector('.icon-sun');
+            const moonIcon = themeToggle.querySelector('.icon-moon');
             const footerLogo = document.querySelector("#footer-logo");
 
             if (footerLogo) {
-                footerLogo.src = theme === "dark" ? "src/img/logos/Aegisboard-B.png" : "src/img/logos/Aegisboard-N.png";
+                footerLogo.src = theme === "dark" ? "logos/Aegisboard-B.png" : "logos/Aegisboard-N.png";
             }
 
-            if (!iconLight || !iconDark) return;
+            if (!sunIcon || !moonIcon) return;
 
-            if (theme === "dark") {
-                iconLight.style.display = "unset";
-                iconDark.style.display = "none";
+            if (theme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
             } else {
-                iconLight.style.display = "none";
-                iconDark.style.display = "unset";
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
             }
         }
 
@@ -882,8 +883,7 @@
                 <!-- 1. Brand -->
                 <div class="col-lg-6 mb-5 mb-lg-0 text-center">
                     <div class="footer-brand-section">
-                        <img src="src/img/logos/Aegisboard-B.png" alt="Aegis Board" class="footer-logo mb-4"
-                            id="footer-logo">
+                        <img src="logos/Aegisboard-B.png" alt="Aegis Board" class="footer-logo mb-4" id="footer-logo">
                     </div>
                 </div>
 
