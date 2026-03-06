@@ -37,6 +37,7 @@ export const translations = {
     // Main UI
     "AEGIS_DASHBOARD": "Aegis Board",
     "INVESTIGATION_TOOL": "Investigation Tool",
+    "QUICK_START_GUIDE": "Quick Start Guide",
     "TOOLS": "Tools",
     "FAVORITES": "Favorites",
     "RESULTS": "Results",
@@ -70,6 +71,17 @@ export const translations = {
 
     // Modals
     "ERROR": "Error",
+    "CHANGE_LANGUAGE": "Change language",
+    "CHOOSE_THEME": "Choose theme",
+    "SEARCH_HISTORY": "Search History",
+    "FAVORITES": "Favorites",
+    "MAIN_SEARCH_PLACEHOLDER": "IP, domain, hash, email...",
+    "FILTER_PLACEHOLDER": "Filter...",
+    "DOWNDETECTOR": "Downdetector",
+    "CATEGORIES": "Categories",
+    "INVESTIGATION_TOOL": "Investigation Tool",
+    "SEARCH_BUTTON": "Search",
+    "ADMINISTRATOR_YOU": "(You)",
     "SUCCESS": "Success!",
     "ENTER_SEARCH_TERM": "Enter search term",
     "PLEASE_VERIFY_INPUT": "Please verify your input",
@@ -130,7 +142,7 @@ export const translations = {
 
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Board v2.0.0 | 2025",
-    "FOOTER_MADE_WITH": "Made with ❤️ for the security community - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
+    "QS_FOOTER_MADE_WITH": "Made with <span class=\"heart-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg></span> for the cybersecurity community",
     "PRIVACY_NOTICE": "All searches are stored locally in your browser",
 
     // Authentication
@@ -175,7 +187,7 @@ export const translations = {
     "QS_HERO_TITLE": "<span>Aegis</span> Board",
     "QS_HERO_SUBTITLE": "Centralize 78 OSINT resources in one place, automatically detect search types and save valuable time in your investigations.",
     "QS_HERO_READ_GUIDE": "📚 Read the quick start guide for features",
-    "QS_ACCESS_DASHBOARD": "Go to HUB",
+    "QS_ACCESS_DASHBOARD": "Go to Board",
     "QS_QUICK_START": "Quick Start",
     "QS_STEP1_TITLE": "Enter your search",
     "QS_STEP1_DESC": "Enter an IP, domain, hash, email, or text. The system will automatically detect the type.",
@@ -268,12 +280,27 @@ export const translations = {
     "QS_FAQ_Q4": "Which browsers are supported?",
     "QS_FAQ_A4": "All modern browsers: Chrome, Firefox, Safari, Edge. Requires ES6+ and localStorage.",
 
+    // New Navbar Keys
+    "NAV_START": "Home",
+    "NAV_FEATURES": "Features",
+    "NAV_FAQ": "FAQ",
+    "NAV_DOCS": "Documentation",
+
+    // New Footer Keys
+    "QS_USEFUL_LINKS": "Useful Links",
+    "QS_FOLLOW_US": "Follow Us",
+    "QS_FOOTER_DESC": "Advanced threat intelligence and OSINT platform for security professionals.",
+
+    "QS_PLATFORM": "Platform",
+    "QS_RESOURCES": "Resources",
+    "QS_COMMUNITY": "Community",
+
     // CTA
     "QS_CTA_SUBTITLE": "Access Aegis Board and perform professional investigations",
-    "QS_CTA_BUTTON": "Go to HUB",
+    "QS_CTA_BUTTON": "Go to Board",
 
     // Footer
-    "QS_FOOTER_MADE_WITH": "Made with ❤️ for the security community -",
+    "QS_FOOTER_MADE_WITH": "Made with <span class=\"heart-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg></span> for the cybersecurity community",
 
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Administration Panel",
@@ -283,6 +310,32 @@ export const translations = {
     "ADMINISTRATORS": "Administrators",
     "ACTIVE_USERS": "Active Users",
     "NEW_USERS_7DAYS": "New (7 days)",
+    "DASHBOARD": "Dashboard",
+    "LOGOUT": "Logout",
+    "FULL_NAME": "Full Name",
+    "EMAIL_ADDRESS": "Email Address",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIREMENTS": "Requirements: 8+ chars, 1 uppercase, 1 number and 1 symbol.",
+    "PLACEHOLDER_PASSWORD": "Enter secure password",
+    "INCIDENT_MANAGEMENT": "Incident Management",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_USER": "User",
+    "ADMIN_PANEL": "Admin Panel",
+    "NEVER": "Never",
+    "ADMINISTRATOR_YOU": "(You)",
+    "ADD_USER_MODAL_TITLE": "Add User",
+    "EDIT_USER_MODAL_TITLE": "Edit User",
+    "USER_PASSWORD_PLACEHOLDER": "Enter secure password",
+    "USER_PASSWORD_EDIT_PLACEHOLDER": "Leave blank to keep current",
+    "NOTE": "Note",
+    "ADMIN_MODAL_NOTE": "Changes will be applied immediately to the authentication system.",
+    "CONFIRM_DELETE_INCIDENT": "Are you sure you want to delete this incident? This action cannot be undone.",
+    "INCIDENT_DELETED": "Incident deleted successfully",
+    "EDIT_INCIDENT_CODE": "Edit Incident:",
+    "ERROR_SAVE_INCIDENTS": "Error saving incidents",
+    "ERROR_INCIDENT_NOT_FOUND": "Incident not found",
+    "SELECT_PLACEHOLDER": "-- Select --",
+    "NO_INCIDENTS": "No incidents registered",
 
     // User Management Modal
     "ADD_USER_MODAL_TITLE": "Add User",
@@ -307,6 +360,7 @@ export const translations = {
     "INCIDENTS": "Incidents",
     "INCIDENTS_PAGE_TITLE": "Incident Management - Aegis Board",
     "INCIDENT_MANAGEMENT": "Incident Management",
+    "INCIDENT_MANAGEMENT_TITLE": "Incident Management",
     "CYBERSECURITY_INCIDENTS": "Cybersecurity Incidents",
     "NEW_INCIDENT": "New Incident",
     "NEW_CYBERSECURITY_INCIDENT": "New Cybersecurity Incident",
@@ -374,6 +428,8 @@ export const translations = {
     "FILE_HASHES_PLACEHOLDER": "SHA256: abc123... (comma or newline separated)",
     "SUSPICIOUS_DOMAINS_PLACEHOLDER": "malicious-site.com, phishing-page.net (comma separated)",
     "ASSIGNED_TO_PLACEHOLDER": "SOC Analyst, Administrator, etc.",
+    "SGSI_SUBCATEGORY_PLACEHOLDER": "Subcategory or affected control",
+    "AFFECTED_ASSET_PLACEHOLDER": "Server, Database, Endpoint, etc.",
     "DETECTION_INFO": "Detection Information",
     "TECHNICAL_CLASSIFICATION": "Technical Classification",
     "SGSI_CLASSIFICATION": "SGSI Classification",
@@ -627,6 +683,7 @@ export const translations = {
     // Main UI
     "AEGIS_DASHBOARD": "Aegis Board",
     "INVESTIGATION_TOOL": "Herramienta de Investigación",
+    "QUICK_START_GUIDE": "Guía Rápida",
     "TOOLS": "Herramientas",
     "FAVORITES": "Favoritos",
     "RESULTS": "Resultados",
@@ -660,6 +717,17 @@ export const translations = {
 
     // Modals
     "ERROR": "Error",
+    "CHANGE_LANGUAGE": "Cambiar idioma",
+    "CHOOSE_THEME": "Cambiar tema",
+    "SEARCH_HISTORY": "Historial de búsquedas",
+    "FAVORITES": "Favoritos",
+    "MAIN_SEARCH_PLACEHOLDER": "IP, dominio, hash, email...",
+    "FILTER_PLACEHOLDER": "Filtrar...",
+    "DOWNDETECTOR": "Downdetector",
+    "CATEGORIES": "Categorías",
+    "INVESTIGATION_TOOL": "Herramienta de Investigación",
+    "SEARCH_BUTTON": "Buscar",
+    "ADMINISTRATOR_YOU": "(Tú)",
     "SUCCESS": "¡Éxito!",
     "ENTER_SEARCH_TERM": "Ingresa el término de búsqueda",
     "PLEASE_VERIFY_INPUT": "Por favor, verifica tu entrada",
@@ -721,6 +789,7 @@ export const translations = {
     // Footer
     "FOOTER_TEXT": "🛡️ Aegis Board v2.0.0 | 2025",
     "FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad - <a href=\"https://github.com/s3codecL\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-decoration-none\">s3codecL</a>",
+    "QS_FOOTER_MADE_WITH": "Hecho con <span class=\"heart-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg></span> para la comunidad de ciberseguridad",
     "PRIVACY_NOTICE": "Todas las búsquedas se guardan localmente en tu navegador",
 
     // Authentication
@@ -757,11 +826,10 @@ export const translations = {
     "PLACEHOLDER_PASSWORD": "••••••••",
     "PLACEHOLDER_NAME": "Juan Pérez",
 
-    // Quickstart Page
     "QS_HERO_TITLE": "<span>Aegis</span> Board",
     "QS_HERO_SUBTITLE": "Centraliza 78 recursos OSINT en un solo lugar, detecta automáticamente el tipo de búsqueda y ahorra tiempo valioso en tus investigaciones.",
     "QS_HERO_READ_GUIDE": "📚 Lee la guía de inicio rápido para las funcionalidades",
-    "QS_ACCESS_DASHBOARD": "Ir al HUB",
+    "QS_ACCESS_DASHBOARD": "Ir al Board",
     "QS_QUICK_START": "Inicio Rápido",
     "QS_STEP1_TITLE": "Ingresa tu búsqueda",
     "QS_STEP1_DESC": "Escribe una IP, dominio, hash, correo o texto. El sistema detectará automáticamente el tipo.",
@@ -854,12 +922,27 @@ export const translations = {
     "QS_FAQ_Q4": "¿Qué navegadores soporta?",
     "QS_FAQ_A4": "Todos los navegadores modernos: Chrome, Firefox, Safari, Edge. Requiere ES6+ y localStorage.",
 
+    // New Navbar Keys
+    "NAV_START": "Inicio",
+    "NAV_FEATURES": "Características",
+    "NAV_FAQ": "FAQ",
+    "NAV_DOCS": "Documentación",
+
+    // New Footer Keys
+    "QS_USEFUL_LINKS": "Enlaces Útiles",
+    "QS_FOLLOW_US": "Síguenos",
+    "QS_FOOTER_DESC": "Plataforma avanzada de inteligencia de amenazas y OSINT para profesionales de seguridad.",
+
+    "QS_PLATFORM": "Plataforma",
+    "QS_RESOURCES": "Recursos",
+    "QS_COMMUNITY": "Comunidad",
+
     // CTA
     "QS_CTA_SUBTITLE": "Accede al Aegis Board y realiza investigaciones profesionales",
-    "QS_CTA_BUTTON": "Ir al HUB",
+    "QS_CTA_BUTTON": "Ir al Board",
 
     // Footer
-    "QS_FOOTER_MADE_WITH": "Hecho con ❤️ para la comunidad de seguridad -",
+    "QS_FOOTER_MADE_WITH": "Hecho con <span class=\"heart-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg></span> para la comunidad de ciberseguridad",
 
     // Admin Panel
     "ADMIN_PANEL_TITLE": "Panel de Administración",
@@ -869,6 +952,26 @@ export const translations = {
     "ADMINISTRATORS": "Administradores",
     "ACTIVE_USERS": "Usuarios Activos",
     "NEW_USERS_7DAYS": "Nuevos (7 días)",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_USER": "Usuario",
+    "ADMIN_PANEL": "Panel Admin",
+    "NEVER": "Nunca",
+    "ADMINISTRATOR_YOU": "(Tú)",
+    "ADD_USER_MODAL_TITLE": "Añadir Usuario",
+    "EDIT_USER_MODAL_TITLE": "Editar Usuario",
+    "USER_PASSWORD_PLACEHOLDER": "Introducir contraseña segura",
+    "USER_PASSWORD_EDIT_PLACEHOLDER": "Dejar en blanco para no cambiar",
+    "NOTE": "Nota",
+    "ADMIN_MODAL_NOTE": "Los cambios realizados se aplicarán inmediatamente en el sistema de autenticación.",
+    "NEW_USERS_7DAYS": "Nuevos (7 días)",
+    "DASHBOARD": "Dashboard",
+    "LOGOUT": "Cerrar Sesión",
+    "FULL_NAME": "Nombre Completo",
+    "EMAIL_ADDRESS": "Correo Electrónico",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_REQUIREMENTS": "Requisitos: 8+ caracteres, 1 mayúscula, 1 número y 1 símbolo.",
+    "PLACEHOLDER_PASSWORD": "Introducir contraseña segura",
+    "INCIDENT_MANAGEMENT": "Gestión de Incidencias",
 
     // User Management Modal
     "ADD_USER_MODAL_TITLE": "Añadir Usuario",
@@ -893,6 +996,7 @@ export const translations = {
     "INCIDENTS": "Incidencias",
     "INCIDENTS_PAGE_TITLE": "Gestión de Incidencias - Aegis Board",
     "INCIDENT_MANAGEMENT": "Gestión de Incidencias",
+    "INCIDENT_MANAGEMENT_TITLE": "Gestión de Incidencias",
     "CYBERSECURITY_INCIDENTS": "Incidencias de Ciberseguridad",
     "NEW_INCIDENT": "Nuevo Incidente",
     "NEW_CYBERSECURITY_INCIDENT": "Nueva Incidencia de Ciberseguridad",
@@ -960,6 +1064,8 @@ export const translations = {
     "FILE_HASHES_PLACEHOLDER": "SHA256: abc123... (separados por comas o saltos de línea)",
     "SUSPICIOUS_DOMAINS_PLACEHOLDER": "malicious-site.com, phishing-page.net (separados por comas)",
     "ASSIGNED_TO_PLACEHOLDER": "Analista SOC, Administrador, etc.",
+    "SGSI_SUBCATEGORY_PLACEHOLDER": "Subcategoría o control afectado",
+    "AFFECTED_ASSET_PLACEHOLDER": "Servidor, Base de datos, Endpoint, etc.",
     "DETECTION_INFO": "Información de Detección",
     "TECHNICAL_CLASSIFICATION": "Clasificación Técnica",
     "SGSI_CLASSIFICATION": "Clasificación SGSI",
@@ -1211,7 +1317,7 @@ export const Translations = {
       const key = el.getAttribute("data-i18n");
       const translation = translations[lang][key];
       if (translation) {
-        el.textContent = translation;
+        el.innerHTML = translation;
       }
     });
 
@@ -1221,6 +1327,15 @@ export const Translations = {
       const translation = translations[lang][key];
       if (translation) {
         el.placeholder = translation;
+      }
+    });
+
+    // Update all titles with data-i18n-title
+    document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-title");
+      const translation = translations[lang][key];
+      if (translation) {
+        el.title = translation;
       }
     });
   }

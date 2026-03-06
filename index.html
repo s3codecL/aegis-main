@@ -56,7 +56,8 @@
         <form class="search-form d-flex d-none d-lg-flex">
           <div class="input-icon">
             <input type="text" id="search-input" class="form-control search-input"
-              placeholder="IP, dominio, hash, email..." autocomplete="off">
+              data-i18n-placeholder="MAIN_SEARCH_PLACEHOLDER" placeholder="IP, dominio, hash, email..."
+              autocomplete="off">
             <span class="input-icon-addon">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none">
@@ -72,8 +73,8 @@
 
         <!-- Filter -->
         <div class="input-icon d-none d-xl-flex">
-          <input type="text" id="filter-input" class="form-control filter-input" placeholder="Filtrar..."
-            style="max-width: 150px;">
+          <input type="text" id="filter-input" class="form-control filter-input"
+            data-i18n-placeholder="FILTER_PLACEHOLDER" placeholder="Filtrar..." style="max-width: 150px;">
           <span class="input-icon-addon">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="18" height="18" viewBox="0 0 24 24"
               stroke-width="2" stroke="currentColor" fill="none">
@@ -103,7 +104,7 @@
         <div class="vr mx-2 d-none d-lg-block"></div>
 
         <!-- Tema -->
-        <button class="btn btn-icon btn-ghost" id="theme-toggle" title="Cambiar tema">
+        <button class="btn btn-icon btn-ghost" id="theme-toggle" data-i18n-title="CHOOSE_THEME" title="Cambiar tema">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-moon" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
@@ -118,13 +119,14 @@
         </button>
 
         <!-- Idioma -->
-        <button class="btn btn-ghost" id="language-toggle" title="Cambiar idioma">
+        <button class="btn btn-ghost" id="language-toggle" data-i18n-title="CHANGE_LANGUAGE" title="Cambiar idioma">
           <span id="current-lang">ES</span>
         </button>
 
         <!-- Downdetector Button -->
         <a href="https://downdetector.cl/" target="_blank" rel="noopener noreferrer"
-          class="btn btn-icon btn-ghost text-danger" id="downdetector-btn" aria-label="Downdetector">
+          class="btn btn-icon btn-ghost text-danger" id="downdetector-btn" data-i18n-title="DOWNDETECTOR"
+          aria-label="Downdetector">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 9v4"></path>
@@ -136,7 +138,8 @@
         </a>
 
         <!-- Historial -->
-        <button class="btn btn-icon btn-ghost" onclick="toggleHistoryPanel()" title="Historial de búsquedas">
+        <button class="btn btn-icon btn-ghost" onclick="toggleHistoryPanel()" data-i18n-title="SEARCH_HISTORY"
+          title="Historial de búsquedas">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none">
             <path d="M12 3c-4.97 0 -9 4.03 -9 9s4.03 9 9 9s9 -4.03 9 -9s-4.03 -9 -9 -9m0 2v6l5.25 3.15"></path>
@@ -145,7 +148,7 @@
 
         <!-- Favoritos -->
         <button class="btn btn-icon btn-ghost text-warning position-relative" onclick="toggleFavoritesPanel()"
-          title="Favoritos">
+          data-i18n-title="FAVORITES" title="Favoritos">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24"
             fill="currentColor">
             <path
