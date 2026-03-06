@@ -2,7 +2,7 @@
   <img src="src/img/logos/Aegisboard-P.png" alt="Aegisboard Logo" width="300">
 </div>
 
-# 🛡️ Aegis Board - Herramienta de Investigación
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/releases)
