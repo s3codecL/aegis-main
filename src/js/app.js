@@ -759,12 +759,24 @@ const App = {
     this.config.currentTheme = newTheme;
     localStorage.setItem("osintTheme", newTheme);
     this.updateThemeIcons();
+
+    // Update logos
+    const footerLogo = document.getElementById('footer-logo');
+    if (footerLogo) {
+      footerLogo.src = newTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+    }
   },
 
   // Setup theme on load
   setupTheme: function () {
     document.documentElement.setAttribute("data-bs-theme", this.config.currentTheme);
     this.updateThemeIcons();
+
+    // Initialize logos
+    const footerLogo = document.getElementById('footer-logo');
+    if (footerLogo) {
+      footerLogo.src = this.config.currentTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+    }
   },
 
   // Update theme icons
