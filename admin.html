@@ -297,7 +297,7 @@
             const lang = localStorage.getItem('osintLanguage') || 'es';
             const currentLangElement = document.getElementById('current-lang');
             if (currentLangElement) {
-                currentLangElement.textContent = lang.toUpperCase();
+                currentLangElement.textContent = lang === 'es' ? 'EN' : 'ES';
             }
             loadTranslations(lang);
 
@@ -330,7 +330,7 @@
                     localStorage.setItem('osintLanguage', newLang);
                     const langElement = document.getElementById('current-lang');
                     if (langElement) {
-                        langElement.textContent = newLang.toUpperCase();
+                        langElement.textContent = newLang === 'es' ? 'EN' : 'ES';
                     }
 
                     // Aplicar traducciones
@@ -425,20 +425,23 @@
             const currentUser = Auth.getCurrentUser();
 
             tbody.innerHTML = users.map(user => {
-                const createdDate = new Date(user.createdAt).toLocaleDateString('es-ES', {
+                const lang = localStorage.getItem('osintLanguage') || 'es';
+                const dateLocale = lang === 'en' ? 'en-US' : 'es-ES';
+
+                const createdDate = new Date(user.createdAt).toLocaleDateString(dateLocale, {
                     year: 'numeric',
                     month: '2-digit',
                     day: '2-digit'
                 });
                 const lastLogin = user.lastLogin
-                    ? new Date(user.lastLogin).toLocaleDateString('es-ES', {
+                    ? new Date(user.lastLogin).toLocaleDateString(dateLocale, {
                         year: 'numeric',
                         month: '2-digit',
                         day: '2-digit',
                         hour: '2-digit',
                         minute: '2-digit'
                     })
-                    : '<span class="text-muted">Nunca</span>';
+                    : `<span class="text-muted" data-i18n="NEVER">${lang === 'en' ? 'Never' : 'Nunca'}</span>`;
 
                 const isSelf = user.id === currentUser.id;
                 const roleBadge = user.role === 'admin'
@@ -735,10 +738,12 @@
 
                 <!-- 2. Comunidad -->
                 <div class="col-lg-6 text-center">
-                    <h6 class="text-white text-uppercase tracking-wider fw-bold mb-4" style="font-size: 0.75rem;">Únete
+                    <h6 class="text-white text-uppercase tracking-wider fw-bold mb-4" style="font-size: 0.75rem;"
+                        data-i18n="QS_COMMUNITY">Únete
                         a
                         la Comunidad</h6>
-                    <p class="text-muted small mb-4">Mantente conectado con las últimas actualizaciones y herramientas.
+                    <p class="text-muted small mb-4" data-i18n="QS_FOOTER_DESC">Mantente conectado con las últimas
+                        actualizaciones y herramientas.
                     </p>
                     <div class="footer-social-container d-flex justify-content-center gap-3">
                         <a href="https://github.com/s3codecL" target="_blank" class="footer-social-link" title="GitHub">
