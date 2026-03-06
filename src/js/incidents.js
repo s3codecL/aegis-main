@@ -910,7 +910,7 @@ const IncidentManager = {
         // 🆕 Sync footer logo
         const footerLogo = document.getElementById('footer-logo');
         if (footerLogo) {
-            footerLogo.src = currentTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+            footerLogo.src = currentTheme === 'dark' ? 'logos/Aegisboard-B.png' : 'logos/Aegisboard-N.png';
         }
     },
 
