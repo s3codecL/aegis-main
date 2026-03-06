@@ -56,7 +56,8 @@
                 </button>
 
                 <!-- Idioma -->
-                <button class="btn btn-ghost" id="langToggle" data-i18n-title="CHANGE_LANGUAGE" title="Cambiar idioma">
+                <button class="btn btn-ghost" id="language-toggle" data-i18n-title="CHANGE_LANGUAGE"
+                    title="Cambiar idioma">
                     <span id="langText" class="fw-bold" style="font-size: 0.85rem;">EN</span>
                 </button>
 
@@ -823,9 +824,9 @@
             }
 
             // Language toggle
-            const langToggle = document.getElementById('langToggle');
-            if (langToggle) {
-                langToggle.addEventListener('click', function (e) {
+            const languageToggle = document.getElementById('language-toggle');
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function (e) {
                     e.preventDefault();
                     const currentLang = localStorage.getItem('osintLanguage') || 'es';
                     const newLang = currentLang === 'es' ? 'en' : 'es';
