@@ -790,6 +790,11 @@ git clone https://github.com/s3codecL/aegisboard.git</code></pre>
             if (footerLogo) {
                 footerLogo.src = theme === 'dark' ? 'logos/Aegisboard-B.png' : 'logos/Aegisboard-N.png';
             }
+
+            const heroLogo = document.querySelector('.hero-logo');
+            if (heroLogo) {
+                heroLogo.src = theme === 'dark' ? 'logos/Aegisboard-PB.png' : 'logos/Aegisboard-P.png';
+            }
         }
 
         // Initialize theme
