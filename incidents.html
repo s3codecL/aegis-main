@@ -800,7 +800,6 @@
             // Inicializar tema e iconos (Hacerlo de primero)
             const savedTheme = localStorage.getItem("osintTheme") || "dark";
             document.documentElement.setAttribute("data-bs-theme", savedTheme);
-            updateThemeIcon(savedTheme);
 
             const lang = localStorage.getItem('osintLanguage') || 'es';
             updateLangButton(lang);
@@ -808,19 +807,6 @@
             // 🔑 CRITICAL: Initialize the IncidentManager (attaches all event listeners)
             window.IncidentManager = IncidentManager;
             IncidentManager.init();
-
-            // Theme toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                    document.documentElement.setAttribute('data-bs-theme', newTheme);
-                    localStorage.setItem('osintTheme', newTheme);
-                    updateThemeIcon(newTheme);
-                });
-            }
 
             // Language toggle
             const languageToggle = document.getElementById('language-toggle');
@@ -840,28 +826,6 @@
                 });
             }
         });
-
-        function updateThemeIcon(theme) {
-            const themeToggle = document.getElementById('theme-toggle');
-            if (!themeToggle) return;
-            const sunIcon = themeToggle.querySelector('.icon-sun');
-            const moonIcon = themeToggle.querySelector('.icon-moon');
-            const footerLogo = document.querySelector("#footer-logo");
-
-            if (footerLogo) {
-                footerLogo.src = theme === "dark" ? "logos/Aegisboard-B.png" : "logos/Aegisboard-N.png";
-            }
-
-            if (!sunIcon || !moonIcon) return;
-
-            if (theme === 'dark') {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            } else {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            }
-        }
 
         function updateLangButton(lang) {
             const langText = document.getElementById("langText");
