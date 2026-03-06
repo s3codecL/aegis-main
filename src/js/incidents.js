@@ -470,11 +470,11 @@ const IncidentManager = {
     openNewIncidentModal: function () {
         this.state.currentIncident = null;
         this.populateFormSelects();
-        document.getElementById('incident-form')?.reset();
-        document.getElementById('modal-title').textContent = 'Nuevo Incidente';
+        document.getElementById('incidentForm')?.reset();
+        document.getElementById('incidentModalLabel').textContent = translations[Translations.currentLanguage]['NEW_INCIDENT'] || 'Nuevo Incidente';
 
         // Mostrar modal (Bootstrap)
-        const modal = new bootstrap.Modal(document.getElementById('incident-modal'));
+        const modal = new bootstrap.Modal(document.getElementById('incidentModal'));
         modal.show();
     },
 
@@ -645,6 +645,12 @@ const IncidentManager = {
         const sgsiCatEl = document.getElementById('incidentSgsiCategory');
         if (sgsiCatEl) sgsiCatEl.value = incident.sgsi.category || '';
 
+        const sgsiSubcatEl = document.getElementById('incidentSgsiSubcategory');
+        if (sgsiSubcatEl) sgsiSubcatEl.value = incident.sgsi.subcategory || '';
+
+        const assetEl = document.getElementById('incidentAsset');
+        if (assetEl) assetEl.value = incident.sgsi.asset || '';
+
         // NIST y MITRE
         const nistEl = document.getElementById('incidentNistPhase');
         if (nistEl) nistEl.value = incident.nistPhase || '';
@@ -704,7 +710,9 @@ const IncidentManager = {
             sgsi: {
                 impact: document.getElementById('incidentImpact').value,
                 urgency: document.getElementById('incidentUrgency').value,
-                category: document.getElementById('incidentSgsiCategory').value
+                category: document.getElementById('incidentSgsiCategory').value,
+                subcategory: document.getElementById('incidentSgsiSubcategory')?.value || '',
+                asset: document.getElementById('incidentAsset')?.value || ''
             },
             nistPhase: document.getElementById('incidentNistPhase')?.value || '',
             mitreTactic: document.getElementById('incidentMitreTactic')?.value || '',
@@ -898,6 +906,12 @@ const IncidentManager = {
                 iconDark.style.display = "inline-block";
             }
         }
+
+        // 🆕 Sync footer logo
+        const footerLogo = document.getElementById('footer-logo');
+        if (footerLogo) {
+            footerLogo.src = currentTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+        }
     },
 
     /**
@@ -986,8 +1000,18 @@ const IncidentManager = {
             const critObj = CSTaxonomy.criticality.find(c => c.value === priority);
 
             if (critObj) {
-                priorityBadge.textContent = lang === 'en' ? critObj.labelEN : critObj.label;
-                priorityBadge.className = 'badge badge-' + priority.toLowerCase();
+                const label = lang === 'en' ? critObj.labelEN : critObj.label;
+                priorityBadge.textContent = label;
+
+                // Mapeo de colores para Tabler/Bootstrap 5
+                const colorMap = {
+                    'Low': 'bg-success',
+                    'Medium': 'bg-warning',
+                    'High': 'bg-orange',
+                    'Critical': 'bg-danger'
+                };
+
+                priorityBadge.className = 'badge ' + (colorMap[priority] || 'bg-secondary');
                 console.log(`✅ Priority set: ${priorityBadge.textContent}, class: ${priorityBadge.className}`);
             } else {
                 console.error(`❌ No criticality object found for priority: ${priority}`);
