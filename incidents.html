@@ -750,12 +750,20 @@
                         text: Translations.currentLanguage === 'en' ? 'Do you want to logout?' : '¿Deseas cerrar sesión?',
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: Translations.currentLanguage === 'en' ? 'Yes, logout' : 'Sí, cerrar sesión',
+                        confirmButtonText: Translations.currentLanguage === 'en' ? 'Logout' : 'Cerrar Sesión',
                         cancelButtonText: Translations.currentLanguage === 'en' ? 'Cancel' : 'Cancelar',
-                        background: document.body.getAttribute('data-bs-theme') === 'dark' ? '#1a1f3c' : '#fff',
-                        color: document.body.getAttribute('data-bs-theme') === 'dark' ? '#fff' : '#000'
+                        background: document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'rgba(15, 23, 42, 0.9)' : '#fff',
+                        color: document.documentElement.getAttribute('data-bs-theme') === 'dark' ? '#fff' : '#000',
+                        showClass: {
+                            popup: 'premium-swal-show'
+                        },
+                        hideClass: {
+                            popup: 'premium-swal-hide'
+                        },
+                        customClass: {
+                            popup: 'premium-swal-popup',
+                            title: 'premium-swal-title'
+                        }
                     }).then((result) => {
                         if (result.isConfirmed) {
                             Auth.logout();
