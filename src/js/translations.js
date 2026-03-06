@@ -302,7 +302,7 @@ export const translations = {
     "QS_INSTALL_OPEN": "Open index.html in your browser",
     "QS_INSTALL_OPTION2": "# Option 2: Use local server",
     "QS_INSTALL_ACCESS": "# Then access:",
-    "QS_INSTALL_CODE": "# Access directly via browser:\nhttps://aegisboard.dev\n\n# Or clone for local usage:\ngit clone https://github.com/s3codecL/aegisboard.git",
+    "QS_INSTALL_CODE": "# Access directly via browser:\nhttps://aegisboard.dev",
 
     // Documentación
     "QS_DOCUMENTATION": "Documentation",
@@ -950,7 +950,7 @@ export const translations = {
     "QS_FOOTER_RIGHTS": "Todos los derechos reservados",
 
     // Por Los Números
-    "QS_BY_NUMBERS": "Por Los Números",
+    "QS_BY_NUMBERS": "Por los Números",
     "QS_STAT_TOOLS": "Herramientas OSINT",
     "QS_STAT_CATEGORIES": "Categorías",
     "QS_STAT_QUICK_ACCESS": "Acceso Rápido",
@@ -984,13 +984,13 @@ export const translations = {
     "QS_UC_IT_DESC": "Diagnóstica problemas de seguridad, verifica reputaciones y realiza análisis rápidos.",
 
     // Instalación
-    "QS_INSTALLATION": "Instalación",
+    "QS_INSTALLATION": "Uso o accesibilidad",
     "QS_INSTALL_DESC": "El Aegis Board es una aplicación web totalmente autónoma. Solo necesitas un navegador moderno.",
     "QS_INSTALL_OPTION1": "# Opción 1: Abrir directamente",
     "QS_INSTALL_OPEN": "Abre index.html en tu navegador",
     "QS_INSTALL_OPTION2": "# Opción 2: Usar servidor local",
     "QS_INSTALL_ACCESS": "# Luego accede a:",
-    "QS_INSTALL_CODE": "# Accede directamente vía navegador:\nhttps://aegisboard.dev\n\n# O clona para uso local:\ngit clone https://github.com/s3codecL/aegisboard.git",
+    "QS_INSTALL_CODE": "# Accede directamente vía navegador:\nhttps://aegisboard.dev",
 
     // Documentación
     "QS_DOCUMENTATION": "Documentación",
@@ -1010,7 +1010,7 @@ export const translations = {
     "QS_FAQ_Q2": "¿Necesito conexión a internet?",
     "QS_FAQ_A2": "La interfaz funciona sin internet, pero necesitas conexión para acceder a las herramientas OSINT externas.",
     "QS_FAQ_Q3": "¿Puedo agregar mis propias herramientas?",
-    "QS_FAQ_A3": "Sí. Edita js/tools-config.js y agrega nuevas herramientas con el formato especificado.",
+    "QS_FAQ_A3": "Sí, edita js/tools-config.js y agrega nuevas herramientas con el formato especificado.",
     "QS_FAQ_Q4": "¿Qué navegadores soporta?",
     "QS_FAQ_A4": "Todos los navegadores modernos: Chrome, Firefox, Safari, Edge. Requiere ES6+ y localStorage.",
 
@@ -1030,7 +1030,7 @@ export const translations = {
     "QS_COMMUNITY": "Comunidad",
 
     // CTA
-    "QS_CTA_SUBTITLE": "Accede al Aegis Board y realiza investigaciones profesionales",
+    "QS_CTA_SUBTITLE": "Accede a Aegis Board y realiza investigaciones profesionales",
     "QS_CTA_BUTTON": "Ir al Board",
 
     // Footer
