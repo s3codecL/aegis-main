@@ -57,7 +57,7 @@
                 <!-- Idioma -->
                 <button class="btn btn-ghost" id="language-toggle" data-i18n-title="CHANGE_LANGUAGE"
                     title="Cambiar idioma">
-                    <span id="langText" class="fw-bold" style="font-size: 0.85rem;">EN</span>
+                    <span id="current-lang" class="fw-bold" style="font-size: 0.85rem;">EN</span>
                 </button>
 
                 <!-- Separador visual -->
@@ -713,9 +713,9 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module">
-        import Auth from '/src/js/auth.js';
-        import { Translations } from '/src/js/translations.js';
-        import IncidentManager from '/src/js/incidents.js';
+        import Auth from './src/js/auth.js';
+        import { Translations } from './src/js/translations.js';
+        import IncidentManager from './src/js/incidents.js';
 
         // Protección de acceso - solo administradores
         document.addEventListener('DOMContentLoaded', function () {
@@ -836,7 +836,7 @@
         });
 
         function updateLangButton(lang) {
-            const langText = document.getElementById("langText");
+            const langText = document.getElementById("current-lang");
             if (langText) {
                 // Show the TARGET language (inverted from current)
                 langText.textContent = lang === 'es' ? 'EN' : 'ES';
